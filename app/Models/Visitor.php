@@ -5,9 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Catar extends Model
+class Visitor extends Model
 {
     use HasFactory;
 
-    protected $table = 'catar';
+    protected $fillable = [
+        'ip',
+        'location',
+        'count',
+    ];
 }
