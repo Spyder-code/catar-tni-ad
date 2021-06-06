@@ -12,8 +12,8 @@
 <main>
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-md-6 col-sm-12">
-                <img src="{{ asset('images/new-logo.png') }}" class="img-fluid" alt="">
+            <div class="col-md-6 col-sm-12 text-center">
+                <img src="{{ asset('images/tni-logo.png') }}" class="img-fluid" style="height: 500px">
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="row align-items-center">

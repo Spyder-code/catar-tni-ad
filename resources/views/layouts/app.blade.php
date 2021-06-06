@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo-icon.png') }}">
         <link href="{{ asset('dashboard') }}/css/style.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('css') }}/style.css">
         <title>Login Page</title>
     </head>
     <body style="background-color: #dfebfd">

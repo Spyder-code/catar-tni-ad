@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('layouts.user');
 })->middleware('visitor');
 Route::get('/blank', function () {
     return view('admin.blank');
