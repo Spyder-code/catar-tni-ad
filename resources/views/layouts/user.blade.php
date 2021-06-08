@@ -26,69 +26,69 @@
                         <div class="swiper-wrapper">
                             <!-- Slides -->
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_1.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_1.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_2.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_2.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_3.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_3.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_4.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_4.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_5.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_5.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_6.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_6.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_7.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_7.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_8.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_8.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_9.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_9.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_10.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_10.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_11.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_11.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_12.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_12.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_13.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_13.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_14.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_14.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_15.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_15.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_16.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_16.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_17.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_17.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_18.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_18.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_19.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_19.jpg" style="height:350px; width:70%"/>
                             </div>
                             <div class="swiper-slide">
-                                <img src="{{ asset('images') }}/t_20.jpg" style="height:450px; width:90%"/>
+                                <img src="{{ asset('images') }}/t_20.jpg" style="height:350px; width:70%"/>
                             </div>
                         </div>
                         <!-- If we need pagination -->
                         <div class="swiper-pagination"></div>
-                    
+
                         <!-- If we need navigation buttons -->
                         <div class="swiper-button-prev"></div>
                         <div class="swiper-button-next"></div>
@@ -107,7 +107,7 @@
                         <a href="{{ route('home') }}" class="btn btn-dark mt-5 text-light btn-rounded w-100">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}" class="btn btn-dark mt-5 text-light btn-rounded w-100">Login</a>
-                    @endif  
+                    @endif
                 </div>
             </div>
         </div>

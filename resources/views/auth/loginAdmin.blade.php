@@ -12,24 +12,27 @@
 <main>
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-md-6 col-sm-12 text-center">
-                <img src="{{ asset('images/tni-logo.png') }}" class="img-fluid" style="height: 500px">
+            <div class="col-md-6 col-sm-12">
+                <img src="{{ asset('images/new-logo.png') }}" class="img-fluid" alt="">
             </div>
             <div class="col-md-6 col-sm-12">
                 <div class="row align-items-center">
                     <div class="col text-primary">
+                        <div class="d-flex justify-content-center">
+                            <button class="btn mx-2 btn-primary btn-rounded" id="btn-login">Login</button>
+                        </div>
                         <div class="cards" id="login-card">
                             <div class="card-body">
-                                <form method="POST" action="{{ route('login.calon') }}">
+                                <form method="POST" action="{{ route('login') }}">
                                     @csrf
 
                                     <div class="form-group row">
-                                        <label for="no_online" class="col-md-4 col-form-label text-md-right">No online</label>
+                                        <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Email or Username') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="no_online" type="text" class="form-control @error('no_online') is-invalid @enderror" name="no_online" value="{{ old('no_online') }}" required autocomplete="no_online" autofocus>
+                                            <input id="username" type="username" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
 
-                                            @error('no_online')
+                                            @error('username')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
@@ -38,12 +41,12 @@
                                     </div>
 
                                     <div class="form-group row">
-                                        <label for="tgl_lahir" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal lahir') }}</label>
+                                        <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="tgl_lahir" type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir" required autocomplete="current-tgl_lahir">
+                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
-                                            @error('tgl_lahir')
+                                            @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>

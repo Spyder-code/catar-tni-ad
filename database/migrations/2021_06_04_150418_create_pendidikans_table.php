@@ -19,12 +19,13 @@ class CreatePendidikansTable extends Migration
             $table->string('sd');
             $table->string('smp');
             $table->string('sma');
-            $table->string('thn_lulus_sd');
-            $table->string('thn_lulus_smp');
-            $table->string('thn_lulus_sma');
-            $table->string('jurusan');
+            $table->string('l_sd');
+            $table->string('l_smp');
+            $table->string('l_sma');
+            $table->string('nama_sma');
+            $table->string('jur');
             $table->string('jumlah_nuan');
-            $table->string('rata_rata_nuan');
+            $table->string('rata');
             $table->timestamps();
         });
     }

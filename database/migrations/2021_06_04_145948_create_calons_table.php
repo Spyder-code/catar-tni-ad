@@ -15,21 +15,21 @@ class CreateCalonsTable extends Migration
     {
         Schema::create('calon', function (Blueprint $table) {
             $table->id();
-            $table->string('nodaf');
+            $table->string('no_online');
             $table->string('nama');
-            $table->string('tempat_lahir');
-            $table->string('tanggal_lahir');
+            $table->string('tem_lahir');
+            $table->string('tgl_lahir');
             $table->string('suku');
             $table->string('agama');
             $table->string('alamat');
             $table->string('rt');
             $table->string('rw');
             $table->string('no');
-            $table->string('dusun');
-            $table->string('desa');
-            $table->string('kecamatan');
-            $table->string('kab_kota');
-            $table->string('telephone');
+            $table->string('dsn');
+            $table->string('ds');
+            $table->string('kec');
+            $table->string('kab');
+            $table->string('telp');
             $table->string('daftar_ke');
             $table->string('aspek_tl');
             $table->timestamps();

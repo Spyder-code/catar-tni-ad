@@ -9,6 +9,7 @@
     <title>Spydercode Admin Dashboard</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo-icon.png') }}">
     <link href="{{ asset('dashboard') }}/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
 </head>
 
 <body>
@@ -54,8 +55,18 @@
                             </li>
                             <li>
                                 <a class="profile-pic" href="#">
-                                    <img src="{{ Auth::user()->avatar }}" alt="user-img" width="36"
-                                        class="img-circle"><span class="text-white font-medium">{{ Auth::user()->name }}</span></a>
+                                    @if (Auth::guard('calon')->check())
+                                    <img src="{{ asset('images/logo-icon.png') }}" alt="user-img" width="36" class="img-circle">
+                                    <span class="text-white font-medium">
+                                        {{ Auth::guard('calon')->user()->nama }}
+                                    </span>
+                                    @else
+                                    <img src="{{ Auth::user()->avatar }}" alt="user-img" width="36" class="img-circle">
+                                    <span class="text-white font-medium">
+                                        {{ Auth::user()->name }}
+                                    </span>
+                                    @endif
+                                </a>
                             </li>
                         </ul>
                     </div>
@@ -68,6 +79,37 @@
                 <div class="scroll-sidebar">
                     <nav class="sidebar-nav">
                         <ul id="sidebarnav">
+                            @if (Auth::guard('calon')->check())
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('calon.form') }}"
+                                    aria-expanded="false">
+                                    <i class="fa fa-pencil-alt" aria-hidden="true"></i>
+                                    <span class="hide-menu">Administrasi</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('calon.form') }}"
+                                    aria-expanded="false">
+                                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                    <span class="hide-menu">PDF</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('calon.form') }}"
+                                    aria-expanded="false">
+                                    <i class="fa fa-info" aria-hidden="true"></i>
+                                    <span class="hide-menu">Info</span>
+                                </a>
+                            </li>
+                            <li class="text-center p-20 upgrade-btn">
+                                <form action="{{ route('logout.calon') }}" method="post">
+                                    @csrf
+                                    <button class="btn w-100 btn-danger text-white" type="submit" onclick="return confirm('Are you sure?')">
+                                        <i class="fa fa-toggle-off"></i>
+                                        Logout</button>
+                                </form>
+                            </li>
+                            @else
                             <li class="sidebar-item pt-2">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('home') }}"
                                     aria-expanded="false">
@@ -83,10 +125,17 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('blank') }}"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('pokok') }}"
                                     aria-expanded="false">
-                                    <i class="fa fa-columns" aria-hidden="true"></i>
-                                    <span class="hide-menu">Blank Page</span>
+                                    <i class="fa fa-database" aria-hidden="true"></i>
+                                    <span class="hide-menu">Data pokok</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('calon') }}"
+                                    aria-expanded="false">
+                                    <i class="fa fa-database" aria-hidden="true"></i>
+                                    <span class="hide-menu">Data calon</span>
                                 </a>
                             </li>
                             <li class="text-center p-20 upgrade-btn">
@@ -97,6 +146,7 @@
                                         Logout</button>
                                 </form>
                             </li>
+                            @endif
                         </ul>
                     </nav>
                 </div>
@@ -134,6 +184,8 @@
     <script src="{{ asset('dashboard') }}/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('dashboard') }}/js/sidebarmenu.js"></script>
     <script src="{{ asset('dashboard') }}/js/custom.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    @yield('script')
 </body>
 
 </html>

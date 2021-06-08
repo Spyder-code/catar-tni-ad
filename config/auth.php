@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'calon' => [
+            'driver' => 'session',
+            'provider' => 'calon',
+        ],
     ],
 
     /*
@@ -69,6 +74,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'calon' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Pokok::class,
         ],
 
         // 'users' => [
