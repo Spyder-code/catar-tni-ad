@@ -16,16 +16,16 @@ class CreatePendidikansTable extends Migration
         Schema::create('pendidikan', function (Blueprint $table) {
             $table->id();
             $table->foreignId('calon_id')->constrained('calon');
-            $table->string('sd');
-            $table->string('smp');
-            $table->string('sma');
-            $table->string('l_sd');
-            $table->string('l_smp');
-            $table->string('l_sma');
-            $table->string('nama_sma');
-            $table->string('jur');
-            $table->string('jumlah_nuan');
-            $table->string('rata');
+            $table->string('sd')->nullable();
+            $table->string('smp')->nullable();
+            $table->string('sma')->nullable();
+            $table->string('l_sd')->nullable();
+            $table->string('l_smp')->nullable();
+            $table->string('l_sma')->nullable();
+            $table->string('nama_sma')->nullable();
+            $table->string('jur')->nullable();
+            $table->string('jumlah_nuan')->nullable();
+            $table->string('rata')->nullable();
             $table->timestamps();
         });
     }

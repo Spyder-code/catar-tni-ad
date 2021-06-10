@@ -11,7 +11,7 @@ class T2020 extends Model
 
     protected $table = 'tlulus2020';
     protected $fillable = [
-        'id',
+        'calon_id',
         'bipeng1',
         'biket1',
         'bigpeng1',

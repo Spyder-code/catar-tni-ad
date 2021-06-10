@@ -16,22 +16,22 @@ class CreateCalonsTable extends Migration
         Schema::create('calon', function (Blueprint $table) {
             $table->id();
             $table->string('no_online');
-            $table->string('nama');
-            $table->string('tem_lahir');
-            $table->string('tgl_lahir');
-            $table->string('suku');
-            $table->string('agama');
-            $table->string('alamat');
-            $table->string('rt');
-            $table->string('rw');
-            $table->string('no');
-            $table->string('dsn');
-            $table->string('ds');
-            $table->string('kec');
-            $table->string('kab');
-            $table->string('telp');
-            $table->string('daftar_ke');
-            $table->string('aspek_tl');
+            $table->string('nama')->nullable();
+            $table->string('agama')->nullable();
+            $table->string('tem_lahir')->nullable();
+            $table->string('tgl_lahir')->nullable();
+            $table->string('suku')->nullable();
+            $table->string('alamat')->nullable();
+            $table->string('rt')->nullable();
+            $table->string('rw')->nullable();
+            $table->string('no')->nullable();
+            $table->string('dsn')->nullable();
+            $table->string('ds')->nullable();
+            $table->string('kec')->nullable();
+            $table->string('kab')->nullable();
+            $table->string('telp')->nullable();
+            $table->string('daftar_ke')->nullable();
+            $table->string('aspek_tl')->nullable();
             $table->timestamps();
         });
     }

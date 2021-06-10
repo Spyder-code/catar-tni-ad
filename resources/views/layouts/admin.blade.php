@@ -10,6 +10,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo-icon.png') }}">
     <link href="{{ asset('dashboard') }}/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    @yield('style')
 </head>
 
 <body>
@@ -88,10 +89,17 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('calon.form') }}"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" target="d_blank" href="{{ route('calon.pdf') }}"
                                     aria-expanded="false">
-                                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                                    <span class="hide-menu">PDF</span>
+                                    <i class="fa fa-user" aria-hidden="true"></i>
+                                    <span class="hide-menu">Data diri PDF</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" target="d_blank" href="{{ route('calon.nilai') }}"
+                                    aria-expanded="false">
+                                    <i class="fa fa-hourglass-end" aria-hidden="true"></i>
+                                    <span class="hide-menu">Nilai PDF</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">

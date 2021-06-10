@@ -29,7 +29,20 @@
         @endif
         <div class="row">
             <div class="col-md-12">
+                <div class="alert alert-info" role="alert">
+                    <strong>Penting!</strong>
+                    <ol>
+                        <li>Harap lengkapi semua data</li>
+                        <li>Jika data terkait tidak ada maka isi kolom dengan tanda (-)</li>
+                        <li>Setelah mengisi kolom, jangan lupa klik tombol simpan data pada bagian bawah form</li>
+                    </ol>
+                </div>
                 <div class="white-box">
+                    @if ($status==1)
+                        <div class="alert alert-success" role="alert">
+                            Terakhir di edit {{ date('d/m/Y H:i', strtotime($calon->updated_at)) }}
+                        </div>
+                    @endif
                     <form action="{{ route('calon.form.store') }}" method="post">
                         @csrf
                         <input type="hidden" name="status" value="{{ $status }}">
@@ -46,79 +59,79 @@
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>No online</label>
-                                                <input type="text" name="no_online" class="form-control" value="{{ $calon!=null?$calon->no_online : Auth::guard('calon')->user()->no_online }}">
+                                                <input type="text" name="calon[no_online]" class="form-control" value="{{ $calon!=null?$calon->no_online : Auth::guard('calon')->user()->no_online }}">
                                             </div>
                                             <div class="col">
                                                 <label>Nama</label>
-                                                <input type="text" name="nama" class="form-control" value="{{ $calon!=null?$calon->nama : Auth::guard('calon')->user()->nama }}">
+                                                <input type="text" name="calon[nama]" class="form-control" value="{{ $calon!=null?$calon->nama : Auth::guard('calon')->user()->nama }}">
                                             </div>
                                             <div class="col">
                                                 <label>Agama</label>
-                                                <input type="text" name="agama" class="form-control" value="{{ $calon!=null?$calon->agama : Auth::guard('calon')->user()->agama }}">
+                                                <input type="text" name="calon[agama]" class="form-control" value="{{ $calon!=null?$calon->agama : Auth::guard('calon')->user()->agama }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>Tempat lahir</label>
-                                                <input type="text" name="tem_lahir" class="form-control" value="{{ $calon!=null?$calon->tem_lahir : Auth::guard('calon')->user()->tem_lahir }}">
+                                                <input type="text" name="calon[tem_lahir]" class="form-control" value="{{ $calon!=null?$calon->tem_lahir : Auth::guard('calon')->user()->tem_lahir }}">
                                             </div>
                                             <div class="col">
                                                 <label>Tanggal lahir</label>
-                                                <input type="date" name="tgl_lahir" class="form-control" value="{{ $calon!=null?$calon->tgl_lahir : Auth::guard('calon')->user()->tem_lahir }}">
+                                                <input type="date" name="calon[tgl_lahir]" class="form-control" value="{{ $calon!=null?$calon->tgl_lahir : Auth::guard('calon')->user()->tem_lahir }}">
                                             </div>
                                             <div class="col">
                                                 <label>Suku</label>
-                                                <input type="text" name="suku" class="form-control" value="{{ $calon!=null?$calon->suku : Auth::guard('calon')->user()->suku }}">
+                                                <input type="text" name="calon[suku]" class="form-control" value="{{ $calon!=null?$calon->suku : Auth::guard('calon')->user()->suku }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-8">
                                                 <label>Alamat</label>
-                                                <input type="text" name="alamat" class="form-control" value="{{ $calon!=null?$calon->alamat : Auth::guard('calon')->user()->alamat_c }}">
+                                                <input type="text" name="calon[alamat]" class="form-control" value="{{ $calon!=null?$calon->alamat : Auth::guard('calon')->user()->alamat_c }}">
                                             </div>
                                             <div class="col">
                                                 <label>RT</label>
-                                                <input type="number" name="rt" class="form-control" value="{{ $calon!=null?$calon->rt :'' }}">
+                                                <input type="number" name="calon[rt]" class="form-control" value="{{ $calon!=null?$calon->rt :'' }}">
                                             </div>
                                             <div class="col">
                                                 <label>RW</label>
-                                                <input type="number" name="rw" class="form-control" value="{{ $calon!=null?$calon->rw :'' }}">
+                                                <input type="number" name="calon[rw]" class="form-control" value="{{ $calon!=null?$calon->rw :'' }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>No rumah</label>
-                                                <input type="text" name="no" class="form-control" value="{{ $calon!=null?$calon->no :'' }}">
+                                                <input type="text" name="calon[no]" class="form-control" value="{{ $calon!=null?$calon->no :'' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Dusun</label>
-                                                <input type="text" name="dusun" class="form-control" value="{{ $calon!=null?$calon->dsn :'' }}">
+                                                <input type="text" name="calon[dsn]" class="form-control" value="{{ $calon!=null?$calon->dsn :'' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Desa</label>
-                                                <input type="text" name="desa" class="form-control" value="{{ $calon!=null?$calon->ds :'' }}">
+                                                <input type="text" name="calon[ds]" class="form-control" value="{{ $calon!=null?$calon->ds :'' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Kecamatan</label>
-                                                <input type="text" name="kecamatan" class="form-control" value="{{ $calon!=null?$calon->kec :'' }}">
+                                                <input type="text" name="calon[kec]" class="form-control" value="{{ $calon!=null?$calon->kec :'' }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>Kabupaten/Kota</label>
-                                                <input type="text" name="kab" class="form-control" value="{{ $calon!=null?$calon->kab :'' }}">
+                                                <input type="text" name="calon[kab]" class="form-control" value="{{ $calon!=null?$calon->kab :'' }}">
                                             </div>
                                             <div class="col">
                                                 <label>No telphone</label>
-                                                <input type="text" name="telp" class="form-control" value="{{ $calon!=null?$calon->telp :'' }}">
+                                                <input type="text" name="calon[telp]" class="form-control" value="{{ $calon!=null?$calon->telp :'' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Daftar ke</label>
-                                                <input type="text" name="daftar_ke" class="form-control" value="{{ $calon!=null?$calon->daftar_ke :'' }}">
+                                                <input type="text" name="calon[daftar_ke]" class="form-control" value="{{ $calon!=null?$calon->daftar_ke :'' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Aspek tidak lulus</label>
-                                                <input type="text" name="aspek_tl" class="form-control" value="{{ $calon!=null?$calon->aspek_tl :'' }}">
+                                                <input type="text" name="calon[aspek_tl]" class="form-control" value="{{ $calon!=null?$calon->aspek_tl :'' }}">
                                             </div>
                                         </div>
                                     </div>
@@ -135,36 +148,35 @@
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>SD</label>
-                                                <input type="text" name="sd" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sd : '' }}">
+                                                <input type="text" name="pendidikan[sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sd : '' }}">
                                             </div>
                                             <div class="col-2">
                                                 <label>Tahun lulus SD</label>
-                                                <input type="number" name="l_sd" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_sd : '' }}">
+                                                <input type="number" name="pendidikan[l_sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_sd : '' }}">
                                             </div>
                                             <div class="col">
                                                 <label>SMP</label>
-                                                <input type="text" name="smp" class="form-control" value="{{ $pendidikan!=null?$pendidikan->smp : '' }}">
+                                                <input type="text" name="pendidikan[smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->smp : '' }}">
                                             </div>
                                             <div class="col-2">
                                                 <label>Tahun lulus SMP</label>
-                                                <input type="number" name="l_smp" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_smp : '' }}">
+                                                <input type="number" name="pendidikan[l_smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_smp : '' }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>SMA</label>
-                                                <input type="text" name="sma" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sma : '' }}">
+                                                <input type="text" name="pendidikan[sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sma : '' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Jurusan</label>
-                                                <input type="text" name="jurusan" class="form-control" value="{{ $pendidikan!=null?$pendidikan->jur : '' }}">
+                                                <input type="text" name="pendidikan[jur]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->jur : '' }}">
                                             </div>
                                             <div class="col-2">
                                                 <label>Tahun lulus SMA</label>
-                                                <select name="l_sma" class="form-select">
+                                                <select name="pendidikan[l_sma]" class="form-select">
                                                     @if ($pendidikan==null)
                                                         <option selected></option>
-                                                        <option value="2019">2019</option>
                                                         <option value="2020">2020</option>
                                                         <option value="2021">2021</option>
                                                     @else
@@ -176,6 +188,7 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        @include('calon.nilai')
                                     </div>
                                 </div>
                             </div>
@@ -190,65 +203,109 @@
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>Nama ayah</label>
-                                                <input type="text" name="ayah" class="form-control" value="{{ $wali!=null?$wali->ayah : '' }}">
+                                                <input type="text" name="wali[ayah]" class="form-control" value="{{ $wali!=null?$wali->ayah : '' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Kerja ayah</label>
-                                                <input type="text" name="kerja_ayah" class="form-control" value="{{ $wali!=null?$wali->a_kerja : '' }}">
+                                                <input type="text" name="wali[a_kerja]" class="form-control" value="{{ $wali!=null?$wali->a_kerja : '' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Pangkat ayah</label>
-                                                <input type="text" name="pangkat_ayah" class="form-control" value="{{ $wali!=null?$wali->a_pkt : '' }}">
+                                                <input type="text" name="wali[a_pkt]" class="form-control" value="{{ $wali!=null?$wali->a_pkt : '' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Jabatan ayah</label>
-                                                <input type="text" name="jabatan_ayah" class="form-control" value="{{ $wali!=null?$wali->a_jab : '' }}">
+                                                <input type="text" name="wali[a_jab]" class="form-control" value="{{ $wali!=null?$wali->a_jab : '' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Satuan</label>
-                                                <input type="text" name="satuan_ayah" class="form-control" value="{{ $wali!=null?$wali->a_sat : '' }}">
+                                                <input type="text" name="wali[a_sat]" class="form-control" value="{{ $wali!=null?$wali->a_sat : '' }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>Nama ibu</label>
-                                                <input type="text" name="ibu" class="form-control" value="{{ $wali!=null?$wali->ibu : '' }}">
+                                                <input type="text" name="wali[ibu]" class="form-control" value="{{ $wali!=null?$wali->ibu : '' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Kerja ibu</label>
-                                                <input type="text" name="kerja_ibu" class="form-control" value="{{ $wali!=null?$wali->i_kerja : '' }}">
+                                                <input type="text" name="wali[i_kerja]" class="form-control" value="{{ $wali!=null?$wali->i_kerja : '' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Pangkat ibu</label>
-                                                <input type="text" name="pangkat_ibu" class="form-control" value="{{ $wali!=null?$wali->i_pkt : '' }}">
+                                                <input type="text" name="wali[i_pkt]" class="form-control" value="{{ $wali!=null?$wali->i_pkt : '' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Jabatan ibu</label>
-                                                <input type="text" name="jabatan_ibu" class="form-control" value="{{ $wali!=null?$wali->i_jab : '' }}">
+                                                <input type="text" name="wali[i_jab]" class="form-control" value="{{ $wali!=null?$wali->i_jab : '' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Satuan</label>
-                                                <input type="text" name="satuan_ibu" class="form-control" value="{{ $wali!=null?$wali->i_sat : '' }}">
+                                                <input type="text" name="wali[i_sat]" class="form-control" value="{{ $wali!=null?$wali->i_sat : '' }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-4">
                                                 <label>Telphone orang tua</label>
-                                                <input type="text" name="phone" class="form-control" value="{{ $wali!=null?$wali->o_telp : '' }}">
+                                                <input type="text" name="wali[o_telp]" class="form-control" value="{{ $wali!=null?$wali->o_telp : '' }}">
                                             </div>
                                             <div class="col">
                                                 <label>Alamat orang tua</label>
-                                                <input type="text" name="alamat_ortu" class="form-control" value="{{ $wali!=null?$wali->o_alamat : '' }}">
+                                                <input type="text" name="wali[o_alamat]" class="form-control" value="{{ $wali!=null?$wali->o_alamat : '' }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col">
+                                                <label>Nama wali</label>
+                                                <input type="text" name="wali[wali]" class="form-control" value="{{ $wali!=null?$wali->wali : '' }}">
+                                            </div>
+                                            <div class="col">
+                                                <label>Kerja wali</label>
+                                                <input type="text" name="wali[w_kerja]" class="form-control" value="{{ $wali!=null?$wali->w_kerja : '' }}">
+                                            </div>
+                                            <div class="col">
+                                                <label>Pangkat wali</label>
+                                                <input type="text" name="wali[w_pkt]" class="form-control" value="{{ $wali!=null?$wali->w_pkt : '' }}">
+                                            </div>
+                                            <div class="col">
+                                                <label>Jabatan wali</label>
+                                                <input type="text" name="wali[w_jab]" class="form-control" value="{{ $wali!=null?$wali->w_jab : '' }}">
+                                            </div>
+                                            <div class="col">
+                                                <label>Satuan</label>
+                                                <input type="text" name="wali[w_sat]" class="form-control" value="{{ $wali!=null?$wali->w_sat : '' }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-4">
+                                                <label>Telphone wali</label>
+                                                <input type="text" name="wali[w_telp]" class="form-control" value="{{ $wali!=null?$wali->w_telp : '' }}">
+                                            </div>
+                                            <div class="col">
+                                                <label>Alamat wali</label>
+                                                <input type="text" name="wali[w_alamat]" class="form-control" value="{{ $wali!=null?$wali->w_alamat : '' }}">
+                                            </div>
+                                            <div class="col">
                                                 <label>Status wali</label>
-                                                <input type="text" name="status_wali" class="form-control" value="{{ $wali!=null?$wali->status_wali : '' }}">
+                                                <select name="wali[status_wali]" class="form-select">
+                                                    @if ($wali!=null)
+                                                        <option value="0"></option>
+                                                        <option {{ $wali->status_wali==1?'selected':'' }} value="1">Wali</option>
+                                                        <option {{ $wali->status_wali==2?'selected':'' }} value="2">Tiri</option>
+                                                        <option {{ $wali->status_wali==3?'selected':'' }} value="3">Perwalian</option>
+                                                        <option {{ $wali->status_wali==4?'selected':'' }} value="4">Numpang alamat</option>
+                                                    @else
+                                                        <option value="0"></option>
+                                                        <option value="1">Wali</option>
+                                                        <option value="2">Tiri</option>
+                                                        <option value="3">Perwalian</option>
+                                                        <option value="4">Numpang alamat</option>
+                                                    @endif
+                                                </select>
                                             </div>
                                             <div class="col">
                                                 <label>Hubungan wali</label>
-                                                <input type="text" name="hub_wali" class="form-control" value="{{ $wali!=null?$wali->hub_calon_wali : '' }}">
+                                                <input type="text" name="wali[hub_calon_wali]" class="form-control" value="{{ $wali!=null?$wali->hub_calon_wali : '' }}">
                                             </div>
                                         </div>
                                     </div>

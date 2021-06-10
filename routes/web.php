@@ -26,6 +26,8 @@ Auth::routes(['register'=>false]);
 
 Route::get('/calon/administrasi', [App\Http\Controllers\CalonController::class, 'index'])->name('calon.form');
 Route::post('/calon/administrasi', [App\Http\Controllers\CalonController::class, 'store'])->name('calon.form.store');
+Route::get('/calon/pdf', [App\Http\Controllers\CalonController::class, 'pdf'])->name('calon.pdf');
+Route::get('/calon/nilai', [App\Http\Controllers\CalonController::class, 'nilai'])->name('calon.nilai');
 Route::get('/main', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/pokok', [App\Http\Controllers\HomeController::class, 'pokok'])->name('pokok');
 Route::get('/calon', [App\Http\Controllers\HomeController::class, 'calon'])->name('calon');

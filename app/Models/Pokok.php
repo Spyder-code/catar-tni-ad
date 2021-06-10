@@ -32,6 +32,4 @@ class Pokok extends Model
         'th_lulus',
         'kerja',
     ];
-
-    public $timestamps = false;
 }
