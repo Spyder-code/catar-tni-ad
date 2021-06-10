@@ -25,6 +25,7 @@ Route::get('/admin', function () {
 Auth::routes(['register'=>false]);
 
 Route::get('/calon/administrasi', [App\Http\Controllers\CalonController::class, 'index'])->name('calon.form');
+Route::post('/calon/administrasi', [App\Http\Controllers\CalonController::class, 'store'])->name('calon.form.store');
 Route::get('/main', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/pokok', [App\Http\Controllers\HomeController::class, 'pokok'])->name('pokok');
 Route::get('/calon', [App\Http\Controllers\HomeController::class, 'calon'])->name('calon');

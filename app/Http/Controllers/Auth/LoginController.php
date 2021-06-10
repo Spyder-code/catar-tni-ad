@@ -65,7 +65,7 @@ class LoginController extends Controller
         $tgl = date('d-m-Y', strtotime($request->tgl_lahir));
         $user = Pokok::where('no_online',$request->no_online)->where('tgl_lahir',$tgl)->first();
         Auth::guard('calon')->login($user);
-        return redirect()->route('calon.dashboard');
+        return redirect()->route('calon.form');
     }
 
 }
