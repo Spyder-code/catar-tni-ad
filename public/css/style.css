@@ -10,3 +10,22 @@ body{
     color: white;
     font-size: 12pt;
 }
+
+.img-slide{
+    height: 200px;
+    width: 80%;
+}
+
+@media screen and (min-width: 600px) {
+    .img-slide{
+        height: 300px;
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .img-slide{
+        height: 350px;
+        width: 80%;
+    }
+}

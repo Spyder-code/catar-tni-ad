@@ -2,9 +2,16 @@
 
 @section('content')
 <style>
+
+    .tni-logo{
+        height: 250px;
+    }
     @media (min-width:769px) {
         main{
             margin-top: 100px;
+        }
+        .tni-logo{
+            height: 500px;
         }
     }
 </style>
@@ -12,9 +19,9 @@
 <main>
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-md-6 col-sm-12 text-center">
-                <img src="{{ asset('images/tni-logo.png') }}" class="img-fluid" style="height: 500px">
-            </div>
+            <a href="{{ url('/') }}" class="col-md-6 col-sm-12 text-center">
+                <img src="{{ asset('images/tni-logo.png') }}" class="img-fluid tni-logo">
+            </a>
             <div class="col-md-6 col-sm-12">
                 <div class="row align-items-center">
                     <div class="col text-primary">
@@ -41,7 +48,7 @@
                                         <label for="tgl_lahir" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal lahir') }}</label>
 
                                         <div class="col-md-6">
-                                            <input id="tgl_lahir" type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir" required autocomplete="current-tgl_lahir">
+                                            <input id="tgl_lahir" type="date" class="form-control @error('tgl_lahir') is-invalid @enderror" name="tgl_lahir" min="2000-01-01" max="2005-12-31" required autocomplete="current-tgl_lahir">
 
                                             @error('tgl_lahir')
                                                 <span class="invalid-feedback" role="alert">

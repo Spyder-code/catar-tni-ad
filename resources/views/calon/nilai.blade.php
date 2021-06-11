@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="{{ asset('css.') }}/tabel.css">
 <script src="{{ asset('dashboard') }}/js/jquery.min.js"></script>
 <div class="tg-wrap">
-    <table id="tg-HMKiy" class="tg bg-white" style="table-layout: fixed; width: 100%x">
+    <table id="tg-HMKiy" class="tg bg-white" style="table-layout: fixed; width: 100%">
         <colgroup>
         <col style="width: 50px">
         <col style="width: 138px">

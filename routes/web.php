@@ -26,11 +26,12 @@ Auth::routes(['register'=>false]);
 
 Route::get('/calon/administrasi', [App\Http\Controllers\CalonController::class, 'index'])->name('calon.form');
 Route::post('/calon/administrasi', [App\Http\Controllers\CalonController::class, 'store'])->name('calon.form.store');
-Route::get('/calon/pdf', [App\Http\Controllers\CalonController::class, 'pdf'])->name('calon.pdf');
+Route::get('/calon/data-diri', [App\Http\Controllers\CalonController::class, 'pdf'])->name('calon.pdf');
 Route::get('/calon/nilai', [App\Http\Controllers\CalonController::class, 'nilai'])->name('calon.nilai');
 Route::get('/main', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/pokok', [App\Http\Controllers\HomeController::class, 'pokok'])->name('pokok');
 Route::get('/calon', [App\Http\Controllers\HomeController::class, 'calon'])->name('calon');
+Route::post('/calon/export', [App\Http\Controllers\HomeController::class, 'export'])->name('calon.export');
 Route::post('/login-calon', [App\Http\Controllers\Auth\LoginController::class, 'loginCalon'])->name('login.calon');
 Route::post('/calon/logout', [App\Http\Controllers\CalonController::class, 'logout'])->name('logout.calon');
 Route::post('/pokok', [App\Http\Controllers\HomeController::class, 'importExcelPokok'])->name('pokok.import');

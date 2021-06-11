@@ -6,6 +6,14 @@
 <meta name="generator" content="pdf2htmlEX"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
 <style type="text/css">
+    @media print{
+        #btn-print{
+            display: none;
+        }
+        @page{
+            size: A4;
+        }
+    }
 /*!
  * Base CSS for pdf2htmlEX
  * Copyright 2012,2013 Lu Wang <coolwanglu@gmail.com>
@@ -399,17 +407,315 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 <title></title>
 </head>
 <body>
+    <button id="btn-print" style="position: fixed; z-index:99; bottom:20px; left:50px; padding:30px; font-size:15pt" onclick="window.print()">Print</button>
     <div id="sidebar">
         <div id="outline">
         </div>
     </div>
     <div id="page-container">
         <div id="pf1" class="pf w0 h0" data-page-no="1">
-            <div class="pc pc1 w0 h0"><img class="bi x0 y0 w1 h1" alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAU8AAAABCAIAAADRirsNAAAACXBIWXMAABYlAAAWJQFJUiTwAAAAFElEQVQoz2P48uULwygYBaNgBAAAO2MC3eOumosAAAAASUVORK5CYII="/>
-                <div class="c x1 y1 w2 h0">
-                    <div class="t m0 x0 h2 y2 ff1 fs0 fc0 sc0 ls0 ws0">PANITIA <span class="ls1">DAERAH </span>PENERIMAAN  </div>
-                    <div class="t m0 x2 h2 y3 ff1 fs0 fc0 sc0 ls1 ws0">CA<span class="ls0">LON PRAJURIT TNI <span class="_ _0"></span>AD </span></div>
-                    <div class="t m0 x3 h3 y4 ff1 fs1 fc0 sc0 ls0 ws0"> </div><div class="t m0 x4 h2 y5 ff1 fs0 fc0 sc0 ls0 ws0">DATA PEMER<span class="_ _0"></span>IKSAAN ADMINISTR<span class="_ _0"></span>ASI </div><div class="t m0 x5 h2 y6 ff1 fs0 fc0 sc0 ls0 ws0">CALON TARUN<span class="_ _0"></span>A AKMIL TA <span class="ls2">2020</span> </div><div class="t m0 x3 h4 y7 ff1 fs2 fc0 sc0 ls0 ws0"> </div><div class="t m0 x3 h5 y8 ff1 fs3 fc0 sc0 ls3 ws0">A.<span class="ls0"> <span class="_ _1"> </span>DATA PRIBADI C<span class="_ _2"></span>ALON </span></div><div class="t m0 x3 h6 y9 ff1 fs4 fc0 sc0 ls0 ws0"> </div><div class="t m0 x6 h2 ya ff1 fs0 fc0 sc0 ls2 ws0">1.<span class="ls0"> <span class="_ _3"> </span>Nomor Pendaftar</span>an<span class="ls0">  <span class="_ _4"> </span> <span class="_ _5"> </span> <span class="_ _6"> </span>:  <span class="ff2s fs1s"><b>{{ $calon->no_online  }} / CATAR / 2020</b></span></span></div><div class="t m0 x6 h2 yb ff1 fs0 fc0 sc0 ls0 ws0">2. <span class="_ _3"> </span>Nama Lengkap<span class="_ _0"></span> (Sesuai Akte) <span class="_ _7"> </span> <span class="_ _6"> </span>:  {{ $calon->nama }} </div><div class="t m0 x6 h2 yc ff1 fs0 fc0 sc0 ls0 ws0">3. <span class="_ _3"> </span>Tempat, tanggal<span class="_ _0"></span> lahir <span class="_ _8"> </span> <span class="_ _5"> </span> <span class="_ _6"> </span>:<span class="ls4">  </span>{{ $calon->tem_lahir }}, <span class="ls2">{{ date('d F Y', strtotime($calon->tgl_lahir)) }}</span> </div><div class="t m0 x6 h2 yd ff1 fs0 fc0 sc0 ls0 ws0">4. <span class="_ _3"> </span>Suku, Agama<span class="_ _0"></span> <span class="_ _9"> </span> <span class="_ _5"> </span> <span class="_ _6"> </span>:  {{ $calon->suku }}, {{ $calon->agama }}<span class="_ _0"></span> </div><div class="t m0 x6 h2 ye ff1 fs0 fc0 sc0 ls0 ws0">5. <span class="_ _3"> </span>Alamat <span class="_ _a"> </span>  <span class="_ _b"> </span> <span class="_ _c"> </span> <span class="_ _6"> </span>:  {{ $calon->alamat }}<span class="_ _0"></span> <span class="_ _d"> </span> <span class="_ _e"> </span>RT/RW <span class="ls2">{{ $calon->rt }}</span>/{{ $calon->rw }}   No. <span class="ls2">{{ $calon->no }}</span> </div><div class="t m0 x6 h2 yf ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _f"> </span> <span class="_ _10"> </span>  <span class="_ _b"> </span> <span class="_ _c"> </span> <span class="_ _11"> </span>     Dsn. {{ $calon->dsn }}<span class="_ _0"></span> <span class="_ _5"> </span> <span class="_ _e"> </span>     Ds. {{ $calon->ds }} </div><div class="t m0 x6 h2 y10 ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _f"> </span> <span class="_ _10"> </span> <span class="_ _12"> </span> <span class="_ _13"> </span> <span class="_ _14"> </span> <span class="_ _13"> </span>   Kec. {{ $calon->kec }}<span class="_ _0"></span> <span class="_ _15"></span> <span class="_ _e"> </span>Kota {{ $calon->kab }}<span class="_ _0"></span>  </div><div class="t m0 x6 h2 y11 ff1 fs0 fc0 sc0 ls0 ws0">6. <span class="_ _3"> </span>Nomor Telephone<span class="_ _0"></span>/hp <span class="_ _8"> </span> <span class="_ _5"> </span> <span class="_ _6"> </span>:  <span class="ls2">{{ $calon->telp }}</span> </div><div class="t m0 x6 h2 y12 ff1 fs0 fc0 sc0 ls0 ws0">7. <span class="_ _3"> </span>Mendaftar ke<span class="_ _0"></span> <span class="_ _16"> </span> <span class="_ _5"> </span> <span class="_ _17"> </span> :   {{ $calon->daftar_ke }} </div><div class="t m0 x6 h2 y13 ff3 fs0 fc0 sc0 ls0 ws0">-<span class="ff1"> <span class="_ _18"> </span>Sebelumnya Tidak Lul<span class="_ _0"></span>us di aspek <span class="_ _0"></span> <span class="_ _19"> </span>: {{ $calon->aspek_tl }} </span></div><div class="t m0 x6 h2 y14 ff1 fs0 fc0 sc0 ls0 ws0"> </div><div class="t m0 x7 h6 y15 ff1 fs4 fc0 sc0 ls0 ws0"> </div><div class="t m0 x3 h5 y16 ff1 fs3 fc0 sc0 ls3 ws0">B.<span class="ls0"> <span class="_ _1"> </span>PENDIDIKAN:<span class="_ _2"></span> </span></div><div class="t m0 x3 h6 y17 ff1 fs4 fc0 sc0 ls0 ws0">  </div><div class="t m0 x3 h2 y18 ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _e"> </span><span class="ls2">1.</span> <span class="_ _1"> </span>Asal<span class="_ _0"></span> Sekolah <span class="ls5">SD</span>/MI  <span class="_ _1a"> </span> <span class="_ _e"> </span>: {{ $pendidikan->sd }}<span class="_ _0"></span> <span class="_ _1b"></span> <span class="_ _e"> </span>    Tahun lulus  <span class="_ _11"> </span>: <span class="ls2">{{ $pendidikan->l_sd }}</span> </div><div class="t m0 x3 h2 y19 ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _e"> </span><span class="ls2">2.</span> <span class="_ _1"> </span>Asal<span class="_ _0"></span> Sekolah SMP/MTs <span class="_ _0"></span> <span class="_ _1c"> </span>: {{ $pendidikan->smp }}<span class="_ _7"></span><span class="_ _e"> </span>    Tahun lulus <span class="_ _1d"> </span>: <span class="ls2">{{ $pendidikan->l_smp }}</span> </div><div class="t m0 x3 h2 y1a ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _e"> </span><span class="ls2">3.</span> <span class="_ _1"> </span>Asal<span class="_ _0"></span> Sekolah SMA/<span class="ls6">MA<span class="_ _0"></span><span class="ls0"> <span class="_ _1e"> </span>: {{ $pendidikan->sma }} <span class="_ _1"> </span>Tahun lulus <span class="_ _1d"> </span>: <span class="_ _2"></span><span class="ls2">{{ $pendidikan->l_sma }}</span> </span></span></div><div class="t m0 x3 h2 y1b ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _e"> </span> <span class="_ _e"> </span>a. <span class="_ _1"> </span>Jurusan<span class="_ _0"></span> <span class="_ _1f"> </span> <span class="_ _e"> </span>: {{ $pendidikan->jur }} </div><div class="t m0 x3 h2 y1c ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _e"> </span> <span class="_ _e"> </span>b. <span class="_ _1"> </span>Jumlah N<span class="ls1">UAN</span> <span class="_ _20"></span> <span class="_ _e"> </span>: 39.0 </div><div class="t m0 x3 h2 y1d ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _e"> </span> <span class="_ _e"> </span>c. <span class="_ _21"> </span>Rata-rata <span class="ls1">NUAN</span> <span class="_ _22"> </span>: 38.0 </div><div class="t m0 x3 h7 y1e ff1 fs5 fc0 sc0 ls0 ws0"> </div><div class="t m0 x3 h5 y1f ff1 fs3 fc0 sc0 ls7 ws0">C.<span class="ls0"> <span class="_ _3"> </span>DATA ORANG TU<span class="_ _2"></span>A/WALI:<span class="_ _2"></span> </span></div><div class="t m0 x3 h6 y20 ff1 fs4 fc0 sc0 ls0 ws0"> </div><div class="t m0 x6 h2 y21 ff1 fs0 fc0 sc0 ls2 ws0">1.<span class="ls0"> <span class="_ _1"> </span>Nama <span class="_ _0"></span>Orang Tua Kandu<span class="_ _0"></span>ng </span></div><div class="t m0 x6 h8 y22 ff1 fs6 fc0 sc0 ls0 ws0"> </div><div class="t m0 x7 h2 y23 ff1 fs0 fc0 sc0 ls0 ws0">a. <span class="_ _1"> </span>A<span class="_ _0"></span>yah <span class="_ _23"> </span>:  {{ $wali->ayah }}</div><div class="t m0 x7 h2 y24 ff1 fs0 fc0 sc0 ls2 ws0">b.<span class="ls0"> <span class="_ _1"> </span>Ibu<span class="_ _0"></span> <span class="_ _24"> </span>:  {{ $wali->ibu }} </span></div><div class="t m0 x7 h2 y25 ff1 fs0 fc0 sc0 ls0 ws0">c. <span class="_ _21"> </span>Pekerjaan </div><div class="t m0 x7 h2 y26 ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _e"> </span><span class="ls2">1)</span> <span class="_ _25"> </span>Ayah <span class="_ _26"> </span>:  {{ $wali->a_kerja }}<span class="_ _0"></span>    <span class="_ _1f"> </span>Pangkat<span class="ls4">: </span>{{ $wali->a_pkt }} <span class="_ _1c"> </span> <span class="_ _e"> </span>Satuan<span class="ls4">: </span>{{ $wali->a_sat }}<span class="_ _0"></span> </div><div class="t m0 x7 h2 y27 ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _e"> </span> <span class="_ _1"> </span>Jabatan <span class="_ _13"> </span>:<span class="ls4">  <span class="_ _2"></span></span>{{ $wali->a_jab }}<span class="_ _0"></span> </div><div class="t m0 x7 h2 y28 ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _e"> </span><span class="ls2">2)</span> <span class="_ _25"> </span>Ibu <span class="_ _27"> </span>:  {{ $wali->i_kerja }}<span class="_ _0"></span>    <span class="_ _1f"> </span>Pangkat<span class="ls4">: </span>{{ $wali->i_pkt }} <span class="_ _1c"> </span> <span class="_ _e"> </span>Satuan<span class="ls4">: </span>{{ $wali->i_sat }}<span class="_ _0"></span> </div><div class="t m0 x7 h2 y29 ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _e"> </span> <span class="_ _1"> </span>Jabatan <span class="_ _13"> </span>:<span class="ls4">  <span class="_ _2"></span></span>{{ $wali->i_sat }}<span class="_ _0"></span> </div><div class="t m0 x7 h2 y2a ff1 fs0 fc0 sc0 ls0 ws0">d. <span class="_ _1"> </span>A<span class="_ _0"></span>lamat <span class="_ _28"> </span>:  {{ $wali->o_alamat }}<span class="_ _0"></span> 2 </div><div class="t m0 x6 h7 y2b ff1 fs5 fc0 sc0 ls0 ws0">  </div><div class="t m0 x7 h2 y2c ff1 fs0 fc0 sc0 ls0 ws0">e. <span class="_ _1"> </span>Te<span class="_ _0"></span>lephone/hp <span class="_ _15"></span>:  <span class="ls2">{{ $wali->o_telp }}</span> </div><div class="t m0 x7 h2 y2d ff1 fs0 fc0 sc0 ls0 ws0"> </div><div class="t m0 x3 h8 y2e ff1 fs6 fc0 sc0 ls0 ws0"> </div><div class="t m0 x6 h2 y2f ff1 fs0 fc0 sc0 ls2 ws0">2.<span class="ls0"> <span class="_ _1"> </span>Ti<span class="_ _0"></span>ri / Wali / Perwalian /<span class="_ _0"></span> Numpang Alama<span class="_ _0"></span>t. (coret yg tidak perlu)<span class="_ _0"></span> </span></div><div class="t m0 x6 h6 y30 ff1 fs4 fc0 sc0 ls0 ws0"> </div><div class="t m0 x7 h2 y31 ff1 fs0 fc0 sc0 ls0 ws0">a. <span class="_ _1"> </span><span class="ls1">Na</span>ma Wali<span class="_ _0"></span> <span class="_ _6"> </span>:  {{ $wali->wali }} </div><div class="t m0 x7 h9 y32 ff1 fs7 fc0 sc0 ls0 ws0"> </div><div class="t m0 x7 h2 y33 ff1 fs0 fc0 sc0 ls0 ws0">b. <span class="_ _1"> </span>P<span class="_ _0"></span>ekerjaan <span class="_ _d"> </span>:  {{ $wali->w_kerja }}<span class="_ _0"></span>    <span class="_ _1f"> </span>Pangkat<span class="ls4">: </span>{{ $wali->w_pkt }} <span class="_ _1c"> </span> <span class="_ _e"> </span>Satuan<span class="ls4">: </span>{{ $wali->w_sat }}<span class="_ _0"></span> </div><div class="t m0 x7 h9 y34 ff1 fs7 fc0 sc0 ls0 ws0"> </div><div class="t m0 x7 h2 y35 ff1 fs0 fc0 sc0 ls0 ws0"> <span class="_ _e"> </span>Jabatan <span class="_ _1f"> </span>:<span class="ls4">  </span>{{ $wali->w_jab }}<span class="_ _0"></span> </div><div class="t m0 x7 h9 y36 ff1 fs7 fc0 sc0 ls0 ws0"> </div><div class="t m0 x7 h2 y37 ff1 fs0 fc0 sc0 ls0 ws0">c. <span class="_ _21"> </span>Alamat <span class="_ _28"> </span>:  {{ $wali->w_alamat }} </div><div class="t m0 x3 h7 y38 ff1 fs5 fc0 sc0 ls0 ws0"> </div><div class="t m0 x7 h2 y39 ff1 fs0 fc0 sc0 ls0 ws0">d. <span class="_ _1"> </span>H<span class="_ _0"></span>ubungan dengan Calon<span class="_ _0"></span>:  {{ $wali->hub_calon_wali }} </div><div class="t m0 x7 ha y3a ff1 fs8 fc0 sc0 ls0 ws0"> </div><div class="t m0 x7 h2 y3b ff1 fs0 fc0 sc0 ls0 ws0">e. <span class="_ _1"> </span>Te<span class="_ _0"></span>lephone/hp <span class="_ _15"></span>:  <span class="ls2">{{ $wali->w_telp }}</span> </div><div class="t m0 x3 h4 y3c ff1 fs2 fc0 sc0 ls0 ws0"> <span class="_ _29"> </span> </div><div class="t m0 x3 h4 y3d ff1 fs2 fc0 sc0 ls0 ws0"> </div><div class="t m0 x3 h4 y3e ff1 fs2 fc0 sc0 ls0 ws0"> </div><div class="t m0 x8 h2 y3f ff1 fs0 fc0 sc0 ls0 ws0"> </div><div class="t m0 x9 h2 y40 ff1 fs0 fc0 sc0 ls0 ws0">Mojokerto, 10 Juni 2<span class="_ _0"></span>021 </div><div class="t m0 x8 h2 y41 ff1 fs0 fc0 sc0 ls0 ws0"> </div><div class="t m0 xa h2 y42 ff1 fs0 fc0 sc0 ls0 ws0">Calon, </div><div class="t m0 x8 h2 y43 ff1 fs0 fc0 sc0 ls0 ws0"> </div><div class="t m0 x8 h2 y44 ff1 fs0 fc0 sc0 ls0 ws0"> </div><div class="t m0 x8 h2 y45 ff1 fs0 fc0 sc0 ls0 ws0"> </div><div class="t m0 x8 h2 y46 ff1 fs0 fc0 sc0 ls0 ws0"> </div><div class="t m0 xb h2 y47 ff1 fs0 fc0 sc0 ls0 ws0">{{ $calon->nama }} </div><div class="t m0 x8 h2 y48 ff1 fs0 fc0 sc0 ls0 ws0"> </div>
+            <div class="page" id="page">
+                <div style="margin:20px 100px">
+                    <div>
+                        <p style="text-align:center; position: absolute;">KOMANDO DAERAH MILITER V/BRAWIJAYA <br>PANITIA DAERAH</p>
+                        <div style="height: 1px; background-color:black; width:350px; top:80px; position:absolute"></div>
+                    </div>
+                    <h4 style="text-align: center;  top:100px; position:relative; ">BLANKO PENGISIAN NILAI RAPORT CABA TA. 2021 <br> KOREM 082/CPY</h4>
+                    <p style="text-align: left;  top:100px; position:relative; ">A. DATA PRIBADI CALON</p>
+                    <table style="border: none; position:relative; top:90px; margin-left: 20px;">
+                        <thead>
+                            <tr>
+                                <td class="data__profile" width="15px">1</td>
+                                <td class="data__profile" width="300px">Nomor Pendaftaran</td>
+                                <td class="data__profile" width="20px">:</td>
+                                <td class="data__profile" colspan="2" width="max-content"><b>{{ $calon->no_online }}</b></td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px">2</td>
+                                <td class="data__profile">Nama Lengkape (Sesuai Akte)</td>
+                                <td class="data__profile">:</td>
+                                <td class="data__profile" colspan="2">{{ $calon->nama }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px">3</td>
+                                <td class="data__profile">Tempat, tanggal lahir</td>
+                                <td class="data__profile">:</td>
+                                <td class="data__profile" colspan="2">{{ $calon->tem_lahir }}, {{ date('d F Y',strtotime($calon->tgl_lahir)) }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px">4</td>
+                                <td class="data__profile">Suku, Agama</td>
+                                <td class="data__profile">:</td>
+                                <td class="data__profile" colspan="2">{{ $calon->suku }}, {{ $calon->agama }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px">5</td>
+                                <td class="data__profile">Alamat</td>
+                                <td class="data__profile">:</td>
+                                <td class="data__profile" width="200px">Dsn. {{ $calon->dsn }}</td>
+                                <td>RT/RW {{ $calon->rt }}/{{ $calon->rw }}   No. {{ $calon->no }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px"></td>
+                                <td class="data__profile"></td>
+                                <td class="data__profile"></td>
+                                <td class="data__profile" width="200px">Ds. {{ $calon->ds }}</td>
+                                <td>Kec. {{ $calon->kec }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px"></td>
+                                <td class="data__profile"></td>
+                                <td class="data__profile"></td>
+                                <td class="data__profile" width="200px" colspan="2">{{ $calon->kab }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px">6</td>
+                                <td class="data__profile">Nomor Telephone/HP</td>
+                                <td class="data__profile">:</td>
+                                <td class="data__profile" width="200px">{{ $calon->telp }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px">7</td>
+                                <td class="data__profile">Mendaftar ke</td>
+                                <td class="data__profile">:</td>
+                                <td class="data__profile" width="200px">{{ $calon->daftar_ke }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px">-</td>
+                                <td class="data__profile">Sebelumnya Tidak Lulus di aspek </td>
+                                <td class="data__profile">:</td>
+                                <td class="data__profile" width="200px">{{ $calon->aspek_tl }}</td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <p style="text-align: left;  top:100px; position:relative; ">B. PENDIDIKAN</p>
+                    <table style="border: none; position:relative; top:90px; margin-left: 20px;">
+                        <thead>
+                            <tr>
+                                <td class="data__profile" width="15px">1</td>
+                                <td class="data__profile" width="300px">Asal Sekolah SD/MI</td>
+                                <td class="data__profile" width="20px">:</td>
+                                <td class="data__profile" width="max-content">{{ $pendidikan->sd }}</td>
+                                <td width="100px">Tahun Lulus</td>
+                                <td width="20px">:</td>
+                                <td>{{ $pendidikan->l_sd }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px">2</td>
+                                <td class="data__profile">Asal Sekolah SMP/MTS</td>
+                                <td class="data__profile">:</td>
+                                <td class="data__profile">{{ $pendidikan->smp }}</td>
+                                <td>Tahun Lulus</td>
+                                <td>:</td>
+                                <td>{{ $pendidikan->l_smp }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px">3</td>
+                                <td class="data__profile">Asal Sekolah SMA/MA</td>
+                                <td class="data__profile">:</td>
+                                <td class="data__profile">{{ $pendidikan->sma }}</td>
+                                <td>Tahun Lulus</td>
+                                <td>:</td>
+                                <td>{{ $pendidikan->l_sma }}</td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px"></td>
+                                <td class="data__profile">a. Jurusan</td>
+                                <td class="data__profile">:</td>
+                                <td class="data__profile">{{ $pendidikan->jur }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px"></td>
+                                <td class="data__profile">b. Jumlah NUAN</td>
+                                <td class="data__profile">:</td>
+                                <td class="data__profile" width="200px">{{ $pendidikan->jumlah_nuan }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="data__profile" width="15px"></td>
+                                <td class="data__profile">c. Rata-rata NUAN</td>
+                                <td class="data__profile">:</td>
+                                <td class="data__profile" width="200px">{{ $pendidikan->rata }}</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                    </table>
+                    <p style="text-align: left;  top:100px; position:relative; ">C. DATA ORANGTUA/WALI</p>
+                    <table style="border: none; position:relative; top:90px; margin-left: 20px;">
+                        <tbody>
+                            <tr>
+                                <td width="15px"></td>
+                                <td></td>
+                                <td width="280px"></td>
+                                <td width="20px"></td>
+                                <td width="200px"></td>
+                                <td width="60px"></td>
+                                <td width="20px"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>1.</td>
+                                <td colspan="7">Nama Orang Tua Kandung</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>a.</td>
+                                <td>Ayah</td>
+                                <td>:</td>
+                                <td colspan="4">{{ $wali->ayah }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>b.</td>
+                                <td>Ibu</td>
+                                <td>:</td>
+                                <td colspan="4">{{ $wali->ibu }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>c.</td>
+                                <td>Pekerjaan</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>1) Ayah</td>
+                                <td>:</td>
+                                <td>{{ $wali->a_kerja }}</td>
+                                <td>Pangkat</td>
+                                <td>:</td>
+                                <td>{{ $wali->a_pkt }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Satuan</td>
+                                <td>:</td>
+                                <td>{{ $wali->a_sat }}</td>
+                                <td>Jabatan</td>
+                                <td>:</td>
+                                <td>{{ $wali->a_jab }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>2) Ibu</td>
+                                <td>:</td>
+                                <td>{{ $wali->ibu }}</td>
+                                <td>Pangkat</td>
+                                <td>:</td>
+                                <td>{{ $wali->i_pkt }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Satuan</td>
+                                <td>:</td>
+                                <td>{{ $wali->i_sat }}</td>
+                                <td>Jabatan</td>
+                                <td>:</td>
+                                <td>{{ $wali->i_jab }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>d.</td>
+                                <td>Alamat</td>
+                                <td>:</td>
+                                <td colspan="4">{{ $wali->o_alamat }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>e.</td>
+                                <td>Telephone/HP</td>
+                                <td>:</td>
+                                <td colspan="4">{{ $wali->o_telp }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table style="border: none; position:relative; top:100px; margin-left: 20px;">
+                        <tbody>
+                            <tr>
+                                <td width="15px"></td>
+                                <td></td>
+                                <td width="280px"></td>
+                                <td width="20px"></td>
+                                <td width="200px"></td>
+                                <td width="60px"></td>
+                                <td width="20px"></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>2.</td>
+                                <td colspan="7">Tiri / Wali / Perwalian / Numpang Alamat</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>a.</td>
+                                <td>Nama Wali</td>
+                                <td>:</td>
+                                <td colspan="4">{{ $wali->wali }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>c.</td>
+                                <td>Pekerjaan</td>
+                                <td>:</td>
+                                <td>{{ $wali->w_kerja }}</td>
+                                <td>Pangkat</td>
+                                <td>:</td>
+                                <td>{{ $wali->w_pkt }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td>Satuan</td>
+                                <td>:</td>
+                                <td>{{ $wali->w_sat }}</td>
+                                <td>Jabatan</td>
+                                <td>:</td>
+                                <td>{{ $wali->w_jab }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>d.</td>
+                                <td>Alamat Wali</td>
+                                <td>:</td>
+                                <td colspan="4">{{ $wali->w_alamat }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>e.</td>
+                                <td>Telephone/HP Wali</td>
+                                <td>:</td>
+                                <td colspan="4">{{ $wali->w_telp }}</td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td>f.</td>
+                                <td>Hubungan Dengan Calon</td>
+                                <td>:</td>
+                                <td colspan="4">{{ $wali->hub_calon_wali }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align: center; position: relative;top:130px; float:right">
+                        <p>Mojokerto, {{ date('d F Y', strtotime($calon->updated_at)) }}</p>
+                        <p>Calon Peserta</p>
+                        <br><br>
+                        <p>{{ $calon->nama }}</p>
+                    </div>
                 </div>
             </div>
             <div class="pi" data-data='{"ctm":[1.500000,0.000000,0.000000,1.500000,0.000000,0.000000]}'></div>
@@ -418,5 +724,21 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
     <div class="loading-indicator">
         <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAMAAACdt4HsAAAABGdBTUEAALGPC/xhBQAAAwBQTFRFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAwAACAEBDAIDFgQFHwUIKggLMggPOgsQ/w1x/Q5v/w5w9w9ryhBT+xBsWhAbuhFKUhEXUhEXrhJEuxJKwBJN1xJY8hJn/xJsyhNRoxM+shNF8BNkZxMfXBMZ2xRZlxQ34BRb8BRk3hVarBVA7RZh8RZi4RZa/xZqkRcw9Rdjihgsqxg99BhibBkc5hla9xli9BlgaRoapho55xpZ/hpm8xpfchsd+Rtibxsc9htgexwichwdehwh/hxk9Rxedx0fhh4igB4idx4eeR4fhR8kfR8g/h9h9R9bdSAb9iBb7yFX/yJfpCMwgyQf8iVW/iVd+iVZ9iVWoCYsmycjhice/ihb/Sla+ylX/SpYmisl/StYjisfkiwg/ixX7CxN9yxS/S1W/i1W6y1M9y1Q7S5M6S5K+i5S6C9I/i9U+jBQ7jFK/jFStTIo+DJO9zNM7TRH+DRM/jRQ8jVJ/jZO8DhF9DhH9jlH+TlI/jpL8jpE8zpF8jtD9DxE7zw9/z1I9j1A9D5C+D5D4D8ywD8nwD8n90A/8kA8/0BGxEApv0El7kM5+ENA+UNAykMp7kQ1+0RB+EQ+7EQ2/0VCxUUl6kU0zkUp9UY8/kZByUkj1Eoo6Usw9Uw3300p500t3U8p91Ez11Ij4VIo81Mv+FMz+VM0/FM19FQw/lQ19VYv/lU1/1cz7Fgo/1gy8Fkp9lor4loi/1sw8l0o9l4o/l4t6l8i8mAl+WEn8mEk52Id9WMk9GMk/mMp+GUj72Qg8mQh92Uj/mUn+GYi7WYd+GYj6mYc62cb92ch8Gce7mcd6Wcb6mcb+mgi/mgl/Gsg+2sg+Wog/moj/msi/mwh/m0g/m8f/nEd/3Ic/3Mb/3Qb/3Ua/3Ya/3YZ/3cZ/3cY/3gY/0VC/0NE/0JE/w5wl4XsJQAAAPx0Uk5TAAAAAAAAAAAAAAAAAAAAAAABCQsNDxMWGRwhJioyOkBLT1VTUP77/vK99zRpPkVmsbbB7f5nYabkJy5kX8HeXaG/11H+W89Xn8JqTMuQcplC/op1x2GZhV2I/IV+HFRXgVSN+4N7n0T5m5RC+KN/mBaX9/qp+pv7mZr83EX8/N9+5Nip1fyt5f0RQ3rQr/zo/cq3sXr9xrzB6hf+De13DLi8RBT+wLM+7fTIDfh5Hf6yJMx0/bDPOXI1K85xrs5q8fT47f3q/v7L/uhkrP3lYf2ryZ9eit2o/aOUmKf92ILHfXNfYmZ3a9L9ycvG/f38+vr5+vz8/Pv7+ff36M+a+AAAAAFiS0dEQP7ZXNgAAAj0SURBVFjDnZf/W1J5Fsf9D3guiYYwKqglg1hqplKjpdSojYizbD05iz5kTlqjqYwW2tPkt83M1DIm5UuomZmkW3bVrmupiCY1mCNKrpvYM7VlTyjlZuM2Y+7nXsBK0XX28xM8957X53zO55z3OdcGt/zi7Azbhftfy2b5R+IwFms7z/RbGvI15w8DdkVHsVi+EGa/ZZ1bYMDqAIe+TRabNv02OiqK5b8Z/em7zs3NbQO0GoD0+0wB94Ac/DqQEI0SdobIOV98Pg8AfmtWAxBnZWYK0vYfkh7ixsVhhMDdgZs2zc/Pu9HsVwc4DgiCNG5WQoJ/sLeXF8070IeFEdzpJh+l0pUB+YBwRJDttS3cheJKp9MZDMZmD5r7+vl1HiAI0qDtgRG8lQAlBfnH0/Miqa47kvcnccEK2/1NCIdJ96Ctc/fwjfAGwXDbugKgsLggPy+csiOZmyb4LiEOjQMIhH/YFg4TINxMKxxaCmi8eLFaLJVeyi3N2eu8OTctMzM9O2fjtsjIbX5ewf4gIQK/5gR4uGP27i5LAdKyGons7IVzRaVV1Jjc/PzjP4TucHEirbUjEOyITvQNNH+A2MLj0NYDAM1x6RGk5e9raiQSkSzR+XRRcUFOoguJ8NE2kN2XfoEgsUN46DFoDlZi0DA3Bwiyg9TzpaUnE6kk/OL7xgdE+KBOgKSkrbUCuHJ1bu697KDrGZEoL5yMt5YyPN9glo9viu96GtEKQFEO/34tg1omEVVRidBy5bUdJXi7R4SIxWJzPi1cYwMMV1HO10gqnQnLFygPEDxSaPPuYPlEiD8B3IIrqDevvq9ytl1JPjhhrMBdIe7zaHG5oZn5sQf7YirgJqrV/aWHLPnPCQYis2U9RthjawHIFa0NnZcpZbCMTbRmnszN3mz5EwREJmX7JrQ6nU0eyFvbtX2dyi42/yqcQf40fnIsUsfSBIJIixhId7OCA7aA8nR3sTfF4EHn3d5elaoeONBEXXR/hWdzgZvHMrMjXWwtVczxZ3nwdm76fBvJfAvtajUgKPfxO1VHHRY5f6PkJBCBwrQcSor8WFIQFgl5RFQw/RuWjwveDGjr16jVvT3UBmXPYgdw0jPFOyCgEem5fw06BMqTu/+AGMeJjtrA8aGRFhJpqEejvlvl2qeqJC2J3+nSRHwhWlyZXvTkrLSEhAQuRxoW5RXA9aZ/yESUkMrv7IpffIWXbhSW5jkVlhQUpHuxHdbQt0b6ZcWF4vdHB9MjWNs5cgsAatd0szvu9rguSmFxWUVZSUmM9ERocbarPfoQ4nETNtofiIvzDIpCFUJqzgPFYI+rVt3k9MH2ys0bOFw1qG+R6DDelnmuYAcGF38vyHKxE++M28BBu47PbrE5kR62UB6qzSFQyBtvVZfDdVdwF2tO7jsrugCK93Rxoi1mf+QHtgNOyo3bxgsEis9i+a3BAA8GWlwHNRlYmTdqkQ64DobhHwNuzl0mVctKGKhS5jGBfW5mdjgJAs0nbiP9KyCVUSyaAwAoHvSPXGYMDgjRGCq0qgykE64/WAffrP5bPVl6ToJeZFFJDMCkp+/BUjUpwYvORdXWi2IL8uDR2NjIdaYJAOy7UpnlqlqHW3A5v66CgbsoQb3PLT2MB1mR+BkWiqTvACAuOnivEwFn82TixYuxsWYTQN6u7hI6Qg3KWvtLZ6/xy2E+rrqmCHhfiIZCznMyZVqSAAV4u4Dj4GwmpiYBoYXxeKSWgLvfpRaCl6qV4EbK4MMNcKVt9TVZjCWnIcjcgAV+9K+yXLCY2TwyTk1OvrjD0I4027f2DAgdwSaNPZ0xQGFq+SAQDXPvMe/zPBeyRFokiPwyLdRUODZtozpA6GeMj9xxbB24l4Eo5Di5VtUMdajqHYHOwbK5SrAVz/mDUoqzj+wJSfsiwJzKvJhh3aQxdmjsnqdicGCgu097X3G/t7tDq2wiN5bD1zIOL1aZY8fTXZMFAtPwguYBHvl5Soj0j8VDSEb9vQGN5hbS06tUqapIuBuHDzoTCItS/ER+DiUpU5C964Ootk3cZj58cdsOhycz4pvvXGf23W3q7I4HkoMnLOkR0qKCUDo6h2TtWgAoXvYz/jXZH4O1MQIzltiuro0N/8x6fygsLmYHoVOEIItnATyZNg636V8Mm3eDcK2avzMh6/bSM6V5lNwCjLAVMlfjozevB5mjk7qF0aNR1x27TGsoLC3dx88uwOYQIGsY4PmvM2+mnyO6qVGL9sq1GqF1By6dE+VRThQX54RG7qESTUdAfns7M/PGwHs29WrI8t6DO6lWW4z8vES0l1+St5dCsl9j6Uzjs7OzMzP/fnbKYNQjlhcZ1lt0dYWkinJG9JeFtLIAAEGPIHqjoW3F0fpKRU0e9aJI9Cfo4/beNmwwGPTv3hhSnk4bf16JcOXH3yvY/CIJ0LlP5gO8A5nsHDs8PZryy7TRgCxnLq+ug2V7PS+AWeiCvZUx75RhZjzl+bRxYkhuPf4NmH3Z3PsaSQXfCkBhePuf8ZSneuOrfyBLEYrqchXcxPYEkwwg1Cyc4RPA7Oyvo6cQw2ujbhRRLDLXdimVVVQgUjBGqFy7FND2G7iMtwaE90xvnHr18BekUSHHhoe21vY+Za+yZZ9zR13d5crKs7JrslTiUsATFDD79t2zU8xhvRHIlP7xI61W+3CwX6NRd7WkUmK0SuVBMpHo5PnncCcrR3g+a1rTL5+mMJ/f1r1C1XZkZASITEttPCWmoUel6ja1PwiCrATxKfDgXfNR9lH9zMtxJIAZe7QZrOu1wng2hTGk7UHnkI/b39IgDv8kdCXb4aFnoDKmDaNPEITJZDKY/KEObR84BTqH1JNX+mLBOxCxk7W9ezvz5vVr4yvdxMvHj/X94BT11+8BxN3eJvJqPvvAfaKE6fpa3eQkFohaJyJzGJ1D6kmr+m78J7iMGV28oz0ygRHuUG1R6e3TqIXEVQHQ+9Cz0cYFRAYQzMMXLz6Vgl8VoO0lsMeMoPGpqUmdZfiCbPGr/PRF4i0je6PBaBSS/vjHN35hK+QnoTP+//t6Ny+Cw5qVHv8XF+mWyZITVTkAAAAASUVORK5CYII="/>
     </div>
+    {{-- <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+    <!-- Below script will print div with id pdf to a pdf file using jspdf -->
+    <script type="text/javascript">
+        var doc = new jsPDF({
+                orientation: 'p',
+                unit: 'mm',
+                format: 'legal',
+                putOnlyUsedFonts:true
+            });
+        var elemen = $('#print').html();
+        doc.fromHTML(elemen, 15, 15, {
+            'width': 170,
+        });
+            doc.save('invoice.pdf')
+    </script> --}}
 </body>
 </html>

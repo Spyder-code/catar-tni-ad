@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Imports\PokokImport;
 use App\Models\Calon;
+use App\Models\Pendidikan;
 use App\Models\Pokok;
 use App\Models\User;
 use App\Models\Visitor;
+use App\Models\Wali;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -66,6 +68,15 @@ class HomeController extends Controller
         }else{
             return back()->with('danger', 'Import gagal');
         }
+    }
+
+    public function export(Request $request)
+    {
+        $calon = Calon::all()->whereIn('id',$request->calon);
+        $pendidikan = Pendidikan::all()->whereIn('calon_id',$request->calon);
+        $wali = Wali::all()->whereIn('calon_id',$request->calon);
+        $data = array_merge($calon,$pendidikan,$wali);
+        dd($data);
     }
 
 }

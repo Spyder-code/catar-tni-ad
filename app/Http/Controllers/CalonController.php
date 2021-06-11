@@ -76,9 +76,8 @@ class CalonController extends Controller
         $no = Auth::guard('calon')->user()->no_online;
         $calon = Calon::where('no_online',$no)->first();
         $pendidikan = Pendidikan::where('calon_id',$calon->id)->first();
-        $wali = Wali::where('calon_id',$calon->id)->first();
         $nilai = T2020::where('calon_id',$calon->id)->first();
-        return view('calon.nilaipdf',compact('nilai'));
+        return view('calon.nilaipdf',compact('nilai','calon','pendidikan'));
     }
 
     public function logout()
