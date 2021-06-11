@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CalonExport;
 use App\Imports\PokokImport;
 use App\Models\Calon;
 use App\Models\Pendidikan;
@@ -72,11 +73,7 @@ class HomeController extends Controller
 
     public function export(Request $request)
     {
-        $calon = Calon::all()->whereIn('id',$request->calon);
-        $pendidikan = Pendidikan::all()->whereIn('calon_id',$request->calon);
-        $wali = Wali::all()->whereIn('calon_id',$request->calon);
-        $data = array_merge($calon,$pendidikan,$wali);
-        dd($data);
+        return Excel::download(new CalonExport($request->calon), 'calon.xlsx');
     }
 
 }

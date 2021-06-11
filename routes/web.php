@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Calon;
 use App\Models\Pokok;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +19,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.user');
 })->middleware('visitor');
+
+Route::get('coba', function () {
+    $data = Calon::all()->where('id',31);
+    return view('export.calon',compact('data'));
+});
+
 Route::get('/admin', function () {
     return view('auth.loginAdmin');
 })->name('login.admin');
