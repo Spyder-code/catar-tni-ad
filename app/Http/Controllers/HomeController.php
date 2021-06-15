@@ -71,9 +71,25 @@ class HomeController extends Controller
         }
     }
 
+    public function pokokDestroy()
+    {
+        Pokok::truncate();
+        return back()->with('success', 'Data berhasil dihapus');
+    }
+
     public function export(Request $request)
     {
         return Excel::download(new CalonExport($request->calon), 'calon.xlsx');
+    }
+
+    public function exportAll()
+    {
+        $data = Calon::all();
+        $calon = array();
+        foreach ($data as $item ) {
+            array_push($calon,$item->id);
+        };
+        return Excel::download(new CalonExport($calon), 'calon.xlsx');
     }
 
 }

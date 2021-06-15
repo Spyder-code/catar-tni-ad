@@ -6,6 +6,11 @@
     <li><a href="#" class="breadcrumb-item active nav-link active"> Formulir</a></li>
 @endsection
 @section('content')
+<style>
+    label{
+        margin-top: 5px;
+    }
+</style>
     <div class="container-fluid">
         @if ($message = Session::get('success'))
         <div class="row">
@@ -67,8 +72,8 @@
                                                 <input type="text" name="calon[nama]" class="form-control" value="{{ $calon!=null?$calon->nama : Auth::guard('calon')->user()->nama }}">
                                             </div>
                                             <div class="col-sm">
-                                                <label>Agama</label>
-                                                <input type="text" name="calon[agama]" class="form-control" value="{{ $calon!=null?$calon->agama : Auth::guard('calon')->user()->agama }}">
+                                                <label>No KTP</label>
+                                                <input type="text" name="calon[ktp]" class="form-control" value="{{ $calon!=null?$calon->ktp : '' }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -83,6 +88,10 @@
                                             <div class="col-sm">
                                                 <label>Suku</label>
                                                 <input type="text" name="calon[suku]" class="form-control" value="{{ $calon!=null?$calon->suku : Auth::guard('calon')->user()->suku }}">
+                                            </div>
+                                            <div class="col-sm">
+                                                <label>Agama</label>
+                                                <input type="text" name="calon[agama]" class="form-control" value="{{ $calon!=null?$calon->agama : Auth::guard('calon')->user()->agama }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -120,7 +129,27 @@
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>Kabupaten/Kota</label>
-                                                <input type="text" name="calon[kab]" class="form-control" value="{{ $calon!=null?$calon->kab :'' }}">
+                                                @if ($calon==null)
+                                                <select name="calon[kab]" class="form-select">
+                                                    <option value=""></option>
+                                                    <option value="Mojokerto">Mojokerto</option>
+                                                    <option value="Jombang">Jombang</option>
+                                                    <option value="Kediri">Kediri</option>
+                                                    <option value="Lamongan">Lamongan</option>
+                                                    <option value="Tuban">Tuban</option>
+                                                    <option value="Bojonegoro">Bojonegoro</option>
+                                                </select>
+                                                @else
+                                                <select name="calon[kab]" class="form-select">
+                                                    <option value=""></option>
+                                                    <option {{ $calon->kab=='Mojokerto'?'selected':'' }} value="Mojokerto">Mojokerto</option>
+                                                    <option {{ $calon->kab=='Jombang'?'selected':'' }} value="Jombang">Jombang</option>
+                                                    <option {{ $calon->kab=='Kediri'?'selected':'' }} value="Kediri">Kediri</option>
+                                                    <option {{ $calon->kab=='Lamongan'?'selected':'' }} value="Lamongan">Lamongan</option>
+                                                    <option {{ $calon->kab=='Tuban'?'selected':'' }} value="Tuban">Tuban</option>
+                                                    <option {{ $calon->kab=='Bojonegoro'?'selected':'' }} value="Bojonegoro">Bojonegoro</option>
+                                                </select>
+                                                @endif
                                             </div>
                                             <div class="col">
                                                 <label>No telphone</label>
@@ -133,6 +162,16 @@
                                             <div class="col-sm">
                                                 <label>Aspek tidak lulus</label>
                                                 <input type="text" name="calon[aspek_tl]" class="form-control" value="{{ $calon!=null?$calon->aspek_tl :'' }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col">
+                                                <label>Prestasi tingkat provinsi</label>
+                                                <input type="text" name="calon[prestasi_provinsi]" class="form-control" value="{{ $calon!=null?$calon->prestasi_provinsi :'' }}">
+                                            </div>
+                                            <div class="col">
+                                                <label>Prestasi tingkat nasional/internasional</label>
+                                                <input type="text" name="calon[prestasi_nasional]" class="form-control" value="{{ $calon!=null?$calon->prestasi_nasional :'' }}">
                                             </div>
                                         </div>
                                     </div>
@@ -175,11 +214,11 @@
                                             </div>
                                             <div class="col-sm-2">
                                                 <label>Tahun lulus SMA</label>
-                                                <select name="pendidikan[l_sma]" class="form-select">
+                                                <select name="pendidikan[l_sma]" class="form-select" id="lulus">
                                                     @if ($pendidikan==null)
                                                         <option selected></option>
-                                                        <option value="2020">2020</option>
-                                                        <option value="2021">2021</option>
+                                                        <option value="2019">2019</option>
+                                                        <option value="2020">< 2019</option>
                                                     @else
                                                         <option></option>
                                                         <option {{ $pendidikan->l_sma==2019?'selected':'' }} value="2019">2019</option>
@@ -189,7 +228,8 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        @include('calon.nilai')
+                                            @include('calon.nilai2020')
+                                            @include('calon.nilai2019')
                                     </div>
                                 </div>
                             </div>
@@ -201,6 +241,7 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                                     <div class="accordion-body">
+                                        <h2>Data Orang Tua</h2>
                                         <div class="form-group row">
                                             <div class="col-lg col-6">
                                                 <label>Nama ayah</label>
@@ -255,26 +296,49 @@
                                                 <input type="text" name="wali[o_alamat]" class="form-control" value="{{ $wali!=null?$wali->o_alamat : '' }}">
                                             </div>
                                         </div>
+                                        <h2>Data Wali</h2>
                                         <div class="form-group row">
                                             <div class="col-lg col-6">
-                                                <label>Nama wali</label>
-                                                <input type="text" name="wali[wali]" class="form-control" value="{{ $wali!=null?$wali->wali : '' }}">
+                                                <label>Nama ayah</label>
+                                                <input type="text" name="wali[wali_ayah]" class="form-control" value="{{ $wali!=null?$wali->wali_ayah : '' }}">
                                             </div>
                                             <div class="col-lg col-6">
-                                                <label>Kerja wali</label>
-                                                <input type="text" name="wali[w_kerja]" class="form-control" value="{{ $wali!=null?$wali->w_kerja : '' }}">
+                                                <label>Kerja ayah</label>
+                                                <input type="text" name="wali[wa_kerja]" class="form-control" value="{{ $wali!=null?$wali->wa_kerja : '' }}">
                                             </div>
                                             <div class="col-lg col-6">
-                                                <label>Pangkat wali</label>
-                                                <input type="text" name="wali[w_pkt]" class="form-control" value="{{ $wali!=null?$wali->w_pkt : '' }}">
+                                                <label>Pangkat ayah</label>
+                                                <input type="text" name="wali[wa_pkt]" class="form-control" value="{{ $wali!=null?$wali->wa_pkt : '' }}">
                                             </div>
                                             <div class="col-lg col-6">
-                                                <label>Jabatan wali</label>
-                                                <input type="text" name="wali[w_jab]" class="form-control" value="{{ $wali!=null?$wali->w_jab : '' }}">
+                                                <label>Jabatan ayah</label>
+                                                <input type="text" name="wali[wa_jab]" class="form-control" value="{{ $wali!=null?$wali->wa_jab : '' }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Satuan</label>
-                                                <input type="text" name="wali[w_sat]" class="form-control" value="{{ $wali!=null?$wali->w_sat : '' }}">
+                                                <input type="text" name="wali[wa_sat]" class="form-control" value="{{ $wali!=null?$wali->wa_sat : '' }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg col-6">
+                                                <label>Nama ibu</label>
+                                                <input type="text" name="wali[wali_ibu]" class="form-control" value="{{ $wali!=null?$wali->wali_ibu : '' }}">
+                                            </div>
+                                            <div class="col-lg col-6">
+                                                <label>Kerja ibu</label>
+                                                <input type="text" name="wali[wi_kerja]" class="form-control" value="{{ $wali!=null?$wali->wi_kerja : '' }}">
+                                            </div>
+                                            <div class="col-lg col-6">
+                                                <label>Pangkat ibu</label>
+                                                <input type="text" name="wali[wi_pkt]" class="form-control" value="{{ $wali!=null?$wali->wi_pkt : '' }}">
+                                            </div>
+                                            <div class="col-lg col-6">
+                                                <label>Jabatan ibu</label>
+                                                <input type="text" name="wali[wi_jab]" class="form-control" value="{{ $wali!=null?$wali->wi_jab : '' }}">
+                                            </div>
+                                            <div class="col-lg col-6">
+                                                <label>Satuan</label>
+                                                <input type="text" name="wali[wi_sat]" class="form-control" value="{{ $wali!=null?$wali->wi_sat : '' }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -287,7 +351,7 @@
                                                 <input type="text" name="wali[w_alamat]" class="form-control" value="{{ $wali!=null?$wali->w_alamat : '' }}">
                                             </div>
                                             <div class="col-sm">
-                                                <label>Status wali</label>
+                                                <label>Hubungan wali</label>
                                                 <select name="wali[status_wali]" class="form-select">
                                                     @if ($wali!=null)
                                                         <option value="0"></option>
@@ -304,24 +368,64 @@
                                                     @endif
                                                 </select>
                                             </div>
-                                            <div class="col-sm">
+                                            {{-- <div class="col-sm">
                                                 <label>Hubungan wali</label>
+                                                <select name="wali[hub_calon_wali]" class="form-select">
+                                                    <option value=""></option>
+                                                    <option value=""></option>
+                                                </select>
                                                 <input type="text" name="wali[hub_calon_wali]" class="form-control" value="{{ $wali!=null?$wali->hub_calon_wali : '' }}">
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex">
-                            <button type="submit" class="mx-2 btn btn-success my-3"><i class="fas fa-save"></i> Simpan data</button>
-                            @if ($status==1)
+                            <button type="submit" class="mx-2 btn btn-success my-3"><i class="fas fa-save"></i> {{ $status==0?'Simpan':'Update' }} data</button>
+                            {{-- @if ($status==1)
                             <a href="#" class="mx-2 btn btn-info my-3"><i class="fas fa-save"></i> Verifikasi data</a>
-                            @endif
+                            @endif --}}
                         </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    @if ($pendidikan==null)
+        <script>
+            $('#tg-HMKiy').hide();
+            $('#2019').hide();
+        </script>
+    @else
+        <script>
+            var val = {!! json_encode($pendidikan->l_sma) !!}
+            if (val=='2019') {
+                $('#tg-HMKiy').hide();
+                $('#2019').show();
+            } else if('2020') {
+                $('#2019').hide();
+                $('#tg-HMKiy').show();
+            }
+        </script>
+    @endif
 @endsection
+
+@section('script')
+    <script>
+        $('#lulus').change(function (e) {
+            $('#tg-HMKiy').hide();
+            $('#2019').hide();
+            var val = $(this).val();
+            console.log(val);
+            if (val=='2019') {
+                $('#tg-HMKiy').hide();
+                $('#2019').show();
+            } else if('2020') {
+                $('#2019').hide();
+                $('#tg-HMKiy').show();
+            }
+        });
+    </script>
+@endsection
+

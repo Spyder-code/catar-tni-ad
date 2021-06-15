@@ -13,10 +13,15 @@ class Calon extends Model
 
     protected $fillable = [
         'no_online',
+        'ktp',
         'nama',
         'agama',
         'tem_lahir',
         'tgl_lahir',
+        'u_hri',
+        'u_bln',
+        'u_thn',
+        'dik',
         'suku',
         'alamat',
         'rt',
@@ -29,6 +34,8 @@ class Calon extends Model
         'telp',
         'daftar_ke',
         'aspek_tl',
+        'prestasi_provinsi',
+        'prestasi_nasional',
     ];
 
     public function pendidikan()

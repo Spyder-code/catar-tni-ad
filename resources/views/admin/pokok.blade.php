@@ -29,13 +29,17 @@
     @endif
         <div class="row">
             <div class="col-md-12">
-                <div class="my-3">
+                <div class="my-3 d-flex">
                     <form action="{{ route('pokok.import') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <input type="file" name="file" onchange="submit()" id="file" hidden>
                         <label for="file">
-                            <span class="btn btn-success"><i class="fas fa-upload"></i> Import excel</span>
+                            <span class="btn mx-2 btn-success"><i class="fas fa-upload"></i> Import excel</span>
                         </label>
+                    </form>
+                    <form action="{{ route('pokok.destroy') }}" method="post">
+                        @csrf
+                        <button type="submit" onclick="return confirm('Are you sure?')" class="btn mx-2 btn-danger"><i class="fas fa-trash-alt"></i> Delete all data</button>
                     </form>
                 </div>
                 <div class="white-box">
