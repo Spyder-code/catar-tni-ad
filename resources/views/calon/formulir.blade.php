@@ -147,21 +147,31 @@
                                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                                     <div class="accordion-body">
                                         <div class="form-group row">
-                                            <div class="col-lg-3 col-6 col-md-3">
+                                            <div class="col-lg-4 col-6 col-md-3">
                                                 <label>SD</label>
                                                 <input type="text" name="pendidikan[sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sd : '' }}">
                                             </div>
-                                            <div class="col-lg-3 col-6 col-md-3">
+                                            <div class="col-lg-4 col-6 col-md-3">
                                                 <label>Tahun lulus SD</label>
                                                 <input type="number" name="pendidikan[l_sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_sd : '' }}">
                                             </div>
-                                            <div class="col-lg-3 col-6 col-md-3">
+                                            <div class="col-lg-4 col-6 col-md-3">
+                                                <label>Kab/Kota Lulus SD</label>
+                                                <input type="text" name="pendidikan[kab_sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sd : '' }}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-lg-4 col-6 col-md-3">
                                                 <label>SMP</label>
                                                 <input type="text" name="pendidikan[smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->smp : '' }}">
                                             </div>
-                                            <div class="col-lg-3 col-6 col-md-3">
+                                            <div class="col-lg-4 col-6 col-md-3">
                                                 <label>Tahun lulus SMP</label>
                                                 <input type="number" name="pendidikan[l_smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_smp : '' }}">
+                                            </div>
+                                            <div class="col-lg-4 col-6 col-md-3">
+                                                <label>Kab/Kota Lulus SMP</label>
+                                                <input type="text" name="pendidikan[kab_smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_smp : '' }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -172,6 +182,10 @@
                                             <div class="col-sm">
                                                 <label>Jurusan</label>
                                                 <input type="text" name="pendidikan[jur]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->jur : '' }}">
+                                            </div>
+                                            <div class="col-lg-3 col-6 col-md-3">
+                                                <label>Kab/Kota Lulus SMA</label>
+                                                <input type="text" name="pendidikan[kab_sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sma : '' }}">
                                             </div>
                                             <div class="col-sm-2">
                                                 <label>Tahun lulus SMA</label>

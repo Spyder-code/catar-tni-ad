@@ -22,6 +22,9 @@ class CreatePendidikansTable extends Migration
             $table->string('l_sd')->nullable();
             $table->string('l_smp')->nullable();
             $table->string('l_sma')->nullable();
+            $table->string('kab_sd')->nullable();
+            $table->string('kab_smp')->nullable();
+            $table->string('kab_sma')->nullable();
             $table->string('nama_sma')->nullable();
             $table->string('jur')->nullable();
             $table->string('jumlah_nuan')->nullable();
