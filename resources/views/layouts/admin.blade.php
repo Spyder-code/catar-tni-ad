@@ -102,13 +102,13 @@
                                     <span class="hide-menu">Nilai PDF</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
+                            {{-- <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('calon.form') }}"
                                     aria-expanded="false">
                                     <i class="fa fa-info" aria-hidden="true"></i>
                                     <span class="hide-menu">Info</span>
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="text-center p-20 upgrade-btn">
                                 <form action="{{ route('logout.calon') }}" method="post">
                                     @csrf

@@ -98,6 +98,54 @@
         <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->bigpeng6 :'' }}" step="any" name="nilai[bigpeng6]" id="ing11"></td>
         <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->bigket6 :'' }}" step="any" name="nilai[bigket6]" id="ing12"></td>
     </tr>
+    <tr>
+        <td class="tg-c3ow">4</td>
+        <td class="tg-c3ow">Fisika</td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->fispeng1 :'' }}" step="any" name="nilai[fispeng1]" id="fis1"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->fisket1 :'' }}" step="any" name="nilai[fisket1]" id="fis2"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->fispeng2 :'' }}" step="any" name="nilai[fispeng2]" id="fis3"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->fisket2 :'' }}" step="any" name="nilai[fisket2]" id="fis4"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->fispeng3 :'' }}" step="any" name="nilai[fispeng3]" id="fis5"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->fisket3 :'' }}" step="any" name="nilai[fisket3]" id="fis6"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->fispeng4 :'' }}" step="any" name="nilai[fispeng4]" id="fis7"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->fisket4 :'' }}" step="any" name="nilai[fisket4]" id="fis8"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->fispeng5 :'' }}" step="any" name="nilai[fispeng5]" id="fis9"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->fisket5 :'' }}" step="any" name="nilai[fisket5]" id="fis10"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->fispeng6 :'' }}" step="any" name="nilai[fispeng6]" id="fis11"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->fisket6 :'' }}" step="any" name="nilai[fisket6]" id="fis12"></td>
+    </tr>
+    <tr>
+        <td class="tg-c3ow">5</td>
+        <td class="tg-c3ow">Biologi</td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->biopeng1 :'' }}" step="any" name="nilai[biopeng1]" id="bio1"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->bioket1 :'' }}" step="any" name="nilai[bioket1]" id="bio2"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->biopeng2 :'' }}" step="any" name="nilai[biopeng2]" id="bio3"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->bioket2 :'' }}" step="any" name="nilai[bioket2]" id="bio4"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->biopeng3 :'' }}" step="any" name="nilai[biopeng3]" id="bio5"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->bioket3 :'' }}" step="any" name="nilai[bioket3]" id="bio6"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->biopeng4 :'' }}" step="any" name="nilai[biopeng4]" id="bio7"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->bioket4 :'' }}" step="any" name="nilai[bioket4]" id="bio8"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->biopeng5 :'' }}" step="any" name="nilai[biopeng5]" id="bio9"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->bioket5 :'' }}" step="any" name="nilai[bioket5]" id="bio10"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->biopeng6 :'' }}" step="any" name="nilai[biopeng6]" id="bio11"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->bioket6 :'' }}" step="any" name="nilai[bioket6]" id="bio12"></td>
+    </tr>
+    <tr>
+        <td class="tg-c3ow">6</td>
+        <td class="tg-c3ow">Kimia</td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->kimpeng1 :'' }}" step="any" name="nilai[kimpeng1]" id="kim1"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->kimket1 :'' }}" step="any" name="nilai[kimket1]" id="kim2"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->kimpeng2 :'' }}" step="any" name="nilai[kimpeng2]" id="kim3"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->kimket2 :'' }}" step="any" name="nilai[kimket2]" id="kim4"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->kimpeng3 :'' }}" step="any" name="nilai[kimpeng3]" id="kim5"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->kimket3 :'' }}" step="any" name="nilai[kimket3]" id="kim6"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->kimpeng4 :'' }}" step="any" name="nilai[kimpeng4]" id="kim7"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->kimket4 :'' }}" step="any" name="nilai[kimket4]" id="kim8"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->kimpeng5 :'' }}" step="any" name="nilai[kimpeng5]" id="kim9"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->kimket5 :'' }}" step="any" name="nilai[kimket5]" id="kim10"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->kimpeng6 :'' }}" step="any" name="nilai[kimpeng6]" id="kim11"></td>
+        <td class="tg-c3ow"><input class="input" min="0" max="100" type="number" value="{{ $nilai!=null?$nilai->kimket6 :'' }}" step="any" name="nilai[kimket6]" id="kim12"></td>
+    </tr>
         <td class="tg-c3ow"></td>
         <td class="tg-c3ow">jumlah</td>
         <td class="tg-c3ow"><input class="input" type="number" value="{{ $nilai!=null?$nilai->jumlah1 :'' }}" step="any" name="nilai[jumlah1]" id="jmlh1" readonly="" min="0" max="600"></td>
@@ -157,7 +205,7 @@
 
 <script>
     $(':input[type="number"]').keyup(function (e) {
-        var ind = []; var ing = [];  var mtk = [];  var jmlh = [];
+        var ind = []; var ing = [];  var mtk = []; var fis = []; var bio = []; var kim = []; var jmlh = [];
         var total = 0;
         var j = 0;
         var k = 0;
@@ -167,6 +215,9 @@
             var a = $('#ind'+j).val();
             var b = $('#ing'+j).val();
             var c = $('#mtk'+j).val();
+            var d = $('#fis'+j).val();
+            var e = $('#bio'+j).val();
+            var f = $('#kim'+j).val();
             if(a!=''){
                 var nil= parseFloat(a);
                 ind.push(nil);
@@ -179,8 +230,25 @@
                 var nil= parseFloat(c);
                 mtk.push(nil);
             }
-            var jum = ind[i]+ing[i]+mtk[i];
-            var ra = jum/3;
+            if(d!=''){
+                var nil= parseFloat(d);
+                fis.push(nil);
+            }
+            if(e!=''){
+                var nil= parseFloat(e);
+                bio.push(nil);
+            }
+            if(f!=''){
+                var nil= parseFloat(f);
+                kim.push(nil);
+            }
+            if (e==''||f==''||d=='') {
+                var jum = ind[i]+ing[i]+mtk[i];
+                var ra = jum/3;
+            } else {
+                var jum = ind[i]+ing[i]+mtk[i]+fis[i]+bio[i]+kim[i];
+                var ra = jum/6;
+            }
             $('#jmlh'+j).val(jum);
             $('#ra'+j).val(ra.toFixed(2));
             jmlh.push(jum);
@@ -200,7 +268,13 @@
             h = h + 4;
         }
 
-        var akhir = total/36;
+        var a = bio.length;
+        if (a<=0) {
+            var akhir = total/36;
+        } else {
+            var akhir = total/72;
+        }
+
         $('#rd').val(akhir.toFixed(2));
 
     });

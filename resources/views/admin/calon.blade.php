@@ -60,7 +60,11 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <button type="submit" class="btn btn-primary"><i class="fas fa-download"></i> Export select data</button>
+                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-primary"><i class="fas fa-download"></i> Export select data</button>
+                        </form>
+                        <form action="{{ route('calon.exportAll') }}" method="post">
+                            @csrf
+                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-success mt-2"><i class="fas fa-download"></i> Export all data</button>
                         </form>
                     </div>
                 </div>

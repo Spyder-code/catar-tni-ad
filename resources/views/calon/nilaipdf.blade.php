@@ -363,7 +363,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
 <div id="outline">
 </div>
 </div>
-<div id="page-container">
+<div id="page-container" style="height: max-content">
     <div class="pf w0 h0 print" data-page-no="1">
         <div style="margin:20px 100px">
             <div>
@@ -396,9 +396,13 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                 </thead>
             </table>
             <div style="text-align: center; height:300px; margin-top:120px">
-                @include('calon.nilai')
+                @if ($pendidikan->l_sma<=2019)
+                    @include('calon.nilai2019')
+                @else
+                    @include('calon.nilai2020')
+                @endif
             </div>
-            <div style="text-align: center; position: relative;top:130px; float:right">
+            <div style="text-align: center; position: relative;top:260px; float:right">
                 <p>Mojokerto, {{ date('d F Y', strtotime($calon->updated_at)) }}</p>
                 <p>Calon Peserta</p>
                 <br><br>

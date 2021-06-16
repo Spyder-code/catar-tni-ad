@@ -13,21 +13,43 @@ class Calon extends Model
 
     protected $fillable = [
         'no_online',
+        'ktp',
         'nama',
         'agama',
         'tem_lahir',
         'tgl_lahir',
+        'u_hri',
+        'u_bln',
+        'u_thn',
+        'dik',
         'suku',
         'alamat',
-        'rt', 
+        'rt',
         'rw',
         'no',
         'dsn',
         'ds',
         'kec',
-        'kab', 
-        'telp', 
-        'daftar_ke', 
-        'aspek_tl', 
+        'kab',
+        'telp',
+        'daftar_ke',
+        'aspek_tl',
+        'prestasi_provinsi',
+        'prestasi_nasional',
     ];
+
+    public function pendidikan()
+    {
+        return $this->hasOne(Pendidikan::class,'calon_id');
+    }
+
+    public function wali()
+    {
+        return $this->hasOne(Wali::class,'calon_id');
+    }
+
+    public function t2020()
+    {
+        return $this->hasOne(T2020::class,'calon_id');
+    }
 }

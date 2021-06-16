@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\CalonExport;
 use App\Imports\PokokImport;
 use App\Models\Calon;
 use App\Models\Pendidikan;
@@ -70,13 +71,25 @@ class HomeController extends Controller
         }
     }
 
+    public function pokokDestroy()
+    {
+        Pokok::truncate();
+        return back()->with('success', 'Data berhasil dihapus');
+    }
+
     public function export(Request $request)
     {
-        $calon = Calon::all()->whereIn('id',$request->calon);
-        $pendidikan = Pendidikan::all()->whereIn('calon_id',$request->calon);
-        $wali = Wali::all()->whereIn('calon_id',$request->calon);
-        $data = array_merge($calon,$pendidikan,$wali);
-        dd($data);
+        return Excel::download(new CalonExport($request->calon), 'calon.xlsx');
+    }
+
+    public function exportAll()
+    {
+        $data = Calon::all();
+        $calon = array();
+        foreach ($data as $item ) {
+            array_push($calon,$item->id);
+        };
+        return Excel::download(new CalonExport($calon), 'calon.xlsx');
     }
 
 }

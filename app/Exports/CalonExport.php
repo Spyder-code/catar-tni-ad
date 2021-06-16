@@ -10,7 +10,7 @@ class CalonExport implements FromView
 {
     private $data;
 
-    public function __construct(array $data) 
+    public function __construct(array $data)
     {
         $this->data = $data;
     }
@@ -18,8 +18,6 @@ class CalonExport implements FromView
     public function view(): View
     {
         $data = Calon::all()->whereIn('id',$this->data);
-        return view('exports.invoices', [
-            'invoices' => Invoice::all()
-        ]);
+        return view('export.calon', compact('data'));
     }
 }
