@@ -52,6 +52,9 @@
                     <form action="{{ route('calon.form.store') }}" method="post">
                         @csrf
                         <input type="hidden" name="status" value="{{ $status }}">
+                        <input type="hidden" name="calon[u_hri]" id="u_hri">
+                        <input type="hidden" name="calon[u_bln]" id="u_bln">
+                        <input type="hidden" name="calon[u_thn]" id="u_thn">
                         <input type="hidden" name="calon_id" value="{{ $calon!=null?$calon->id:0 }}">
                         <div class="accordion" id="accordionPanelsStayOpenExample">
                             <div class="accordion-item">
@@ -87,17 +90,17 @@
                                             </div>
                                             <div class="col-sm">
                                                 <label>DIK</label>
-                                                <input type="date" id="dik" name="calon[dik]" readonly class="form-control" value="2020-06-20">
+                                                <input type="date" id="dik" name="calon[dik]" readonly class="form-control" value="{{ env('DIK') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm">
                                                 <label>Umur</label>
-                                                <input type="text" id="umr" name="calon[umur]" readonly class="form-control" >
+                                                <input type="text" id="umr" name="calon[umr]" readonly class="form-control" >
                                             </div>
                                             <div class="col-sm">
                                                 <label>Keterangan Umur</label>
-                                                <input type="text" id="ket-umr" name="calon[umur]" readonly class="form-control" >
+                                                <input type="text" id="ket-umr" name="calon[ket_umr]" readonly class="form-control" >
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -466,7 +469,9 @@
             var date = result[1];
             var a = ageValidation(date);
             $('#ket-umr').val(a);
-            console.log(a);
+            $('#u_thn').val(date.years);
+            $('#u_bln').val(date.months);
+            $('#u_hri').val(date.days);
         });
     </script>
 @endsection

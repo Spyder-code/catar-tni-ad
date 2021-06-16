@@ -516,7 +516,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                                 <td class="data__profile" width="max-content">{{ $pendidikan->sd }}</td>
                                 <td width="100px">Tahun Lulus</td>
                                 <td width="20px">:</td>
-                                <td>{{ $pendidikan->l_sd }} di Kab/Kota</td>
+                                <td>{{ $pendidikan->l_sd }} di Kab/Kota {{ $pendidikan->kab_sd }}</td>
                             </tr>
                             <tr>
                                 <td class="data__profile" width="15px">2</td>
@@ -525,7 +525,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                                 <td class="data__profile">{{ $pendidikan->smp }}</td>
                                 <td>Tahun Lulus</td>
                                 <td>:</td>
-                                <td>{{ $pendidikan->l_smp }} di Kab/Kota</td>
+                                <td>{{ $pendidikan->l_smp }} di Kab/Kota {{ $pendidikan->kab_smp }}</td>
                             </tr>
                             <tr>
                                 <td class="data__profile" width="15px">3</td>
@@ -534,7 +534,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                                 <td class="data__profile">{{ $pendidikan->sma }}</td>
                                 <td>Tahun Lulus</td>
                                 <td>:</td>
-                                <td>{{ $pendidikan->l_sma }} di Kab/Kota</td>
+                                <td>{{ $pendidikan->l_sma }} di Kab/Kota {{ $pendidikan->kab_sma }}</td>
                             </tr>
                             <tr>
                                 <td class="data__profile" width="15px"></td>

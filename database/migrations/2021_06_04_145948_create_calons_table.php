@@ -24,6 +24,8 @@ class CreateCalonsTable extends Migration
             $table->integer('u_hri')->nullable();
             $table->integer('u_bln')->nullable();
             $table->integer('u_thn')->nullable();
+            $table->string('ket_umr')->nullable();
+            $table->string('umr')->nullable();
             $table->date('dik')->nullable();
             $table->string('suku')->nullable();
             $table->string('alamat')->nullable();
