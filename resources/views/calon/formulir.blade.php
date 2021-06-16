@@ -83,8 +83,24 @@
                                             </div>
                                             <div class="col-sm">
                                                 <label>Tanggal lahir</label>
-                                                <input type="date" name="calon[tgl_lahir]" class="form-control" value="{{ $calon!=null?$calon->tgl_lahir : Auth::guard('calon')->user()->tem_lahir }}">
+                                                <input type="date" id="lhr" name="calon[tgl_lahir]" class="form-control" value="{{ $calon!=null?$calon->tgl_lahir : Auth::guard('calon')->user()->tem_lahir }}">
                                             </div>
+                                            <div class="col-sm">
+                                                <label>DIK</label>
+                                                <input type="date" id="dik" name="calon[dik]" readonly class="form-control" value="2020-06-20">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <div class="col-sm">
+                                                <label>Umur</label>
+                                                <input type="text" id="umr" name="calon[umur]" readonly class="form-control" >
+                                            </div>
+                                            <div class="col-sm">
+                                                <label>Keterangan Umur</label>
+                                                <input type="text" id="ket-umr" name="calon[umur]" readonly class="form-control" >
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
                                             <div class="col-sm">
                                                 <label>Suku</label>
                                                 <input type="text" name="calon[suku]" class="form-control" value="{{ $calon!=null?$calon->suku : Auth::guard('calon')->user()->suku }}">
@@ -426,6 +442,7 @@
 @endsection
 
 @section('script')
+<script src="{{ asset('js/umur.js') }}"></script>
     <script>
         $('#lulus').change(function (e) {
             $('#tg-HMKiy').hide();
@@ -439,6 +456,17 @@
                 $('#2019').hide();
                 $('#tg-HMKiy').show();
             }
+        });
+
+        $('#lhr').change(function (e) { 
+            var lhr = $(this).val();
+            var dik = $('#dik').val();
+            var result = ageCalculator(lhr,dik);
+            $('#umr').val(result[0]);
+            var date = result[1];
+            var a = ageValidation(date);
+            $('#ket-umr').val(a);
+            console.log(a);
         });
     </script>
 @endsection
