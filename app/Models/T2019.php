@@ -9,8 +9,9 @@ class T2019 extends Model
 {
     use HasFactory;
 
-    protected $table ='tlulus2020';
+    protected $table ='tlulus2019';
     protected $fillable =[
+        'calon_id',
         'ind',
         'ing',
         'mtk',

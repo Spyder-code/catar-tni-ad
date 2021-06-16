@@ -96,11 +96,11 @@
                                         <div class="form-group row">
                                             <div class="col-sm">
                                                 <label>Umur</label>
-                                                <input type="text" id="umr" name="calon[umr]" readonly class="form-control" >
+                                                <input type="text" value="{{ $calon!=null?$calon->umr :'' }}" id="umr" name="calon[umr]" readonly class="form-control" >
                                             </div>
                                             <div class="col-sm">
                                                 <label>Keterangan Umur</label>
-                                                <input type="text" id="ket-umr" name="calon[ket_umr]" readonly class="form-control" >
+                                                <input type="text" value="{{ $calon!=null?$calon->ket_umr :'' }}" id="ket-umr" name="calon[ket_umr]" readonly class="form-control" >
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -461,7 +461,7 @@
             }
         });
 
-        $('#lhr').change(function (e) { 
+        $('#lhr').change(function (e) {
             var lhr = $(this).val();
             var dik = $('#dik').val();
             var result = ageCalculator(lhr,dik);

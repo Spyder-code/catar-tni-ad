@@ -27,14 +27,16 @@ class CalonController extends Controller
             $pendidikan = Pendidikan::where('calon_id',$calon->id)->first();
             $wali = Wali::where('calon_id',$calon->id)->first();
             $nilai = T2020::where('calon_id',$calon->id)->first();
+            $nilai2019 = T2019::where('calon_id',$calon->id)->first();
             $status = 1;
-            return view('calon.formulir',compact('calon','pendidikan','wali','status','nilai'));
+            return view('calon.formulir',compact('calon','pendidikan','wali','status','nilai','nilai2019'));
         }else{
             $pendidikan = null;
             $wali = null;
             $nilai = null;
+            $nilai2019 = null;
             $status = 0;
-            return view('calon.formulir',compact('calon','pendidikan','wali','status','nilai'));
+            return view('calon.formulir',compact('calon','pendidikan','wali','status','nilai','nilai2019'));
         }
     }
 
@@ -118,6 +120,9 @@ class CalonController extends Controller
         if ($calon==null) {
             return redirect()->route('calon.form')->with('danger','Harap Lengkapi data terlebih dahulu!');
         } else {
+            if ($pendidikan->l_sma<=2019) {
+                return redirect()->route('calon.form')->with('danger','Menu nilai PDF disabled!');
+            }
             return view('calon.nilaipdf',compact('nilai','calon','pendidikan'));
         }
     }

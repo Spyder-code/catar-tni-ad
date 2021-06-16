@@ -513,28 +513,31 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                                 <td class="data__profile" width="15px">1</td>
                                 <td class="data__profile" width="300px">Asal Sekolah SD/MI</td>
                                 <td class="data__profile" width="20px">:</td>
-                                <td class="data__profile" width="max-content">{{ $pendidikan->sd }}</td>
-                                <td width="100px">Tahun Lulus</td>
+                                <td class="data__profile">{{ $pendidikan->sd }}</td>
+                                <td width="50px">Lulus</td>
                                 <td width="20px">:</td>
-                                <td>{{ $pendidikan->l_sd }} di Kab/Kota {{ $pendidikan->kab_sd }}</td>
+                                <td>{{ $pendidikan->l_sd }}</td>
+                                <td>di Kab/Kota {{ $pendidikan->kab_sd }}</td>
                             </tr>
                             <tr>
                                 <td class="data__profile" width="15px">2</td>
                                 <td class="data__profile">Asal Sekolah SMP/MTS</td>
                                 <td class="data__profile">:</td>
                                 <td class="data__profile">{{ $pendidikan->smp }}</td>
-                                <td>Tahun Lulus</td>
+                                <td>Lulus</td>
                                 <td>:</td>
-                                <td>{{ $pendidikan->l_smp }} di Kab/Kota {{ $pendidikan->kab_smp }}</td>
+                                <td>{{ $pendidikan->l_smp }} </td>
+                                <td>di Kab/Kota {{ $pendidikan->kab_smp }}</td>
                             </tr>
                             <tr>
                                 <td class="data__profile" width="15px">3</td>
                                 <td class="data__profile">Asal Sekolah SMA/MA</td>
                                 <td class="data__profile">:</td>
                                 <td class="data__profile">{{ $pendidikan->sma }}</td>
-                                <td>Tahun Lulus</td>
+                                <td>Lulus</td>
                                 <td>:</td>
-                                <td>{{ $pendidikan->l_sma }} di Kab/Kota {{ $pendidikan->kab_sma }}</td>
+                                <td>{{ $pendidikan->l_sma }} </td>
+                                <td>di Kab/Kota {{ $pendidikan->kab_sma }} </td>
                             </tr>
                             <tr>
                                 <td class="data__profile" width="15px"></td>

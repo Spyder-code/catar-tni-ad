@@ -21,6 +21,8 @@ class Calon extends Model
         'u_hri',
         'u_bln',
         'u_thn',
+        'umr',
+        'ket_umr',
         'dik',
         'suku',
         'alamat',
@@ -51,5 +53,10 @@ class Calon extends Model
     public function t2020()
     {
         return $this->hasOne(T2020::class,'calon_id');
+    }
+
+    public function t2019()
+    {
+        return $this->hasOne(T2019::class,'calon_id');
     }
 }

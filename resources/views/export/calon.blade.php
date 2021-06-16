@@ -41,14 +41,19 @@
         <td>i_sat</td>
         <td>o_telp</td>
         <td>o_alamat</td>
-        <td>wali</td>
-        <td>w_kerja</td>
-        <td>w_pkt</td>
-        <td>w_jab</td>
-        <td>w_sat</td>
+        <td>wali_ayah</td>
+        <td>wa_kerja</td>
+        <td>wa_pkt</td>
+        <td>wa_jab</td>
+        <td>wa_sat</td>
+        <td>wali_ibu</td>
+        <td>wi_kerja</td>
+        <td>wi_pkt</td>
+        <td>wi_jab</td>
+        <td>wi_sat</td>
         <td>w_telp</td>
         <td>w_alamat</td>
-        <td>status_wali</td>
+        <td>status_wali</>
         <td>hub_calon_wali</td>
         <td>bipeng1</td>
         <td>biket1</td>
@@ -155,7 +160,19 @@
         <td>rata_kls1</td>
         <td>rata_kls2</td>
         <td>rata_kls3</td>
-        <td>rata_akhir'
+        <td>rata_akhir'</td>
+        <td>ind</td>
+        <td>ing</td>
+        <td>mtk</td>
+        <td>fis</td>
+        <td>kim</td>
+        <td>bio</td>
+        <td>sos</td>
+        <td>geo</td>
+        <td>eko</td>
+        <td>kom</td>
+        <td>lain</td>
+        <td>rata</td>
     </tr>
     </thead>
     <tbody>
@@ -201,11 +218,16 @@
             <td>{{ $item->wali->i_sat}}</td>
             <td>{{ $item->wali->o_telp}}</td>
             <td>{{ $item->wali->o_alamat}}</td>
-            <td>{{ $item->wali->wali}}</td>
-            <td>{{ $item->wali->w_kerja}}</td>
-            <td>{{ $item->wali->w_pkt}}</td>
-            <td>{{ $item->wali->w_jab}}</td>
-            <td>{{ $item->wali->w_sat}}</td>
+            <td>{{ $item->wali->wali_ayah}}</td>
+            <td>{{ $item->wali->wa_kerja}}</td>
+            <td>{{ $item->wali->wa_pkt}}</td>
+            <td>{{ $item->wali->wa_jab}}</td>
+            <td>{{ $item->wali->wa_sat}}</td>
+            <td>{{ $item->wali->wali_ibu}}</td>
+            <td>{{ $item->wali->wi_kerja}}</td>
+            <td>{{ $item->wali->wi_pkt}}</td>
+            <td>{{ $item->wali->wi_jab}}</td>
+            <td>{{ $item->wali->wi_sat}}</td>
             <td>{{ $item->wali->w_telp}}</td>
             <td>{{ $item->wali->w_alamat}}</td>
             <td>{{ $item->wali->status_wali}}</td>
@@ -316,6 +338,18 @@
             <td>{{ $item->t2020->rata_kls2}}</td>
             <td>{{ $item->t2020->rata_kls3}}</td>
             <td>{{ $item->t2020->rata_akhir}}</td>
+            <td>{{ $item->t2019->ind }}</td>
+            <td>{{ $item->t2019->ing }}</td>
+            <td>{{ $item->t2019->mtk }}</td>
+            <td>{{ $item->t2019->fis }}</td>
+            <td>{{ $item->t2019->kim }}</td>
+            <td>{{ $item->t2019->bio }}</td>
+            <td>{{ $item->t2019->sos }}</td>
+            <td>{{ $item->t2019->geo }}</td>
+            <td>{{ $item->t2019->eko }}</td>
+            <td>{{ $item->t2019->kom }}</td>
+            <td>{{ $item->t2019-> }}</td>
+            <td>{{ $item->t2019-> }}</td>
         </tr>
     @endforeach
     </tbody>
