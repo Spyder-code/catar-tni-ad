@@ -27,6 +27,16 @@
                     <div class="col text-primary">
                         <div class="cards" id="login-card">
                             <div class="card-body">
+                                @if ($message = Session::get('danger'))
+                                    <div class="row">
+                                        <div class="col mt-3">
+                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endif
                                 <form method="POST" action="{{ route('login.calon') }}">
                                     @csrf
 

@@ -55,8 +55,8 @@ class LoginController extends Controller
         {
             return redirect()->route('home');
         }else{
-            return redirect()->route('login')
-                ->with('error','Email-Address And Password Are Wrong.');
+            return redirect()->route('login.admin')
+                ->with('danger','Email or Username And Password Are Wrong.');
         }
     }
 
@@ -64,8 +64,14 @@ class LoginController extends Controller
     {
         $tgl = date('d-m-Y', strtotime($request->tgl_lahir));
         $user = Pokok::where('no_online',$request->no_online)->where('tgl_lahir',$tgl)->first();
-        Auth::guard('calon')->login($user);
-        return redirect()->route('calon.form');
+        if ($user==null) {
+            return redirect()->route('login')
+            ->with('danger','No online dan tanggal lahir tidak ada dalam data kami. Silahkan menghubungi admin!');
+        } else {
+            Auth::guard('calon')->login($user);
+            return redirect()->route('calon.form');
+        }
+        
     }
 
 }
