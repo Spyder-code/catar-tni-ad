@@ -92,7 +92,7 @@ class CalonController extends Controller
             Wali::where('calon_id',$request->calon_id)->update(['hub_calon_wali'=>$status]);
         }
 
-        return back()->with('success','Data berhasil disimpan!');
+        return redirect()->route('calon.pdf');
     }
 
     public function pdf()
