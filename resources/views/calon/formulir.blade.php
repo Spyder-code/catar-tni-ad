@@ -76,7 +76,7 @@
                                             </div>
                                             <div class="col-sm">
                                                 <label>No KTP</label>
-                                                <input type="text" name="calon[ktp]" class="form-control" value="{{ $calon!=null?$calon->ktp : '' }}">
+                                                <input type="number" max="999999999999" name="calon[ktp]" class="form-control ktp" onkeypress="return this.value.length < 12;" oninput="if(this.value.length>=12) { this.value = this.value.slice(0,12); }" value="{{ $calon!=null?$calon->ktp : '' }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -120,11 +120,11 @@
                                             </div>
                                             <div class="col">
                                                 <label>RT</label>
-                                                <input type="number" name="calon[rt]" class="form-control" value="{{ $calon!=null?$calon->rt :'' }}">
+                                                <input type="number" onkeypress="return this.value.length < 3;" oninput="if(this.value.length>=3) { this.value = this.value.slice(0,3); }" name="calon[rt]" class="form-control" value="{{ $calon!=null?$calon->rt :'' }}">
                                             </div>
                                             <div class="col">
                                                 <label>RW</label>
-                                                <input type="number" name="calon[rw]" class="form-control" value="{{ $calon!=null?$calon->rw :'' }}">
+                                                <input type="number" onkeypress="return this.value.length < 3;" oninput="if(this.value.length>=3) { this.value = this.value.slice(0,3); }" name="calon[rw]" class="form-control" value="{{ $calon!=null?$calon->rw :'' }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -172,7 +172,7 @@
                                             </div>
                                             <div class="col">
                                                 <label>No telphone</label>
-                                                <input type="text" name="calon[telp]" class="form-control" value="{{ $calon!=null?$calon->telp :'' }}">
+                                                <input type="number" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="calon[telp]" class="form-control" value="{{ $calon!=null?$calon->telp :'' }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Daftar ke</label>
@@ -283,6 +283,17 @@
                                                 <label>Kerja ayah</label>
                                                 <input type="text" name="wali[a_kerja]" class="form-control" value="{{ $wali!=null?$wali->a_kerja : '' }}">
                                             </div>
+                                            <div class="col-lg col-3">
+                                                <label>Ayah seorang TNI AD</label><br>
+                                                <label>
+                                                    <input type="radio" value="true" name="jab_a"> Iya
+                                                </label>
+                                                <label class="ml-4">
+                                                    <input type="radio" value="false" checked name="jab_a"> Tidak
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="jab_a">
                                             <div class="col-lg col-6">
                                                 <label>Pangkat ayah</label>
                                                 <input type="text" name="wali[a_pkt]" class="form-control" value="{{ $wali!=null?$wali->a_pkt : '' }}">
@@ -305,6 +316,17 @@
                                                 <label>Kerja ibu</label>
                                                 <input type="text" name="wali[i_kerja]" class="form-control" value="{{ $wali!=null?$wali->i_kerja : '' }}">
                                             </div>
+                                            <div class="col-lg col-3">
+                                                <label>Ibu seorang TNI AD</label><br>
+                                                <label>
+                                                    <input type="radio" value="true" name="jab_i"> Iya
+                                                </label>
+                                                <label class="ml-4">
+                                                    <input type="radio" value="false" checked name="jab_i"> Tidak
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="jab_i">
                                             <div class="col-lg col-6">
                                                 <label>Pangkat ibu</label>
                                                 <input type="text" name="wali[i_pkt]" class="form-control" value="{{ $wali!=null?$wali->i_pkt : '' }}">
@@ -321,14 +343,14 @@
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label>Telphone orang tua</label>
-                                                <input type="text" name="wali[o_telp]" class="form-control" value="{{ $wali!=null?$wali->o_telp : '' }}">
+                                                <input type="number" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="wali[o_telp]" class="form-control" value="{{ $wali!=null?$wali->o_telp : '' }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Alamat orang tua</label>
                                                 <input type="text" name="wali[o_alamat]" class="form-control" value="{{ $wali!=null?$wali->o_alamat : '' }}">
                                             </div>
                                         </div>
-                                        <h2>Data Wali</h2>
+                                        <h2>Tiri/wali/Perwalian/Numpang Alamat</h2>
                                         <div class="form-group row">
                                             <div class="col-lg col-6">
                                                 <label>Nama ayah</label>
@@ -338,6 +360,17 @@
                                                 <label>Kerja ayah</label>
                                                 <input type="text" name="wali[wa_kerja]" class="form-control" value="{{ $wali!=null?$wali->wa_kerja : '' }}">
                                             </div>
+                                            <div class="col-lg col-3">
+                                                <label>Wali ayah seorang TNI AD</label><br>
+                                                <label>
+                                                    <input type="radio" value="true" name="jab_wa"> Iya
+                                                </label>
+                                                <label class="ml-4">
+                                                    <input type="radio" value="false" checked name="jab_wa"> Tidak
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="jab_wa">
                                             <div class="col-lg col-6">
                                                 <label>Pangkat ayah</label>
                                                 <input type="text" name="wali[wa_pkt]" class="form-control" value="{{ $wali!=null?$wali->wa_pkt : '' }}">
@@ -360,6 +393,17 @@
                                                 <label>Kerja ibu</label>
                                                 <input type="text" name="wali[wi_kerja]" class="form-control" value="{{ $wali!=null?$wali->wi_kerja : '' }}">
                                             </div>
+                                            <div class="col-lg col-3">
+                                                <label>Wali Ibu seorang TNI AD</label><br>
+                                                <label>
+                                                    <input type="radio" value="true" name="jab_wi"> Iya
+                                                </label>
+                                                <label class="ml-4">
+                                                    <input type="radio" value="false" checked name="jab_wi"> Tidak
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row" id="jab_wi">
                                             <div class="col-lg col-6">
                                                 <label>Pangkat ibu</label>
                                                 <input type="text" name="wali[wi_pkt]" class="form-control" value="{{ $wali!=null?$wali->wi_pkt : '' }}">
@@ -376,7 +420,7 @@
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label>Telphone wali</label>
-                                                <input type="text" name="wali[w_telp]" class="form-control" value="{{ $wali!=null?$wali->w_telp : '' }}">
+                                                <input type="text" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="wali[w_telp]" class="form-control" value="{{ $wali!=null?$wali->w_telp : '' }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Alamat wali</label>
@@ -419,6 +463,7 @@
                                 <a href="{{ route('calon.pdf') }}" class="mx-2 btn btn-info my-3"><i class="fas fa-save"></i> PDF</a>
                             @endif
                         </div>
+                        <a href="{{ route('calon.pdf') }}" class="mx-2 btn btn-info my-3"><i class="fas fa-save"></i> PDF</a>
                     </form>
                 </div>
             </div>
@@ -472,6 +517,45 @@
             $('#u_bln').val(date.months);
             $('#u_hri').val(date.days);
         });
+
+        $('#jab_a').hide();
+        $('#jab_i').hide();
+        $('#jab_wa').hide();
+        $('#jab_wi').hide();
+
+        $('input[name=jab_a]').change(function () {
+            var val = $(this).val();
+            if(val=='true'){
+                $('#jab_a').show();
+            }else{
+                $('#jab_a').hide();
+            }
+        });
+        $('input[name=jab_wa]').change(function () {
+            var val = $(this).val();
+            if(val=='true'){
+                $('#jab_wa').show();
+            }else{
+                $('#jab_wa').hide();
+            }
+        });
+        $('input[name=jab_i]').change(function () {
+            var val = $(this).val();
+            if(val=='true'){
+                $('#jab_i').show();
+            }else{
+                $('#jab_i').hide();
+            }
+        });
+        $('input[name=jab_wi]').change(function () {
+            var val = $(this).val();
+            if(val=='true'){
+                $('#jab_wi').show();
+            }else{
+                $('#jab_wi').hide();
+            }
+        });
     </script>
+
 @endsection
 
