@@ -11,6 +11,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class CalonController extends Controller
 {
@@ -42,6 +43,32 @@ class CalonController extends Controller
 
     public function store(Request $request)
     {
+
+        $request->validate([
+            'calon.nama' => 'required',
+            'calon.no_online' => 'required',
+            'calon.ktp' => 'required',
+            'calon.tem_lahir' => 'required',
+            'calon.tgl_lahir' => 'required',
+            'calon.suku' => 'required',
+            'calon.agama' => 'required',
+            'calon.alamat' => 'required',
+            'pendidikan.sd' => 'required',
+            'pendidikan.l_sd' => 'required',
+            'pendidikan.kab_sd' => 'required',
+            'pendidikan.smp' => 'required',
+            'pendidikan.l_smp' => 'required',
+            'pendidikan.kab_smp' => 'required',
+            'pendidikan.sma' => 'required',
+            'pendidikan.l_sma' => 'required',
+            'pendidikan.kab_sma' => 'required',
+            'pendidikan.jur' => 'required',
+            'wali.ayah' => 'required',
+            'wali.a_kerja' => 'required',
+            'wali.ibu' => 'required',
+            'wali.i_kerja' => 'required',
+        ]);
+
         if ($request->status==0) {
             $calon = Calon::create($request->calon);
             $pendidikan = array_merge($request->pendidikan,['calon_id'=>$calon->id]);

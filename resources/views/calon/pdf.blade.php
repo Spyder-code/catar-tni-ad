@@ -757,14 +757,14 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                                 <td>d.</td>
                                 <td>Alamat Wali</td>
                                 <td>:</td>
-                                <td colspan="4">{{ $wali->o_alamat }}</td>
+                                <td colspan="4">{{ $wali->w_alamat }}</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>e.</td>
                                 <td>Telephone/HP Wali</td>
                                 <td>:</td>
-                                <td colspan="4">{{ $wali->o_telp }}</td>
+                                <td colspan="4">{{ $wali->w_telp }}</td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -805,5 +805,8 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
         });
             doc.save('invoice.pdf')
     </script> --}}
+    <script>
+        window.print();
+    </script>
 </body>
 </html>
