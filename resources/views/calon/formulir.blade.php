@@ -96,10 +96,10 @@
                                                 <label>No KTP</label>
                                                 @error('calon.ktp')
                                                     <div>
-                                                        <strong class="text-danger small">No KTP tidak boleh kosong</strong>
+                                                        <strong class="text-danger small">{{ $message }}</strong>
                                                     </div>
                                                 @enderror
-                                                <input @error('calon.ktp') autofocus @enderror type="number" max="999999999999" name="calon[ktp]" class="form-control ktp" onkeypress="return this.value.length < 12;" oninput="if(this.value.length>=12) { this.value = this.value.slice(0,12); }" value="{{ $calon!=null?$calon->ktp : old('calon[ktp]') }}">
+                                                <input @error('calon.ktp') autofocus @enderror type="number" max="999999999999" name="calon[ktp]" class="form-control ktp" onkeypress="return this.value.length < 16;" oninput="if(this.value.length>=16) { this.value = this.value.slice(0,16); }" value="{{ $calon!=null?$calon->ktp : old('calon[ktp]') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">

@@ -47,7 +47,7 @@ class CalonController extends Controller
         $request->validate([
             'calon.nama' => 'required',
             'calon.no_online' => 'required',
-            'calon.ktp' => 'required',
+            'calon.ktp' => 'required|min:16',
             'calon.tem_lahir' => 'required',
             'calon.tgl_lahir' => 'required',
             'calon.suku' => 'required',
