@@ -142,11 +142,11 @@ class CalonController extends Controller
     {
         $no = Auth::guard('calon')->user()->no_online;
         $calon = Calon::where('no_online',$no)->first();
-        $pendidikan = Pendidikan::where('calon_id',$calon->id)->first();
-        $nilai = T2020::where('calon_id',$calon->id)->first();
         if ($calon==null) {
             return redirect()->route('calon.form')->with('danger','Harap Lengkapi data terlebih dahulu!');
         } else {
+            $pendidikan = Pendidikan::where('calon_id',$calon->id)->first();
+            $nilai = T2020::where('calon_id',$calon->id)->first();
             if ($pendidikan->l_sma<=2019) {
                 return redirect()->route('calon.form')->with('danger','Menu nilai PDF disabled!');
             }
