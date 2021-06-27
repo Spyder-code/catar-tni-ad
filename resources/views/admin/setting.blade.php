@@ -1,8 +1,7 @@
 @extends('layouts.admin')
 @section('page','Blank page')
 @section('style')
-    <link href="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/froala-editor@3.1.0/js/froala_editor.pkgd.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/ip0rkeafploig1u7xvh8y8bb0c7qg3gz1kesdzcwab09fnzx/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 @endsection
 @section('breadcrumb')
     <li><a href="{{ route('home') }}" class="breadcrumb-item nav-link">Dashboard </a></li>
@@ -39,7 +38,7 @@
                                 </tr>
                                 <tr>
                                     <td>Content</td>
-                                    <td><textarea name="content" id="example">{{ $data->content }}</textarea></td>
+                                    <td><textarea name="content" id="example" rows="20">{{ $data->content }}</textarea></td>
                                 </tr>
                                 <tr>
                                     <td>DIK</td>
@@ -57,25 +56,10 @@
 
 @section('script')
     <script>
-        var editor = new FroalaEditor('#example',{
-            toolbarButtons: {
-            'moreText': {
-                'buttons': ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'fontFamily', 'fontSize', 'textColor', 'backgroundColor', 'inlineClass', 'inlineStyle', 'clearFormatting']
-            },
-            'moreParagraph': {
-                'buttons': ['alignLeft', 'alignCenter', 'formatOLSimple', 'alignRight', 'alignJustify', 'formatOL', 'formatUL', 'paragraphFormat', 'paragraphStyle', 'lineHeight', 'outdent', 'indent', 'quote']
-            },
-            'moreRich': {
-                'buttons': ['insertLink', 'insertImage', 'insertVideo', 'insertTable', 'emoticons', 'fontAwesome', 'specialCharacters', 'embedly', 'insertFile', 'insertHR']
-            },
-            'moreMisc': {
-                'buttons': ['undo', 'redo', 'fullscreen', 'print', 'getPDF', 'spellChecker', 'selectAll', 'html', 'help']
-            }
-        },
-        toolbarSticky: true,
-        tabSpaces: 4
-            // // Change buttons for XS screen.
-            // toolbarButtonsXS: [['undo', 'redo'], ['bold', 'italic', 'underline']]
-        });
+        tinymce.init({
+        selector: 'textarea',
+        plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+        toolbar_mode: 'floating',
+    });
     </script>
 @endsection
