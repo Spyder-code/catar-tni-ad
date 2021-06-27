@@ -15,13 +15,13 @@ class CreatePendidikansTable extends Migration
     {
         Schema::create('pendidikan', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('calon_id')->constrained('calon');
+            $table->foreignId('calon_id')->constrained('calon')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('sd')->nullable();
             $table->string('smp')->nullable();
             $table->string('sma')->nullable();
-            $table->string('l_sd')->nullable();
-            $table->string('l_smp')->nullable();
-            $table->string('l_sma')->nullable();
+            $table->integer('l_sd')->nullable();
+            $table->integer('l_smp')->nullable();
+            $table->integer('l_sma')->nullable();
             $table->string('kab_sd')->nullable();
             $table->string('kab_smp')->nullable();
             $table->string('kab_sma')->nullable();

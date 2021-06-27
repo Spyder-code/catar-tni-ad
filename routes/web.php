@@ -2,6 +2,7 @@
 
 use App\Models\Calon;
 use App\Models\Pokok;
+use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,11 +18,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layouts.user');
+    $data = Setting::find(1);
+    return view('layouts.user', compact('data'));
 })->middleware('visitor');
 
 Route::get('coba', function () {
-    $data = Calon::all()->where('id',31);
+    $data = Calon::find(4);
+    dd($data->t2019);
     return view('export.calon',compact('data'));
 });
 
@@ -37,6 +40,7 @@ Route::get('/calon/data-diri', [App\Http\Controllers\CalonController::class, 'pd
 Route::get('/calon/nilai', [App\Http\Controllers\CalonController::class, 'nilai'])->name('calon.nilai');
 Route::get('/main', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/pokok', [App\Http\Controllers\HomeController::class, 'pokok'])->name('pokok');
+Route::get('/setting', [App\Http\Controllers\HomeController::class, 'setting'])->name('setting');
 Route::get('/calon', [App\Http\Controllers\HomeController::class, 'calon'])->name('calon');
 Route::post('/calon/export', [App\Http\Controllers\HomeController::class, 'export'])->name('calon.export');
 Route::post('/calon/exportAll', [App\Http\Controllers\HomeController::class, 'exportAll'])->name('calon.exportAll');
@@ -45,6 +49,7 @@ Route::post('/calon/logout', [App\Http\Controllers\CalonController::class, 'logo
 Route::post('/pokok', [App\Http\Controllers\HomeController::class, 'importExcelPokok'])->name('pokok.import');
 Route::post('/pokok/destroy', [App\Http\Controllers\HomeController::class, 'pokokDestroy'])->name('pokok.destroy');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+Route::put('/setting', [App\Http\Controllers\HomeController::class, 'settingUpdate'])->name('setting.update');
 Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('profile.update');
 Route::put('/profile/password/{id}', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('profile.update.password');
 Route::put('/profile/image/{id}', [App\Http\Controllers\UserController::class, 'updateImage'])->name('profile.update.image');

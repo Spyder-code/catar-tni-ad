@@ -21,6 +21,9 @@ class CreateCalonsTable extends Migration
             $table->string('agama')->nullable();
             $table->string('tem_lahir')->nullable();
             $table->string('tgl_lahir')->nullable();
+            $table->integer('l_hri')->nullable();
+            $table->integer('l_bln')->nullable();
+            $table->integer('l_thn')->nullable();
             $table->integer('u_hri')->nullable();
             $table->integer('u_bln')->nullable();
             $table->integer('u_thn')->nullable();
@@ -41,6 +44,10 @@ class CreateCalonsTable extends Migration
             $table->string('aspek_tl')->nullable();
             $table->string('prestasi_provinsi')->nullable();
             $table->string('prestasi_nasional')->nullable();
+            $table->string('tb')->nullable();
+            $table->string('bb')->nullable();
+            $table->string('tindik')->nullable();
+            $table->string('tatto')->nullable();
             $table->timestamps();
         });
     }

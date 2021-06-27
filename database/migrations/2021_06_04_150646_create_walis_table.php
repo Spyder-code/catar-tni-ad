@@ -15,7 +15,7 @@ class CreateWalisTable extends Migration
     {
         Schema::create('wali', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('calon_id')->constrained('calon');
+            $table->foreignId('calon_id')->constrained('calon')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('ayah')->nullable();
             $table->string('a_kerja')->nullable();
             $table->string('a_pkt')->nullable();

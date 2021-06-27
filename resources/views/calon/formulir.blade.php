@@ -41,6 +41,7 @@
                         <li>Jika data terkait tidak ada maka isi kolom dengan tanda (-)</li>
                         <li>Setelah mengisi kolom, jangan lupa klik tombol simpan data pada bagian bawah form</li>
                         <li>Anda dapat mengubah data berkali-kali dengan klik tombol simpan</li>
+                        <li>Harap simpan pdf setelah mengisi formulir</li>
                     </ol>
                 </div>
                 <div class="white-box">
@@ -60,9 +61,9 @@
                     <form action="{{ route('calon.form.store') }}" method="post">
                         @csrf
                         <input type="hidden" name="status" value="{{ $status }}">
-                        <input type="hidden" name="calon[u_hri]" id="u_hri">
-                        <input type="hidden" name="calon[u_bln]" id="u_bln">
-                        <input type="hidden" name="calon[u_thn]" id="u_thn">
+                        <input type="hidden" name="calon[u_hri]" id="u_hri" value="{{ $calon!=null?$calon->u_hri:'' }}">
+                        <input type="hidden" name="calon[u_bln]" id="u_bln" value="{{ $calon!=null?$calon->u_bln:'' }}">
+                        <input type="hidden" name="calon[u_thn]" id="u_thn" value="{{ $calon!=null?$calon->u_thn:'' }}">
                         <input type="hidden" name="calon_id" value="{{ $calon!=null?$calon->id:0 }}">
                         <div class="accordion" id="accordionPanelsStayOpenExample">
                             <div class="accordion-item">
@@ -99,7 +100,7 @@
                                                         <strong class="text-danger small">{{ $message }}</strong>
                                                     </div>
                                                 @enderror
-                                                <input @error('calon.ktp') autofocus @enderror type="number" max="999999999999" name="calon[ktp]" class="form-control ktp" onkeypress="return this.value.length < 16;" oninput="if(this.value.length>=16) { this.value = this.value.slice(0,16); }" value="{{ $calon!=null?$calon->ktp : old('calon[ktp]') }}">
+                                                <input @error('calon.ktp') autofocus @enderror type="number" name="calon[ktp]" class="form-control ktp" onkeypress="return this.value.length < 16;" oninput="if(this.value.length>=16) { this.value = this.value.slice(0,16); }" value="{{ $calon!=null?$calon->ktp : old('calon.ktp') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -119,21 +120,21 @@
                                                     <strong class="text-danger small">Tanggal lahir tidak boleh kosong</strong>
                                                 </div>
                                             @enderror
-                                                <input @error('calon.tgl_lahir') autofocus @enderror type="date" id="lhr" name="calon[tgl_lahir]" class="form-control" value="{{ $calon!=null?$calon->tgl_lahir : Auth::guard('calon')->user()->tem_lahir }}">
+                                                <input @error('calon.tgl_lahir') autofocus @enderror type="date" id="lhr" name="calon[tgl_lahir]" min="1999-01-01" max="2005-12-30" class="form-control" value="{{ $calon!=null?$calon->tgl_lahir : old('calon.tgl_lahir') }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>DIK</label>
-                                                <input type="date" id="dik" name="calon[dik]" readonly class="form-control" value="{{ env('DIK') }}">
+                                                <input type="date" id="dik" name="calon[dik]" readonly class="form-control" value="{{ $dik }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm">
                                                 <label>Umur</label>
-                                                <input type="text" value="{{ $calon!=null?$calon->umr :old('calon[umr]') }}" id="umr" name="calon[umr]" readonly class="form-control" >
+                                                <input type="text" value="{{ $calon!=null?$calon->umr :old('calon.umr') }}" id="umr" name="calon[umr]" readonly class="form-control" >
                                             </div>
                                             <div class="col-sm">
                                                 <label>Keterangan Umur</label>
-                                                <input type="text" value="{{ $calon!=null?$calon->ket_umr :old('calon[ket_umr]') }}" id="ket-umr" name="calon[ket_umr]" readonly class="form-control" >
+                                                <input type="text" value="{{ $calon!=null?$calon->ket_umr :old('calon.ket_umr') }}" id="ket-umr" name="calon[ket_umr]" readonly class="form-control" >
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -168,29 +169,29 @@
                                             </div>
                                             <div class="col">
                                                 <label>RT</label>
-                                                <input type="number" onkeypress="return this.value.length < 3;" oninput="if(this.value.length>=3) { this.value = this.value.slice(0,3); }" name="calon[rt]" class="form-control" value="{{ $calon!=null?$calon->rt :old('calon[rt]') }}">
+                                                <input type="number" onkeypress="return this.value.length < 3;" oninput="if(this.value.length>=3) { this.value = this.value.slice(0,3); }" name="calon[rt]" class="form-control" value="{{ $calon!=null?$calon->rt :old('calon.rt') }}">
                                             </div>
                                             <div class="col">
                                                 <label>RW</label>
-                                                <input type="number" onkeypress="return this.value.length < 3;" oninput="if(this.value.length>=3) { this.value = this.value.slice(0,3); }" name="calon[rw]" class="form-control" value="{{ $calon!=null?$calon->rw :old('calon[rw]') }}">
+                                                <input type="number" onkeypress="return this.value.length < 3;" oninput="if(this.value.length>=3) { this.value = this.value.slice(0,3); }" name="calon[rw]" class="form-control" value="{{ $calon!=null?$calon->rw :old('calon.rw') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>No rumah</label>
-                                                <input type="text" name="calon[no]" class="form-control" value="{{ $calon!=null?$calon->no :old('calon[no]') }}">
+                                                <input type="text" name="calon[no]" class="form-control" value="{{ $calon!=null?$calon->no :old('calon.no') }}">
                                             </div>
                                             <div class="col">
                                                 <label>Dusun</label>
-                                                <input type="text" name="calon[dsn]" class="form-control" value="{{ $calon!=null?$calon->dsn :old('calon[dsn]') }}">
+                                                <input type="text" name="calon[dsn]" class="form-control" value="{{ $calon!=null?$calon->dsn :old('calon.dsn') }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Desa</label>
-                                                <input type="text" name="calon[ds]" class="form-control" value="{{ $calon!=null?$calon->ds :old('calon[ds]') }}">
+                                                <input type="text" name="calon[ds]" class="form-control" value="{{ $calon!=null?$calon->ds :old('calon.ds') }}">
                                             </div>
                                             <div class="col">
                                                 <label>Kecamatan</label>
-                                                <input type="text" name="calon[kec]" class="form-control" value="{{ $calon!=null?$calon->kec :old('calon[kec]') }}">
+                                                <input type="text" name="calon[kec]" class="form-control" value="{{ $calon!=null?$calon->kec :old('calon.kec') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -198,13 +199,13 @@
                                                 <label>Kabupaten/Kota</label>
                                                 @if ($calon==null)
                                                 <select name="calon[kab]" class="form-select">
-                                                    <option value=""></option>
-                                                    <option value="Mojokerto">Mojokerto</option>
-                                                    <option value="Jombang">Jombang</option>
-                                                    <option value="Kediri">Kediri</option>
-                                                    <option value="Lamongan">Lamongan</option>
-                                                    <option value="Tuban">Tuban</option>
-                                                    <option value="Bojonegoro">Bojonegoro</option>
+                                                    <option {{ old('calon.kab')==''?'selected':'' }} value=""></option>
+                                                    <option {{ old('calon.kab')=='Mojokerto'?'selected':'' }} value="Mojokerto">Mojokerto</option>
+                                                    <option {{ old('calon.kab')=='Jombang'?'selected':'' }} value="Jombang">Jombang</option>
+                                                    <option {{ old('calon.kab')=='Kediri'?'selected':'' }} value="Kediri">Kediri</option>
+                                                    <option {{ old('calon.kab')=='Lamongan'?'selected':'' }} value="Lamongan">Lamongan</option>
+                                                    <option {{ old('calon.kab')=='Tuban'?'selected':'' }} value="Tuban">Tuban</option>
+                                                    <option {{ old('calon.kab')=='Bojonegoro'?'selected':'' }} value="Bojonegoro">Bojonegoro</option>
                                                 </select>
                                                 @else
                                                 <select name="calon[kab]" class="form-select">
@@ -220,25 +221,25 @@
                                             </div>
                                             <div class="col">
                                                 <label>No telphone</label>
-                                                <input type="number" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="calon[telp]" class="form-control" value="{{ $calon!=null?$calon->telp :old('calon[telp]') }}">
+                                                <input type="number" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="calon[telp]" class="form-control" value="{{ $calon!=null?$calon->telp :old('calon.telp') }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Daftar ke</label>
-                                                <input type="text" name="calon[daftar_ke]" class="form-control" value="{{ $calon!=null?$calon->daftar_ke :old('calon[daftar_ke]') }}">
+                                                <input type="number" name="calon[daftar_ke]" class="form-control" value="{{ $calon!=null?$calon->daftar_ke :old('calon.daftar_ke') }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Aspek tidak lulus</label>
-                                                <input type="text" name="calon[aspek_tl]" class="form-control" value="{{ $calon!=null?$calon->aspek_tl :old('calon[aspek_tl]') }}">
+                                                <input type="text" name="calon[aspek_tl]" class="form-control" value="{{ $calon!=null?$calon->aspek_tl :old('calon.aspek_tl') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>Prestasi tingkat provinsi</label>
-                                                <input type="text" name="calon[prestasi_provinsi]" class="form-control" value="{{ $calon!=null?$calon->prestasi_provinsi :old('calon[prestasi_provinsi]') }}">
+                                                <input type="text" name="calon[prestasi_provinsi]" class="form-control" value="{{ $calon!=null?$calon->prestasi_provinsi :old('calon.prestasi_provinsi') }}">
                                             </div>
                                             <div class="col">
                                                 <label>Prestasi tingkat nasional/internasional</label>
-                                                <input type="text" name="calon[prestasi_nasional]" class="form-control" value="{{ $calon!=null?$calon->prestasi_nasional :old('calon[prestasi_nasional]') }}">
+                                                <input type="text" name="calon[prestasi_nasional]" class="form-control" value="{{ $calon!=null?$calon->prestasi_nasional :old('calon.prestasi_nasional') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -260,7 +261,7 @@
                                                     <strong class="text-danger small">SD tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="pendidikan[sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sd : old('pendidikan[sd]') }}">
+                                                <input type="text" @error('pendidikan.sd') autofocus @enderror name="pendidikan[sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sd : old('pendidikan.sd') }}">
                                             </div>
                                             <div class="col-lg-4 col-6 col-md-3">
                                                 <label>Tahun lulus SD</label>
@@ -269,7 +270,7 @@
                                                     <strong class="text-danger small">Tahun lulus SD tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input onkeypress="return this.value.length < 4;" oninput="if(this.value.length>=4) { this.value = this.value.slice(0,4); }" type="number" name="pendidikan[l_sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_sd : old('pendidikan[l_sd]') }}">
+                                                <input @error('pendidikan.l_sd') autofocus @enderror onkeypress="return this.value.length < 4;" oninput="if(this.value.length>=4) { this.value = this.value.slice(0,4); }" type="number" name="pendidikan[l_sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_sd : old('pendidikan.l_sd') }}">
                                             </div>
                                             <div class="col-lg-4 col-6 col-md-3">
                                                 <label>Kab/Kota Lulus SD</label>
@@ -278,7 +279,7 @@
                                                     <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="pendidikan[kab_sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sd : old('pendidikan[kab_sd]') }}">
+                                                <input type="text" @error('pendidikan.kab_sd') autofocus @enderror name="pendidikan[kab_sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sd : old('pendidikan.kab_sd') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -289,7 +290,7 @@
                                                     <strong class="text-danger small">SMP tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="pendidikan[smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->smp : old('pendidikan[smp]') }}">
+                                                <input type="text" @error('pendidikan.smp') autofocus @enderror name="pendidikan[smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->smp : old('pendidikan.smp') }}">
                                             </div>
                                             <div class="col-lg-4 col-6 col-md-3">
                                                 <label>Tahun lulus SMP</label>
@@ -298,7 +299,7 @@
                                                     <strong class="text-danger small">Tahun lulus SMP tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input onkeypress="return this.value.length < 4;" oninput="if(this.value.length>=4) { this.value = this.value.slice(0,4); }" type="number" name="pendidikan[l_smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_smp : old('pendidikan[l_smp]') }}">
+                                                <input @error('pendidikan.l_smp') autofocus @enderror onkeypress="return this.value.length < 4;" oninput="if(this.value.length>=4) { this.value = this.value.slice(0,4); }" type="number" name="pendidikan[l_smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_smp : old('pendidikan.l_smp') }}">
                                             </div>
                                             <div class="col-lg-4 col-6 col-md-3">
                                                 <label>Kab/Kota Lulus SMP</label>
@@ -307,18 +308,18 @@
                                                     <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="pendidikan[kab_smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_smp : old('pendidikan[kab_smp]') }}">
+                                                <input type="text" @error('pendidikan.kab_smp') autofocus @enderror name="pendidikan[kab_smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_smp : old('pendidikan.kab_smp') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm">
                                                 <label>SMA</label>
-                                                @error('pendidikan.sma]')
+                                                @error('pendidikan.sma')
                                                 <div>
                                                     <strong class="text-danger small">SMA tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="pendidikan[sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sma : old('pendidikan[sma]') }}">
+                                                <input type="text" @error('pendidikan.sma') autofocus @enderror name="pendidikan[sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sma : Auth::guard('calon')->user()->nama_sekolah }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Jurusan</label>
@@ -327,7 +328,7 @@
                                                     <strong class="text-danger small">Jurusan tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="pendidikan[jur]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->jur : old('pendidikan[jur]') }}">
+                                                <input type="text" name="pendidikan[jur]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->jur :  Auth::guard('calon')->user()->jur }}">
                                             </div>
                                             <div class="col-lg-3 col-6 col-md-3">
                                                 <label>Kab/Kota Lulus SMA</label>
@@ -336,7 +337,7 @@
                                                     <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="pendidikan[kab_sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sma : old('pendidikan[kab_sma]') }}">
+                                                <input type="text" @error('pendidikan.kab_sma') autofocus @enderror name="pendidikan[kab_sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sma : old('pendidikan[kab_sma]') }}">
                                             </div>
                                             <div class="col-sm-2">
                                                 <label>Tahun lulus SMA</label>
@@ -347,13 +348,19 @@
                                                 @enderror
                                                 <select name="pendidikan[l_sma]" class="form-select" id="lulus">
                                                     @if ($pendidikan==null)
-                                                        <option selected></option>
-                                                        <option value="2019">2019</option>
-                                                        <option value="2020"> >2019</option>
+                                                    <option {{ old('pendidikan.l_sma')=='0'?'selected':'' }} value="0"></option>
+                                                    <option {{ old('pendidikan.l_sma')=='2017'?'selected':'' }} value="2017">2017</option>
+                                                    <option {{ old('pendidikan.l_sma')=='2018'?'selected':'' }} value="2018">2018</option>
+                                                    <option {{ old('pendidikan.l_sma')=='2019'?'selected':'' }} value="2019">2019</option>
+                                                    <option {{ old('pendidikan.l_sma')=='2020'?'selected':'' }} value="2020">2020</option>
+                                                    <option {{ old('pendidikan.l_sma')=='2021'?'selected':'' }} value="2021"> 2021</option>
                                                     @else
-                                                        <option></option>
+                                                        <option value="0"></option>
+                                                        <option {{ $pendidikan->l_sma==2017?'selected':'' }} value="2017">2017</option>
+                                                        <option {{ $pendidikan->l_sma==2018?'selected':'' }} value="2018">2018</option>
                                                         <option {{ $pendidikan->l_sma==2019?'selected':'' }} value="2019">2019</option>
-                                                        <option {{ $pendidikan->l_sma==2020?'selected':'' }} value="2020"> >2019</option>
+                                                        <option {{ $pendidikan->l_sma==2020?'selected':'' }} value="2020">2020</option>
+                                                        <option {{ $pendidikan->l_sma==2021?'selected':'' }} value="2021"> 2021</option>
                                                     @endif
                                                 </select>
                                             </div>
@@ -380,7 +387,7 @@
                                                     <strong class="text-danger small">Nama Ayah tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="wali[ayah]" class="form-control" value="{{ $wali!=null?$wali->ayah : old('wali[ayah]') }}">
+                                                <input type="text" name="wali[ayah]" class="form-control" value="{{ $wali!=null?$wali->ayah : Auth::guard('calon')->user()->ortu1 }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Kerja ayah</label>
@@ -389,7 +396,7 @@
                                                     <strong class="text-danger small">Kerja Ayah tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="wali[a_kerja]" class="form-control" value="{{ $wali!=null?$wali->a_kerja : old('wali[a_kerja]') }}">
+                                                <input type="text" name="wali[a_kerja]" class="form-control" value="{{ $wali!=null?$wali->a_kerja :  Auth::guard('calon')->user()->kerja }}">
                                             </div>
                                             <div class="col-lg col-3">
                                                 <label>Ayah seorang TNI AD</label><br>
@@ -404,15 +411,15 @@
                                         <div class="form-group row" id="jab_a">
                                             <div class="col-lg col-6">
                                                 <label>Pangkat ayah</label>
-                                                <input type="text" name="wali[a_pkt]" class="form-control" value="{{ $wali!=null?$wali->a_pkt : old('wali[a_pkt]') }}">
+                                                <input type="text" name="wali[a_pkt]" class="form-control" value="{{ $wali!=null?$wali->a_pkt : old('wali.a_pkt') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Jabatan ayah</label>
-                                                <input type="text" name="wali[a_jab]" class="form-control" value="{{ $wali!=null?$wali->a_jab : old('wali[a_jab]') }}">
+                                                <input type="text" name="wali[a_jab]" class="form-control" value="{{ $wali!=null?$wali->a_jab : old('wali.a_jab') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Satuan</label>
-                                                <input type="text" name="wali[a_sat]" class="form-control" value="{{ $wali!=null?$wali->a_sat : old('wali[a_sat]') }}">
+                                                <input type="text" name="wali[a_sat]" class="form-control" value="{{ $wali!=null?$wali->a_sat : old('wali.a_sat') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -423,16 +430,16 @@
                                                     <strong class="text-danger small">Nama Ibu tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="wali[ibu]" class="form-control" value="{{ $wali!=null?$wali->ibu : old('wali[ibu]') }}">
+                                                <input type="text" name="wali[ibu]" class="form-control" value="{{ $wali!=null?$wali->ibu : old('wali.ibu') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Kerja ibu</label>
                                                 @error('wali.i_kerja')
                                                 <div>
-                                                    <strong class="text-danger small">Kerja Ayah tidak boleh kosong</strong>
+                                                    <strong class="text-danger small">Kerja Ibu tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="wali[i_kerja]" class="form-control" value="{{ $wali!=null?$wali->i_kerja : old('wali[i_kerja]') }}">
+                                                <input type="text" name="wali[i_kerja]" class="form-control" value="{{ $wali!=null?$wali->i_kerja : old('wali.i_kerja') }}">
                                             </div>
                                             <div class="col-lg col-3">
                                                 <label>Ibu seorang TNI AD</label><br>
@@ -447,36 +454,36 @@
                                         <div class="form-group row" id="jab_i">
                                             <div class="col-lg col-6">
                                                 <label>Pangkat ibu</label>
-                                                <input type="text" name="wali[i_pkt]" class="form-control" value="{{ $wali!=null?$wali->i_pkt : old('wali[i_pkt]') }}">
+                                                <input type="text" name="wali[i_pkt]" class="form-control" value="{{ $wali!=null?$wali->i_pkt : old('wali.i_pkt') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Jabatan ibu</label>
-                                                <input type="text" name="wali[i_jab]" class="form-control" value="{{ $wali!=null?$wali->i_jab : old('wali[i_jab]') }}">
+                                                <input type="text" name="wali[i_jab]" class="form-control" value="{{ $wali!=null?$wali->i_jab : old('wali.i_jab') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Satuan</label>
-                                                <input type="text" name="wali[i_sat]" class="form-control" value="{{ $wali!=null?$wali->i_sat : old('wali[i_sat]') }}">
+                                                <input type="text" name="wali[i_sat]" class="form-control" value="{{ $wali!=null?$wali->i_sat : old('wali.i_sat') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label>Telphone orang tua</label>
-                                                <input type="number" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="wali[o_telp]" class="form-control" value="{{ $wali!=null?$wali->o_telp : old('wali[o_telp]') }}">
+                                                <input type="number" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="wali[o_telp]" class="form-control" value="{{ $wali!=null?$wali->o_telp : old('wali.o_telp') }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Alamat orang tua</label>
-                                                <input type="text" name="wali[o_alamat]" class="form-control" value="{{ $wali!=null?$wali->o_alamat : old('wali[o_alamat]') }}">
+                                                <input type="text" name="wali[o_alamat]" class="form-control" value="{{ $wali!=null?$wali->o_alamat : Auth::guard('calon')->user()->alamat_o }}">
                                             </div>
                                         </div>
                                         <h2>Tiri/wali/Perwalian/Numpang Alamat</h2>
                                         <div class="form-group row">
                                             <div class="col-lg col-6">
                                                 <label>Nama ayah</label>
-                                                <input type="text" name="wali[wali_ayah]" class="form-control" value="{{ $wali!=null?$wali->wali_ayah : old('wali[wali_ayah]') }}">
+                                                <input type="text" name="wali[wali_ayah]" class="form-control" value="{{ $wali!=null?$wali->wali_ayah : old('wali.wali_ayah') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Kerja ayah</label>
-                                                <input type="text" name="wali[wa_kerja]" class="form-control" value="{{ $wali!=null?$wali->wa_kerja : old('wali[wa_kerja]') }}">
+                                                <input type="text" name="wali[wa_kerja]" class="form-control" value="{{ $wali!=null?$wali->wa_kerja : old('wali.wa_kerja') }}">
                                             </div>
                                             <div class="col-lg col-3">
                                                 <label>Wali ayah seorang TNI AD</label><br>
@@ -491,25 +498,25 @@
                                         <div class="form-group row" id="jab_wa">
                                             <div class="col-lg col-6">
                                                 <label>Pangkat ayah</label>
-                                                <input type="text" name="wali[wa_pkt]" class="form-control" value="{{ $wali!=null?$wali->wa_pkt : old('wali[wa_pkt]') }}">
+                                                <input type="text" name="wali[wa_pkt]" class="form-control" value="{{ $wali!=null?$wali->wa_pkt : old('wali.wa_pkt') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Jabatan ayah</label>
-                                                <input type="text" name="wali[wa_jab]" class="form-control" value="{{ $wali!=null?$wali->wa_jab : old('wali[wa_jab]') }}">
+                                                <input type="text" name="wali[wa_jab]" class="form-control" value="{{ $wali!=null?$wali->wa_jab : old('wali.wa_jab') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Satuan</label>
-                                                <input type="text" name="wali[wa_sat]" class="form-control" value="{{ $wali!=null?$wali->wa_sat : old('wali[wa_sat]') }}">
+                                                <input type="text" name="wali[wa_sat]" class="form-control" value="{{ $wali!=null?$wali->wa_sat : old('wali.wa_sat') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-lg col-6">
                                                 <label>Nama ibu</label>
-                                                <input type="text" name="wali[wali_ibu]" class="form-control" value="{{ $wali!=null?$wali->wali_ibu : old('wali[wali_ibu]') }}">
+                                                <input type="text" name="wali[wali_ibu]" class="form-control" value="{{ $wali!=null?$wali->wali_ibu : old('wali.wali_ibu') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Kerja ibu</label>
-                                                <input type="text" name="wali[wi_kerja]" class="form-control" value="{{ $wali!=null?$wali->wi_kerja : old('wali[wi_kerja]') }}">
+                                                <input type="text" name="wali[wi_kerja]" class="form-control" value="{{ $wali!=null?$wali->wi_kerja : old('wali.wi_kerja') }}">
                                             </div>
                                             <div class="col-lg col-3">
                                                 <label>Wali Ibu seorang TNI AD</label><br>
@@ -524,25 +531,25 @@
                                         <div class="form-group row" id="jab_wi">
                                             <div class="col-lg col-6">
                                                 <label>Pangkat ibu</label>
-                                                <input type="text" name="wali[wi_pkt]" class="form-control" value="{{ $wali!=null?$wali->wi_pkt : old('wali[wi_pkt]') }}">
+                                                <input type="text" name="wali[wi_pkt]" class="form-control" value="{{ $wali!=null?$wali->wi_pkt : old('wali.wi_pkt') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Jabatan ibu</label>
-                                                <input type="text" name="wali[wi_jab]" class="form-control" value="{{ $wali!=null?$wali->wi_jab : old('wali[wi_jab]') }}">
+                                                <input type="text" name="wali[wi_jab]" class="form-control" value="{{ $wali!=null?$wali->wi_jab : old('wali.wi_jab') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Satuan</label>
-                                                <input type="text" name="wali[wi_sat]" class="form-control" value="{{ $wali!=null?$wali->wi_sat : old('wali[wi_sat]') }}">
+                                                <input type="text" name="wali[wi_sat]" class="form-control" value="{{ $wali!=null?$wali->wi_sat : old('wali.wi_sat') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label>Telphone wali</label>
-                                                <input type="text" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="wali[w_telp]" class="form-control" value="{{ $wali!=null?$wali->w_telp : old('wali[w_telp]') }}">
+                                                <input type="text" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="wali[w_telp]" class="form-control" value="{{ $wali!=null?$wali->w_telp : old('wali.w_telp') }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Alamat wali</label>
-                                                <input type="text" name="wali[w_alamat]" class="form-control" value="{{ $wali!=null?$wali->w_alamat : old('wali[w_alamat]') }}">
+                                                <input type="text" name="wali[w_alamat]" class="form-control" value="{{ $wali!=null?$wali->w_alamat : old('wali.w_alamat') }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Hubungan wali</label>
@@ -554,11 +561,11 @@
                                                         <option {{ $wali->status_wali==3?'selected':'' }} value="3">Perwalian</option>
                                                         <option {{ $wali->status_wali==4?'selected':'' }} value="4">Numpang alamat</option>
                                                     @else
-                                                        <option value="0"></option>
-                                                        <option value="1">Wali</option>
-                                                        <option value="2">Tiri</option>
-                                                        <option value="3">Perwalian</option>
-                                                        <option value="4">Numpang alamat</option>
+                                                        <option {{ old('wali.status_wali')=='0'?'selected':'' }} value="0"></option>
+                                                        <option {{ old('wali.status_wali')=='1'?'selected':'' }} value="1">Wali</option>
+                                                        <option {{ old('wali.status_wali')=='2'?'selected':'' }} value="2">Tiri</option>
+                                                        <option {{ old('wali.status_wali')=='3'?'selected':'' }} value="3">Perwalian</option>
+                                                        <option {{ old('wali.status_wali')=='4'?'selected':'' }} value="4">Numpang alamat</option>
                                                     @endif
                                                 </select>
                                             </div>
@@ -588,18 +595,37 @@
     </div>
     @if ($pendidikan==null)
         <script>
-            $('#tg-HMKiy').hide();
-            $('#2019').hide();
+            var val = {!! json_encode(old('pendidikan.l_sma')) !!}
+            if (val==null) {
+                $('#tg-HMKiy').hide();
+                $('#2019').hide();
+            }else{
+                val = parseInt(val);
+                if (val<=2019) {
+                    $('#tg-HMKiy').hide();
+                    $('#2019').show();
+                } else if(val>=2020) {
+                    $('#2019').hide();
+                    $('#tg-HMKiy').show();
+                }else{
+                    $('#tg-HMKiy').hide();
+                    $('#2019').hide();
+                }
+            }
         </script>
     @else
         <script>
             var val = {!! json_encode($pendidikan->l_sma) !!}
-            if (val=='2019') {
+            val = parseInt(val);
+            if (val<=2019) {
                 $('#tg-HMKiy').hide();
                 $('#2019').show();
-            } else if('2020') {
+            } else if(val>=2020) {
                 $('#2019').hide();
                 $('#tg-HMKiy').show();
+            }else{
+                $('#tg-HMKiy').hide();
+                $('#2019').hide();
             }
         </script>
     @endif
@@ -612,13 +638,17 @@
             $('#tg-HMKiy').hide();
             $('#2019').hide();
             var val = $(this).val();
-            console.log(val);
-            if (val=='2019') {
+            val = parseInt(val);
+            if (val<=2019 && val>0) {
                 $('#tg-HMKiy').hide();
                 $('#2019').show();
-            } else if('2020') {
+            } else if(val>=2020) {
                 $('#2019').hide();
                 $('#tg-HMKiy').show();
+            }else{
+                console.log('nil');
+                $('#tg-HMKiy').hide();
+                $('#2019').hide();
             }
         });
 

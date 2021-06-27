@@ -14,12 +14,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center mt-5">
-                    <h1>REKRUTMEN TNI ANGKATAN DARAT</h1>
-                    <h1>TNI AD</h1>
+                    <h1>{{ $data->heading_1 }}</h1>
+                    <h1>{{ $data->heading_2 }}</h1>
                 </div>
             </div>
             <div class="row align-items-center">
-                <div class="col-sm-12 col-lg-8 mt-5 text-center">
+                <div class="col-sm-12 col-lg-8 text-center">
                     <!-- Slider main container -->
                     <div class="swiper-container">
                         <!-- Additional required wrapper -->
@@ -94,20 +94,17 @@
                         <div class="swiper-button-next"></div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-sm-12 justify-content-center">
-                    <h3 class="mt-3">Selamat Datang di Website Rekrutmen Calon Prajurit TNI</h3>
-                    <p>Dalam rangka pemenuhan tenaga ahli pada organisasi TNI, Angkatan Darat TNI membuka kesempatan kepada pemuda-pemuda terbaik seluruh Indonesia untuk menjadi calon Tamtama, Bintara, dan Taruna Akademi Militer TNI AD.</p>
-                    <p>Langkah-langkah dalam melakukan pendaftaran sebagai berikut:</p>
-                    <ol>
-                        <li>Login pada aplikasi. <a href="{{ route('login') }}">Click here</a></li>
-                        <li>Masuk ke menu formulir.</li>
-                        <li>Isi data pemeriksaan administrasi calon taruna akmil.</li>
-                    </ol>
-                    @if (Auth::check())
-                        <a href="{{ route('home') }}" class="btn btn-dark mt-3 mb-5 text-light btn-rounded w-100">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="btn btn-dark mt-3 mb-5 text-light btn-rounded w-100">Login</a>
-                    @endif
+                <div class="col-lg-4 col-sm-12 mt-2 justify-content-center text-white content">
+                    <div class="card">
+                        <div class="card-body">
+                            {!! $data->content !!}
+                            @if (Auth::check())
+                                <a href="{{ route('home') }}" class="btn btn-dark text-light btn-rounded w-100">Dashboard</a>
+                            @else
+                                <a href="{{ route('login') }}" class="btn btn-dark text-light btn-rounded w-100">Login</a>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

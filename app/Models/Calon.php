@@ -21,6 +21,9 @@ class Calon extends Model
         'u_hri',
         'u_bln',
         'u_thn',
+        'l_hri',
+        'l_bln',
+        'l_thn',
         'umr',
         'ket_umr',
         'dik',
@@ -38,6 +41,10 @@ class Calon extends Model
         'aspek_tl',
         'prestasi_provinsi',
         'prestasi_nasional',
+        'tb',
+        'bb',
+        'tindik',
+        'tatto',
     ];
 
     public function pendidikan()

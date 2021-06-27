@@ -7,6 +7,7 @@ use App\Imports\PokokImport;
 use App\Models\Calon;
 use App\Models\Pendidikan;
 use App\Models\Pokok;
+use App\Models\Setting;
 use App\Models\User;
 use App\Models\Visitor;
 use App\Models\Wali;
@@ -90,6 +91,18 @@ class HomeController extends Controller
             array_push($calon,$item->id);
         };
         return Excel::download(new CalonExport($calon), 'calon.xlsx');
+    }
+
+    public function setting()
+    {
+        $data =  Setting::find(1);
+        return view('admin.setting',compact('data'));
+    }
+
+    public function settingUpdate(Request $request)
+    {
+        Setting::find(1)->update($request->all());
+        return back()->with('success','Data berhasil diupdate!');
     }
 
 }

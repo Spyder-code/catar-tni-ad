@@ -15,7 +15,7 @@ class CreateT2019STable extends Migration
     {
         Schema::create('tlulus2019', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('calon_id')->constrained('calon');
+            $table->foreignId('calon_id')->constrained('calon')->cascadeOnDelete()->cascadeOnUpdate();
             $table->string('ind',10)->nullable();
             $table->string('ing',10)->nullable();
             $table->string('mtk',10)->nullable();

@@ -573,8 +573,8 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                         <tbody>
                             <tr>
                                 <td width="15px"></td>
-                                <td></td>
-                                <td width="280px"></td>
+                                <td width="120px"></td>
+                                <td width="170px"></td>
                                 <td width="20px"></td>
                                 <td width="200px"></td>
                                 <td width="60px"></td>
@@ -583,26 +583,26 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                             </tr>
                             <tr>
                                 <td>1.</td>
-                                <td colspan="7">Nama Orang Tua Kandung</td>
+                                <td>Nama Orang Tua Kandung</td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>a.</td>
-                                <td>Ayah</td>
+                                <td>a. Ayah</td>
+                                <td></td>
                                 <td>:</td>
                                 <td colspan="4">{{ $wali->ayah }}</td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>b.</td>
-                                <td>Ibu</td>
+                                <td>b. Ibu</td>
+                                <td></td>
                                 <td>:</td>
                                 <td colspan="4">{{ $wali->ibu }}</td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>c.</td>
-                                <td>Pekerjaan</td>
+                                <td>c. Pekerjaan</td>
+                                <td></td>
                                 <td></td>
                                 <td></td>
                                 <td></td>
@@ -651,15 +651,15 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>d.</td>
-                                <td>Alamat</td>
+                                <td>d. Alamat</td>
+                                <td></td>
                                 <td>:</td>
                                 <td colspan="4">{{ $wali->o_alamat }}</td>
                             </tr>
                             <tr>
                                 <td></td>
-                                <td>e.</td>
-                                <td>Telephone/HP</td>
+                                <td>e. Telephone/HP</td>
+                                <td></td>
                                 <td>:</td>
                                 <td colspan="4">{{ $wali->o_telp }}</td>
                             </tr>

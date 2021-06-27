@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Calon;
 use App\Models\Pendidikan;
+use App\Models\Setting;
 use App\Models\T2020;
 use App\Models\T2019;
 use App\Models\Wali;
@@ -24,20 +25,21 @@ class CalonController extends Controller
     {
         $no = Auth::guard('calon')->user()->no_online;
         $calon = Calon::where('no_online',$no)->first();
+        $dik = Setting::find(1)->dik;
         if($calon!=null){
             $pendidikan = Pendidikan::where('calon_id',$calon->id)->first();
             $wali = Wali::where('calon_id',$calon->id)->first();
             $nilai = T2020::where('calon_id',$calon->id)->first();
             $nilai2019 = T2019::where('calon_id',$calon->id)->first();
             $status = 1;
-            return view('calon.formulir',compact('calon','pendidikan','wali','status','nilai','nilai2019'));
+            return view('calon.formulir',compact('calon','dik','pendidikan','wali','status','nilai','nilai2019'));
         }else{
             $pendidikan = null;
             $wali = null;
             $nilai = null;
             $nilai2019 = null;
             $status = 0;
-            return view('calon.formulir',compact('calon','pendidikan','wali','status','nilai','nilai2019'));
+            return view('calon.formulir',compact('calon','dik','pendidikan','wali','status','nilai','nilai2019'));
         }
     }
 
@@ -70,15 +72,28 @@ class CalonController extends Controller
         ]);
 
         if ($request->status==0) {
-            $calon = Calon::create($request->calon);
+            $day = date('d', strtotime($request->calon['tgl_lahir']));
+            $month = date('m', strtotime($request->calon['tgl_lahir']));
+            $year = date('Y', strtotime($request->calon['tgl_lahir']));
+            $c = array_merge($request->calon,[
+                'l_hri'=>$day,
+                'l_bln'=>$month,
+                'l_thn'=>$year,
+            ]);
+            $calon = Calon::create($c);
             $pendidikan = array_merge($request->pendidikan,['calon_id'=>$calon->id]);
             $wali = array_merge($request->wali,['calon_id'=>$calon->id]);
             $nilai = array_merge($request->nilai,['calon_id'=>$calon->id]);
             $nilai2019 = array_merge($request->nilai2019,['calon_id'=>$calon->id]);
-            Pendidikan::create($pendidikan);
+            $pen = Pendidikan::create($pendidikan);
             $a = Wali::create($wali);
-            T2020::create($nilai);
-            T2019::create($nilai2019);
+            $thnLulus = intval($pen->l_sma);
+            if ($thnLulus<=2019) {
+                T2019::create($nilai2019);
+            } else {
+                T2020::create($nilai);
+            }
+
             if ($a->status_wali==1) {
                 $status = 'Wali';
             } else if($a->status_wali==2) {
@@ -94,15 +109,28 @@ class CalonController extends Controller
             Wali::find($a->id)->update(['hub_calon_wali'=>$status]);
 
         }else{
-            $calon = Calon::find($request->calon_id)->update($request->calon);
+            $day = date('d', strtotime($request->calon['tgl_lahir']));
+            $month = date('m', strtotime($request->calon['tgl_lahir']));
+            $year = date('Y', strtotime($request->calon['tgl_lahir']));
+            $c = array_merge($request->calon,[
+                'l_hri'=>$day,
+                'l_bln'=>$month,
+                'l_thn'=>$year,
+            ]);
+            $calon = Calon::find($request->calon_id)->update($c);
             $pendidikan = array_merge($request->pendidikan,['calon_id'=>$request->calon_id]);
             $wali = array_merge($request->wali,['calon_id'=>$request->calon_id]);
             $nilai = array_merge($request->nilai,['calon_id'=>$request->calon_id]);
             $nilai2019 = array_merge($request->nilai2019,['calon_id'=>$request->calon_id]);
             Pendidikan::where('calon_id',$request->calon_id)->update($pendidikan);
             Wali::where('calon_id',$request->calon_id)->update($wali);
-            T2020::where('calon_id',$request->calon_id)->update($nilai);
-            T2019::where('calon_id',$request->calon_id)->update($nilai2019);
+            $pen = Pendidikan::where('calon_id',$request->calon_id)->first();
+            $thnLulus = intval($pen->l_sma);
+            if ($thnLulus<=2019) {
+                T2019::where('calon_id',$request->calon_id)->update($nilai2019);
+            } else {
+                T2020::where('calon_id',$request->calon_id)->update($nilai);
+            }
             Calon::find($request->calon_id)->update(['updated_at'=> Carbon::now()]);
             if ($request->wali['status_wali']==1) {
                 $status = 'Wali';

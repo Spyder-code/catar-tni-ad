@@ -3,10 +3,20 @@
     <tr>
         <td>id_calon</td>
         <td>no_online</td>
+        <td>KTP</td>
         <td>nama</td>
         <td>agama</td>
         <td>tem_lahir</td>
         <td>tgl_lahir</td>
+        <td>u_hri</td>
+        <td>u_bln</td>
+        <td>u_thn</td>
+        <td>l_hri</td>
+        <td>l_bln</td>
+        <td>l_thn</td>
+        <td>umr</td>
+        <td>ket_umr</td>
+        <td>dik</td>
         <td>suku</td>
         <td>alamat</td>
         <td>rt</td>
@@ -180,10 +190,20 @@
         <tr>
             <td>{{ $item->id}}</td>
             <td>{{ $item->no_online}}</td>
+            <td>{{ $item->ktp}}</td>
             <td>{{ $item->nama}}</td>
             <td>{{ $item->agama}}</td>
             <td>{{ $item->tem_lahir}}</td>
             <td>{{ $item->tgl_lahir}}</td>
+            <td>{{ $item->u_hri}}</td>
+            <td>{{ $item->u_bln}}</td>
+            <td>{{ $item->u_thn}}</td>
+            <td>{{ $item->l_hri}}</td>
+            <td>{{ $item->l_bln}}</td>
+            <td>{{ $item->l_thn}}</td>
+            <td>{{ $item->umr}}</td>
+            <td>{{ $item->ket_umr}}</td>
+            <td>{{ $item->dik}}</td>
             <td>{{ $item->suku}}</td>
             <td>{{ $item->alamat}}</td>
             <td>{{ $item->rt}}</td>
@@ -232,6 +252,7 @@
             <td>{{ $item->wali->w_alamat}}</td>
             <td>{{ $item->wali->status_wali}}</td>
             <td>{{ $item->wali->hub_calon_wali}}</td>
+            @if ($item->t2020!=null)
             <td>{{ $item->t2020->bipeng1}}</td>
             <td>{{ $item->t2020->biket1}}</td>
             <td>{{ $item->t2020->bigpeng1}}</td>
@@ -338,6 +359,12 @@
             <td>{{ $item->t2020->rata_kls2}}</td>
             <td>{{ $item->t2020->rata_kls3}}</td>
             <td>{{ $item->t2020->rata_akhir}}</td>
+            @else
+                @for ($i = 0; $i < 104; $i++)
+                    <td></td>
+                @endfor
+            @endif
+            @if ($item->t2019!=null)
             <td>{{ $item->t2019->ind }}</td>
             <td>{{ $item->t2019->ing }}</td>
             <td>{{ $item->t2019->mtk }}</td>
@@ -348,8 +375,13 @@
             <td>{{ $item->t2019->geo }}</td>
             <td>{{ $item->t2019->eko }}</td>
             <td>{{ $item->t2019->kom }}</td>
-            <td>{{ $item->t2019-> }}</td>
-            <td>{{ $item->t2019-> }}</td>
+            <td>{{ $item->t2019->lain }}</td>
+            <td>{{ $item->t2019->rata }}</td>
+            @else
+                @for ($i = 0; $i < 12; $i++)
+                    <td></td>
+                @endfor
+            @endif
         </tr>
     @endforeach
     </tbody>
