@@ -29,13 +29,17 @@
         <td>telp</td>
         <td>daftar_ke</td>
         <td>aspek_tl</td>
+        <td>prestasi provinsi</td>
+        <td>prestasi nasional</td>
         <td>sd</td>
         <td>l_sd</td>
+        <td>kab_sd</td>
         <td>smp</td>
         <td>l_smp</td>
+        <td>kab_smp</td>
         <td>sma</td>
-        <td>nama_sma</td>
         <td>l_sma</td>
+        <td>kab_sma</td>
         <td>jur</td>
         <td>jumlah_nuan</td>
         <td>rata</td>
@@ -216,13 +220,17 @@
             <td>{{ $item->telp}}</td>
             <td>{{ $item->daftar_ke}}</td>
             <td>{{ $item->aspek_tl}}</td>
+            <td>{{ $item->prestasi_provinsi}}</td>
+            <td>{{ $item->prestasi_nasional}}</td>
             <td>{{ $item->pendidikan->sd}}</td>
             <td>{{ $item->pendidikan->l_sd}}</td>
+            <td>{{ $item->pendidikan->kab_sd}}</td>
             <td>{{ $item->pendidikan->smp}}</td>
             <td>{{ $item->pendidikan->l_smp}}</td>
+            <td>{{ $item->pendidikan->kab_smp}}</td>
             <td>{{ $item->pendidikan->sma}}</td>
-            <td>{{ $item->pendidikan->nama_sma}}</td>
             <td>{{ $item->pendidikan->l_sma}}</td>
+            <td>{{ $item->pendidikan->kab_sma}}</td>
             <td>{{ $item->pendidikan->jur}}</td>
             <td>{{ $item->pendidikan->jumlah_nuan}}</td>
             <td>{{ $item->pendidikan->rata}}</td>

@@ -80,7 +80,7 @@ class HomeController extends Controller
 
     public function export(Request $request)
     {
-        return Excel::download(new CalonExport($request->calon), 'calon.xlsx');
+        return Excel::download(new CalonExport($request->calon), 'calon.csv');
     }
 
     public function exportAll()
@@ -90,7 +90,7 @@ class HomeController extends Controller
         foreach ($data as $item ) {
             array_push($calon,$item->id);
         };
-        return Excel::download(new CalonExport($calon), 'calon.xlsx');
+        return Excel::download(new CalonExport($calon), 'calon.csv');
     }
 
     public function setting()
