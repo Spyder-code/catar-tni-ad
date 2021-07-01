@@ -16,18 +16,18 @@ class CreateT2019STable extends Migration
         Schema::create('tlulus2019', function (Blueprint $table) {
             $table->id();
             $table->foreignId('calon_id')->constrained('calon')->cascadeOnDelete()->cascadeOnUpdate();
-            $table->integer('ind')->nullable();
-            $table->integer('ing')->nullable();
-            $table->integer('mtk')->nullable();
-            $table->integer('fis')->nullable();
-            $table->integer('kim')->nullable();
-            $table->integer('bio')->nullable();
-            $table->integer('sos')->nullable();
-            $table->integer('geo')->nullable();
-            $table->integer('eko')->nullable();
-            $table->integer('kom')->nullable();
-            $table->integer('lain')->nullable();
-            $table->integer('rata')->nullable();
+            $table->string('ind',11)->nullable();
+            $table->string('ing',11)->nullable();
+            $table->string('mtk',11)->nullable();
+            $table->string('fis',11)->nullable();
+            $table->string('kim',11)->nullable();
+            $table->string('bio',11)->nullable();
+            $table->string('sos',11)->nullable();
+            $table->string('geo',11)->nullable();
+            $table->string('eko',11)->nullable();
+            $table->string('kom',11)->nullable();
+            $table->string('lain',11)->nullable();
+            $table->string('rata',11)->nullable();
             $table->timestamps();
         });
     }

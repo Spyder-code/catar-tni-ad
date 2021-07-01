@@ -18,7 +18,7 @@ class CreateSettingsTable extends Migration
             $table->string('heading_1');
             $table->string('heading_2');
             $table->string('content');
-            $table->string('dik');
+            $table->date('dik');
             $table->timestamps();
         });
     }

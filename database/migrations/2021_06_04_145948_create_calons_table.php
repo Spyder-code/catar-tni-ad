@@ -21,12 +21,12 @@ class CreateCalonsTable extends Migration
             $table->string('agama')->nullable();
             $table->string('tem_lahir')->nullable();
             $table->string('tgl_lahir')->nullable();
-            $table->integer('l_hri')->nullable();
-            $table->integer('l_bln')->nullable();
-            $table->integer('l_thn')->nullable();
-            $table->integer('u_hri')->nullable();
-            $table->integer('u_bln')->nullable();
-            $table->integer('u_thn')->nullable();
+            $table->string('l_hri',11)->nullable();
+            $table->string('l_bln',11)->nullable();
+            $table->string('l_thn',11)->nullable();
+            $table->string('u_hri',11)->nullable();
+            $table->string('u_bln',11)->nullable();
+            $table->string('u_thn',11)->nullable();
             $table->string('ket_umr')->nullable();
             $table->string('umr')->nullable();
             $table->date('dik')->nullable();

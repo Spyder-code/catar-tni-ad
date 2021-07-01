@@ -80,7 +80,11 @@ class HomeController extends Controller
 
     public function export(Request $request)
     {
-        return Excel::download(new CalonExport($request->calon), 'calon.csv');
+        if ($request->calon==null) {
+            return back()->with('danger','Harap pilih data terlebih dahulu');
+        }else{
+            return Excel::download(new CalonExport($request->calon), 'calon.csv');
+        }
     }
 
     public function exportAll()

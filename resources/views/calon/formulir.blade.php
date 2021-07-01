@@ -61,9 +61,6 @@
                     <form action="{{ route('calon.form.store') }}" method="post">
                         @csrf
                         <input type="hidden" name="status" value="{{ $status }}">
-                        <input type="hidden" name="calon[u_hri]" id="u_hri" value="{{ $calon!=null?$calon->u_hri:'' }}">
-                        <input type="hidden" name="calon[u_bln]" id="u_bln" value="{{ $calon!=null?$calon->u_bln:'' }}">
-                        <input type="hidden" name="calon[u_thn]" id="u_thn" value="{{ $calon!=null?$calon->u_thn:'' }}">
                         <input type="hidden" name="calon_id" value="{{ $calon!=null?$calon->id:0 }}">
                         <div class="accordion" id="accordionPanelsStayOpenExample">
                             <div class="accordion-item">
@@ -131,6 +128,18 @@
                                             <div class="col-sm">
                                                 <label>Umur</label>
                                                 <input type="text" value="{{ $calon!=null?$calon->umr :old('calon.umr') }}" id="umr" name="calon[umr]" readonly class="form-control" >
+                                            </div>
+                                            <div class="col-1">
+                                                <label>Hari</label>
+                                                <input type="text" readonly value="{{ $calon!=null?$calon->u_hri :''}}" id="u_hri" name="calon[u_hri]" class="form-control" >
+                                            </div>
+                                            <div class="col-1">
+                                                <label>Bulan</label>
+                                                <input type="text" readonly value="{{ $calon!=null?$calon->u_bln :''}}" id="u_bln" name="calon[u_bln]" class="form-control" >
+                                            </div>
+                                            <div class="col-1">
+                                                <label>Tahun</label>
+                                                <input type="text" readonly value="{{ $calon!=null?$calon->u_thn :''}}" id="u_thn" name="calon[u_thn]" class="form-control" >
                                             </div>
                                             <div class="col-sm">
                                                 <label>Keterangan Umur</label>
@@ -355,12 +364,14 @@
                                                     <option {{ old('pendidikan.l_sma')=='2020'?'selected':'' }} value="2020">2020</option>
                                                     <option {{ old('pendidikan.l_sma')=='2021'?'selected':'' }} value="2021"> 2021</option>
                                                     @else
-                                                        <option value="0"></option>
+                                                        @if ($pendidikan->l_sma<=2019)
                                                         <option {{ $pendidikan->l_sma==2017?'selected':'' }} value="2017">2017</option>
                                                         <option {{ $pendidikan->l_sma==2018?'selected':'' }} value="2018">2018</option>
                                                         <option {{ $pendidikan->l_sma==2019?'selected':'' }} value="2019">2019</option>
+                                                        @else
                                                         <option {{ $pendidikan->l_sma==2020?'selected':'' }} value="2020">2020</option>
                                                         <option {{ $pendidikan->l_sma==2021?'selected':'' }} value="2021"> 2021</option>
+                                                        @endif                                                        
                                                     @endif
                                                 </select>
                                             </div>
@@ -660,6 +671,7 @@
             var date = result[1];
             var a = ageValidation(date);
             $('#ket-umr').val(a);
+            console.log(date.years);
             $('#u_thn').val(date.years);
             $('#u_bln').val(date.months);
             $('#u_hri').val(date.days);
