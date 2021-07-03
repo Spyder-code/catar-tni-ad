@@ -131,15 +131,15 @@
                                             </div>
                                             <div class="col-1">
                                                 <label>Hari</label>
-                                                <input type="text" readonly value="{{ $calon!=null?$calon->u_hri :''}}" id="u_hri" name="calon[u_hri]" class="form-control" >
+                                                <input type="text" readonly value="{{ $calon!=null?$calon->u_hri :old('calon.u_hri')}}" id="u_hri" name="calon[u_hri]" class="form-control" >
                                             </div>
                                             <div class="col-1">
                                                 <label>Bulan</label>
-                                                <input type="text" readonly value="{{ $calon!=null?$calon->u_bln :''}}" id="u_bln" name="calon[u_bln]" class="form-control" >
+                                                <input type="text" readonly value="{{ $calon!=null?$calon->u_bln :old('calon.u_bln')}}" id="u_bln" name="calon[u_bln]" class="form-control" >
                                             </div>
                                             <div class="col-1">
                                                 <label>Tahun</label>
-                                                <input type="text" readonly value="{{ $calon!=null?$calon->u_thn :''}}" id="u_thn" name="calon[u_thn]" class="form-control" >
+                                                <input type="text" readonly value="{{ $calon!=null?$calon->u_thn :old('calon.u_thn')}}" id="u_thn" name="calon[u_thn]" class="form-control" >
                                             </div>
                                             <div class="col-sm">
                                                 <label>Keterangan Umur</label>
@@ -346,7 +346,7 @@
                                                     <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" @error('pendidikan.kab_sma') autofocus @enderror name="pendidikan[kab_sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sma : old('pendidikan[kab_sma]') }}">
+                                                <input type="text" @error('pendidikan.kab_sma') autofocus @enderror name="pendidikan[kab_sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sma : old('pendidikan.kab_sma') }}">
                                             </div>
                                             <div class="col-sm-2">
                                                 <label>Tahun lulus SMA</label>

@@ -43,7 +43,9 @@ Route::get('/pokok', [App\Http\Controllers\HomeController::class, 'pokok'])->nam
 Route::get('/setting', [App\Http\Controllers\HomeController::class, 'setting'])->name('setting');
 Route::get('/calon', [App\Http\Controllers\HomeController::class, 'calon'])->name('calon');
 Route::post('/calon/export', [App\Http\Controllers\HomeController::class, 'export'])->name('calon.export');
-Route::post('/calon/exportAll', [App\Http\Controllers\HomeController::class, 'exportAll'])->name('calon.exportAll');
+Route::post('/calon/data/exportAll', [App\Http\Controllers\HomeController::class, 'exportAll'])->name('calon.exportAll');
+Route::post('/calon/data/export', [App\Http\Controllers\HomeController::class, 'exportDataSelect'])->name('calon.data.export');
+Route::post('/calon/exportAll', [App\Http\Controllers\HomeController::class, 'exportDataAll'])->name('calon.data.exportAll');
 Route::post('/login-calon', [App\Http\Controllers\Auth\LoginController::class, 'loginCalon'])->name('login.calon');
 Route::post('/calon/logout', [App\Http\Controllers\CalonController::class, 'logout'])->name('logout.calon');
 Route::post('/pokok', [App\Http\Controllers\HomeController::class, 'importExcelPokok'])->name('pokok.import');

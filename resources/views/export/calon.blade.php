@@ -368,7 +368,7 @@
             <td>{{ $item->t2020->rata_kls3}}</td>
             <td>{{ $item->t2020->rata_akhir}}</td>
             @else
-                @for ($i = 0; $i < 104; $i++)
+                @for ($i = 0; $i < 106; $i++)
                     <td></td>
                 @endfor
             @endif

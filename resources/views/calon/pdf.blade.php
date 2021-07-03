@@ -434,7 +434,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                                 <td class="data__profile" width="15px">2</td>
                                 <td class="data__profile">Nama Lengkap (Sesuai Akte)</td>
                                 <td class="data__profile">:</td>
-                                <td class="data__profile" colspan="2">{{ $calon->nama }}</td>
+                                <td class="data__profile" colspan="2">{{ stripslashes($calon->nama) }}</td>
                             </tr>
                             <tr>
                                 <td class="data__profile" width="15px">3</td>
@@ -590,14 +590,14 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                                 <td>a. Ayah</td>
                                 <td></td>
                                 <td>:</td>
-                                <td colspan="4">{{ $wali->ayah }}</td>
+                                <td colspan="4">{{ stripslashes($wali->ayah) }}</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>b. Ibu</td>
                                 <td></td>
                                 <td>:</td>
-                                <td colspan="4">{{ $wali->ibu }}</td>
+                                <td colspan="4">{{ stripslashes($wali->ibu) }}</td>
                             </tr>
                             <tr>
                                 <td></td>
@@ -634,7 +634,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                                 <td></td>
                                 <td>2) Ibu</td>
                                 <td>:</td>
-                                <td>{{ $wali->ibu }}</td>
+                                <td>{{ $wali->i_kerja }}</td>
                                 <td>Pangkat</td>
                                 <td>:</td>
                                 <td>{{ $wali->i_pkt }}</td>
@@ -693,14 +693,14 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                                 <td>a.</td>
                                 <td>Wali Ayah</td>
                                 <td>:</td>
-                                <td colspan="4">{{ $wali->wali_ayah }}</td>
+                                <td colspan="4">{{ stripslashes($wali->wali_ayah) }}</td>
                             </tr>
                             <tr>
                                 <td></td>
                                 <td>b.</td>
                                 <td>Wali Ibu</td>
                                 <td>:</td>
-                                <td colspan="4">{{ $wali->wali_ibu }}</td>
+                                <td colspan="4">{{ stripslashes($wali->wali_ibu) }}</td>
                             </tr>
                             <tr>
                                 <td></td>

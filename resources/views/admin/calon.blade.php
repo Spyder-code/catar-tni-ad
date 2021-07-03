@@ -40,6 +40,7 @@
                                 <thead>
                                     <tr>
                                         <th class="border-top-0">#</th>
+                                        <th class="border-top-0">ID</th>
                                         <th class="border-top-0">No online</th>
                                         <th class="border-top-0">Nama</th>
                                         <th class="border-top-0">Tanggal lahir</th>
@@ -51,6 +52,7 @@
                                     @foreach ($data as $item)
                                     <tr>
                                         <td><input type="checkbox" name="calon[]" value="{{ $item->id }}" style="height: 20px; width:20px" class="form-check"></td>
+                                        <td class="txt-oflo">{{ $item->id }}</td>
                                         <td class="txt-oflo">{{ $item->no_online }}</td>
                                         <td>{{ $item->nama }}</td>
                                         <td class="txt-oflo">{{ date('d F Y', strtotime($item->tgl_lahir)) }}</td>
@@ -60,12 +62,22 @@
                                     @endforeach
                                 </tbody>
                             </table>
-                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-primary"><i class="fas fa-download"></i> Export select data</button>
+                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-primary"><i class="fas fa-download"></i> Export select data CSV</button>
                         </form>
-                        <form action="{{ route('calon.exportAll') }}" method="post">
-                            @csrf
-                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-success mt-2"><i class="fas fa-download"></i> Export all data</button>
-                        </form>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <form action="{{ route('calon.exportAll') }}" method="post">
+                                @csrf
+                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-success mt-2"><i class="fas fa-download"></i> Export all data CSV</button>
+                            </form>
+                        </div>
+                        <div class="col">
+                            <form action="{{ route('calon.data.exportAll') }}" method="post">
+                                @csrf
+                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-success mt-2"><i class="fas fa-download"></i> Export all data XLSX</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

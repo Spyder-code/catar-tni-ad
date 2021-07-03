@@ -105,9 +105,19 @@ class CalonController extends Controller
             }else{
                 $status = '';
             }
-
-            Wali::find($a->id)->update(['hub_calon_wali'=>$status]);
-
+            $namaCalon = addslashes($calon->nama);
+            $namaAyah = addslashes($a->ayah);
+            $namaIbu = addslashes($a->ibu);
+            $waliAyah = addslashes($a->wali_ayah);
+            $waliIbu = addslashes($a->wali_ibu);
+            Wali::find($a->id)->update([
+                'hub_calon_wali'=>$status,
+                'ayah' => $namaAyah,
+                'ibu' => $namaIbu,
+                'wali_ayah' => $waliAyah,
+                'wali_ibu' => $waliIbu
+            ]);
+            Calon::find($calon->id)->update(['nama'=>$namaCalon]);
         }else{
             $day = date('d', strtotime($request->calon['tgl_lahir']));
             $month = date('m', strtotime($request->calon['tgl_lahir']));
@@ -143,8 +153,19 @@ class CalonController extends Controller
             }else{
                 $status = '';
             }
-
-            Wali::where('calon_id',$request->calon_id)->update(['hub_calon_wali'=>$status]);
+            $namaCalon = addslashes($request->calon['nama']);
+            $namaAyah = addslashes($request->wali['ayah']);
+            $namaIbu = addslashes($request->wali['ibu']);
+            $waliAyah = addslashes($request->wali['wali_ayah']);
+            $waliIbu = addslashes($request->wali['wali_ibu']);
+            Wali::where('calon_id',$request->calon_id)->update([
+                'hub_calon_wali'=>$status,
+                'ayah' => $namaAyah,
+                'ibu' => $namaIbu,
+                'wali_ayah' => $waliAyah,
+                'wali_ibu' => $waliIbu
+            ]);
+            Calon::where('id',$request->calon_id)->update(['nama'=>$namaCalon]);
         }
 
         return redirect()->route('calon.pdf');

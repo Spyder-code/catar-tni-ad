@@ -97,6 +97,25 @@ class HomeController extends Controller
         return Excel::download(new CalonExport($calon), 'calon.csv');
     }
 
+    public function exportDataAll()
+    {
+        $data = Calon::all();
+        $calon = array();
+        foreach ($data as $item ) {
+            array_push($calon,$item->id);
+        };
+        return Excel::download(new CalonExport($calon), 'calon.xlsx');
+    }
+
+    public function exportDataSelect(Request $request)
+    {
+        if ($request->calon==null) {
+            return back()->with('danger','Harap pilih data terlebih dahulu');
+        }else{
+            return Excel::download(new CalonExport($request->calon), 'calon.xlsx');
+        }
+    }
+
     public function setting()
     {
         $data =  Setting::find(1);
