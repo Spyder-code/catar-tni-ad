@@ -14,6 +14,7 @@ use App\Models\Wali;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -50,6 +51,20 @@ class HomeController extends Controller
     {
         $data = Calon::all()->sortByDesc('updated_at');
         return view('admin.calon', compact('data'));
+    }
+
+    public function calonDestroy(Request $request)
+    {
+        Calon::destroy($request->id);
+        return back()->with('success', 'Calon dengan ID '.$request->id).' berhasil dihapus!';
+    }
+
+    public function calonDestroyAll()
+    {
+        Schema::disableForeignKeyConstraints();
+        Calon::truncate();
+        Schema::enableForeignKeyConstraints();
+        return back()->with('success', 'Data berhasil dihapus!');
     }
 
     public function pokok()

@@ -42,6 +42,8 @@ Route::get('/main', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/pokok', [App\Http\Controllers\HomeController::class, 'pokok'])->name('pokok');
 Route::get('/setting', [App\Http\Controllers\HomeController::class, 'setting'])->name('setting');
 Route::get('/calon', [App\Http\Controllers\HomeController::class, 'calon'])->name('calon');
+Route::post('/calon/destroyAll', [App\Http\Controllers\HomeController::class, 'calonDestroyAll'])->name('calon.deleteAll');
+Route::delete('/calon/destroy', [App\Http\Controllers\HomeController::class, 'calonDestroy'])->name('calon.destroy');
 Route::post('/calon/export', [App\Http\Controllers\HomeController::class, 'export'])->name('calon.export');
 Route::post('/calon/data/exportAll', [App\Http\Controllers\HomeController::class, 'exportAll'])->name('calon.exportAll');
 Route::post('/calon/data/export', [App\Http\Controllers\HomeController::class, 'exportDataSelect'])->name('calon.data.export');

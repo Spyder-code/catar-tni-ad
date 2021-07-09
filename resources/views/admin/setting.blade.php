@@ -29,6 +29,10 @@
                         <table style="width: 100%">
                             <thead>
                                 <tr>
+                                    <td width="10%">Pendaftaran :</td>
+                                    <td width="70%"><input type="text" value="{{ $data->pendaftaran }}" name="pendaftaran" class="form-control"></td>
+                                </tr>
+                                <tr>
                                     <td width="10%">Heading 1 :</td>
                                     <td width="70%"><input type="text" value="{{ $data->heading_1 }}" name="heading_1" class="form-control"></td>
                                 </tr>

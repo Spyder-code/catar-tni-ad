@@ -182,7 +182,8 @@ class CalonController extends Controller
             $wali = Wali::where('calon_id',$calon->id)->first();
             $nilai = T2020::where('calon_id',$calon->id)->first();
             $data = ['Wali','Tiri','Perwalian','Numpang alamat'];
-            return view('calon.pdf',compact('pendidikan','wali','nilai','calon','data'));
+            $setting = Setting::find(1);
+            return view('calon.pdf',compact('pendidikan','setting','wali','nilai','calon','data'));
         }
 
     }

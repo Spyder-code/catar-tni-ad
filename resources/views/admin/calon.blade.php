@@ -36,6 +36,7 @@
                     <div class="table-responsive">
                         <form action="{{ route('calon.export') }}" method="post">
                             @csrf
+                            @method('POST')
                             <table class="table no-wrap" id="myTable">
                                 <thead>
                                     <tr>
@@ -46,6 +47,7 @@
                                         <th class="border-top-0">Tanggal lahir</th>
                                         <th class="border-top-0">Tempat lahir</th>
                                         <th class="border-top-0">Tanggal daftar</th>
+                                        <th class="border-top-0">Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -58,6 +60,9 @@
                                         <td class="txt-oflo">{{ date('d F Y', strtotime($item->tgl_lahir)) }}</td>
                                         <td>{{ $item->tem_lahir }}</td>
                                         <td class="txt-oflo">{{ date('d F Y', strtotime($item->updated_at)) }}</td>
+                                        <td>
+                                            <button type="button" id="btnDelete" onclick="deleteCalon({{ $item->id }})" class="btn btn-danger">Hapus</button>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -70,6 +75,10 @@
                             <form action="{{ route('calon.exportAll') }}" method="post">
                                 @csrf
                                 <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-success mt-2"><i class="fas fa-download"></i> Export all data CSV</button>
+                            </form>
+                            <form action="{{ route('calon.deleteAll') }}" method="post">
+                                @csrf
+                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger mt-2"><i class="fas fa-trash"></i> Delete All data</button>
                             </form>
                         </div>
                         <div class="col">
@@ -87,8 +96,27 @@
 
 @section('script')
     <script>
+        function deleteCalon(id) {
+            $.ajaxSetup({
+            headers: {
+                    'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            const url = {!! json_encode(route('calon.destroy')) !!};
+            $.ajax({
+            type: 'DELETE',
+            url: url,
+            data: {id:id},
+            success: function (data) {
+                    location.reload()
+                }
+            });
+        }
         $(document).ready( function () {
             $('#myTable').DataTable();
+            
+            
         });
     </script>
 @endsection

@@ -420,7 +420,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                         <p style="text-align:center; position: absolute;">KOMANDO DAERAH MILITER V/BRAWIJAYA <br>PANITIA DAERAH</p>
                         <div style="height: 1px; background-color:black; width:350px; top:80px; position:absolute"></div>
                     </div>
-                    <h4 style="text-align: center;  top:100px; position:relative; ">DATA PEMERIKSAAN ADMINISTRASI <br> CALON TARUNA AKMIL TA 2020</h4>
+                    <h4 style="text-align: center;  top:100px; position:relative; ">DATA PEMERIKSAAN ADMINISTRASI <br> {{ $setting->pendaftaran }}</h4>
                     <p style="text-align: left;  top:100px; position:relative; ">A. DATA PRIBADI CALON</p>
                     <table style="border: none; position:relative; top:90px; margin-left: 20px;">
                         <thead>

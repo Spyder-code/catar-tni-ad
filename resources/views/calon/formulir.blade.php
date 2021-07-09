@@ -79,7 +79,7 @@
                                                         <strong class="text-danger small">Nomor Online tidak boleh kosong</strong>
                                                     </div>
                                                 @enderror
-                                                <input @error('calon.no_online') autofocus @enderror type="text" name="calon[no_online]" class="form-control" value="{{ $calon!=null?$calon->no_online : Auth::guard('calon')->user()->no_online }}">
+                                                <input @error('calon.no_online') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[no_online]" class="form-control" value="{{ $calon!=null?$calon->no_online : Auth::guard('calon')->user()->no_online }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Nama</label>
@@ -88,7 +88,7 @@
                                                         <strong class="text-danger small">Nama tidak boleh kosong</strong>
                                                     </div>
                                                 @enderror
-                                                <input @error('calon.nama') autofocus @enderror type="text" name="calon[nama]" class="form-control" value="{{ $calon!=null?$calon->nama : Auth::guard('calon')->user()->nama }}">
+                                                <input @error('calon.nama') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[nama]" class="form-control" value="{{ $calon!=null?$calon->nama : Auth::guard('calon')->user()->nama }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>No KTP</label>
@@ -108,7 +108,7 @@
                                                         <strong class="text-danger small">Tempat lahir tidak boleh kosong</strong>
                                                     </div>
                                                 @enderror
-                                                <input @error('calon.tem_lahir') autofocus @enderror type="text" name="calon[tem_lahir]" class="form-control" value="{{ $calon!=null?$calon->tem_lahir : Auth::guard('calon')->user()->tem_lahir }}">
+                                                <input @error('calon.tem_lahir') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[tem_lahir]" class="form-control" value="{{ $calon!=null?$calon->tem_lahir : Auth::guard('calon')->user()->tem_lahir }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Tanggal lahir</label>
@@ -127,23 +127,23 @@
                                         <div class="form-group row">
                                             <div class="col-sm">
                                                 <label>Umur</label>
-                                                <input type="text" value="{{ $calon!=null?$calon->umr :old('calon.umr') }}" id="umr" name="calon[umr]" readonly class="form-control" >
+                                                <input type="text" style="text-transform: uppercase" value="{{ $calon!=null?$calon->umr :old('calon.umr') }}" id="umr" name="calon[umr]" readonly class="form-control" >
                                             </div>
                                             <div class="col-1">
                                                 <label>Hari</label>
-                                                <input type="text" readonly value="{{ $calon!=null?$calon->u_hri :old('calon.u_hri')}}" id="u_hri" name="calon[u_hri]" class="form-control" >
+                                                <input type="text" style="text-transform: uppercase" readonly value="{{ $calon!=null?$calon->u_hri :old('calon.u_hri')}}" id="u_hri" name="calon[u_hri]" class="form-control" >
                                             </div>
                                             <div class="col-1">
                                                 <label>Bulan</label>
-                                                <input type="text" readonly value="{{ $calon!=null?$calon->u_bln :old('calon.u_bln')}}" id="u_bln" name="calon[u_bln]" class="form-control" >
+                                                <input type="text" style="text-transform: uppercase" readonly value="{{ $calon!=null?$calon->u_bln :old('calon.u_bln')}}" id="u_bln" name="calon[u_bln]" class="form-control" >
                                             </div>
                                             <div class="col-1">
                                                 <label>Tahun</label>
-                                                <input type="text" readonly value="{{ $calon!=null?$calon->u_thn :old('calon.u_thn')}}" id="u_thn" name="calon[u_thn]" class="form-control" >
+                                                <input type="text" style="text-transform: uppercase" readonly value="{{ $calon!=null?$calon->u_thn :old('calon.u_thn')}}" id="u_thn" name="calon[u_thn]" class="form-control" >
                                             </div>
                                             <div class="col-sm">
                                                 <label>Keterangan Umur</label>
-                                                <input type="text" value="{{ $calon!=null?$calon->ket_umr :old('calon.ket_umr') }}" id="ket-umr" name="calon[ket_umr]" readonly class="form-control" >
+                                                <input type="text" style="text-transform: uppercase" value="{{ $calon!=null?$calon->ket_umr :old('calon.ket_umr') }}" id="ket-umr" name="calon[ket_umr]" readonly class="form-control" >
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -154,7 +154,7 @@
                                                     <strong class="text-danger small">Suku tidak boleh kosong</strong>
                                                 </div>
                                             @enderror
-                                                <input @error('calon.suku') autofocus @enderror type="text" name="calon[suku]" class="form-control" value="{{ $calon!=null?$calon->suku : Auth::guard('calon')->user()->suku }}">
+                                                <input @error('calon.suku') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[suku]" class="form-control" value="{{ $calon!=null?$calon->suku : Auth::guard('calon')->user()->suku }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Agama</label>
@@ -163,18 +163,18 @@
                                                     <strong class="text-danger small">Agama tidak boleh kosong</strong>
                                                 </div>
                                             @enderror
-                                                <input @error('calon.agama') autofocus @enderror type="text" name="calon[agama]" class="form-control" value="{{ $calon!=null?$calon->agama : Auth::guard('calon')->user()->agama }}">
+                                                <input @error('calon.agama') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[agama]" class="form-control" value="{{ $calon!=null?$calon->agama : Auth::guard('calon')->user()->agama }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-8">
-                                                <label>Alamat</label>
+                                                <label>Jalan</label>
                                                 @error('calon.alamat')
                                                 <div>
-                                                    <strong class="text-danger small">Alamat tidak boleh kosong</strong>
+                                                    <strong class="text-danger small">Jalan tidak boleh kosong</strong>
                                                 </div>
                                             @enderror
-                                                <input @error('calon.alamat') autofocus @enderror type="text" name="calon[alamat]" class="form-control" value="{{ $calon!=null?$calon->alamat : Auth::guard('calon')->user()->alamat_c }}">
+                                                <input @error('calon.alamat') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[alamat]" class="form-control" value="{{ $calon!=null?$calon->alamat : old('calon.alamat')}}">
                                             </div>
                                             <div class="col">
                                                 <label>RT</label>
@@ -188,19 +188,19 @@
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>No rumah</label>
-                                                <input type="text" name="calon[no]" class="form-control" value="{{ $calon!=null?$calon->no :old('calon.no') }}">
+                                                <input type="text" style="text-transform: uppercase" name="calon[no]" class="form-control" value="{{ $calon!=null?$calon->no :old('calon.no') }}">
                                             </div>
                                             <div class="col">
                                                 <label>Dusun</label>
-                                                <input type="text" name="calon[dsn]" class="form-control" value="{{ $calon!=null?$calon->dsn :old('calon.dsn') }}">
+                                                <input type="text" style="text-transform: uppercase" name="calon[dsn]" class="form-control" value="{{ $calon!=null?$calon->dsn :old('calon.dsn') }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Desa</label>
-                                                <input type="text" name="calon[ds]" class="form-control" value="{{ $calon!=null?$calon->ds :old('calon.ds') }}">
+                                                <input type="text" style="text-transform: uppercase" name="calon[ds]" class="form-control" value="{{ $calon!=null?$calon->ds :old('calon.ds') }}">
                                             </div>
                                             <div class="col">
                                                 <label>Kecamatan</label>
-                                                <input type="text" name="calon[kec]" class="form-control" value="{{ $calon!=null?$calon->kec :old('calon.kec') }}">
+                                                <input type="text" style="text-transform: uppercase" name="calon[kec]" class="form-control" value="{{ $calon!=null?$calon->kec :old('calon.kec') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -209,22 +209,22 @@
                                                 @if ($calon==null)
                                                 <select name="calon[kab]" class="form-select">
                                                     <option {{ old('calon.kab')==''?'selected':'' }} value=""></option>
-                                                    <option {{ old('calon.kab')=='Mojokerto'?'selected':'' }} value="Mojokerto">Mojokerto</option>
-                                                    <option {{ old('calon.kab')=='Jombang'?'selected':'' }} value="Jombang">Jombang</option>
-                                                    <option {{ old('calon.kab')=='Kediri'?'selected':'' }} value="Kediri">Kediri</option>
-                                                    <option {{ old('calon.kab')=='Lamongan'?'selected':'' }} value="Lamongan">Lamongan</option>
-                                                    <option {{ old('calon.kab')=='Tuban'?'selected':'' }} value="Tuban">Tuban</option>
-                                                    <option {{ old('calon.kab')=='Bojonegoro'?'selected':'' }} value="Bojonegoro">Bojonegoro</option>
+                                                    <option {{ old('calon.kab')=='MOJOKERTO'?'selected':'' }} value="Mojokerto">Mojokerto</option>
+                                                    <option {{ old('calon.kab')=='JOMBANG'?'selected':'' }} value="Jombang">Jombang</option>
+                                                    <option {{ old('calon.kab')=='KEDIRI'?'selected':'' }} value="Kediri">Kediri</option>
+                                                    <option {{ old('calon.kab')=='LAMONGAN'?'selected':'' }} value="Lamongan">Lamongan</option>
+                                                    <option {{ old('calon.kab')=='TUBAN'?'selected':'' }} value="Tuban">Tuban</option>
+                                                    <option {{ old('calon.kab')=='BOJONEGORO'?'selected':'' }} value="Bojonegoro">Bojonegoro</option>
                                                 </select>
                                                 @else
                                                 <select name="calon[kab]" class="form-select">
                                                     <option value=""></option>
-                                                    <option {{ $calon->kab=='Mojokerto'?'selected':'' }} value="Mojokerto">Mojokerto</option>
-                                                    <option {{ $calon->kab=='Jombang'?'selected':'' }} value="Jombang">Jombang</option>
-                                                    <option {{ $calon->kab=='Kediri'?'selected':'' }} value="Kediri">Kediri</option>
-                                                    <option {{ $calon->kab=='Lamongan'?'selected':'' }} value="Lamongan">Lamongan</option>
-                                                    <option {{ $calon->kab=='Tuban'?'selected':'' }} value="Tuban">Tuban</option>
-                                                    <option {{ $calon->kab=='Bojonegoro'?'selected':'' }} value="Bojonegoro">Bojonegoro</option>
+                                                    <option {{ $calon->kab=='MOJOKERTO'?'selected':'' }} value="Mojokerto">Mojokerto</option>
+                                                    <option {{ $calon->kab=='JOMBANG'?'selected':'' }} value="Jombang">Jombang</option>
+                                                    <option {{ $calon->kab=='KEDIRI'?'selected':'' }} value="Kediri">Kediri</option>
+                                                    <option {{ $calon->kab=='LAMONGAN'?'selected':'' }} value="Lamongan">Lamongan</option>
+                                                    <option {{ $calon->kab=='TUBAN'?'selected':'' }} value="Tuban">Tuban</option>
+                                                    <option {{ $calon->kab=='BOJONEGORO'?'selected':'' }} value="Bojonegoro">Bojonegoro</option>
                                                 </select>
                                                 @endif
                                             </div>
@@ -238,17 +238,17 @@
                                             </div>
                                             <div class="col-sm">
                                                 <label>Aspek tidak lulus</label>
-                                                <input type="text" name="calon[aspek_tl]" class="form-control" value="{{ $calon!=null?$calon->aspek_tl :old('calon.aspek_tl') }}">
+                                                <input type="text" style="text-transform: uppercase" name="calon[aspek_tl]" class="form-control" value="{{ $calon!=null?$calon->aspek_tl :old('calon.aspek_tl') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col">
                                                 <label>Prestasi tingkat provinsi</label>
-                                                <input type="text" name="calon[prestasi_provinsi]" class="form-control" value="{{ $calon!=null?$calon->prestasi_provinsi :old('calon.prestasi_provinsi') }}">
+                                                <input type="text" style="text-transform: uppercase" name="calon[prestasi_provinsi]" class="form-control" value="{{ $calon!=null?$calon->prestasi_provinsi :old('calon.prestasi_provinsi') }}">
                                             </div>
                                             <div class="col">
                                                 <label>Prestasi tingkat nasional/internasional</label>
-                                                <input type="text" name="calon[prestasi_nasional]" class="form-control" value="{{ $calon!=null?$calon->prestasi_nasional :old('calon.prestasi_nasional') }}">
+                                                <input type="text" style="text-transform: uppercase" name="calon[prestasi_nasional]" class="form-control" value="{{ $calon!=null?$calon->prestasi_nasional :old('calon.prestasi_nasional') }}">
                                             </div>
                                         </div>
                                     </div>
@@ -270,7 +270,7 @@
                                                     <strong class="text-danger small">SD tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" @error('pendidikan.sd') autofocus @enderror name="pendidikan[sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sd : old('pendidikan.sd') }}">
+                                                <input type="text" style="text-transform: uppercase" @error('pendidikan.sd') autofocus @enderror name="pendidikan[sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sd : old('pendidikan.sd') }}">
                                             </div>
                                             <div class="col-lg-4 col-6 col-md-3">
                                                 <label>Tahun lulus SD</label>
@@ -288,7 +288,7 @@
                                                     <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" @error('pendidikan.kab_sd') autofocus @enderror name="pendidikan[kab_sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sd : old('pendidikan.kab_sd') }}">
+                                                <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_sd') autofocus @enderror name="pendidikan[kab_sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sd : old('pendidikan.kab_sd') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -299,7 +299,7 @@
                                                     <strong class="text-danger small">SMP tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" @error('pendidikan.smp') autofocus @enderror name="pendidikan[smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->smp : old('pendidikan.smp') }}">
+                                                <input type="text" style="text-transform: uppercase" @error('pendidikan.smp') autofocus @enderror name="pendidikan[smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->smp : old('pendidikan.smp') }}">
                                             </div>
                                             <div class="col-lg-4 col-6 col-md-3">
                                                 <label>Tahun lulus SMP</label>
@@ -317,7 +317,7 @@
                                                     <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" @error('pendidikan.kab_smp') autofocus @enderror name="pendidikan[kab_smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_smp : old('pendidikan.kab_smp') }}">
+                                                <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_smp') autofocus @enderror name="pendidikan[kab_smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_smp : old('pendidikan.kab_smp') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -328,7 +328,7 @@
                                                     <strong class="text-danger small">SMA tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" @error('pendidikan.sma') autofocus @enderror name="pendidikan[sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sma : Auth::guard('calon')->user()->nama_sekolah }}">
+                                                <input type="text" style="text-transform: uppercase" @error('pendidikan.sma') autofocus @enderror name="pendidikan[sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sma : Auth::guard('calon')->user()->nama_sekolah }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Jurusan</label>
@@ -337,7 +337,7 @@
                                                     <strong class="text-danger small">Jurusan tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="pendidikan[jur]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->jur :  Auth::guard('calon')->user()->jur }}">
+                                                <input type="text" style="text-transform: uppercase" name="pendidikan[jur]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->jur :  Auth::guard('calon')->user()->jur }}">
                                             </div>
                                             <div class="col-lg-3 col-6 col-md-3">
                                                 <label>Kab/Kota Lulus SMA</label>
@@ -346,7 +346,7 @@
                                                     <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" @error('pendidikan.kab_sma') autofocus @enderror name="pendidikan[kab_sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sma : old('pendidikan.kab_sma') }}">
+                                                <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_sma') autofocus @enderror name="pendidikan[kab_sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sma : old('pendidikan.kab_sma') }}">
                                             </div>
                                             <div class="col-sm-2">
                                                 <label>Tahun lulus SMA</label>
@@ -398,7 +398,7 @@
                                                     <strong class="text-danger small">Nama Ayah tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="wali[ayah]" class="form-control" value="{{ $wali!=null?$wali->ayah : Auth::guard('calon')->user()->ortu1 }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[ayah]" class="form-control" value="{{ $wali!=null?$wali->ayah : Auth::guard('calon')->user()->ortu1 }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Kerja ayah</label>
@@ -407,7 +407,7 @@
                                                     <strong class="text-danger small">Kerja Ayah tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="wali[a_kerja]" class="form-control" value="{{ $wali!=null?$wali->a_kerja :  Auth::guard('calon')->user()->kerja }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[a_kerja]" class="form-control" value="{{ $wali!=null?$wali->a_kerja :  Auth::guard('calon')->user()->kerja }}">
                                             </div>
                                             <div class="col-lg col-3">
                                                 <label>Ayah seorang TNI AD</label><br>
@@ -422,15 +422,15 @@
                                         <div class="form-group row" id="jab_a">
                                             <div class="col-lg col-6">
                                                 <label>Pangkat ayah</label>
-                                                <input type="text" name="wali[a_pkt]" class="form-control" value="{{ $wali!=null?$wali->a_pkt : old('wali.a_pkt') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[a_pkt]" class="form-control" value="{{ $wali!=null?$wali->a_pkt : old('wali.a_pkt') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Jabatan ayah</label>
-                                                <input type="text" name="wali[a_jab]" class="form-control" value="{{ $wali!=null?$wali->a_jab : old('wali.a_jab') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[a_jab]" class="form-control" value="{{ $wali!=null?$wali->a_jab : old('wali.a_jab') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Satuan</label>
-                                                <input type="text" name="wali[a_sat]" class="form-control" value="{{ $wali!=null?$wali->a_sat : old('wali.a_sat') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[a_sat]" class="form-control" value="{{ $wali!=null?$wali->a_sat : old('wali.a_sat') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -441,7 +441,7 @@
                                                     <strong class="text-danger small">Nama Ibu tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="wali[ibu]" class="form-control" value="{{ $wali!=null?$wali->ibu : old('wali.ibu') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[ibu]" class="form-control" value="{{ $wali!=null?$wali->ibu : old('wali.ibu') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Kerja ibu</label>
@@ -450,7 +450,7 @@
                                                     <strong class="text-danger small">Kerja Ibu tidak boleh kosong</strong>
                                                 </div>
                                                 @enderror
-                                                <input type="text" name="wali[i_kerja]" class="form-control" value="{{ $wali!=null?$wali->i_kerja : old('wali.i_kerja') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[i_kerja]" class="form-control" value="{{ $wali!=null?$wali->i_kerja : old('wali.i_kerja') }}">
                                             </div>
                                             <div class="col-lg col-3">
                                                 <label>Ibu seorang TNI AD</label><br>
@@ -465,15 +465,15 @@
                                         <div class="form-group row" id="jab_i">
                                             <div class="col-lg col-6">
                                                 <label>Pangkat ibu</label>
-                                                <input type="text" name="wali[i_pkt]" class="form-control" value="{{ $wali!=null?$wali->i_pkt : old('wali.i_pkt') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[i_pkt]" class="form-control" value="{{ $wali!=null?$wali->i_pkt : old('wali.i_pkt') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Jabatan ibu</label>
-                                                <input type="text" name="wali[i_jab]" class="form-control" value="{{ $wali!=null?$wali->i_jab : old('wali.i_jab') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[i_jab]" class="form-control" value="{{ $wali!=null?$wali->i_jab : old('wali.i_jab') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Satuan</label>
-                                                <input type="text" name="wali[i_sat]" class="form-control" value="{{ $wali!=null?$wali->i_sat : old('wali.i_sat') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[i_sat]" class="form-control" value="{{ $wali!=null?$wali->i_sat : old('wali.i_sat') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
@@ -483,18 +483,18 @@
                                             </div>
                                             <div class="col-sm">
                                                 <label>Alamat orang tua</label>
-                                                <input type="text" name="wali[o_alamat]" class="form-control" value="{{ $wali!=null?$wali->o_alamat : Auth::guard('calon')->user()->alamat_o }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[o_alamat]" class="form-control" value="{{ $wali!=null?$wali->o_alamat : Auth::guard('calon')->user()->alamat_o }}">
                                             </div>
                                         </div>
                                         <h2>Tiri/wali/Perwalian/Numpang Alamat</h2>
                                         <div class="form-group row">
                                             <div class="col-lg col-6">
                                                 <label>Nama ayah</label>
-                                                <input type="text" name="wali[wali_ayah]" class="form-control" value="{{ $wali!=null?$wali->wali_ayah : old('wali.wali_ayah') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[wali_ayah]" class="form-control" value="{{ $wali!=null?$wali->wali_ayah : old('wali.wali_ayah') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Kerja ayah</label>
-                                                <input type="text" name="wali[wa_kerja]" class="form-control" value="{{ $wali!=null?$wali->wa_kerja : old('wali.wa_kerja') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[wa_kerja]" class="form-control" value="{{ $wali!=null?$wali->wa_kerja : old('wali.wa_kerja') }}">
                                             </div>
                                             <div class="col-lg col-3">
                                                 <label>Wali ayah seorang TNI AD</label><br>
@@ -509,25 +509,25 @@
                                         <div class="form-group row" id="jab_wa">
                                             <div class="col-lg col-6">
                                                 <label>Pangkat ayah</label>
-                                                <input type="text" name="wali[wa_pkt]" class="form-control" value="{{ $wali!=null?$wali->wa_pkt : old('wali.wa_pkt') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[wa_pkt]" class="form-control" value="{{ $wali!=null?$wali->wa_pkt : old('wali.wa_pkt') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Jabatan ayah</label>
-                                                <input type="text" name="wali[wa_jab]" class="form-control" value="{{ $wali!=null?$wali->wa_jab : old('wali.wa_jab') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[wa_jab]" class="form-control" value="{{ $wali!=null?$wali->wa_jab : old('wali.wa_jab') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Satuan</label>
-                                                <input type="text" name="wali[wa_sat]" class="form-control" value="{{ $wali!=null?$wali->wa_sat : old('wali.wa_sat') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[wa_sat]" class="form-control" value="{{ $wali!=null?$wali->wa_sat : old('wali.wa_sat') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-lg col-6">
                                                 <label>Nama ibu</label>
-                                                <input type="text" name="wali[wali_ibu]" class="form-control" value="{{ $wali!=null?$wali->wali_ibu : old('wali.wali_ibu') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[wali_ibu]" class="form-control" value="{{ $wali!=null?$wali->wali_ibu : old('wali.wali_ibu') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Kerja ibu</label>
-                                                <input type="text" name="wali[wi_kerja]" class="form-control" value="{{ $wali!=null?$wali->wi_kerja : old('wali.wi_kerja') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[wi_kerja]" class="form-control" value="{{ $wali!=null?$wali->wi_kerja : old('wali.wi_kerja') }}">
                                             </div>
                                             <div class="col-lg col-3">
                                                 <label>Wali Ibu seorang TNI AD</label><br>
@@ -542,25 +542,25 @@
                                         <div class="form-group row" id="jab_wi">
                                             <div class="col-lg col-6">
                                                 <label>Pangkat ibu</label>
-                                                <input type="text" name="wali[wi_pkt]" class="form-control" value="{{ $wali!=null?$wali->wi_pkt : old('wali.wi_pkt') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[wi_pkt]" class="form-control" value="{{ $wali!=null?$wali->wi_pkt : old('wali.wi_pkt') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Jabatan ibu</label>
-                                                <input type="text" name="wali[wi_jab]" class="form-control" value="{{ $wali!=null?$wali->wi_jab : old('wali.wi_jab') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[wi_jab]" class="form-control" value="{{ $wali!=null?$wali->wi_jab : old('wali.wi_jab') }}">
                                             </div>
                                             <div class="col-lg col-6">
                                                 <label>Satuan</label>
-                                                <input type="text" name="wali[wi_sat]" class="form-control" value="{{ $wali!=null?$wali->wi_sat : old('wali.wi_sat') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[wi_sat]" class="form-control" value="{{ $wali!=null?$wali->wi_sat : old('wali.wi_sat') }}">
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-4">
                                                 <label>Telphone wali</label>
-                                                <input type="text" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="wali[w_telp]" class="form-control" value="{{ $wali!=null?$wali->w_telp : old('wali.w_telp') }}">
+                                                <input type="text" style="text-transform: uppercase" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="wali[w_telp]" class="form-control" value="{{ $wali!=null?$wali->w_telp : old('wali.w_telp') }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Alamat wali</label>
-                                                <input type="text" name="wali[w_alamat]" class="form-control" value="{{ $wali!=null?$wali->w_alamat : old('wali.w_alamat') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[w_alamat]" class="form-control" value="{{ $wali!=null?$wali->w_alamat : old('wali.w_alamat') }}">
                                             </div>
                                             <div class="col-sm">
                                                 <label>Hubungan wali</label>
@@ -586,7 +586,7 @@
                                                     <option value=""></option>
                                                     <option value=""></option>
                                                 </select>
-                                                <input type="text" name="wali[hub_calon_wali]" class="form-control" value="{{ $wali!=null?$wali->hub_calon_wali : old('') }}">
+                                                <input type="text" style="text-transform: uppercase" name="wali[hub_calon_wali]" class="form-control" value="{{ $wali!=null?$wali->hub_calon_wali : old('') }}">
                                             </div> --}}
                                         </div>
                                     </div>
@@ -645,6 +645,10 @@
 @section('script')
 <script src="{{ asset('js/umur.js') }}"></script>
     <script>
+        $('input').focusout(function() {
+        // Uppercase-ize contents
+            this.value = this.value.toLocaleUpperCase();
+        });
         $('#lulus').change(function (e) {
             $('#tg-HMKiy').hide();
             $('#2019').hide();

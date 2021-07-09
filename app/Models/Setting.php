@@ -10,6 +10,7 @@ class Setting extends Model
     use HasFactory;
 
     protected $fillable = [
+        'pendaftaran',
         'heading_1',
         'heading_2',
         'content',

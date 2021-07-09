@@ -15,6 +15,7 @@ class SettingSeeder extends Seeder
     public function run()
     {
         Setting::create([
+            'pendaftaran' => 'CABA TA 2021',
             'heading_1' => 'Coba',
             'heading_2' => 'Coba',
             'content' => 'Coba',
