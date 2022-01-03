@@ -28,7 +28,7 @@
                             <div class="swiper-slide">
                                 <img src="{{ asset('images') }}/t_1.jpg" class="img-slide"/>
                             </div>
-                            <div class="swiper-slide">
+                            {{-- <div class="swiper-slide">
                                 <img src="{{ asset('images') }}/t_2.jpg" class="img-slide"/>
                             </div>
                             <div class="swiper-slide">
@@ -84,7 +84,7 @@
                             </div>
                             <div class="swiper-slide">
                                 <img src="{{ asset('images') }}/t_20.jpg" class="img-slide"/>
-                            </div>
+                            </div> --}}
                         </div>
                         <!-- If we need pagination -->
                         <div class="swiper-pagination"></div>
@@ -118,11 +118,12 @@
     <script>
         const swiper = new Swiper('.swiper-container', {
             // Optional parameters
-            loop: true,
+            // loop: true,
             autoplay:true,
             // If we need pagination
             pagination: {
                 el: '.swiper-pagination',
+                dynamicBullets: true,
             },
 
             // Navigation arrows
