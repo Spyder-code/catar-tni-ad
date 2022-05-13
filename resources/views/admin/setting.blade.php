@@ -58,7 +58,7 @@
     </div>
 @endsection
 
-@section('script')
+{{-- @section('script')
     <script>
         tinymce.init({
         selector: 'textarea',
@@ -66,4 +66,4 @@
         toolbar_mode: 'floating',
     });
     </script>
-@endsection
+@endsection --}}
