@@ -137,9 +137,9 @@ class HomeController extends Controller
         return view('admin.setting',compact('data'));
     }
 
-    public function settingUpdate(Request $request)
+    public function settingUpdate(Request $request, Setting $setting)
     {
-        Setting::find(1)->update($request->all());
+        $setting->update($request->all());
         return back()->with('success','Data berhasil diupdate!');
     }
 

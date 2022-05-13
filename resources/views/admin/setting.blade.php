@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="white-box">
-                    <form action="{{ route('setting.update') }}" method="post">
+                    <form action="{{ route('setting.update', $data) }}" method="post">
                         @method('PUT')
                         @csrf
                         <table style="width: 100%">
