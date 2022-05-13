@@ -148,7 +148,7 @@
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('setting') }}"
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('landing-page.edit',1) }}"
                                     aria-expanded="false">
                                     <i class="fa fa-cog" aria-hidden="true"></i>
                                     <span class="hide-menu">Setting</span>

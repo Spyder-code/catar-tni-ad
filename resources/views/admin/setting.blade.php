@@ -23,29 +23,30 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="white-box">
-                    <form action="{{ route('setting.update', $data) }}" method="POST">
+                    <form action="{{ route('landing-page.update', $landingPage) }}" method="POST">
                         @csrf
+                        @method('PUT')
                         <table style="width: 100%">
                             <thead>
                                 <tr>
                                     <td width="10%">Pendaftaran :</td>
-                                    <td width="70%"><input type="text" value="{{ $data->pendaftaran }}" name="pendaftaran" class="form-control"></td>
+                                    <td width="70%"><input type="text" value="{{ $landingPage->pendaftaran }}" name="pendaftaran" class="form-control"></td>
                                 </tr>
                                 <tr>
                                     <td width="10%">Heading 1 :</td>
-                                    <td width="70%"><input type="text" value="{{ $data->heading_1 }}" name="heading_1" class="form-control"></td>
+                                    <td width="70%"><input type="text" value="{{ $landingPage->heading_1 }}" name="heading_1" class="form-control"></td>
                                 </tr>
                                 <tr>
                                     <td>Heading 2 :</td>
-                                    <td><input type="text" value="{{ $data->heading_2 }}" name="heading_2" class="form-control"></td>
+                                    <td><input type="text" value="{{ $landingPage->heading_2 }}" name="heading_2" class="form-control"></td>
                                 </tr>
                                 <tr>
                                     <td>Content</td>
-                                    <td><textarea name="content" id="example" rows="20">{{ $data->content }}</textarea></td>
+                                    <td><textarea name="content" id="example" rows="20">{{ $landingPage->content }}</textarea></td>
                                 </tr>
                                 <tr>
                                     <td>DIK</td>
-                                    <td><input type="date" name="dik" value="{{ $data->dik }}" class="form-control"></td>
+                                    <td><input type="date" name="dik" value="{{ $landingPage->dik }}" class="form-control"></td>
                                 </tr>
                             </thead>
                         </table>

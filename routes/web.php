@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\LandingPageController;
 use App\Models\Calon;
+use App\Models\LandingPage;
 use App\Models\Pokok;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $data = Setting::find(1);
+    $data = LandingPage::find(1);
     return view('layouts.user', compact('data'));
 })->middleware('visitor');
 
@@ -40,7 +42,6 @@ Route::get('/calon/data-diri', [App\Http\Controllers\CalonController::class, 'pd
 Route::get('/calon/nilai', [App\Http\Controllers\CalonController::class, 'nilai'])->name('calon.nilai');
 Route::get('/main', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/pokok', [App\Http\Controllers\HomeController::class, 'pokok'])->name('pokok');
-Route::get('/pengaturan/home', [App\Http\Controllers\HomeController::class, 'setting'])->name('setting');
 Route::get('/calon', [App\Http\Controllers\HomeController::class, 'calon'])->name('calon');
 Route::post('/calon/destroyAll', [App\Http\Controllers\HomeController::class, 'calonDestroyAll'])->name('calon.deleteAll');
 Route::delete('/calon/destroy', [App\Http\Controllers\HomeController::class, 'calonDestroy'])->name('calon.destroy');
@@ -53,7 +54,7 @@ Route::post('/calon/logout', [App\Http\Controllers\CalonController::class, 'logo
 Route::post('/pokok', [App\Http\Controllers\HomeController::class, 'importExcelPokok'])->name('pokok.import');
 Route::post('/pokok/destroy', [App\Http\Controllers\HomeController::class, 'pokokDestroy'])->name('pokok.destroy');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
-Route::post('/update/pengaturan/{setting}', [App\Http\Controllers\HomeController::class, 'settingUpdate'])->name('setting.update');
 Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('profile.update');
 Route::put('/profile/password/{id}', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('profile.update.password');
 Route::put('/profile/image/{id}', [App\Http\Controllers\UserController::class, 'updateImage'])->name('profile.update.image');
+Route::resource('landing-page', LandingPageController::class)->only(['edit', 'update']);
