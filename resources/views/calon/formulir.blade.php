@@ -371,7 +371,7 @@
                                                         @else
                                                         <option {{ $pendidikan->l_sma==2020?'selected':'' }} value="2020">2020</option>
                                                         <option {{ $pendidikan->l_sma==2021?'selected':'' }} value="2021"> 2021</option>
-                                                        @endif                                                        
+                                                        @endif
                                                     @endif
                                                 </select>
                                             </div>
@@ -595,9 +595,9 @@
                         </div>
                         <div class="d-flex">
                             <button type="submit" class="mx-2 btn btn-success my-3"><i class="fas fa-save"></i> {{ $status==0?'Simpan':'Update' }} data</button>
-                            @if ($status==1)
+                            {{-- @if ($status==1)
                                 <a href="{{ route('calon.pdf') }}" class="mx-2 btn btn-info my-3"><i class="fas fa-save"></i> PDF</a>
-                            @endif
+                            @endif --}}
                         </div>
                     </form>
                 </div>
