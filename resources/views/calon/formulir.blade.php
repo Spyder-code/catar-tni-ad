@@ -363,6 +363,7 @@
                                                     <option {{ old('pendidikan.l_sma')=='2019'?'selected':'' }} value="2019">2019</option>
                                                     <option {{ old('pendidikan.l_sma')=='2020'?'selected':'' }} value="2020">2020</option>
                                                     <option {{ old('pendidikan.l_sma')=='2021'?'selected':'' }} value="2021"> 2021</option>
+                                                    <option {{ old('pendidikan.l_sma')=='2022'?'selected':'' }} value="2022"> 2022</option>
                                                     @else
                                                         @if ($pendidikan->l_sma<=2019)
                                                         <option {{ $pendidikan->l_sma==2017?'selected':'' }} value="2017">2017</option>
@@ -371,6 +372,7 @@
                                                         @else
                                                         <option {{ $pendidikan->l_sma==2020?'selected':'' }} value="2020">2020</option>
                                                         <option {{ $pendidikan->l_sma==2021?'selected':'' }} value="2021"> 2021</option>
+                                                        <option {{ $pendidikan->l_sma==2022?'selected':'' }} value="2022"> 2022</option>
                                                         @endif
                                                     @endif
                                                 </select>
