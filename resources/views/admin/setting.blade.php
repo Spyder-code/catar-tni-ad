@@ -23,8 +23,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="white-box">
-                    <form action="{{ route('setting.update', $data) }}" method="post">
-                        @method('PUT')
+                    <form action="{{ route('setting.update', $data) }}" method="POST">
                         @csrf
                         <table style="width: 100%">
                             <thead>
@@ -58,7 +57,7 @@
     </div>
 @endsection
 
-{{-- @section('script')
+@section('script')
     <script>
         tinymce.init({
         selector: 'textarea',
@@ -66,4 +65,4 @@
         toolbar_mode: 'floating',
     });
     </script>
-@endsection --}}
+@endsection

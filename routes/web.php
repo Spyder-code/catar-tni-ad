@@ -53,7 +53,7 @@ Route::post('/calon/logout', [App\Http\Controllers\CalonController::class, 'logo
 Route::post('/pokok', [App\Http\Controllers\HomeController::class, 'importExcelPokok'])->name('pokok.import');
 Route::post('/pokok/destroy', [App\Http\Controllers\HomeController::class, 'pokokDestroy'])->name('pokok.destroy');
 Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
-Route::put('/update/pengaturan/{setting}', [App\Http\Controllers\HomeController::class, 'settingUpdate'])->name('setting.update');
+Route::post('/update/pengaturan/{setting}', [App\Http\Controllers\HomeController::class, 'settingUpdate'])->name('setting.update');
 Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('profile.update');
 Route::put('/profile/password/{id}', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('profile.update.password');
 Route::put('/profile/image/{id}', [App\Http\Controllers\UserController::class, 'updateImage'])->name('profile.update.image');
