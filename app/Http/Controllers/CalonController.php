@@ -71,6 +71,11 @@ class CalonController extends Controller
             'wali.i_kerja' => 'required',
         ]);
 
+        $check = Calon::where('no_online',$request->calon['no_online'])->first();
+        if($check!=null){
+            return redirect()->back()->with('error','Silahkan refresh halaman ini');
+        }
+
         if ($request->status==0) {
             $day = date('d', strtotime($request->calon['tgl_lahir']));
             $month = date('m', strtotime($request->calon['tgl_lahir']));

@@ -8,6 +8,8 @@ use App\Models\Calon;
 use App\Models\Pendidikan;
 use App\Models\Pokok;
 use App\Models\Setting;
+use App\Models\T2019;
+use App\Models\T2020;
 use App\Models\User;
 use App\Models\Visitor;
 use App\Models\Wali;
@@ -63,6 +65,10 @@ class HomeController extends Controller
     {
         Schema::disableForeignKeyConstraints();
         Calon::truncate();
+        Wali::truncate();
+        Pendidikan::truncate();
+        T2019::truncate();
+        T2020::truncate();
         Schema::enableForeignKeyConstraints();
         return back()->with('success', 'Data berhasil dihapus!');
     }
