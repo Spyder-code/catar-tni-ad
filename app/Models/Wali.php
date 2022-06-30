@@ -13,6 +13,10 @@ class Wali extends Model
     protected $fillable = [
         'calon_id',
         'ayah',
+        'a_kakek',
+        'i_kakek',
+        'a_nenek',
+        'i_nenek',
         'a_kerja',
         'a_pkt',
         'a_jab',

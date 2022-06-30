@@ -55,6 +55,7 @@
     </div>
 </div>
 
+<script src="{{ asset('dashboard') }}/js/jquery.min.js"></script>
 <script>
     $('.input-nilai').on('keyup change',function (e) {
         var nilai = [];

@@ -14,6 +14,7 @@ class Calon extends Model
     protected $fillable = [
         'no_online',
         'ktp',
+        'no_kk',
         'nama',
         'agama',
         'tem_lahir',

@@ -203,6 +203,7 @@
     </table>
 </div>
 
+<script src="{{ asset('dashboard') }}/js/jquery.min.js"></script>
 <script>
     $(':input[type="number"]').on('keyup change',function (e) {
         var ind = []; var ing = [];  var mtk = []; var fis = []; var bio = []; var kim = []; var jmlh = [];
