@@ -5,6 +5,10 @@
     <li><a href="#" class="breadcrumb-item nav-link disabled">/ </a></li>
     <li><a href="#" class="breadcrumb-item active nav-link active"> Formulir</a></li>
 @endsection
+@section('style')
+    {{-- cdn flatpickr --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.5.0/flatpickr.min.css">
+@endsection
 @section('content')
 <style>
     label{
@@ -152,8 +156,39 @@
 @endsection
 
 @section('script')
+{{-- cdn flatpickr --}}
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="{{ asset('js/umur.js') }}"></script>
     <script>
+        // flatpickr init
+        flatpickr('#lhr', {
+            dateFormat: 'Y-m-d',
+            defaultDate: '{{ $calon!=null?$calon->tgl_lahir:old("calon.tgl_lahir") }}',
+            maxDate: 'today',
+            altFormat: 'd/m/Y',
+            // altInput: true,
+            maxDate: '2005-12-30',
+            minDate: '1999-01-01',
+            onChange: function(selectedDates, dateStr, instance) {
+                var lhr = selectedDates[0];
+                // var tgl_lahir = new Date(tgl);
+                // var tgl_sekarang = new Date();
+                // var umur = tgl_sekarang.getFullYear() - tgl_lahir.getFullYear();
+                // $('#umur').val(umur);
+                // var lhr = $(this).val();
+                var dik = $('#dik').val();
+                var result = ageCalculator(lhr,dik);
+                $('#umr').val(result[0]);
+                var date = result[1];
+                var a = ageValidation(date);
+                $('#ket-umr').val(a);
+                console.log(date.years);
+                $('#u_thn').val(date.years);
+                $('#u_bln').val(date.months);
+                $('#u_hri').val(date.days);
+            }
+        });
+
         $('input').focusout(function() {
         // Uppercase-ize contents
             this.value = this.value.toLocaleUpperCase();
@@ -176,19 +211,19 @@
             }
         });
 
-        $('#lhr').change(function (e) {
-            var lhr = $(this).val();
-            var dik = $('#dik').val();
-            var result = ageCalculator(lhr,dik);
-            $('#umr').val(result[0]);
-            var date = result[1];
-            var a = ageValidation(date);
-            $('#ket-umr').val(a);
-            console.log(date.years);
-            $('#u_thn').val(date.years);
-            $('#u_bln').val(date.months);
-            $('#u_hri').val(date.days);
-        });
+        // $('#lhr').change(function (e) {
+        //     var lhr = $(this).val();
+        //     var dik = $('#dik').val();
+        //     var result = ageCalculator(lhr,dik);
+        //     $('#umr').val(result[0]);
+        //     var date = result[1];
+        //     var a = ageValidation(date);
+        //     $('#ket-umr').val(a);
+        //     console.log(date.years);
+        //     $('#u_thn').val(date.years);
+        //     $('#u_bln').val(date.months);
+        //     $('#u_hri').val(date.days);
+        // });
 
         $('#jab_a').hide();
         $('#jab_i').hide();

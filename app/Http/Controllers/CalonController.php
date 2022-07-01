@@ -114,17 +114,17 @@ class CalonController extends Controller
                     T2019::create($nilai2019);
                     T2020::create($nilai);
                 }else{
-                    $nilai2019 = T2019::where('calon_id',$calon->id)->first();
-                    $nilai2019->update($nilai2019);
-                    $nilai = T2020::where('calon_id',$calon->id)->first();
-                    $nilai->update($nilai);
+                    $data_nilai19 = T2019::where('calon_id',$calon->id)->first();
+                    $data_nilai19->update($nilai2019);
+                    $data_nilai20 = T2020::where('calon_id',$calon->id)->first();
+                    $data_nilai20->update($nilai);
                 }
             } else {
                 if($check==null){
                     T2020::create($nilai);
                 }else{
-                    $nilai = T2020::where('calon_id',$calon->id)->first();
-                    $nilai->update($nilai);
+                    $data_nilai20 = T2020::where('calon_id',$calon->id)->first();
+                    $data_nilai20->update($nilai);
                 }
             }
 
@@ -182,9 +182,9 @@ class CalonController extends Controller
         } else {
             $pendidikan = Pendidikan::where('calon_id',$calon->id)->first();
             $nilai = T2020::where('calon_id',$calon->id)->first();
-            if ($pendidikan->l_sma<=2019) {
-                return redirect()->route('calon.form')->with('danger','Menu nilai PDF disabled!');
-            }
+            // if ($nilai==null) {
+            //     return redirect()->route('calon.form')->with('danger','Menu nilai PDF khusus untuk!');
+            // }
             return view('calon.nilaipdf',compact('nilai','calon','pendidikan'));
         }
     }

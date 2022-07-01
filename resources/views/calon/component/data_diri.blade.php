@@ -49,7 +49,7 @@
         <input @error('calon.tem_lahir') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[tem_lahir]" class="form-control" value="{{ $calon!=null?$calon->tem_lahir : Auth::guard('calon')->user()->tem_lahir }}">
     </div>
     <div class="col-sm">
-        <label>Tanggal lahir</label>
+        <label>Tanggal lahir <small>(YYYY-MM-DD)</small></label>
         @error('calon.tgl_lahir')
         <div>
             <strong class="text-danger small">Tanggal lahir tidak boleh kosong</strong>
@@ -122,12 +122,12 @@
         <label>RW</label>
         <input type="number" onkeypress="return this.value.length < 3;" oninput="if(this.value.length>=3) { this.value = this.value.slice(0,3); }" name="calon[rw]" class="form-control" value="{{ $calon!=null?$calon->rw :old('calon.rw') }}">
     </div>
-</div>
-<div class="form-group row">
     <div class="col">
         <label>No rumah</label>
         <input type="text" style="text-transform: uppercase" name="calon[no]" class="form-control" value="{{ $calon!=null?$calon->no :old('calon.no') }}">
     </div>
+</div>
+<div class="form-group row">
     <div class="col">
         <label>Dusun</label>
         <input type="text" style="text-transform: uppercase" name="calon[dsn]" class="form-control" value="{{ $calon!=null?$calon->dsn :old('calon.dsn') }}">
@@ -140,8 +140,6 @@
         <label>Kecamatan</label>
         <input type="text" style="text-transform: uppercase" name="calon[kec]" class="form-control" value="{{ $calon!=null?$calon->kec :old('calon.kec') }}">
     </div>
-</div>
-<div class="form-group row">
     <div class="col">
         <label>Kabupaten/Kota</label>
         @if ($calon==null)
@@ -166,6 +164,8 @@
         </select>
         @endif
     </div>
+</div>
+<div class="form-group row">
     <div class="col">
         <label>No telphone</label>
         <input type="number" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="calon[telp]" class="form-control" value="{{ $calon!=null?$calon->telp :old('calon.telp') }}">
@@ -177,6 +177,10 @@
     <div class="col-sm">
         <label>Aspek tidak lulus</label>
         <input type="text" style="text-transform: uppercase" name="calon[aspek_tl]" class="form-control" value="{{ $calon!=null?$calon->aspek_tl :old('calon.aspek_tl') }}">
+    </div>
+    <div class="col-sm">
+        <label>Keahlian</label>
+        <input type="text" style="text-transform: uppercase" name="calon[keahlian]" class="form-control" value="{{ $calon!=null?$calon->keahlian :old('calon.keahlian') }}">
     </div>
 </div>
 <div class="form-group row">

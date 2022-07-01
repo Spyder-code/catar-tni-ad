@@ -396,11 +396,11 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                 </thead>
             </table>
             <div style="text-align: center; height:300px; margin-top:120px">
-                @if ($pendidikan->l_sma<=2019)
+                {{-- @if ($pendidikan->l_sma<=2019)
                     @include('calon.nilai2019')
                 @else
-                    @include('calon.nilai2020')
-                @endif
+                @endif --}}
+                @include('calon.nilai2020')
             </div>
             <div style="text-align: center; position: relative;top:260px; float:right">
                 <p>Mojokerto, {{ date('d F Y', strtotime($calon->updated_at)) }}</p>

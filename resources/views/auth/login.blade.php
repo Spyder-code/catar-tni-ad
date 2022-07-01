@@ -15,6 +15,7 @@
         }
     }
 </style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.5.0/flatpickr.min.css">
 
 <main>
     <div class="container-fluid">
@@ -84,6 +85,19 @@
         </div>
     </div>
 </main>
+@endsection
 
+@section('script')
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script>
+    flatpickr('#tgl_lahir', {
+            dateFormat: 'Y-m-d',
+            maxDate: 'today',
+            altFormat: 'd/m/Y',
+            // altInput: true,
+            maxDate: '2005-12-30',
+            minDate: '1999-01-01',
+        });
+</script>
 @endsection
 

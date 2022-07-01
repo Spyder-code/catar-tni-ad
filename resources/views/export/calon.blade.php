@@ -187,6 +187,12 @@
         <td>kom</td>
         <td>lain</td>
         <td>rata</td>
+        <td>keahlian</td>
+        <td>no_kk</td>
+        <td>a_kakek</td>
+        <td>a_nenek</td>
+        <td>i_kakek</td>
+        <td>i_nenek</td>
     </tr>
     </thead>
     <tbody>
@@ -390,6 +396,12 @@
                     <td></td>
                 @endfor
             @endif
+            <td>{{ $item->keahlian }}</td>
+            <td>{{ $item->no_kk }}</td>
+            <td>{{ $item->wali->a_kakek }}</td>
+            <td>{{ $item->wali->a_nenek }}</td>
+            <td>{{ $item->wali->i_kakek }}</td>
+            <td>{{ $item->wali->i_nenek }}</td>
         </tr>
     @endforeach
     </tbody>

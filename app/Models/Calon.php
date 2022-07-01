@@ -40,6 +40,7 @@ class Calon extends Model
         'telp',
         'daftar_ke',
         'aspek_tl',
+        'keahlian',
         'prestasi_provinsi',
         'prestasi_nasional',
         'tb',
