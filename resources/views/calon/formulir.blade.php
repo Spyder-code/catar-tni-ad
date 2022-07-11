@@ -180,7 +180,15 @@
                 var result = ageCalculator(lhr,dik);
                 $('#umr').val(result[0]);
                 var date = result[1];
-                var a = ageValidation(date);
+                const now = new Date(date).getTime();
+                const min = new Date("2000-09-23").getTime();
+                const max = new Date("2004-12-23").getTime();
+                // var a = ageValidation(date);
+                if(now>=min && now<=max){
+                    var a = 'Umur memenuhi persyaratan';
+                }else{
+                    var a = 'Umur tidak memenuhi persyaratan';
+                }
                 $('#ket-umr').val(a);
                 console.log(date.years);
                 $('#u_thn').val(date.years);
