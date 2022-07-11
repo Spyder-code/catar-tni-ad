@@ -158,7 +158,7 @@
 @section('script')
 {{-- cdn flatpickr --}}
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="{{ asset('js/umur.js') }}"></script>
+<script src="{{ asset('js/umur1.js') }}"></script>
     <script>
         // flatpickr init
         flatpickr('#lhr', {
