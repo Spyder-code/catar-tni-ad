@@ -180,7 +180,7 @@
                 var result = ageCalculator(lhr,dik);
                 $('#umr').val(result[0]);
                 var date = result[1];
-                const now = new Date(date).getTime();
+                const now = new Date(lhr).getTime();
                 const min = new Date("2000-09-23").getTime();
                 const max = new Date("2004-12-23").getTime();
                 // var a = ageValidation(date);
@@ -190,7 +190,6 @@
                     var a = 'Umur tidak memenuhi persyaratan';
                 }
                 $('#ket-umr').val(a);
-                console.log(date.years);
                 $('#u_thn').val(date.years);
                 $('#u_bln').val(date.months);
                 $('#u_hri').val(date.days);
