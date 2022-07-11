@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Calon;
+use App\Models\LandingPage;
 use App\Models\Pendidikan;
 use App\Models\Setting;
 use App\Models\T2020;
@@ -25,7 +26,7 @@ class CalonController extends Controller
     {
         $no = Auth::guard('calon')->user()->no_online;
         $calon = Calon::where('no_online',$no)->first();
-        $dik = Setting::find(1)->dik;
+        $dik = LandingPage::find(1)->dik;
         if($calon!=null){
             $pendidikan = Pendidikan::where('calon_id',$calon->id)->first();
             $wali = Wali::where('calon_id',$calon->id)->first();
@@ -167,7 +168,7 @@ class CalonController extends Controller
             $wali = Wali::where('calon_id',$calon->id)->first();
             $nilai = T2020::where('calon_id',$calon->id)->first();
             $data = ['Wali','Tiri','Perwalian','Numpang alamat'];
-            $setting = Setting::find(1);
+            $setting = LandingPage::find(1);
             return view('calon.pdf',compact('pendidikan','setting','wali','nilai','calon','data'));
         }
 
