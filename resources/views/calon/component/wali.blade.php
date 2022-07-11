@@ -81,7 +81,7 @@
         @enderror
         <input type="text" style="text-transform: uppercase" name="wali[i_kakek]" class="form-control" value="{{ $wali!=null?$wali->i_kakek : old('wali.i_kakek') }}">
     </div>
-    <div class="col-lg col-3">
+    <div class="col-lg col-md-3 col-12">
         <label>Nama Nenek dari Ibu</label>
         @error('wali.i_nenek')
         <div>
@@ -145,7 +145,7 @@
         <label>Kerja ayah</label>
         <input type="text" style="text-transform: uppercase" name="wali[wa_kerja]" class="form-control" value="{{ $wali!=null?$wali->wa_kerja : old('wali.wa_kerja') }}">
     </div>
-    <div class="col-lg col-3">
+    <div class="col-lg col-md-3 col-12">
         <label>Wali ayah seorang TNI AD</label><br>
         <label>
             <input type="radio" value="true" name="jab_wa"> Iya
@@ -178,7 +178,7 @@
         <label>Kerja ibu</label>
         <input type="text" style="text-transform: uppercase" name="wali[wi_kerja]" class="form-control" value="{{ $wali!=null?$wali->wi_kerja : old('wali.wi_kerja') }}">
     </div>
-    <div class="col-lg col-3">
+    <div class="col-lg col-md-3 col-12">
         <label>Wali Ibu seorang TNI AD</label><br>
         <label>
             <input type="radio" value="true" name="jab_wi"> Iya
