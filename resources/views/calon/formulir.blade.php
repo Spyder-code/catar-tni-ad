@@ -75,7 +75,7 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                                     <div class="accordion-body">
-                                        @include('calon.component.data_diri')
+                                        @include('calon.component.data_diri',['dik'=>$dik,'calon'=>$calon])
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
                                     <div class="accordion-body">
-                                        @include('calon.component.pendidikan')
+                                        @include('calon.component.pendidikan',['pendidikan'=>$pendidikan,'calon'=>$calon])
                                     </div>
                                 </div>
                             </div>
@@ -99,7 +99,7 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
                                     <div class="accordion-body">
-                                        @include('calon.component.wali')
+                                        @include('calon.component.wali', ['wali'=>$wali,'calon'=>$calon])
                                     </div>
                                 </div>
                             </div>
