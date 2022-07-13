@@ -6,7 +6,7 @@
             <strong class="text-danger small">SD tidak boleh kosong</strong>
         </div>
         @enderror
-        <input type="text" style="text-transform: uppercase" @error('pendidikan.sd') autofocus @enderror name="pendidikan[sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sd : old('pendidikan.sd') }}">
+        <input type="text" style="text-transform: uppercase" @error('pendidikan.sd') autofocus @enderror name="pendidikan[sd]" class="form-control" value="{{ $pendidikan!=null?stripcslashes($pendidikan->sd) : old('pendidikan.sd') }}">
     </div>
     <div class="col-lg-4 col-6 col-md-3">
         <label>Tahun lulus SD</label>
@@ -24,7 +24,7 @@
             <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
         </div>
         @enderror
-        <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_sd') autofocus @enderror name="pendidikan[kab_sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sd : old('pendidikan.kab_sd') }}">
+        <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_sd') autofocus @enderror name="pendidikan[kab_sd]" class="form-control" value="{{ $pendidikan!=null?stripcslashes($pendidikan->kab_sd) : old('pendidikan.kab_sd') }}">
     </div>
 </div>
 <div class="form-group row">
@@ -35,7 +35,7 @@
             <strong class="text-danger small">SMP tidak boleh kosong</strong>
         </div>
         @enderror
-        <input type="text" style="text-transform: uppercase" @error('pendidikan.smp') autofocus @enderror name="pendidikan[smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->smp : old('pendidikan.smp') }}">
+        <input type="text" style="text-transform: uppercase" @error('pendidikan.smp') autofocus @enderror name="pendidikan[smp]" class="form-control" value="{{ $pendidikan!=null?stripcslashes($pendidikan->smp) : old('pendidikan.smp') }}">
     </div>
     <div class="col-lg-4 col-6 col-md-3">
         <label>Tahun lulus SMP</label>
@@ -53,7 +53,7 @@
             <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
         </div>
         @enderror
-        <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_smp') autofocus @enderror name="pendidikan[kab_smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_smp : old('pendidikan.kab_smp') }}">
+        <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_smp') autofocus @enderror name="pendidikan[kab_smp]" class="form-control" value="{{ $pendidikan!=null?stripcslashes($pendidikan->kab_smp) : old('pendidikan.kab_smp') }}">
     </div>
 </div>
 <div class="form-group row">
@@ -64,7 +64,7 @@
             <strong class="text-danger small">SMA tidak boleh kosong</strong>
         </div>
         @enderror
-        <input type="text" style="text-transform: uppercase" @error('pendidikan.sma') autofocus @enderror name="pendidikan[sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->sma : Auth::guard('calon')->user()->nama_sekolah }}">
+        <input type="text" style="text-transform: uppercase" @error('pendidikan.sma') autofocus @enderror name="pendidikan[sma]" class="form-control" value="{{ $pendidikan!=null?stripcslashes($pendidikan->sma) : Auth::guard('calon')->user()->nama_sekolah }}">
     </div>
     <div class="col-sm">
         <label>Jurusan</label>
@@ -82,7 +82,7 @@
             <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
         </div>
         @enderror
-        <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_sma') autofocus @enderror name="pendidikan[kab_sma]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->kab_sma : old('pendidikan.kab_sma') }}">
+        <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_sma') autofocus @enderror name="pendidikan[kab_sma]" class="form-control" value="{{ $pendidikan!=null?stripcslashes($pendidikan->kab_sma) : old('pendidikan.kab_sma') }}">
     </div>
     <div class="col-sm-2">
         <label>Tahun lulus SMA</label>
