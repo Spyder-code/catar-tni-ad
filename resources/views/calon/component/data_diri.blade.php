@@ -6,7 +6,7 @@
                 <strong class="text-danger small">Nomor Online tidak boleh kosong</strong>
             </div>
         @enderror
-        <input @error('calon.no_online') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[no_online]" class="form-control" value="{{ $calon!=null?$calon->no_online : Auth::guard('calon')->user()->no_online }}">
+        <input @error('calon.no_online') autofocus @enderror type="text" pattern="[a-zA-Z0-9]*" style="text-transform: uppercase" name="calon[no_online]" class="form-control" value="{{ $calon!=null?$calon->no_online : Auth::guard('calon')->user()->no_online }}">
     </div>
 </div>
 <div class="form-group row">
@@ -17,7 +17,7 @@
                 <strong class="text-danger small">Nama tidak boleh kosong</strong>
             </div>
         @enderror
-        <input @error('calon.nama') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[nama]" class="form-control" value="{{ $calon!=null? stripcslashes($calon->nama) : stripcslashes(Auth::guard('calon')->user()->nama) }}">
+        <input @error('calon.nama') autofocus @enderror type="text" pattern="[a-zA-Z0-9]*" style="text-transform: uppercase" name="calon[nama]" class="form-control" value="{{ $calon!=null? stripcslashes($calon->nama) : stripcslashes(Auth::guard('calon')->user()->nama) }}">
     </div>
     <div class="col-sm">
         <label>No. Kartu Keluarga</label>
@@ -46,7 +46,7 @@
                 <strong class="text-danger small">Tempat lahir tidak boleh kosong</strong>
             </div>
         @enderror
-        <input @error('calon.tem_lahir') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[tem_lahir]" class="form-control" value="{{ $calon!=null?stripcslashes($calon->tem_lahir) : stripcslashes(Auth::guard('calon')->user()->tem_lahir) }}">
+        <input @error('calon.tem_lahir') autofocus @enderror type="text" pattern="[a-zA-Z0-9]*" style="text-transform: uppercase" name="calon[tem_lahir]" class="form-control" value="{{ $calon!=null?stripcslashes($calon->tem_lahir) : stripcslashes(Auth::guard('calon')->user()->tem_lahir) }}">
     </div>
     <div class="col-sm">
         <label>Tanggal lahir <small>(YYYY-MM-DD)</small></label>
@@ -92,7 +92,7 @@
             <strong class="text-danger small">Suku tidak boleh kosong</strong>
         </div>
     @enderror
-        <input @error('calon.suku') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[suku]" class="form-control" value="{{ $calon!=null?$calon->suku : Auth::guard('calon')->user()->suku }}">
+        <input @error('calon.suku') autofocus @enderror type="text" pattern="[a-zA-Z0-9]*" style="text-transform: uppercase" name="calon[suku]" class="form-control" value="{{ $calon!=null?$calon->suku : Auth::guard('calon')->user()->suku }}">
     </div>
     <div class="col-sm">
         <label>Agama</label>
@@ -101,7 +101,7 @@
             <strong class="text-danger small">Agama tidak boleh kosong</strong>
         </div>
     @enderror
-        <input @error('calon.agama') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[agama]" class="form-control" value="{{ $calon!=null?$calon->agama : Auth::guard('calon')->user()->agama }}">
+        <input @error('calon.agama') autofocus @enderror type="text" pattern="[a-zA-Z0-9]*" style="text-transform: uppercase" name="calon[agama]" class="form-control" value="{{ $calon!=null?$calon->agama : Auth::guard('calon')->user()->agama }}">
     </div>
 </div>
 <div class="form-group row">
@@ -112,7 +112,7 @@
             <strong class="text-danger small">Jalan tidak boleh kosong</strong>
         </div>
     @enderror
-        <input @error('calon.alamat') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[alamat]" class="form-control" value="{{ $calon!=null?stripcslashes($calon->alamat) : old('calon.alamat')}}">
+        <input @error('calon.alamat') autofocus @enderror type="text" pattern="[a-zA-Z0-9]*" style="text-transform: uppercase" name="calon[alamat]" class="form-control" value="{{ $calon!=null?stripcslashes($calon->alamat) : old('calon.alamat')}}">
     </div>
     <div class="col">
         <label>RT</label>
@@ -124,21 +124,21 @@
     </div>
     <div class="col">
         <label>No rumah</label>
-        <input type="text" style="text-transform: uppercase" name="calon[no]" class="form-control" value="{{ $calon!=null?$calon->no :old('calon.no') }}">
+        <input type="text" style="text-transform: uppercase" name="calon[no]" pattern="[a-zA-Z0-9]*" class="form-control" value="{{ $calon!=null?$calon->no :old('calon.no') }}">
     </div>
 </div>
 <div class="form-group row">
     <div class="col">
         <label>Dusun</label>
-        <input type="text" style="text-transform: uppercase" name="calon[dsn]" class="form-control" value="{{ $calon!=null?stripcslashes($calon->dsn) :old('calon.dsn') }}">
+        <input type="text" style="text-transform: uppercase" name="calon[dsn]" pattern="[a-zA-Z0-9]*" class="form-control" value="{{ $calon!=null?stripcslashes($calon->dsn) :old('calon.dsn') }}">
     </div>
     <div class="col-sm">
         <label>Desa</label>
-        <input type="text" style="text-transform: uppercase" name="calon[ds]" class="form-control" value="{{ $calon!=null?stripcslashes($calon->ds) :old('calon.ds') }}">
+        <input type="text" style="text-transform: uppercase" name="calon[ds]" pattern="[a-zA-Z0-9]*" class="form-control" value="{{ $calon!=null?stripcslashes($calon->ds) :old('calon.ds') }}">
     </div>
     <div class="col">
         <label>Kecamatan</label>
-        <input type="text" style="text-transform: uppercase" name="calon[kec]" class="form-control" value="{{ $calon!=null?stripcslashes($calon->kec) :old('calon.kec') }}">
+        <input type="text" style="text-transform: uppercase" name="calon[kec]" pattern="[a-zA-Z0-9]*" class="form-control" value="{{ $calon!=null?stripcslashes($calon->kec) :old('calon.kec') }}">
     </div>
     <div class="col">
         <label>Kabupaten/Kota</label>
@@ -176,20 +176,20 @@
     </div>
     <div class="col-sm">
         <label>Aspek tidak lulus</label>
-        <input type="text" style="text-transform: uppercase" name="calon[aspek_tl]" class="form-control" value="{{ $calon!=null?stripcslashes($calon->aspek_tl) :old('calon.aspek_tl') }}">
+        <input type="text" style="text-transform: uppercase" name="calon[aspek_tl]" pattern="[a-zA-Z0-9]*" class="form-control" value="{{ $calon!=null?stripcslashes($calon->aspek_tl) :old('calon.aspek_tl') }}">
     </div>
     <div class="col-sm">
         <label>Keahlian</label>
-        <input type="text" style="text-transform: uppercase" name="calon[keahlian]" class="form-control" value="{{ $calon!=null?stripcslashes($calon->keahlian) :old('calon.keahlian') }}">
+        <input type="text" style="text-transform: uppercase" name="calon[keahlian]" pattern="[a-zA-Z0-9]*" class="form-control" value="{{ $calon!=null?stripcslashes($calon->keahlian) :old('calon.keahlian') }}">
     </div>
 </div>
 <div class="form-group row">
     <div class="col">
         <label>Prestasi tingkat provinsi</label>
-        <input type="text" style="text-transform: uppercase" name="calon[prestasi_provinsi]" class="form-control" value="{{ $calon!=null?$calon->prestasi_provinsi :old('calon.prestasi_provinsi') }}">
+        <input type="text" style="text-transform: uppercase" name="calon[prestasi_provinsi]" pattern="[a-zA-Z0-9]*" class="form-control" value="{{ $calon!=null?$calon->prestasi_provinsi :old('calon.prestasi_provinsi') }}">
     </div>
     <div class="col">
         <label>Prestasi tingkat nasional/internasional</label>
-        <input type="text" style="text-transform: uppercase" name="calon[prestasi_nasional]" class="form-control" value="{{ $calon!=null?$calon->prestasi_nasional :old('calon.prestasi_nasional') }}">
+        <input type="text" style="text-transform: uppercase" name="calon[prestasi_nasional]" pattern="[a-zA-Z0-9]*" class="form-control" value="{{ $calon!=null?$calon->prestasi_nasional :old('calon.prestasi_nasional') }}">
     </div>
 </div>
