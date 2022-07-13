@@ -145,12 +145,20 @@ class CalonController extends Controller
             $namaIbu = addslashes($a->ibu);
             $waliAyah = addslashes($a->wali_ayah);
             $waliIbu = addslashes($a->wali_ibu);
+            $a_kakek = addslashes($a->a_kakek);
+            $i_kakek = addslashes($a->i_kakek);
+            $a_nenek = addslashes($a->a_nenek);
+            $i_nenek = addslashes($a->i_nenek);
             Wali::find($a->id)->update([
                 'hub_calon_wali'=>$status,
                 'ayah' => $namaAyah,
                 'ibu' => $namaIbu,
                 'wali_ayah' => $waliAyah,
-                'wali_ibu' => $waliIbu
+                'wali_ibu' => $waliIbu,
+                'a_kakek' => $a_kakek,
+                'i_kakek' => $i_kakek,
+                'a_nenek' => $a_nenek,
+                'i_nenek' => $i_nenek,
             ]);
             Calon::find($calon->id)->update(['nama'=>$namaCalon]);
 
