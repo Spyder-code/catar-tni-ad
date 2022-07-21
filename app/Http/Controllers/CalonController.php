@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CalonRequest;
 use App\Models\Calon;
 use App\Models\LandingPage;
 use App\Models\Pendidikan;
@@ -44,37 +45,8 @@ class CalonController extends Controller
         }
     }
 
-    public function store(Request $request)
+    public function store(CalonRequest $request)
     {
-        $request->validate([
-            'calon.nama' => 'required',
-            'calon.no_online' => 'required',
-            'calon.no_kk' => 'required',
-            'calon.ktp' => 'required|min:16',
-            'calon.tem_lahir' => 'required',
-            'calon.tgl_lahir' => 'required',
-            'calon.suku' => 'required',
-            'calon.agama' => 'required',
-            'calon.alamat' => 'required',
-            'pendidikan.sd' => 'required',
-            'pendidikan.l_sd' => 'required',
-            'pendidikan.kab_sd' => 'required',
-            'pendidikan.smp' => 'required',
-            'pendidikan.l_smp' => 'required',
-            'pendidikan.kab_smp' => 'required',
-            'pendidikan.sma' => 'required',
-            'pendidikan.l_sma' => 'required',
-            'pendidikan.kab_sma' => 'required',
-            'pendidikan.jur' => 'required',
-            'wali.ayah' => 'required',
-            'wali.a_kakek' => 'required',
-            'wali.a_nenek' => 'required',
-            'wali.a_kerja' => 'required',
-            'wali.ibu' => 'required',
-            'wali.i_kerja' => 'required',
-            'wali.i_kakek' => 'required',
-            'wali.i_nenek' => 'required',
-        ]);
 
         $check = Calon::where('no_online',$request->calon['no_online'])->first();
         // if($check!=null){

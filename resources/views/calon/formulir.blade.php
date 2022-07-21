@@ -124,9 +124,10 @@
             }else{
                 val = parseInt(val);
                 if (val<=2019) {
+                    console.log('sa');
+                    $('input[name="nilai2019[ind]"]').prop('required',true);
                     $('#tg-HMKiy').show();
                     $('#2019').show();
-                    console.log('saa');
                 } else if(val>=2020) {
                     $('#2019').hide();
                     $('#tg-HMKiy').show();
@@ -141,9 +142,10 @@
             var val = {!! json_encode($pendidikan->l_sma) !!}
             val = parseInt(val);
             if (val<=2019) {
+                console.log('sas');
+                $('input[name="nilai2019[ind]"]').prop('required',true);
                 $('#tg-HMKiy').show();
                 $('#2019').show();
-                console.log('sa');
             } else if(val>=2020) {
                 $('#2019').hide();
                 $('#tg-HMKiy').show();
@@ -210,9 +212,15 @@
             if (val<=2019 && val>0) {
                 $('#tg-HMKiy').show();
                 $('#2019').show();
+                $('input[name="nilai2019[ind]"]').prop('required',true);
+                $('input[name="nilai2019[ing]"]').prop('required',true);
+                $('input[name="nilai2019[mtk]"]').prop('required',true);
             } else if(val>=2020) {
                 $('#2019').hide();
                 $('#tg-HMKiy').show();
+                $('input[name="nilai2019[ind]"]').prop('required',false);
+                $('input[name="nilai2019[ing]"]').prop('required',false);
+                $('input[name="nilai2019[mtk]"]').prop('required',false);
             }else{
                 console.log('nil');
                 $('#tg-HMKiy').hide();

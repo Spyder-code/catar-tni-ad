@@ -128,10 +128,20 @@
 <div class="form-group row">
     <div class="col-sm-4">
         <label>Telphone orang tua</label>
+        @error('wali.o_telp')
+        <div>
+            <strong class="text-danger small">Telphone tidak boleh kosong</strong>
+        </div>
+        @enderror
         <input type="number" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="wali[o_telp]" class="form-control" value="{{ $wali!=null?$wali->o_telp : old('wali.o_telp') }}">
     </div>
     <div class="col-sm">
         <label>Alamat orang tua</label>
+        @error('wali.o_alamat')
+        <div>
+            <strong class="text-danger small">Alamat tidak boleh kosong</strong>
+        </div>
+        @enderror
         <input type="text" style="text-transform: uppercase" name="wali[o_alamat]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->o_alamat) : Auth::guard('calon')->user()->alamat_o }}">
     </div>
 </div>
