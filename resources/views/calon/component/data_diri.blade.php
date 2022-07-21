@@ -26,7 +26,7 @@
                 <strong class="text-danger small">No.Kartu Keluarga tidak boleh kosong dan mengandung tanda petik(')</strong>
             </div>
         @enderror
-        <input @error('calon.no_kk') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[no_kk]" class="form-control" value="{{ $calon!=null?$calon->no_kk : Auth::guard('calon')->user()->no_kk }}">
+        <input @error('calon.no_kk') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[no_kk]" class="form-control" onkeypress="return this.value.length < 18;" oninput="if(this.value.length>=18) { this.value = this.value.slice(0,18); }" value="{{ $calon!=null?$calon->no_kk : Auth::guard('calon')->user()->no_kk }}">
     </div>
     <div class="col-sm">
         <label>No KTP</label>

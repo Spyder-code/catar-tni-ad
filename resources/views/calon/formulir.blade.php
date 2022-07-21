@@ -178,8 +178,8 @@
                 // var umur = tgl_sekarang.getFullYear() - tgl_lahir.getFullYear();
                 // $('#umur').val(umur);
                 // var lhr = $(this).val();
-                console.log(dateStr);
-                console.log(lhr);
+                // console.log(dateStr);
+                // console.log(lhr);
                 var dik = $('#dik').val();
                 var result = ageCalculator(lhr,dik);
                 $('#umr').val(result[0]);

@@ -205,7 +205,7 @@
     <script>
         $('.validate-symbol').keypress(function (e) {
             // valid input with regex alphabet and nummeric
-            var regex = /^[a-zA-Z0-9 ]+$/;
+            var regex = /^[a-zA-Z0-9 .,-]+$/;
             var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
             if (regex.test(str)) {
                 return true;
