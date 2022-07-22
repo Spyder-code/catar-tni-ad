@@ -26,7 +26,7 @@
                 <strong class="text-danger small">No.Kartu Keluarga tidak boleh kosong dan mengandung tanda petik(')</strong>
             </div>
         @enderror
-        <input @error('calon.no_kk') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[no_kk]" class="form-control" onkeypress="return this.value.length < 18;" oninput="if(this.value.length>=18) { this.value = this.value.slice(0,18); }" value="{{ $calon!=null?$calon->no_kk : Auth::guard('calon')->user()->no_kk }}">
+        <input @error('calon.no_kk') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[no_kk]" class="form-control" onkeypress="return this.value.length < 18;" oninput="if(this.value.length>=18) { this.value = this.value.slice(0,18); }" value="{{ $calon!=null?$calon->no_kk : old('calon.no_kk') }}">
     </div>
     <div class="col-sm">
         <label>No KTP</label>
@@ -180,12 +180,12 @@
         @if ($calon==null)
         <select name="calon[kab]" class="form-select">
             <option {{ old('calon.kab')==''?'selected':'' }} value=""></option>
-            <option {{ old('calon.kab')=='MOJOKERTO'?'selected':'' }} value="Mojokerto">Mojokerto</option>
-            <option {{ old('calon.kab')=='JOMBANG'?'selected':'' }} value="Jombang">Jombang</option>
-            <option {{ old('calon.kab')=='KEDIRI'?'selected':'' }} value="Kediri">Kediri</option>
-            <option {{ old('calon.kab')=='LAMONGAN'?'selected':'' }} value="Lamongan">Lamongan</option>
-            <option {{ old('calon.kab')=='TUBAN'?'selected':'' }} value="Tuban">Tuban</option>
-            <option {{ old('calon.kab')=='BOJONEGORO'?'selected':'' }} value="Bojonegoro">Bojonegoro</option>
+            <option {{ old('calon.kab')=='Mojokerto'?'selected':'' }} value="Mojokerto">Mojokerto</option>
+            <option {{ old('calon.kab')=='Jombang'?'selected':'' }} value="Jombang">Jombang</option>
+            <option {{ old('calon.kab')=='Kediri'?'selected':'' }} value="Kediri">Kediri</option>
+            <option {{ old('calon.kab')=='Lamongan'?'selected':'' }} value="Lamongan">Lamongan</option>
+            <option {{ old('calon.kab')=='Tuban'?'selected':'' }} value="Tuban">Tuban</option>
+            <option {{ old('calon.kab')=='Bojonegoro'?'selected':'' }} value="Bojonegoro">Bojonegoro</option>
         </select>
         @else
         <select name="calon[kab]" class="form-select">
