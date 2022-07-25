@@ -193,6 +193,14 @@
         <td>a_nenek</td>
         <td>i_kakek</td>
         <td>i_nenek</td>
+        <td>a_kakek_almt_skr</td>
+        <td>a_kakek_almt_sblm</td>
+        <td>a_nenek_almt_skr</td>
+        <td>a_nenek_almt_sblm</td>
+        <td>i_kakek_almt_skr</td>
+        <td>i_kakek_almt_sblm</td>
+        <td>i_nenek_almt_skr</td>
+        <td>i_nenek_almt_sblm</td>
     </tr>
     </thead>
     <tbody>
@@ -402,6 +410,14 @@
             <td>{{ $item->wali->a_nenek }}</td>
             <td>{{ $item->wali->i_kakek }}</td>
             <td>{{ $item->wali->i_nenek }}</td>
+            <td>{{ $item->a_kakek_almt_skr }} </td>
+            <td>{{ $item->a_kakek_almt_sblm }} </td>
+            <td>{{ $item->a_nenek_almt_skr }} </td>
+            <td>{{ $item->a_nenek_almt_sblm }} </td>
+            <td>{{ $item->i_kakek_almt_skr }} </td>
+            <td>{{ $item->i_kakek_almt_sblm }} </td>
+            <td>{{ $item->i_nenek_almt_skr }} </td>
+            <td>{{ $item->i_nenek_almt_sblm }} </td>
         </tr>
     @endforeach
     </tbody>
