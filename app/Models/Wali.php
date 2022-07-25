@@ -42,5 +42,13 @@ class Wali extends Model
         'w_alamat',
         'status_wali',
         'hub_calon_wali',
+        'a_kakek_almt_skr',
+        'a_kakek_almt_sblm',
+        'a_nenek_almt_skr',
+        'a_nenek_almt_sblm',
+        'i_kakek_almt_skr',
+        'i_kakek_almt_sblm',
+        'i_nenek_almt_skr',
+        'i_nenek_almt_sblm',
     ];
 }

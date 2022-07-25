@@ -4,7 +4,7 @@
         <label>Nama ayah</label>
         @error('wali.ayah')
         <div>
-            <strong class="text-danger small">Nama Ayah tidak boleh kosong</strong>
+            <strong class="text-danger small">Nama Ayah tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="wali[ayah]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->ayah) : Auth::guard('calon')->user()->ortu1 }}">
@@ -13,19 +13,55 @@
         <label>Nama Kakek dari Ayah</label>
         @error('wali.a_kakek')
         <div>
-            <strong class="text-danger small">Nama Kakek dari Ayah tidak boleh kosong</strong>
+            <strong class="text-danger small">Nama Kakek dari Ayah tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="wali[a_kakek]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->a_kakek) :  old('wali.a_kakek') }}">
     </div>
     <div class="col-lg col-md-6 col-12">
+        <label>Alamat Kakek dari Ayah Sekarang</label>
+        @error('wali.a_kakek_almt_skr')
+        <div>
+            <strong class="text-danger small">Alamat Kakek dari Ayah Sekarang tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" name="wali[a_kakek_almt_skr]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->a_kakek_almt_skr) :  old('wali.a_kakek_almt_skr') }}">
+    </div>
+    <div class="col-lg col-md-6 col-12">
+        <label>Alamat Kakek dari Ayah Sebelumnya</label>
+        @error('wali.a_kakek_almt_sblm')
+        <div>
+            <strong class="text-danger small">Alamat Kakek dari Ayah Sebelumnya tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" name="wali[a_kakek_almt_sblm]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->a_kakek_almt_sblm) :  old('wali.a_kakek_almt_sblm') }}">
+    </div>
+    <div class="col-lg col-md-6 col-12">
         <label>Nama Nenek dari Ayah</label>
         @error('wali.a_nenek')
         <div>
-            <strong class="text-danger small">Nama Kakek dari Ayah tidak boleh kosong</strong>
+            <strong class="text-danger small">Nama Kakek dari Ayah tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="wali[a_nenek]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->a_nenek) :  old('wali.a_nenek') }}">
+    </div>
+    <div class="col-lg col-md-6 col-12">
+        <label>Alamat Nenek dari Ayah Sekarang</label>
+        @error('wali.a_nenek_almt_skr')
+        <div>
+            <strong class="text-danger small">Alamat Nenek dari Ayah Sekarang tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" name="wali[a_nenek_almt_skr]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->a_nenek_almt_skr) :  old('wali.a_nenek_almt_skr') }}">
+    </div>
+    <div class="col-lg col-md-6 col-12">
+        <label>Alamat Nenek dari Ayah Sebelumnya</label>
+        @error('wali.a_nenek_almt_sblm')
+        <div>
+            <strong class="text-danger small">Alamat Nenek dari Ayah Sebelumnya tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" name="wali[a_nenek_almt_sblm]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->a_nenek_almt_sblm) :  old('wali.a_nenek_almt_sblm') }}">
     </div>
 </div>
 <div class="form-group row">
@@ -33,7 +69,7 @@
         <label>Kerja ayah</label>
         @error('wali.a_kerja')
         <div>
-            <strong class="text-danger small">Kerja Ayah tidak boleh kosong</strong>
+            <strong class="text-danger small">Kerja Ayah tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="wali[a_kerja]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->a_kerja) :  Auth::guard('calon')->user()->kerja }}">
@@ -67,7 +103,7 @@
         <label>Nama ibu</label>
         @error('wali.ibu')
         <div>
-            <strong class="text-danger small">Nama Ibu tidak boleh kosong</strong>
+            <strong class="text-danger small">Nama Ibu tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="wali[ibu]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->ibu) : old('wali.ibu') }}">
@@ -76,19 +112,55 @@
         <label>Nama Kakek dari Ibu</label>
         @error('wali.i_kakek')
         <div>
-            <strong class="text-danger small">Nama Kakek dari Ibu tidak boleh kosong</strong>
+            <strong class="text-danger small">Nama Kakek dari Ibu tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="wali[i_kakek]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->i_kakek) : old('wali.i_kakek') }}">
+    </div>
+    <div class="col-lg col-md-6 col-12">
+        <label>Alamat Kakek dari Ibu Sekarang</label>
+        @error('wali.i_kakek_almt_skr')
+        <div>
+            <strong class="text-danger small">Alamat Kakek dari Ibu Sekarang tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" name="wali[i_kakek_almt_skr]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->i_kakek_almt_skr) :  old('wali.i_kakek_almt_skr') }}">
+    </div>
+    <div class="col-lg col-md-6 col-12">
+        <label>Alamat Kakek dari Ibu Sebelumnya</label>
+        @error('wali.i_kakek_almt_sblm')
+        <div>
+            <strong class="text-danger small">Alamat Kakek dari Ibu Sebelumnya tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" name="wali[i_kakek_almt_sblm]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->i_kakek_almt_sblm) :  old('wali.i_kakek_almt_sblm') }}">
     </div>
     <div class="col-lg col-md-3 col-12">
         <label>Nama Nenek dari Ibu</label>
         @error('wali.i_nenek')
         <div>
-            <strong class="text-danger small">Nama Kakek dari Ibu tidak boleh kosong</strong>
+            <strong class="text-danger small">Nama Kakek dari Ibu tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="wali[i_nenek]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->i_nenek) : old('wali.i_nenek') }}">
+    </div>
+    <div class="col-lg col-md-6 col-12">
+        <label>Alamat Nenek dari Ibu Sekarang</label>
+        @error('wali.i_nenek_almt_skr')
+        <div>
+            <strong class="text-danger small">Alamat Nenek dari Ibu Sekarang tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" name="wali[i_nenek_almt_skr]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->i_nenek_almt_skr) :  old('wali.i_nenek_almt_skr') }}">
+    </div>
+    <div class="col-lg col-md-6 col-12">
+        <label>Alamat Nenek dari Ibu Sebelumnya</label>
+        @error('wali.i_nenek_almt_sblm')
+        <div>
+            <strong class="text-danger small">Alamat Nenek dari Ibu Sebelumnya tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" name="wali[i_nenek_almt_sblm]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->i_nenek_almt_sblm) :  old('wali.i_nenek_almt_sblm') }}">
     </div>
 </div>
 <div class="form-group row">
@@ -96,7 +168,7 @@
         <label>Kerja ibu</label>
         @error('wali.i_kerja')
         <div>
-            <strong class="text-danger small">Kerja Ibu tidak boleh kosong</strong>
+            <strong class="text-danger small">Kerja Ibu tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="wali[i_kerja]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->i_kerja) : old('wali.i_kerja') }}">
@@ -130,7 +202,7 @@
         <label>Telphone orang tua</label>
         @error('wali.o_telp')
         <div>
-            <strong class="text-danger small">Telphone tidak boleh kosong</strong>
+            <strong class="text-danger small">Telphone tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="number" onkeypress="return this.value.length < 15;" oninput="if(this.value.length>=15) { this.value = this.value.slice(0,15); }" name="wali[o_telp]" class="form-control" value="{{ $wali!=null?$wali->o_telp : old('wali.o_telp') }}">
@@ -139,7 +211,7 @@
         <label>Alamat orang tua</label>
         @error('wali.o_alamat')
         <div>
-            <strong class="text-danger small">Alamat tidak boleh kosong</strong>
+            <strong class="text-danger small">Alamat tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="wali[o_alamat]" class="form-control validate-symbol" value="{{ $wali!=null?stripcslashes($wali->o_alamat) : Auth::guard('calon')->user()->alamat_o }}">
@@ -231,11 +303,11 @@
                 <option {{ $wali->status_wali==3?'selected':'' }} value="3">Perwalian</option>
                 <option {{ $wali->status_wali==4?'selected':'' }} value="4">Numpang alamat</option>
             @else
-                <option {{ old('wali.status_wali')=='0'?'selected':'' }} value="0"></option>
-                <option {{ old('wali.status_wali')=='1'?'selected':'' }} value="1">Wali</option>
-                <option {{ old('wali.status_wali')=='2'?'selected':'' }} value="2">Tiri</option>
-                <option {{ old('wali.status_wali')=='3'?'selected':'' }} value="3">Perwalian</option>
-                <option {{ old('wali.status_wali')=='4'?'selected':'' }} value="4">Numpang alamat</option>
+                <option {{ old('wali.status_wali')==0?'selected':'' }} value="0"></option>
+                <option {{ old('wali.status_wali')==1?'selected':'' }} value="1">Wali</option>
+                <option {{ old('wali.status_wali')==2?'selected':'' }} value="2">Tiri</option>
+                <option {{ old('wali.status_wali')==3?'selected':'' }} value="3">Perwalian</option>
+                <option {{ old('wali.status_wali')==4?'selected':'' }} value="4">Numpang alamat</option>
             @endif
         </select>
     </div>

@@ -3,7 +3,7 @@
         <label>SD</label>
         @error('pendidikan.sd')
         <div>
-            <strong class="text-danger small">SD tidak boleh kosong</strong>
+            <strong class="text-danger small">SD tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.sd') autofocus @enderror name="pendidikan[sd]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->sd) : old('pendidikan.sd') }}">
@@ -12,7 +12,7 @@
         <label>Tahun lulus SD</label>
         @error('pendidikan.l_sd')
         <div>
-            <strong class="text-danger small">Tahun lulus SD tidak boleh kosong</strong>
+            <strong class="text-danger small">Tahun lulus SD tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input @error('pendidikan.l_sd') autofocus @enderror onkeypress="return this.value.length < 4;" oninput="if(this.value.length>=4) { this.value = this.value.slice(0,4); }" type="number" name="pendidikan[l_sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_sd : old('pendidikan.l_sd') }}">
@@ -21,7 +21,7 @@
         <label>Kab/Kota Lulus SD</label>
         @error('pendidikan.kab_sd')
         <div>
-            <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
+            <strong class="text-danger small">Kab/Kota tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_sd') autofocus @enderror name="pendidikan[kab_sd]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->kab_sd) : old('pendidikan.kab_sd') }}">
@@ -32,7 +32,7 @@
         <label>SMP</label>
         @error('pendidikan.smp')
         <div>
-            <strong class="text-danger small">SMP tidak boleh kosong</strong>
+            <strong class="text-danger small">SMP tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.smp') autofocus @enderror name="pendidikan[smp]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->smp) : old('pendidikan.smp') }}">
@@ -41,7 +41,7 @@
         <label>Tahun lulus SMP</label>
         @error('pendidikan.l_smp')
         <div>
-            <strong class="text-danger small">Tahun lulus SMP tidak boleh kosong</strong>
+            <strong class="text-danger small">Tahun lulus SMP tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input @error('pendidikan.l_smp') autofocus @enderror onkeypress="return this.value.length < 4;" oninput="if(this.value.length>=4) { this.value = this.value.slice(0,4); }" type="number" name="pendidikan[l_smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_smp : old('pendidikan.l_smp') }}">
@@ -50,7 +50,7 @@
         <label>Kab/Kota Lulus SMP</label>
         @error('pendidikan.kab_smp')
         <div>
-            <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
+            <strong class="text-danger small">Kab/Kota tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_smp') autofocus @enderror name="pendidikan[kab_smp]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->kab_smp) : old('pendidikan.kab_smp') }}">
@@ -61,7 +61,7 @@
         <label>SMA</label>
         @error('pendidikan.sma')
         <div>
-            <strong class="text-danger small">SMA tidak boleh kosong</strong>
+            <strong class="text-danger small">SMA tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.sma') autofocus @enderror name="pendidikan[sma]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->sma) : Auth::guard('calon')->user()->nama_sekolah }}">
@@ -70,7 +70,7 @@
         <label>Jurusan</label>
         @error('pendidikan.jur')
         <div>
-            <strong class="text-danger small">Jurusan tidak boleh kosong</strong>
+            <strong class="text-danger small">Jurusan tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="pendidikan[jur]" class="form-control validate-symbol" value="{{ $pendidikan!=null?$pendidikan->jur :  Auth::guard('calon')->user()->jur }}">
@@ -79,7 +79,7 @@
         <label>Kab/Kota Lulus SMA</label>
         @error('pendidikan.kab_sma')
         <div>
-            <strong class="text-danger small">Kab/Kota tidak boleh kosong</strong>
+            <strong class="text-danger small">Kab/Kota tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_sma') autofocus @enderror name="pendidikan[kab_sma]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->kab_sma) : old('pendidikan.kab_sma') }}">
@@ -88,7 +88,7 @@
         <label>Tahun lulus SMA</label>
         @error('pendidikan.l_sma')
         <div>
-            <strong class="text-danger small">Tahun lulus tidak boleh kosong</strong>
+            <strong class="text-danger small">Tahun lulus tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <select name="pendidikan[l_sma]" class="form-select" id="lulus">

@@ -14,7 +14,7 @@ class UpdateCalonTable extends Migration
     public function up()
     {
         Schema::table('calon', function(Blueprint $table){
-            $table->string('keahlian')->nullable()->after('aspek_tl');
+            // $table->string('keahlian')->nullable()->after('aspek_tl');
         });
     }
 
