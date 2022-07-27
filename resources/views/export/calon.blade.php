@@ -201,6 +201,9 @@
         <td>i_kakek_almt_sblm</td>
         <td>i_nenek_almt_skr</td>
         <td>i_nenek_almt_sblm</td>
+        @if (env('PONPES'))
+        <td>ponpes</td>
+        @endif
     </tr>
     </thead>
     <tbody>

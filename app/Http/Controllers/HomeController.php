@@ -116,7 +116,8 @@ class HomeController extends Controller
         foreach ($data as $item ) {
             array_push($calon,$item->id);
         };
-        return Excel::download(new CalonExport($calon), 'calon.csv');
+        $name = env('PONPES') ? 'santri.csv' : 'calon.csv';
+        return Excel::download(new CalonExport($calon), $name);
     }
 
     public function exportDataAll()
@@ -126,7 +127,8 @@ class HomeController extends Controller
         foreach ($data as $item ) {
             array_push($calon,$item->id);
         };
-        return Excel::download(new CalonExport($calon), 'calon.xlsx');
+        $name = env('PONPES') ? 'santri.xlsx' : 'calon.xlsx';
+        return Excel::download(new CalonExport($calon), $name);
     }
 
     public function exportDataSelect(Request $request)
@@ -134,7 +136,8 @@ class HomeController extends Controller
         if ($request->calon==null) {
             return back()->with('danger','Harap pilih data terlebih dahulu');
         }else{
-            return Excel::download(new CalonExport($request->calon), 'calon.xlsx');
+            $name = env('PONPES') ? 'santri.xlsx' : 'calon.xlsx';
+            return Excel::download(new CalonExport($request->calon), $name);
         }
     }
 
