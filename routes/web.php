@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+    return view('home');
+});
+Route::get('/home', function () {
     $data = LandingPage::find(1);
     return view('layouts.user', compact('data'));
 })->middleware('visitor');

@@ -6,7 +6,7 @@
         <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo-icon.png') }}">
         <link href="{{ asset('dashboard') }}/css/style.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css') }}/style.css">
-        <title>Login Page</title>
+        <title>PENDAFTARAN TNI AD</title>
     </head>
     <body style="background-color: #dfebfd">
 
