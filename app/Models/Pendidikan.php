@@ -20,11 +20,13 @@ class Pendidikan extends Model
         'l_smp',
         'kab_smp',
         'sma',
+        'almt_sma',
         'nama_sma',
         'l_sma',
         'kab_sma',
-        'jur', 
-        'jumlah_nuan', 
-        'rata', 
+        'jur',
+        'jumlah_nuan',
+        'rata',
+        'ponpes',
     ];
 }

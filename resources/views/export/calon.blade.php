@@ -418,6 +418,10 @@
             <td>{{ $item->i_kakek_almt_sblm }} </td>
             <td>{{ $item->i_nenek_almt_skr }} </td>
             <td>{{ $item->i_nenek_almt_sblm }} </td>
+            <td>{{ $item->almt_sma }} </td>
+            @if (env('PONPES'))
+            <td>{{ $item->ponpes }} </td>
+            @endif
         </tr>
     @endforeach
     </tbody>

@@ -67,15 +67,15 @@
         <label>Umur</label>
         <input type="text" style="text-transform: uppercase" value="{{ $calon!=null?$calon->umr :old('calon.umr') }}" id="umr" name="calon[umr]" readonly class="form-control" >
     </div>
-    <div class="col-1">
+    <div class="col-4">
         <label>Hari</label>
         <input type="text" style="text-transform: uppercase" readonly value="{{ $calon!=null?$calon->u_hri :old('calon.u_hri')}}" id="u_hri" name="calon[u_hri]" class="form-control" >
     </div>
-    <div class="col-1">
+    <div class="col-4">
         <label>Bulan</label>
         <input type="text" style="text-transform: uppercase" readonly value="{{ $calon!=null?$calon->u_bln :old('calon.u_bln')}}" id="u_bln" name="calon[u_bln]" class="form-control" >
     </div>
-    <div class="col-1">
+    <div class="col-4">
         <label>Tahun</label>
         <input type="text" style="text-transform: uppercase" readonly value="{{ $calon!=null?$calon->u_thn :old('calon.u_thn')}}" id="u_thn" name="calon[u_thn]" class="form-control" >
     </div>
