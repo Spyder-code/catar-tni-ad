@@ -414,15 +414,15 @@
             <td>{{ $item->wali->a_nenek }}</td>
             <td>{{ $item->wali->i_kakek }}</td>
             <td>{{ $item->wali->i_nenek }}</td>
-            <td>{{ $item->a_kakek_almt_skr }} </td>
-            <td>{{ $item->a_kakek_almt_sblm }} </td>
-            <td>{{ $item->a_nenek_almt_skr }} </td>
-            <td>{{ $item->a_nenek_almt_sblm }} </td>
-            <td>{{ $item->i_kakek_almt_skr }} </td>
-            <td>{{ $item->i_kakek_almt_sblm }} </td>
-            <td>{{ $item->i_nenek_almt_skr }} </td>
-            <td>{{ $item->i_nenek_almt_sblm }} </td>
-            <td>{{ $item->almt_sma }} </td>
+            <td>{{ $item->wali->a_kakek_almt_skr }} </td>
+            <td>{{ $item->wali->a_kakek_almt_sblm }} </td>
+            <td>{{ $item->wali->a_nenek_almt_skr }} </td>
+            <td>{{ $item->wali->a_nenek_almt_sblm }} </td>
+            <td>{{ $item->wali->i_kakek_almt_skr }} </td>
+            <td>{{ $item->wali->i_kakek_almt_sblm }} </td>
+            <td>{{ $item->wali->i_nenek_almt_skr }} </td>
+            <td>{{ $item->wali->i_nenek_almt_sblm }} </td>
+            <td>{{ $item->pendidikan->almt_sma }} </td>
             @if (env('PONPES'))
             <td>{{ $item->ponpes }} </td>
             @endif
