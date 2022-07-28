@@ -424,7 +424,7 @@
             <td>{{ $item->wali->i_nenek_almt_sblm }} </td>
             <td>{{ $item->pendidikan->almt_sma }} </td>
             @if (env('PONPES'))
-            <td>{{ $item->ponpes }} </td>
+            <td>{{ $item->pendidikan->ponpes }} </td>
             @endif
         </tr>
     @endforeach
