@@ -105,7 +105,13 @@ class HomeController extends Controller
         if ($request->calon==null) {
             return back()->with('danger','Harap pilih data terlebih dahulu');
         }else{
-            return Excel::download(new CalonExport($request->calon), 'calon.csv');
+            if(env('PONPES')){
+                $name = 'santri.csv';
+            }else{
+                $name = 'calon.csv';
+            }
+
+            return Excel::download(new CalonExport($request->calon), $name);
         }
     }
 
@@ -116,7 +122,12 @@ class HomeController extends Controller
         foreach ($data as $item ) {
             array_push($calon,$item->id);
         };
-        $name = env('PONPES') ? 'santri.csv' : 'calon.csv';
+
+        if(env('PONPES')){
+            $name = 'santri.csv';
+        }else{
+            $name = 'calon.csv';
+        }
         return Excel::download(new CalonExport($calon), $name);
     }
 
@@ -127,7 +138,12 @@ class HomeController extends Controller
         foreach ($data as $item ) {
             array_push($calon,$item->id);
         };
-        $name = env('PONPES') ? 'santri.xlsx' : 'calon.xlsx';
+
+        if(env('PONPES')){
+            $name = 'santri.csv';
+        }else{
+            $name = 'calon.csv';
+        }
         return Excel::download(new CalonExport($calon), $name);
     }
 
@@ -136,7 +152,11 @@ class HomeController extends Controller
         if ($request->calon==null) {
             return back()->with('danger','Harap pilih data terlebih dahulu');
         }else{
-            $name = env('PONPES') ? 'santri.xlsx' : 'calon.xlsx';
+            if(env('PONPES')){
+                $name = 'santri.csv';
+            }else{
+                $name = 'calon.csv';
+            }
             return Excel::download(new CalonExport($request->calon), $name);
         }
     }
