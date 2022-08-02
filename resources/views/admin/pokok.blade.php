@@ -29,18 +29,21 @@
     @endif
         <div class="row">
             <div class="col-md-12">
-                <div class="my-3 d-flex">
-                    <form action="{{ route('pokok.import') }}" method="post" enctype="multipart/form-data">
-                        @csrf
-                        <input type="file" name="file" onchange="submit()" id="file" hidden>
-                        <label for="file">
-                            <span class="btn mx-2 btn-success"><i class="fas fa-upload"></i> Import excel</span>
-                        </label>
-                    </form>
-                    <form action="{{ route('pokok.destroy') }}" method="post">
-                        @csrf
-                        <button type="submit" onclick="return confirm('Are you sure?')" class="btn mx-2 btn-danger"><i class="fas fa-trash-alt"></i> Delete all data</button>
-                    </form>
+                <div class="my-3 d-flex justify-content-between">
+                    <div class="d-flex">
+                        <form action="{{ route('pokok.import') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <input type="file" name="file" onchange="submit()" id="file" hidden>
+                            <label for="file">
+                                <span class="btn mx-2 btn-primary"><i class="fas fa-upload"></i> Import excel</span>
+                            </label>
+                        </form>
+                        <form action="{{ route('pokok.destroy') }}" method="post">
+                            @csrf
+                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn mx-2 btn-danger  text-white"><i class="fas fa-trash-alt"></i> Delete all data</button>
+                        </form>
+                    </div>
+                    <a href="{{ route('pokok.create') }}" class="btn btn-success text-white"><i class="fas fa-plus"></i> Tambah Data Pokok</a>
                 </div>
                 <div class="white-box">
                     <div class="d-md-flex mb-3">
@@ -55,6 +58,7 @@
                                     <th class="border-top-0">Nama</th>
                                     <th class="border-top-0">Tanggal lahir</th>
                                     <th class="border-top-0">Tempat lahir</th>
+                                    <th class="border-top-0">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -65,6 +69,14 @@
                                     <td>{{ $item->nama }}</td>
                                     <td class="txt-oflo">{{ date('d F Y', strtotime($item->tgl_lahir)) }}</td>
                                     <td>{{ $item->tem_lahir }}</td>
+                                    <td class="btn-group">
+                                        <a href="{{ route('pokok.edit', $item) }}" class="btn text-white btn-sm btn-primary">Edit</a>
+                                        <form action="{{ route('pokok.delete', $item) }}" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" onclick="return confirm('Are you sure?')" class="btn text-white btn-sm btn-danger">Delete</button>
+                                        </form>
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

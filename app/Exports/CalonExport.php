@@ -23,9 +23,9 @@ class CalonExport implements FromView, WithCustomCsvSettings
     }
 
     public function getCsvSettings(): array
-{
-    return [
-        'delimiter' => ";"
-    ];
-}
+    {
+        return [
+            'delimiter' => ";"
+        ];
+    }
 }

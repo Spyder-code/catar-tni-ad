@@ -29,6 +29,10 @@
         @endif
         <div class="row">
             <div class="col-md-12">
+                <form action="{{ route('calon.deleteAll') }}" class="my-2" method="post">
+                    @csrf
+                    <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger mt-2 text-white"><i class="fas fa-trash"></i> Delete All data</button>
+                </form>
                 <div class="white-box">
                     <div class="d-md-flex mb-3">
                         <h3 class="box-title mb-0">Data calon</h3>
@@ -68,6 +72,7 @@
                                 </tbody>
                             </table>
                             <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-primary"><i class="fas fa-download"></i> Export select data CSV</button>
+                            <button class="btn btn-info text-white ml-5" type="button" id="uncheck"></i> Uncheck All</button>
                         </form>
                     </div>
                     <div class="row">
@@ -75,10 +80,6 @@
                             <form action="{{ route('calon.exportAll') }}" method="post">
                                 @csrf
                                 <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-success mt-2"><i class="fas fa-download"></i> Export all data CSV</button>
-                            </form>
-                            <form action="{{ route('calon.deleteAll') }}" method="post">
-                                @csrf
-                                <button type="submit" onclick="return confirm('Are you sure?')" class="btn btn-danger mt-2"><i class="fas fa-trash"></i> Delete All data</button>
                             </form>
                         </div>
                         <div class="col">
@@ -96,6 +97,9 @@
 
 @section('script')
     <script>
+        $('#uncheck').click(function (e) {
+            $('.form-check').prop('checked', false); // Unchecks it
+        });
         function deleteCalon(id) {
             $.ajaxSetup({
             headers: {
@@ -115,8 +119,8 @@
         }
         $(document).ready( function () {
             $('#myTable').DataTable();
-            
-            
+
+
         });
     </script>
 @endsection

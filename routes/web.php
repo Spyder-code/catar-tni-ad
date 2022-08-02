@@ -45,6 +45,11 @@ Route::get('/calon/data-diri', [App\Http\Controllers\CalonController::class, 'pd
 Route::get('/calon/nilai', [App\Http\Controllers\CalonController::class, 'nilai'])->name('calon.nilai');
 Route::get('/main', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/pokok', [App\Http\Controllers\HomeController::class, 'pokok'])->name('pokok');
+Route::get('/pokok-create', [App\Http\Controllers\HomeController::class, 'createPokok'])->name('pokok.create');
+Route::get('/pokok-edit/{pokok}', [App\Http\Controllers\HomeController::class, 'editPokok'])->name('pokok.edit');
+Route::put('/pokok-edit/{pokok}', [App\Http\Controllers\HomeController::class, 'updatePokok'])->name('pokok.update');
+Route::delete('/pokok-delete/{pokok}', [App\Http\Controllers\HomeController::class, 'deletePokok'])->name('pokok.delete');
+Route::post('/pokok-create', [App\Http\Controllers\HomeController::class, 'storePokok'])->name('pokok.store');
 Route::get('/calon', [App\Http\Controllers\HomeController::class, 'calon'])->name('calon');
 Route::post('/calon/destroyAll', [App\Http\Controllers\HomeController::class, 'calonDestroyAll'])->name('calon.deleteAll');
 Route::delete('/calon/destroy', [App\Http\Controllers\HomeController::class, 'calonDestroy'])->name('calon.destroy');

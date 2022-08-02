@@ -26,7 +26,7 @@ class Pokok extends Model
         'wali1',
         'alamat_c',
         'alamat_o',
-        'jenis sekolah',
+        'jenis_sekolah',
         'nama_sekolah',
         'jur',
         'th_lulus',

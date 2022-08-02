@@ -80,6 +80,34 @@ class HomeController extends Controller
         return view('admin.pokok',compact('data'));
     }
 
+    public function createPokok()
+    {
+        return view('admin.createDataPokok');
+    }
+
+    public function storePokok(Request $request)
+    {
+        Pokok::create($request->all());
+        return redirect('pokok')->with('success', 'Data berhasil ditambahkan!');
+    }
+
+    public function deletePokok(Pokok $pokok)
+    {
+        $pokok->delete();
+        return back()->with('success', 'Data berhasil dihapus!');
+    }
+
+    public function editPokok(Pokok $pokok)
+    {
+        return view('admin.editDataPokok', compact('pokok'));
+    }
+
+    public function updatePokok(Request $request, Pokok $pokok)
+    {
+        $pokok->update($request->all());
+        return redirect('pokok')->with('success', 'Data berhasil diubah!');
+    }
+
     public function importExcelPokok(Request $request)
     {
         $request->validate([

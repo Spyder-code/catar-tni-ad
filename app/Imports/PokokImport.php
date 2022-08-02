@@ -29,7 +29,7 @@ class PokokImport implements ToModel, WithStartRow
             'wali1' => $row[11],
             'alamat_c' => $row[12],
             'alamat_o' => $row[13],
-            'jenis sekolah' => $row[14],
+            'jenis_sekolah' => $row[14],
             'nama_sekolah' => $row[15],
             'jur' => $row[16],
             'th_lulus' => $row[17],
