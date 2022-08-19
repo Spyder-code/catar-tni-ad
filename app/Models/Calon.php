@@ -12,6 +12,7 @@ class Calon extends Model
     protected $table = 'calon';
 
     protected $fillable = [
+        'id',
         'no_online',
         'ktp',
         'no_kk',

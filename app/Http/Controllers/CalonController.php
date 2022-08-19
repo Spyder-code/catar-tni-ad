@@ -61,6 +61,8 @@ class CalonController extends Controller
                 'l_bln'=>$month,
                 'l_thn'=>$year,
             ]);
+            $c['id'] = Auth::guard('calon')->user()->id;
+            // dd($c);
             if($check==null){
                 $calon = Calon::create($c);
             }else{
