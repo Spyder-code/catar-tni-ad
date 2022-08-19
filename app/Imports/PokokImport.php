@@ -16,6 +16,7 @@ class PokokImport implements ToModel, WithStartRow
     public function model(array $row)
     {
         return new ModelsPokok([
+            'id' => $row[0],
             'no_online' => $row[1],
             'nama' => $row[2],
             'tem_lahir' => $row[3],
