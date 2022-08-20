@@ -53,7 +53,7 @@
                         <table class="table no-wrap" id="myTable">
                             <thead>
                                 <tr>
-                                    <th class="border-top-0">#</th>
+                                    <th class="border-top-0">ID</th>
                                     <th class="border-top-0">No online</th>
                                     <th class="border-top-0">Nama</th>
                                     <th class="border-top-0">Tanggal lahir</th>
@@ -64,7 +64,7 @@
                             <tbody>
                                 @foreach ($data as $item)
                                 <tr>
-                                    <td>{{ $loop->iteration }}</td>
+                                    <td>{{ $item->id }}</td>
                                     <td class="txt-oflo">{{ $item->no_online }}</td>
                                     <td>{{ $item->nama }}</td>
                                     <td class="txt-oflo">{{ date('d F Y', strtotime($item->tgl_lahir)) }}</td>

@@ -41,6 +41,12 @@
                         @method('PUT')
                         <div class="form-group row">
                             <div class="col">
+                                <label>ID</label>
+                                <input type="text" value="{{ $pokok->id }}" style="text-transform:uppercase" name="id" id="id" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col">
                                 <label>Nomor Animo</label>
                                 <input type="text" value="{{ $pokok->no_online }}" style="text-transform:uppercase" name="no_online" id="no_online" class="form-control" required>
                             </div>
