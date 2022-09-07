@@ -56,7 +56,7 @@ class LandingPageController extends Controller
      * @param  \App\Models\LandingPage  $landingPage
      * @return \Illuminate\Http\Response
      */
-    public function edit(LandingPage $landingPage)
+    public function edit(Setting $landingPage)
     {
         return view('admin.setting', compact('landingPage'));
     }
