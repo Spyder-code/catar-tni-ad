@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Exports\CalonExport;
 use App\Imports\PokokImport;
 use App\Models\Calon;
-use App\Models\LandingPage;
 use App\Models\Pendidikan;
 use App\Models\Pokok;
 use App\Models\Setting;
@@ -191,7 +190,7 @@ class HomeController extends Controller
 
     public function setting()
     {
-        $data =  LandingPage::find(1);
+        $data =  Setting::find(1);
         return view('admin.setting',compact('data'));
     }
 

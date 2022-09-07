@@ -29,6 +29,18 @@
                         <table style="width: 100%">
                             <thead>
                                 <tr>
+                                    <td width="10%">Landing Page Heading :</td>
+                                    <td width="70%"><input type="text" value="{{ $landingPage->lp_heading }}" name="lp_heading" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">Judul Pilihan Santri :</td>
+                                    <td width="70%"><input type="text" value="{{ $landingPage->lp_title_santri }}" name="lp_title_santri" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td width="10%">Judul Pilihan Reguler :</td>
+                                    <td width="70%"><input type="text" value="{{ $landingPage->lp_title_reguler }}" name="lp_title_reguler" class="form-control"></td>
+                                </tr>
+                                <tr>
                                     <td width="10%">Pendaftaran :</td>
                                     <td width="70%"><input type="text" value="{{ $landingPage->pendaftaran }}" name="pendaftaran" class="form-control"></td>
                                 </tr>

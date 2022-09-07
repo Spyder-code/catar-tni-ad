@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\LandingPage;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
@@ -67,7 +68,7 @@ class LandingPageController extends Controller
      * @param  \App\Models\LandingPage  $landingPage
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LandingPage $landingPage)
+    public function update(Request $request, Setting $landingPage)
     {
         $landingPage->update($request->all());
         return back()->with('success', 'Data berhasil diperbarui!');

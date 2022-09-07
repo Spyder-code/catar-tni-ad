@@ -370,7 +370,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                 <p style="text-align:center; position: absolute;">KOMANDO DAERAH MILITER V/BRAWIJAYA <br>PANITIA DAERAH</p>
                 <div style="height: 1px; background-color:black; width:350px; top:80px; position:absolute"></div>
             </div>
-            <h4 style="text-align: center;  top:100px; position:relative; ">BLANKO PENGISIAN NILAI RAPORT CABA TA. {{ date('Y') }} <br> KOREM 082/CPY</h4>
+            <h4 style="text-align: center;  top:100px; position:relative; ">BLANKO PENGISIAN NILAI RAPORT {{ $setting->pendaftaran }} <br> KOREM 082/CPY</h4>
             <table style="border: none; position:relative; top:105px">
                 <thead>
                     <tr>

@@ -428,7 +428,7 @@ pdf2htmlEX.defaultViewer = new pdf2htmlEX.Viewer({});
                                 <td class="data__profile" width="15px">1</td>
                                 <td class="data__profile" width="300px">Nomor Online</td>
                                 <td class="data__profile" width="20px">:</td>
-                                <td class="data__profile" colspan="2" width="max-content"><b>{{ $calon->no_online }}/ CATAR/ {{ $calon->ktp }}</b></td>
+                                <td class="data__profile" colspan="2" width="max-content"><b>{{ $calon->no_online }}</b></td>
                             </tr>
                             <tr>
                                 <td class="data__profile" width="15px">2</td>
