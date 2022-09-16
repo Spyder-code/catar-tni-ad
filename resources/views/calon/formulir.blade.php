@@ -75,7 +75,7 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                                     <div class="accordion-body">
-                                        @include('calon.component.data_diri',['dik'=>$dik,'calon'=>$calon])
+                                        @include('calon.component.data_diri',['dik'=>$setting->dik,'calon'=>$calon])
                                     </div>
                                 </div>
                             </div>
@@ -142,7 +142,6 @@
             var val = {!! json_encode($pendidikan->l_sma) !!}
             val = parseInt(val);
             if (val<=2019) {
-                console.log('sas');
                 $('input[name="nilai2019[ind]"]').prop('required',true);
                 $('#tg-HMKiy').show();
                 $('#2019').show();
@@ -169,8 +168,6 @@
             maxDate: 'today',
             altFormat: 'd/m/Y',
             // altInput: true,
-            maxDate: '2005-12-30',
-            minDate: '1999-01-01',
             onChange: function(selectedDates, dateStr, instance) {
                 var lhr = selectedDates[0];
                 // var tgl_lahir = new Date(tgl);
@@ -180,13 +177,15 @@
                 // var lhr = $(this).val();
                 // console.log(dateStr);
                 // console.log(lhr);
-                var dik = $('#dik').val();
+                var dik = {!! json_encode($setting->dik) !!};
                 var result = ageCalculator(lhr,dik);
                 $('#umr').val(result[0]);
                 var date = result[1];
+                var termuda = {!! json_encode($setting->termuda) !!};
+                var tertua = {!! json_encode($setting->tertua) !!};
                 const now = new Date(dateStr).getTime();
-                const min = new Date("2000-09-23").getTime();
-                const max = new Date("2004-12-23").getTime();
+                const min = new Date(tertua).getTime();
+                const max = new Date(termuda).getTime();
                 // var a = ageValidation(date);
                 if(now>=min && now<=max){
                     var a = 'Umur memenuhi persyaratan';

@@ -26,21 +26,21 @@ class CalonController extends Controller
     {
         $no = Auth::guard('calon')->user()->no_online;
         $calon = Calon::where('no_online',$no)->first();
-        $dik = Setting::find(1)->dik;
+        $setting = Setting::find(1);
         if($calon!=null){
             $pendidikan = Pendidikan::where('calon_id',$calon->id)->first();
             $wali = Wali::where('calon_id',$calon->id)->first();
             $nilai = T2020::where('calon_id',$calon->id)->first();
             $nilai2019 = T2019::where('calon_id',$calon->id)->first();
             $status = 1;
-            return view('calon.formulir',compact('calon','dik','pendidikan','wali','status','nilai','nilai2019'));
+            return view('calon.formulir',compact('calon','setting','pendidikan','wali','status','nilai','nilai2019'));
         }else{
             $pendidikan = null;
             $wali = null;
             $nilai = null;
             $nilai2019 = null;
             $status = 0;
-            return view('calon.formulir',compact('calon','dik','pendidikan','wali','status','nilai','nilai2019'));
+            return view('calon.formulir',compact('calon','setting','pendidikan','wali','status','nilai','nilai2019'));
         }
     }
 

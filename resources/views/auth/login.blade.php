@@ -98,6 +98,14 @@
             maxDate: '2005-12-30',
             minDate: '1999-01-01',
         });
+
+    $('#no_online').keyup(function (e) {
+        var val = $(this).val();
+        var len = val.length;
+        if(len > 9){
+            $(this).val(val.substr(0,9));
+        }
+    });
 </script>
 @endsection
 

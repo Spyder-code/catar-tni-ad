@@ -57,6 +57,14 @@
                                     <td><textarea name="content" id="example" rows="20">{{ $landingPage->content }}</textarea></td>
                                 </tr>
                                 <tr>
+                                    <td>TGL TERMUDA</td>
+                                    <td><input type="date" name="termuda" value="{{ $landingPage->termuda }}" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>TGL TERTUA</td>
+                                    <td><input type="date" name="tertua" value="{{ $landingPage->tertua }}" class="form-control"></td>
+                                </tr>
+                                <tr>
                                     <td>DIK</td>
                                     <td><input type="date" name="dik" value="{{ $landingPage->dik }}" class="form-control"></td>
                                 </tr>

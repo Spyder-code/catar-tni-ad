@@ -15,6 +15,8 @@ class Setting extends Model
         'heading_2',
         'content',
         'dik',
+        'tertua',
+        'termuda',
         'lp_heading',
         'lp_title_santri',
         'lp_title_reguler',
