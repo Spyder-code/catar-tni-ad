@@ -68,6 +68,17 @@
                                     <td>DIK</td>
                                     <td><input type="date" name="dik" value="{{ $landingPage->dik }}" class="form-control"></td>
                                 </tr>
+                                <tr>
+                                    <td>KET UMUR</td>
+                                    <td>
+                                        <label for="perlihatkan">
+                                            <input type="radio" class="custom-control-input" name="lihat_umur" value="1" id="perlihatkan" {{ $landingPage->lihat_umur==1?'checked':'' }}/> Perlihatkan
+                                        </label>
+                                        <label for="sembunyikan">
+                                            <input type="radio" class="custom-control-input" name="lihat_umur" value="0" id="sembunyikan" {{ $landingPage->lihat_umur==0?'checked':'' }}/> Sembunyikan
+                                        </label>
+                                    </td>
+                                </tr>
                             </thead>
                         </table>
                         <button type="submit" class="btn btn-success mt-3"><i class="fas fa-save"></i> Save</button>

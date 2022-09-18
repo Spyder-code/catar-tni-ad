@@ -62,6 +62,7 @@
         <input type="date" id="dik" name="calon[dik]" readonly class="form-control" value="{{ $dik }}">
     </div>
 </div>
+@if ($setting->lihat_umur==1)
 <div class="form-group row">
     <div class="col-sm">
         <label>Umur</label>
@@ -84,6 +85,15 @@
         <input type="text" style="text-transform: uppercase" value="{{ $calon!=null?$calon->ket_umr :old('calon.ket_umr') }}" id="ket-umr" name="calon[ket_umr]" readonly class="form-control" >
     </div>
 </div>
+@else
+<div class="form-group row">
+    <input type="hidden" style="text-transform: uppercase" value="{{ $calon!=null?$calon->umr :old('calon.umr') }}" id="umr" name="calon[umr]" readonly class="form-control" >
+    <input type="hidden" style="text-transform: uppercase" readonly value="{{ $calon!=null?$calon->u_hri :old('calon.u_hri')}}" id="u_hri" name="calon[u_hri]" class="form-control" >
+    <input type="hidden" style="text-transform: uppercase" readonly value="{{ $calon!=null?$calon->u_thn :old('calon.u_thn')}}" id="u_thn" name="calon[u_thn]" class="form-control" >
+    <input type="hidden" style="text-transform: uppercase" value="{{ $calon!=null?$calon->ket_umr :old('calon.ket_umr') }}" id="ket-umr" name="calon[ket_umr]" readonly class="form-control" >
+    <input type="hidden" style="text-transform: uppercase" readonly value="{{ $calon!=null?$calon->u_bln :old('calon.u_bln')}}" id="u_bln" name="calon[u_bln]" class="form-control" >
+</div>
+@endif
 <div class="form-group row">
     <div class="col-sm">
         <label>Suku</label>

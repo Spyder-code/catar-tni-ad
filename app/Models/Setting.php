@@ -20,5 +20,6 @@ class Setting extends Model
         'lp_heading',
         'lp_title_santri',
         'lp_title_reguler',
+        'lihat_umur',
     ];
 }
