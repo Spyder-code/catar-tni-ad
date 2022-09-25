@@ -65,7 +65,7 @@ class LoginController extends Controller
         $tgl = date('d-m-Y', strtotime($request->tgl_lahir));
         $user = Pokok::where('id',$request->id)->where('tgl_lahir',$tgl)->first();
         if ($user==null) {
-            return back()
+            return redirect()->route('login')
             ->with('danger','No online dan tanggal lahir tidak ada dalam data kami. Silahkan menghubungi admin!');
         } else {
             Auth::guard('calon')->login($user);

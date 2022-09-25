@@ -5,6 +5,7 @@
 
     .tni-logo{
         height: 250px;
+        border: none !important;
     }
     @media (min-width:769px) {
         main{
@@ -20,9 +21,9 @@
 <main>
     <div class="container-fluid">
         <div class="row align-items-center">
-            <a href="{{ url('/') }}" class="col-md-6 col-sm-12 text-center">
+            <div class="col-md-6 col-sm-12 text-center">
                 <img src="{{ asset('images/tni-logo.png') }}" class="img-fluid tni-logo">
-            </a>
+            </div>
             <div class="col-md-6 col-sm-12">
                 <div class="row align-items-center">
                     <div class="col text-primary">

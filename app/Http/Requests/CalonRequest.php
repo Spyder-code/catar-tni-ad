@@ -25,6 +25,7 @@ class CalonRequest extends FormRequest
     {
         if (env('PONPES')) {
             return [
+                'pokok_id' => 'required',
                 'calon.nama' => 'required|regex:/^[a-zA-Z0-9 .,-\/\(\)]+$/',
                 'calon.no_online' => 'required',
                 'calon.no_kk' => 'required',
@@ -77,6 +78,7 @@ class CalonRequest extends FormRequest
             ];
         } else {
             return [
+                'pokok_id' => 'required',
                 'calon.nama' => 'required|regex:/^[a-zA-Z0-9 .,-\/\(\)]+$/',
                 'calon.no_online' => 'required',
                 'calon.no_kk' => 'required',

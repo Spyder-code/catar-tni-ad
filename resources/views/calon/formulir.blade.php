@@ -64,6 +64,7 @@
                     @endif
                     <form action="{{ route('calon.form.store') }}" method="post">
                         @csrf
+                        <input type="hidden" name="pokok_id" value="{{ Auth::guard('calon')->user()->id }}">
                         <input type="hidden" name="status" value="{{ $status }}">
                         <input type="hidden" name="calon_id" value="{{ $calon!=null?$calon->id:0 }}">
                         <div class="accordion" id="accordionPanelsStayOpenExample">

@@ -24,8 +24,8 @@ class CalonController extends Controller
 
     public function index()
     {
-        $no = Auth::guard('calon')->user()->no_online;
-        $calon = Calon::where('no_online',$no)->first();
+        $pokok = Auth::guard('calon')->user();
+        $calon = Calon::find($pokok->id);
         $setting = Setting::find(1);
         if($calon!=null){
             $pendidikan = Pendidikan::where('calon_id',$calon->id)->first();
@@ -46,8 +46,7 @@ class CalonController extends Controller
 
     public function store(CalonRequest $request)
     {
-
-        $check = Calon::where('no_online',$request->calon['no_online'])->first();
+        $check = Calon::find(Auth::guard('calon')->user()->id);
         // if($check!=null){
         //     return redirect()->back()->with('error','Silahkan refresh halaman ini');
         // }
@@ -61,7 +60,6 @@ class CalonController extends Controller
                 'l_thn'=>$year,
             ]);
             $c['id'] = Auth::guard('calon')->user()->id;
-            // dd($c);
             if($check==null){
                 $calon = Calon::create($c);
             }else{
