@@ -20,7 +20,7 @@ class PokokImport implements ToModel, WithStartRow
             'no_online' => $row[1],
             'nama' => $row[2],
             'tem_lahir' => $row[3],
-            'tgl_lahir' => $row[4],
+            'tgl_lahir' => date('Y-m-d',strtotime($row[4])),
             'kdpanda' => $row[5],
             'tb' => $row[6],
             'bb' => $row[7],
