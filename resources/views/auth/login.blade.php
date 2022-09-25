@@ -38,7 +38,7 @@
                                         </div>
                                     </div>
                                 @endif
-                                <form method="POST" action="{{ route('login.calon') }}">
+                                <form method="POST" action="{{ route('login.takeUser') }}">
                                     @csrf
 
                                     <div class="form-group row">
@@ -55,7 +55,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="form-group row">
+                                    {{-- <div class="form-group row">
                                         <label for="tgl_lahir" class="col-md-4 col-form-label text-md-right">{{ __('Tanggal lahir') }}</label>
 
                                         <div class="col-md-6">
@@ -67,12 +67,12 @@
                                                 </span>
                                             @enderror
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="form-group row mb-0">
                                         <div class="col-md-8 offset-md-4">
                                             <button type="submit" class="btn btn-primary">
-                                                {{ __('Login') }}
+                                                {{ __('Masuk') }}
                                             </button>
                                         </div>
                                     </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\LandingPageController;
 use App\Models\Calon;
 use App\Models\LandingPage;
@@ -42,6 +43,7 @@ Auth::routes(['register'=>false]);
 
 Route::get('/calon/administrasi', [App\Http\Controllers\CalonController::class, 'index'])->name('calon.form');
 Route::post('/calon/administrasi', [App\Http\Controllers\CalonController::class, 'store'])->name('calon.form.store');
+Route::post('pilih/akun', [LoginController::class, 'takeUser'])->name('login.takeUser');
 Route::get('/calon/data-diri', [App\Http\Controllers\CalonController::class, 'pdf'])->name('calon.pdf');
 Route::get('/calon/nilai', [App\Http\Controllers\CalonController::class, 'nilai'])->name('calon.nilai');
 Route::get('/main', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

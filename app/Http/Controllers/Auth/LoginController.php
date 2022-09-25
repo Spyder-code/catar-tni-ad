@@ -62,16 +62,22 @@ class LoginController extends Controller
 
     public function loginCalon(Request $request)
     {
-        $tgl = $request->tgl_lahir;
-        $user = Pokok::where('no_online',$request->no_online)->whereDate('tgl_lahir',$tgl)->first();
+        $tgl = date('d-m-Y', strtotime($request->tgl_lahir));
+        $user = Pokok::where('id',$request->id)->where('tgl_lahir',$tgl)->first();
         if ($user==null) {
-            return redirect()->route('login')
+            return back()
             ->with('danger','No online dan tanggal lahir tidak ada dalam data kami. Silahkan menghubungi admin!');
         } else {
             Auth::guard('calon')->login($user);
             return redirect()->route('calon.form');
         }
 
+    }
+
+    public function takeUser(Request $request)
+    {
+        $data = Pokok::where('no_online', $request->no_online)->get();
+        return view('auth.takeUser', compact('data'));
     }
 
 }
