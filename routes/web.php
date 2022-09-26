@@ -24,6 +24,15 @@ Route::get('/', function () {
     $setting = Setting::find(1);
     return view('home', compact('setting'));
 });
+Route::get('sync/date', function () {
+    $data = Pokok::whereDate('created_at',date('Y-m-d'))->get();
+    foreach ($data as $item ) {
+        $item->update([
+            'tgl_lahir' => date('d-m-Y', strtotime($item->tgl_lahir))
+        ]);
+    }
+    return response('success');
+});
 Route::get('/home', function () {
     $data = Setting::find(1);
     return view('layouts.user', compact('data'));
