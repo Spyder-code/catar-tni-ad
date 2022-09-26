@@ -111,6 +111,7 @@
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script>
     flatpickr('#tgl_lahir', {
+            dateFormat:'Y-m-d',
             maxDate: 'today',
             altFormat: 'd/m/Y',
             altInput: true,
