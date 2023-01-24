@@ -4,9 +4,9 @@
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-8 text-center">
-            <h1>{{ $setting->lp_heading }}</h1>
+            <h1 class="text-white">{{ $setting->lp_heading }}</h1>
             <hr>
-            <h3>Pilih pilihan pendaftaran:</h3>
+            <h3 class="text-white">Pilih pilihan pendaftaran:</h3>
             <ul class="list-group">
                 <a href="https://ajenrem082.spydercode.my.id/home" class="list-group-item">
                     <h5>{{ $setting->lp_title_reguler }}</h5>
