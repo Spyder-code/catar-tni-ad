@@ -121,10 +121,10 @@
     </div>
     @if (env('PONPES'))
     <div class="col-sm-12 col-12 mt-2 col-md-6">
-        <label>Nama Pondok Pesantren</label>
+        <label>Hobi</label>
         @error('pendidikan.ponpes')
         <div>
-            <strong class="text-danger small">Ponpes tidak boleh kosong dan mengandung tanda petik(')</strong>
+            <strong class="text-danger small">Hobi tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.ponpes') autofocus @enderror name="pendidikan[ponpes]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->ponpes) : Auth::guard('calon')->user()->ponpes }}">
