@@ -100,7 +100,7 @@
     </tr>
     <tr>
         <td class="tg-c3ow">4</td>
-        <td class="tg-c3ow">Fisika</td>
+        <td class="tg-c3ow">Fisika/Ekonomi</td>
         <td class="tg-c3ow"><input class="input" type="number" onkeypress="return this.value.length < 5;" oninput="if(this.value.length>=5) { this.value = this.value.slice(0,5); }" value="{{ $nilai!=null?$nilai->fispeng1 :old('nilai.fispeng1') }}" step="any" name="nilai[fispeng1]" id="fis1"></td>
         <td class="tg-c3ow"><input class="input" type="number" onkeypress="return this.value.length < 5;" oninput="if(this.value.length>=5) { this.value = this.value.slice(0,5); }" value="{{ $nilai!=null?$nilai->fisket1 :old('nilai.fisket1') }}" step="any" name="nilai[fisket1]" id="fis2"></td>
         <td class="tg-c3ow"><input class="input" type="number" onkeypress="return this.value.length < 5;" oninput="if(this.value.length>=5) { this.value = this.value.slice(0,5); }" value="{{ $nilai!=null?$nilai->fispeng2 :old('nilai.fispeng2') }}" step="any" name="nilai[fispeng2]" id="fis3"></td>
@@ -116,7 +116,7 @@
     </tr>
     <tr>
         <td class="tg-c3ow">5</td>
-        <td class="tg-c3ow">Biologi</td>
+        <td class="tg-c3ow">Biologi/Geografi</td>
         <td class="tg-c3ow"><input class="input" type="number" onkeypress="return this.value.length < 5;" oninput="if(this.value.length>=5) { this.value = this.value.slice(0,5); }" value="{{ $nilai!=null?$nilai->biopeng1 :old('nilai.biopeng1') }}" step="any" name="nilai[biopeng1]" id="bio1"></td>
         <td class="tg-c3ow"><input class="input" type="number" onkeypress="return this.value.length < 5;" oninput="if(this.value.length>=5) { this.value = this.value.slice(0,5); }" value="{{ $nilai!=null?$nilai->bioket1 :old('nilai.bioket1') }}" step="any" name="nilai[bioket1]" id="bio2"></td>
         <td class="tg-c3ow"><input class="input" type="number" onkeypress="return this.value.length < 5;" oninput="if(this.value.length>=5) { this.value = this.value.slice(0,5); }" value="{{ $nilai!=null?$nilai->biopeng2 :old('nilai.biopeng2') }}" step="any" name="nilai[biopeng2]" id="bio3"></td>
@@ -132,7 +132,7 @@
     </tr>
     <tr>
         <td class="tg-c3ow">6</td>
-        <td class="tg-c3ow">Kimia</td>
+        <td class="tg-c3ow">Kimia/Sosiologi</td>
         <td class="tg-c3ow"><input class="input" type="number" onkeypress="return this.value.length < 5;" oninput="if(this.value.length>=5) { this.value = this.value.slice(0,5); }" value="{{ $nilai!=null?$nilai->kimpeng1 :old('nilai.kimpeng1') }}" step="any" name="nilai[kimpeng1]" id="kim1"></td>
         <td class="tg-c3ow"><input class="input" type="number" onkeypress="return this.value.length < 5;" oninput="if(this.value.length>=5) { this.value = this.value.slice(0,5); }" value="{{ $nilai!=null?$nilai->kimket1 :old('nilai.kimket1') }}" step="any" name="nilai[kimket1]" id="kim2"></td>
         <td class="tg-c3ow"><input class="input" type="number" onkeypress="return this.value.length < 5;" oninput="if(this.value.length>=5) { this.value = this.value.slice(0,5); }" value="{{ $nilai!=null?$nilai->kimpeng2 :old('nilai.kimpeng2') }}" step="any" name="nilai[kimpeng2]" id="kim3"></td>
