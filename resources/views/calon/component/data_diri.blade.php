@@ -250,11 +250,11 @@
 </div>
 <div class="form-group row">
     <div class="col">
-        <label>Prestasi tingkat provinsi</label>
+        <label>Prestasi tingkat provinsi/nasional/internasional</label>
         <input type="text" style="text-transform: uppercase" name="calon[prestasi_provinsi]" class="form-control validate-symbol" value="{{ $calon!=null?$calon->prestasi_provinsi :old('calon.prestasi_provinsi') }}">
     </div>
     <div class="col">
-        <label>Prestasi tingkat nasional/internasional</label>
+        <label>Email</label>
         <input type="text" style="text-transform: uppercase" name="calon[prestasi_nasional]" class="form-control validate-symbol" value="{{ $calon!=null?$calon->prestasi_nasional :old('calon.prestasi_nasional') }}">
     </div>
 </div>

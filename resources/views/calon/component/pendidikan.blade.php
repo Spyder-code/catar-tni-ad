@@ -123,7 +123,7 @@
     </div>
     @if (env('PONPES'))
     <div class="col-sm-12 col-12 mt-2 col-md-6">
-        <label>Hobi</label>
+        <label>Pondok Pesantren/Tempat Ibadah</label>
         @error('pendidikan.ponpes')
         <div>
             <strong class="text-danger small">Hobi tidak boleh kosong dan mengandung tanda petik(')</strong>
