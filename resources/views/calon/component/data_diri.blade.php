@@ -116,10 +116,10 @@
 </div>
 <div class="form-group row">
     <div class="col-sm-8">
-        <label>Jalan</label>
+        <label>Hobi</label>
         @error('calon.alamat')
         <div>
-            <strong class="text-danger small">Jalan tidak boleh kosong dan mengandung tanda petik(')</strong>
+            <strong class="text-danger small">Hobi tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input @error('calon.alamat') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[alamat]" class="form-control validate-symbol" value="{{ $calon!=null?stripcslashes($calon->alamat) : old('calon.alamat')}}">
