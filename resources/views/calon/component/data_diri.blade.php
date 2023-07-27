@@ -261,7 +261,7 @@
 <div class="form-group row">
     <div class="col-12 col-md-3">
         <label>Email</label>
-        <input type="text" style="text-transform: uppercase" name="calon[email]" class="form-control validate-symbol" value="{{ $calon!=null?$calon->email :old('calon.email') }}">
+        <input type="text" name="calon[email]" class="form-control" value="{{ $calon!=null?$calon->email :old('calon.email') }}">
     </div>
     <div class="col-12 col-md-3">
         <label>Hobi</label>
