@@ -279,6 +279,27 @@
                 $('#jab_wi').hide();
             }
         });
+
+        // $('#kerja').hide();
+        $(".pernah_kerja").change(function (e) {
+            let val = $(".pernah_kerja:checked").val();
+            if(val.toLowerCase()=='ya'){
+                $('#kerja').show();
+            }else{
+                $('#kerja').hide();
+            }
+        });
+
+        function kerja(){
+            let val = $(".pernah_kerja:checked").val();
+            if(val.toLowerCase()=='ya'){
+                $('#kerja').show();
+            }else{
+                $('#kerja').hide();
+            }
+        }
+
+        kerja();
     </script>
 
 @endsection

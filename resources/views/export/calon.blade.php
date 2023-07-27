@@ -202,6 +202,12 @@
         <td>i_nenek_almt_skr</td>
         <td>i_nenek_almt_sblm</td>
         <td>almt_sma</td>
+        <td>email</td>
+        <td>hobi</td>
+        <td>motivasi</td>
+        <td>pernah_kerja</td>
+        <td>tempat_kerja</td>
+        <td>lama_kerja</td>
         @if (env('PONPES'))
         <td>ponpes</td>
         @endif
@@ -423,6 +429,12 @@
             <td>{{ $item->wali->i_nenek_almt_skr }} </td>
             <td>{{ $item->wali->i_nenek_almt_sblm }} </td>
             <td>{{ $item->pendidikan->almt_sma }} </td>
+            <td>{{ $item->email }} </td>
+            <td>{{ $item->hobi }} </td>
+            <td>{{ $item->motifasi }} </td>
+            <td>{{ $item->pernah_kerja }} </td>
+            <td>{{ $item->tempat_kerja }} </td>
+            <td>{{ $item->lama_kerja }} </td>
             @if (env('PONPES'))
             <td>{{ $item->pendidikan->ponpes }} </td>
             @endif

@@ -116,10 +116,10 @@
 </div>
 <div class="form-group row">
     <div class="col-sm-8">
-        <label>Hobi</label>
+        <label>Jalan</label>
         @error('calon.alamat')
         <div>
-            <strong class="text-danger small">Hobi tidak boleh kosong dan mengandung tanda petik(')</strong>
+            <strong class="text-danger small">Jalan tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input @error('calon.alamat') autofocus @enderror type="text" style="text-transform: uppercase" name="calon[alamat]" class="form-control validate-symbol" value="{{ $calon!=null?stripcslashes($calon->alamat) : old('calon.alamat')}}">
@@ -250,11 +250,50 @@
 </div>
 <div class="form-group row">
     <div class="col">
-        <label>Prestasi tingkat provinsi/nasional/internasional</label>
+        <label>Prestasi Propinsi</label>
         <input type="text" style="text-transform: uppercase" name="calon[prestasi_provinsi]" class="form-control validate-symbol" value="{{ $calon!=null?$calon->prestasi_provinsi :old('calon.prestasi_provinsi') }}">
     </div>
     <div class="col">
-        <label>Email</label>
+        <label>Prestasi Nasional</label>
         <input type="text" style="text-transform: uppercase" name="calon[prestasi_nasional]" class="form-control validate-symbol" value="{{ $calon!=null?$calon->prestasi_nasional :old('calon.prestasi_nasional') }}">
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-12 col-md-3">
+        <label>Email</label>
+        <input type="text" style="text-transform: uppercase" name="calon[email]" class="form-control validate-symbol" value="{{ $calon!=null?$calon->email :old('calon.email') }}">
+    </div>
+    <div class="col-12 col-md-3">
+        <label>Hobi</label>
+        <input type="text" style="text-transform: uppercase" name="calon[hobi]" class="form-control validate-symbol" value="{{ $calon!=null?$calon->hobi :old('calon.hobi') }}">
+    </div>
+    <div class="col-12 col-md-6">
+        <label>Motivasi Daftar</label>
+        <input type="text" style="text-transform: uppercase" name="calon[motifasi]" class="form-control validate-symbol" value="{{ $calon!=null?$calon->motifasi :old('calon.motifasi') }}">
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-12 col-md-4">
+        <label>Apakah pernah bekerja?</label>
+        <div class="form-check">
+            <input class="form-check-input pernah_kerja" type="radio" name="calon[pernah_kerja]" id="exampleRadios1" value="YA" {{ $calon!=null?($calon->pernah_kerja=='YA'?'checked':'') :(old('calon.pernah_kerja')=='YA'?'checked':'') }}>
+            <label class="form-check-label" for="exampleRadios1">YA</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input pernah_kerja" type="radio" name="calon[pernah_kerja]" id="exampleRadios2" value="TIDAK" {{ $calon!=null?($calon->pernah_kerja=='TIDAK'?'checked':'') :(old('calon.pernah_kerja')=='TIDAK'?'checked':'') }}>
+            <label class="form-check-label" for="exampleRadios2">TIDAK</label>
+        </div>
+    </div>
+    <div class="col-12 col-md-8">
+        <div class="row" id="kerja">
+            <div class="col-12 mb-2">
+                <label>Pernah kerja dimana</label>
+                <input type="text" style="text-transform: uppercase" name="calon[tempat_kerja]" class="form-control validate-symbol" value="{{ $calon!=null?$calon->tempat_kerja :old('calon.tempat_kerja') }}">
+            </div>
+            <div class="col-12 mb-2">
+                <label>Berapa lama kerja</label>
+                <input type="text" style="text-transform: uppercase" name="calon[lama_kerja]" class="form-control validate-symbol" value="{{ $calon!=null?$calon->lama_kerja :old('calon.lama_kerja') }}">
+            </div>
+        </div>
     </div>
 </div>

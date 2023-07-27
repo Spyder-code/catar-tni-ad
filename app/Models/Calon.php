@@ -48,6 +48,12 @@ class Calon extends Model
         'bb',
         'tindik',
         'tatto',
+        'motifasi',
+        'hobi',
+        'email',
+        'pernah_kerja',
+        'tempat_kerja',
+        'lama_kerja',
     ];
 
     public function pendidikan()
