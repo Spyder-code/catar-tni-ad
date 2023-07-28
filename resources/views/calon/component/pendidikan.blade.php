@@ -122,7 +122,7 @@
         </select>
     </div>
     @if (env('PONPES'))
-    <div class="col-lg-4 col-12 mt-2 col-md-6">
+    <div class="col-lg-6 col-12 mt-2 col-md-6">
         <label>{{ $setting->label_ponpes }}</label>
         @error('pendidikan.ponpes')
         <div>
@@ -131,23 +131,23 @@
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.ponpes') autofocus @enderror name="pendidikan[ponpes]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->ponpes) : Auth::guard('calon')->user()->ponpes }}">
     </div>
-    <div class="col-lg-4 col-12 mt-2 col-md-6">
-        <label>{{ $setting->label_alamat_ponpes }}</label>
-        @error('pendidikan.ponpes')
-        <div>
-            <strong class="text-danger small">{{ $setting->label_alamat_ponpes }} tidak boleh kosong dan mengandung tanda petik(')</strong>
-        </div>
-        @enderror
-        <input type="text" style="text-transform: uppercase" @error('pendidikan.alamat_ponpes') autofocus @enderror name="pendidikan[alamat_ponpes]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->ponpes) : '' }}">
-    </div>
-    <div class="col-lg-4 col-12 mt-2 col-md-6">
+    <div class="col-lg-6 col-12 mt-2 col-md-6">
         <label>{{ $setting->label_kabupaten_ponpes }}</label>
-        @error('pendidikan.ponpes')
+        @error('pendidikan.kabupaten_ponpes')
         <div>
             <strong class="text-danger small">{{ $setting->label_kabupaten_ponpes }} tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.kabupaten_ponpes') autofocus @enderror name="pendidikan[kabupaten_ponpes]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->kabupaten_ponpes) : '' }}">
+    </div>
+    <div class="col-lg-12 col-12 mt-2 col-md-12">
+        <label>{{ $setting->label_alamat_ponpes }}</label>
+        @error('pendidikan.alamat_ponpes')
+        <div>
+            <strong class="text-danger small">{{ $setting->label_alamat_ponpes }} tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" @error('pendidikan.alamat_ponpes') autofocus @enderror name="pendidikan[alamat_ponpes]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->alamat_ponpes) : '' }}">
     </div>
     @endif
 </div>

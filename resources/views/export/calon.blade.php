@@ -208,11 +208,9 @@
         <td>pernah_kerja</td>
         <td>tempat_kerja</td>
         <td>lama_kerja</td>
-        @if (env('PONPES'))
         <td>ponpes</td>
         <td>alamat_ponpes</td>
         <td>kabupaten_ponpes</td>
-        @endif
     </tr>
     </thead>
     <tbody>
@@ -437,11 +435,9 @@
             <td>{{ $item->pernah_kerja }} </td>
             <td>{{ $item->tempat_kerja }} </td>
             <td>{{ $item->lama_kerja }} </td>
-            @if (env('PONPES'))
             <td>{{ $item->pendidikan->ponpes }} </td>
             <td>{{ $item->pendidikan->alamat_ponpes }} </td>
             <td>{{ $item->pendidikan->kabupaten_ponpes }} </td>
-            @endif
         </tr>
     @endforeach
     </tbody>
