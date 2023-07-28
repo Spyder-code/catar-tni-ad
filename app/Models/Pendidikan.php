@@ -28,5 +28,7 @@ class Pendidikan extends Model
         'jumlah_nuan',
         'rata',
         'ponpes',
+        'alamat_ponpes',
+        'kabupaten_ponpes',
     ];
 }

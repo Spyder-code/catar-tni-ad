@@ -21,5 +21,8 @@ class Setting extends Model
         'lp_title_santri',
         'lp_title_reguler',
         'lihat_umur',
+        'label_ponpes',
+        'label_alamat_ponpes',
+        'label_kabupaten_ponpes',
     ];
 }

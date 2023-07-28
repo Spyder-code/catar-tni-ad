@@ -29,23 +29,23 @@
                         <table style="width: 100%">
                             <thead>
                                 <tr>
-                                    <td width="10%">Landing Page Heading :</td>
+                                    <td width="20%">Landing Page Heading :</td>
                                     <td width="70%"><input type="text" value="{{ $landingPage->lp_heading }}" name="lp_heading" class="form-control"></td>
                                 </tr>
                                 <tr>
-                                    <td width="10%">Judul Pilihan Santri :</td>
+                                    <td width="20%">Judul Pilihan Santri :</td>
                                     <td width="70%"><input type="text" value="{{ $landingPage->lp_title_santri }}" name="lp_title_santri" class="form-control"></td>
                                 </tr>
                                 <tr>
-                                    <td width="10%">Judul Pilihan Reguler :</td>
+                                    <td width="20%">Judul Pilihan Reguler :</td>
                                     <td width="70%"><input type="text" value="{{ $landingPage->lp_title_reguler }}" name="lp_title_reguler" class="form-control"></td>
                                 </tr>
                                 <tr>
-                                    <td width="10%">Pendaftaran :</td>
+                                    <td width="20%">Pendaftaran :</td>
                                     <td width="70%"><input type="text" value="{{ $landingPage->pendaftaran }}" name="pendaftaran" class="form-control"></td>
                                 </tr>
                                 <tr>
-                                    <td width="10%">Heading 1 :</td>
+                                    <td width="20%">Heading 1 :</td>
                                     <td width="70%"><input type="text" value="{{ $landingPage->heading_1 }}" name="heading_1" class="form-control"></td>
                                 </tr>
                                 <tr>
@@ -78,6 +78,18 @@
                                             <input type="radio" class="custom-control-input" name="lihat_umur" value="0" id="sembunyikan" {{ $landingPage->lihat_umur==0?'checked':'' }}/> Sembunyikan
                                         </label>
                                     </td>
+                                </tr>
+                                <tr>
+                                    <td>Label Ponpes</td>
+                                    <td><input type="text" name="label_ponpes" value="{{ $landingPage->label_ponpes }}" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Label Alamat Ponpes</td>
+                                    <td><input type="text" name="label_alamat_ponpes" value="{{ $landingPage->label_alamat_ponpes }}" class="form-control"></td>
+                                </tr>
+                                <tr>
+                                    <td>Label Kabupaten Ponpes</td>
+                                    <td><input type="text" name="label_kabupaten_ponpes" value="{{ $landingPage->label_kabupaten_ponpes }}" class="form-control"></td>
                                 </tr>
                             </thead>
                         </table>

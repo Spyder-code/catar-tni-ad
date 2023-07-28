@@ -1,5 +1,5 @@
 <div class="form-group row">
-    <div class="col-lg-6 col-12 mt-2 col-md-6">
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>SD</label>
         @error('pendidikan.sd')
         <div>
@@ -8,7 +8,7 @@
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.sd') autofocus @enderror name="pendidikan[sd]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->sd) : old('pendidikan.sd') }}">
     </div>
-    <div class="col-lg-6 col-12 mt-2 col-md-6">
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>Tahun lulus SD</label>
         @error('pendidikan.l_sd')
         <div>
@@ -17,7 +17,7 @@
         @enderror
         <input @error('pendidikan.l_sd') autofocus @enderror onkeypress="return this.value.length < 4;" oninput="if(this.value.length>=4) { this.value = this.value.slice(0,4); }" type="number" name="pendidikan[l_sd]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_sd : old('pendidikan.l_sd') }}">
     </div>
-    <div class="col-lg-6 col-12 mt-2 col-md-6">
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>Kab/Kota Lulus SD</label>
         @error('pendidikan.kab_sd')
         <div>
@@ -28,7 +28,7 @@
     </div>
 </div>
 <div class="form-group row">
-    <div class="col-lg-6 col-12 mt-2 col-md-6">
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>SMP</label>
         @error('pendidikan.smp')
         <div>
@@ -37,7 +37,7 @@
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.smp') autofocus @enderror name="pendidikan[smp]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->smp) : old('pendidikan.smp') }}">
     </div>
-    <div class="col-lg-6 col-12 mt-2 col-md-6">
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>Tahun lulus SMP</label>
         @error('pendidikan.l_smp')
         <div>
@@ -46,7 +46,7 @@
         @enderror
         <input @error('pendidikan.l_smp') autofocus @enderror onkeypress="return this.value.length < 4;" oninput="if(this.value.length>=4) { this.value = this.value.slice(0,4); }" type="number" name="pendidikan[l_smp]" class="form-control" value="{{ $pendidikan!=null?$pendidikan->l_smp : old('pendidikan.l_smp') }}">
     </div>
-    <div class="col-lg-6 col-12 mt-2 col-md-6">
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>Kab/Kota Lulus SMP</label>
         @error('pendidikan.kab_smp')
         <div>
@@ -75,7 +75,7 @@
         @enderror
         <input type="text" style="text-transform: uppercase" name="pendidikan[jur]" class="form-control validate-symbol" value="{{ $pendidikan!=null?$pendidikan->jur :  Auth::guard('calon')->user()->jur }}">
     </div>
-    <div class="col-lg-6 col-12 mt-2 col-md-6">
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>Kab/Kota Lulus SMA</label>
         @error('pendidikan.kab_sma')
         <div>
@@ -84,7 +84,7 @@
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.kab_sma') autofocus @enderror name="pendidikan[kab_sma]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->kab_sma) : old('pendidikan.kab_sma') }}">
     </div>
-    <div class="col-lg-6 col-12 mt-2 col-md-6">
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>Alamat Sekolah SMA</label>
         @error('pendidikan.almt_sma')
         <div>
@@ -93,7 +93,7 @@
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.almt_sma') autofocus @enderror name="pendidikan[almt_sma]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->almt_sma) : old('pendidikan.almt_sma') }}">
     </div>
-    <div class="col-sm-12 col-12 mt-2 col-md-6">
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>Tahun lulus SMA</label>
         @error('pendidikan.l_sma')
         <div>
@@ -122,14 +122,32 @@
         </select>
     </div>
     @if (env('PONPES'))
-    <div class="col-sm-12 col-12 mt-2 col-md-6">
-        <label>Pondok Pesantren/Tempat Ibadah</label>
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
+        <label>{{ $setting->label_ponpes }}</label>
         @error('pendidikan.ponpes')
         <div>
-            <strong class="text-danger small">Hobi tidak boleh kosong dan mengandung tanda petik(')</strong>
+            <strong class="text-danger small">{{ $setting->label_ponpes }} tidak boleh kosong dan mengandung tanda petik(')</strong>
         </div>
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.ponpes') autofocus @enderror name="pendidikan[ponpes]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->ponpes) : Auth::guard('calon')->user()->ponpes }}">
+    </div>
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
+        <label>{{ $setting->label_alamat_ponpes }}</label>
+        @error('pendidikan.ponpes')
+        <div>
+            <strong class="text-danger small">{{ $setting->label_alamat_ponpes }} tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" @error('pendidikan.alamat_ponpes') autofocus @enderror name="pendidikan[alamat_ponpes]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->ponpes) : '' }}">
+    </div>
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
+        <label>{{ $setting->label_kabupaten_ponpes }}</label>
+        @error('pendidikan.ponpes')
+        <div>
+            <strong class="text-danger small">{{ $setting->label_kabupaten_ponpes }} tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" @error('pendidikan.kabupaten_ponpes') autofocus @enderror name="pendidikan[kabupaten_ponpes]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->kabupaten_ponpes) : '' }}">
     </div>
     @endif
 </div>
