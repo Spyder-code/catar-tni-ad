@@ -90,7 +90,7 @@
                                                                                     <input id="tgl_lahir" type="date"
                                                                                         class="form-control @error('tgl_lahir') is-invalid @enderror"
                                                                                         name="tgl_lahir" min="2000-01-01"
-                                                                                        max="2005-12-31" required
+                                                                                        max="2007-12-31" required
                                                                                         autocomplete="current-tgl_lahir">
 
                                                                                     @error('tgl_lahir')
