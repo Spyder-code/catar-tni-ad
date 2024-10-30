@@ -128,7 +128,7 @@
             maxDate: 'today',
             altFormat: 'd/m/Y',
             // altInput: true,
-            maxDate: '2005-12-30',
+            maxDate: '2007-12-30',
             minDate: '1999-01-01',
         });
 </script>
