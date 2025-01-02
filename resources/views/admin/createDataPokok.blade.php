@@ -38,23 +38,23 @@
                     </div>
                     <form action="{{ route('pokok.store') }}" method="post">
                         @csrf
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <div class="col">
                                 <label>ID</label>
                                 <input type="text" style="text-transform:uppercase" name="id" id="id" class="form-control" required>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
                             <div class="col">
                                 <label>Nomor Animo</label>
                                 <input type="text" style="text-transform:uppercase" name="no_online" id="no_online" class="form-control" required>
                             </div>
-                            <div class="col">
+                            {{-- <div class="col">
                                 <label>Nama</label>
                                 <input type="text" style="text-transform:uppercase" name="nama" id="nama" class="form-control" required>
-                            </div>
+                            </div> --}}
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <div class="col">
                                 <label>Tempat Lahir</label>
                                 <input type="text" style="text-transform:uppercase" name="tem_lahir" id="tem_lahir" class="form-control" required>
@@ -63,8 +63,8 @@
                                 <label>Tanggal Lahir</label>
                                 <input type="text" style="text-transform:uppercase" name="tgl_lahir" id="tgl_lahir" class="form-control" required>
                             </div>
-                        </div>
-                        <div class="form-group row">
+                        </div> --}}
+                        {{-- <div class="form-group row">
                             <div class="col">
                                 <label>Suku</label>
                                 <input type="text" style="text-transform:uppercase" name="suku" id="suku" class="form-control" required>
@@ -73,7 +73,7 @@
                                 <label>Agama</label>
                                 <input type="text" style="text-transform:uppercase" name="agama" id="agama" class="form-control" required>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
                             <div class="col">
                                 <label>Jenis Sekolah</label>

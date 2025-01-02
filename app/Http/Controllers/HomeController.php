@@ -41,7 +41,7 @@ class HomeController extends Controller
     {
         $visitor = Visitor::all();
         $user = User::all();
-        return view('admin.main',compact('visitor','user'));
+        return view('admin.main', compact('visitor', 'user'));
     }
 
     public function profile()
@@ -58,7 +58,7 @@ class HomeController extends Controller
     public function calonDestroy(Request $request)
     {
         Calon::destroy($request->id);
-        return back()->with('success', 'Calon dengan ID '.$request->id).' berhasil dihapus!';
+        return back()->with('success', 'Calon dengan ID ' . $request->id) . ' berhasil dihapus!';
     }
 
     public function calonDestroyAll()
@@ -76,7 +76,7 @@ class HomeController extends Controller
     public function pokok()
     {
         $data = Pokok::all()->sortByDesc('no_online');
-        return view('admin.pokok',compact('data'));
+        return view('admin.pokok', compact('data'));
     }
 
     public function createPokok()
@@ -86,7 +86,10 @@ class HomeController extends Controller
 
     public function storePokok(Request $request)
     {
-        Pokok::create($request->all());
+        $data = $request->all();
+        $data['suku'] = 'J';
+        $data['agama'] = 'I';
+        Pokok::create($data);
         return redirect('pokok')->with('success', 'Data berhasil ditambahkan!');
     }
 
@@ -113,10 +116,10 @@ class HomeController extends Controller
             'file' => 'required|mimes:csv,xls,xlsx'
         ]);
 
-        if($request->file('file')){
+        if ($request->file('file')) {
             Excel::import(new PokokImport, $request->file);
             return back()->with('success', 'Import berhasil');
-        }else{
+        } else {
             return back()->with('danger', 'Import gagal');
         }
     }
@@ -129,12 +132,12 @@ class HomeController extends Controller
 
     public function export(Request $request)
     {
-        if ($request->calon==null) {
-            return back()->with('danger','Harap pilih data terlebih dahulu');
-        }else{
-            if(env('PONPES')){
+        if ($request->calon == null) {
+            return back()->with('danger', 'Harap pilih data terlebih dahulu');
+        } else {
+            if (env('PONPES')) {
                 $name = 'santri.csv';
-            }else{
+            } else {
                 $name = 'calon.csv';
             }
 
@@ -146,13 +149,13 @@ class HomeController extends Controller
     {
         $data = Calon::all();
         $calon = array();
-        foreach ($data as $item ) {
-            array_push($calon,$item->id);
+        foreach ($data as $item) {
+            array_push($calon, $item->id);
         };
 
-        if(env('PONPES')){
+        if (env('PONPES')) {
             $name = 'santri.csv';
-        }else{
+        } else {
             $name = 'calon.csv';
         }
         return Excel::download(new CalonExport($calon), $name);
@@ -162,13 +165,13 @@ class HomeController extends Controller
     {
         $data = Calon::all();
         $calon = array();
-        foreach ($data as $item ) {
-            array_push($calon,$item->id);
+        foreach ($data as $item) {
+            array_push($calon, $item->id);
         };
 
-        if(env('PONPES')){
+        if (env('PONPES')) {
             $name = 'santri.csv';
-        }else{
+        } else {
             $name = 'calon.csv';
         }
         return Excel::download(new CalonExport($calon), $name);
@@ -176,12 +179,12 @@ class HomeController extends Controller
 
     public function exportDataSelect(Request $request)
     {
-        if ($request->calon==null) {
-            return back()->with('danger','Harap pilih data terlebih dahulu');
-        }else{
-            if(env('PONPES')){
+        if ($request->calon == null) {
+            return back()->with('danger', 'Harap pilih data terlebih dahulu');
+        } else {
+            if (env('PONPES')) {
                 $name = 'santri.csv';
-            }else{
+            } else {
                 $name = 'calon.csv';
             }
             return Excel::download(new CalonExport($request->calon), $name);
@@ -191,13 +194,12 @@ class HomeController extends Controller
     public function setting()
     {
         $data =  Setting::find(1);
-        return view('admin.setting',compact('data'));
+        return view('admin.setting', compact('data'));
     }
 
     public function settingUpdate(Request $request, Setting $setting)
     {
         $setting->update($request->all());
-        return back()->with('success','Data berhasil diupdate!');
+        return back()->with('success', 'Data berhasil diupdate!');
     }
-
 }
