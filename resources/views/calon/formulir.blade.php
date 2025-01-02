@@ -104,6 +104,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                                    Lain -lain
+                                    </button>
+                                </h2>
+                                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                                    <div class="accordion-body">
+                                        @include('calon.component.lain', ['calon'=>$calon])
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="d-flex">
                             <button type="submit" class="mx-2 btn btn-success my-3"><i class="fas fa-save"></i> {{ $status==0?'Simpan':'Update' }} data</button>

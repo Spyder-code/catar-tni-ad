@@ -30,5 +30,8 @@ class Pendidikan extends Model
         'ponpes',
         'alamat_ponpes',
         'kabupaten_ponpes',
+        'nisnsd',
+        'nisnsmp',
+        'nisnsma',
     ];
 }

@@ -1,5 +1,14 @@
 <div class="form-group row">
     <div class="col-lg-4 col-12 mt-2 col-md-6">
+        <label>NISN SD</label>
+        @error('pendidikan.nisnsd')
+        <div>
+            <strong class="text-danger small">NISN SD tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" @error('pendidikan.nisnsd') autofocus @enderror name="pendidikan[nisnsd]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->nisnsd) : old('pendidikan.nisnsd') }}">
+    </div>
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>SD</label>
         @error('pendidikan.sd')
         <div>
@@ -29,6 +38,15 @@
 </div>
 <div class="form-group row">
     <div class="col-lg-4 col-12 mt-2 col-md-6">
+        <label>NISN SMP</label>
+        @error('pendidikan.nisnsmp')
+        <div>
+            <strong class="text-danger small">NISN SMP tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" @error('pendidikan.nisnsmp') autofocus @enderror name="pendidikan[nisnsmp]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->nisnsmp) : old('pendidikan.nisnsmp') }}">
+    </div>
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>SMP</label>
         @error('pendidikan.smp')
         <div>
@@ -57,6 +75,15 @@
     </div>
 </div>
 <div class="form-group row">
+    <div class="col-lg-4 col-12 mt-2 col-md-6">
+        <label>NISN SMA</label>
+        @error('pendidikan.nisnsma')
+        <div>
+            <strong class="text-danger small">NISN SMA tidak boleh kosong dan mengandung tanda petik(')</strong>
+        </div>
+        @enderror
+        <input type="text" style="text-transform: uppercase" @error('pendidikan.nisnsma') autofocus @enderror name="pendidikan[nisnsma]" class="form-control validate-symbol" value="{{ $pendidikan!=null?stripcslashes($pendidikan->nisnsma) : old('pendidikan.nisnsma') }}">
+    </div>
     <div class="col-sm-12 col-12 mt-2 col-md-6">
         <label>SMA</label>
         @error('pendidikan.sma')
