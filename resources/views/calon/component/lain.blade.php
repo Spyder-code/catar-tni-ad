@@ -2,12 +2,15 @@
     <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>Nomor BPJS</label>
         <input type="text" style="text-transform: uppercase" @error('calon.bpjs') autofocus @enderror name="calon[bpjs]"
-            class="form-control validate-symbol" value="{{ $calon != null ? stripcslashes($calon->bpjs) : old('calon.bpjs') }}">
+            class="form-control validate-symbol"
+            value="{{ $calon != null ? stripcslashes($calon->bpjs) : old('calon.bpjs') }}"
+            onkeypress="return this.value.length < 13;"
+            oninput="if(this.value.length>=13) { this.value = this.value.slice(0,13); }">
     </div>
     <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>Instagram <small>(Nama Akun)</small></label>
-        <input type="text" style="text-transform: uppercase" @error('calon.inst') autofocus @enderror name="calon[inst]"
-            class="form-control validate-symbol"
+        <input type="text" style="text-transform: uppercase" @error('calon.inst') autofocus @enderror
+            name="calon[inst]" class="form-control validate-symbol"
             value="{{ $calon != null ? stripcslashes($calon->inst) : old('calon.inst') }}">
     </div>
     <div class="col-lg-4 col-12 mt-2 col-md-6">

@@ -87,8 +87,8 @@ class HomeController extends Controller
     public function storePokok(Request $request)
     {
         $data = $request->all();
-        $data['suku'] = 'J';
-        $data['agama'] = 'I';
+        // $data['suku'] = 'J';
+        // $data['agama'] = 'I';
         Pokok::create($data);
         return redirect('pokok')->with('success', 'Data berhasil ditambahkan!');
     }
