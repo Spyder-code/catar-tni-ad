@@ -173,6 +173,7 @@
                 <option {{ old('pendidikan.l_sma') == '2022' ? 'selected' : '' }} value="2022"> 2022</option>
                 <option {{ old('pendidikan.l_sma') == '2023' ? 'selected' : '' }} value="2023"> 2023</option>
                 <option {{ old('pendidikan.l_sma') == '2024' ? 'selected' : '' }} value="2024"> 2024</option>
+                <option {{ old('pendidikan.l_sma') == '2025' ? 'selected' : '' }} value="2025"> 2025</option>
             @else
                 <option {{ $pendidikan->l_sma == 2017 ? 'selected' : '' }} value="2017">2017</option>
                 <option {{ $pendidikan->l_sma == 2018 ? 'selected' : '' }} value="2018">2018</option>
@@ -182,6 +183,7 @@
                 <option {{ $pendidikan->l_sma == 2022 ? 'selected' : '' }} value="2022"> 2022</option>
                 <option {{ $pendidikan->l_sma == 2023 ? 'selected' : '' }} value="2023"> 2023</option>
                 <option {{ $pendidikan->l_sma == 2024 ? 'selected' : '' }} value="2024"> 2024</option>
+                <option {{ $pendidikan->l_sma == 2025 ? 'selected' : '' }} value="2025"> 2025</option>
             @endif
         </select>
     </div>

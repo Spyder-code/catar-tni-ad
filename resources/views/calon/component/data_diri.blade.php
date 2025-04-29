@@ -248,6 +248,7 @@
                 <option {{ old('calon.kab') == 'Lamongan' ? 'selected' : '' }} value="Lamongan">Lamongan</option>
                 <option {{ old('calon.kab') == 'Tuban' ? 'selected' : '' }} value="Tuban">Tuban</option>
                 <option {{ old('calon.kab') == 'Bojonegoro' ? 'selected' : '' }} value="Bojonegoro">Bojonegoro</option>
+                <option {{ old('calon.kab') == 'Lainya' ? 'selected' : '' }} value="Lainya">Lainya</option>
             </select>
         @else
             <select name="calon[kab]" class="form-select">
@@ -258,6 +259,7 @@
                 <option {{ $calon->kab == 'Lamongan' ? 'selected' : '' }} value="Lamongan">Lamongan</option>
                 <option {{ $calon->kab == 'Tuban' ? 'selected' : '' }} value="Tuban">Tuban</option>
                 <option {{ $calon->kab == 'Bojonegoro' ? 'selected' : '' }} value="Bojonegoro">Bojonegoro</option>
+                <option {{ $calon->kab == 'Lainya' ? 'selected' : '' }} value="Lainya">Lainya</option>
             </select>
         @endif
     </div>
