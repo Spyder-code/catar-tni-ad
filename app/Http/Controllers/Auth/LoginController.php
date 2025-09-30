@@ -77,7 +77,8 @@ class LoginController extends Controller
     public function takeUser(Request $request)
     {
         $data = Pokok::where('no_online', $request->no_online)->get();
-        return view('auth.takeUser', compact('data'));
+        $setting = Setting::first();
+        return view('auth.takeUser', compact('data','setting'));
     }
 
 }

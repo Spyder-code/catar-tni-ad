@@ -76,7 +76,7 @@
                                 </h2>
                                 <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
                                     <div class="accordion-body">
-                                        @include('calon.component.data_diri',['dik'=>$setting->dik,'calon'=>$calon])
+                                        @include('calon.component.data_diri',['dik'=>$setting->dik,'calon'=>$calon,'setting'=>$setting])
                                     </div>
                                 </div>
                             </div>

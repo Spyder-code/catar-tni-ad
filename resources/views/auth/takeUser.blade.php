@@ -89,8 +89,8 @@
                                                                                 <div class="col-md-6">
                                                                                     <input id="tgl_lahir" type="date"
                                                                                         class="form-control @error('tgl_lahir') is-invalid @enderror"
-                                                                                        name="tgl_lahir" min="2000-01-01"
-                                                                                        max="2007-12-31" required
+                                                                                        name="tgl_lahir" min="{{ $setting->tertua }}"
+                                                                                        max="{{ $setting->termuda }}" required
                                                                                         autocomplete="current-tgl_lahir">
 
                                                                                     @error('tgl_lahir')
@@ -131,13 +131,15 @@
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
+        var tertua = '{{ $setting->tertua }}';
+        var termuda = '{{ $setting->termuda }}';
         flatpickr('#tgl_lahir', {
             dateFormat: 'Y-m-d',
             maxDate: 'today',
             altFormat: 'd/m/Y',
             altInput: true,
-            maxDate: '2007-12-30',
-            minDate: '1999-01-01',
+            maxDate: termuda,
+            minDate: tertua,
         });
 
         $('#no_online').keyup(function(e) {

@@ -68,7 +68,7 @@
             </div>
         @enderror
         <input @error('calon.tgl_lahir') autofocus @enderror type="date" id="lhr" name="calon[tgl_lahir]"
-            min="1999-01-01" max="2007-12-30" class="form-control"
+            min="{{ $setting->tertua }}" max="{{ $setting->termuda }}" class="form-control"
             value="{{ $calon != null ? $calon->tgl_lahir : old('calon.tgl_lahir') }}">
     </div>
     <div class="col-sm">
