@@ -1,5 +1,5 @@
 @extends('layouts.admin')
-@section('page','Data Administrasi')
+@section('page', 'Data Administrasi')
 @section('breadcrumb')
     <li><a href="#" class="breadcrumb-item nav-link">Pendaftaran </a></li>
     <li><a href="#" class="breadcrumb-item nav-link disabled">/ </a></li>
@@ -10,21 +10,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.5.0/flatpickr.min.css">
 @endsection
 @section('content')
-<style>
-    label{
-        margin-top: 5px;
-    }
-</style>
+    <style>
+        label {
+            margin-top: 5px;
+        }
+    </style>
     <div class="container-fluid">
         @if ($message = Session::get('success'))
-        <div class="row">
-            <div class="col mt-3">
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    <strong>{{ $message }}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            <div class="row">
+                <div class="col mt-3">
+                    <div class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>{{ $message }}</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
                 </div>
             </div>
-        </div>
         @endif
         @if ($message = Session::get('danger'))
             <div class="row">
@@ -49,7 +49,7 @@
                     </ol>
                 </div>
                 <div class="white-box">
-                    @if ($status==1)
+                    @if ($status == 1)
                         <div class="alert alert-success" role="alert">
                             Terakhir di edit {{ date('d/m/Y H:i', strtotime($calon->updated_at)) }}
                         </div>
@@ -66,60 +66,83 @@
                         @csrf
                         <input type="hidden" name="pokok_id" value="{{ Auth::guard('calon')->user()->id }}">
                         <input type="hidden" name="status" value="{{ $status }}">
-                        <input type="hidden" name="calon_id" value="{{ $calon!=null?$calon->id:0 }}">
+                        <input type="hidden" name="calon_id" value="{{ $calon != null ? $calon->id : 0 }}">
                         <div class="accordion" id="accordionPanelsStayOpenExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="panelsStayOpen-headingOne">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-                                    Data diri
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true"
+                                        aria-controls="panelsStayOpen-collapseOne">
+                                        Data diri
                                     </button>
                                 </h2>
-                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+                                <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show"
+                                    aria-labelledby="panelsStayOpen-headingOne">
                                     <div class="accordion-body">
-                                        @include('calon.component.data_diri',['dik'=>$setting->dik,'calon'=>$calon,'setting'=>$setting])
+                                        @include('calon.component.data_diri', [
+                                            'dik' => $setting->dik,
+                                            'calon' => $calon,
+                                            'setting' => $setting,
+                                        ])
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-                                    Pendidikan
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseTwo">
+                                        Pendidikan
                                     </button>
                                 </h2>
-                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                                <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingTwo">
                                     <div class="accordion-body">
-                                        @include('calon.component.pendidikan',['pendidikan'=>$pendidikan,'calon'=>$calon])
+                                        @include('calon.component.pendidikan', [
+                                            'pendidikan' => $pendidikan,
+                                            'calon' => $calon,
+                                        ])
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="panelsStayOpen-headingThree">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-                                    Orang tua / wali
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseThree">
+                                        Orang tua / wali
                                     </button>
                                 </h2>
-                                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                                <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingThree">
                                     <div class="accordion-body">
-                                        @include('calon.component.wali', ['wali'=>$wali,'calon'=>$calon])
+                                        @include('calon.component.wali', [
+                                            'wali' => $wali,
+                                            'calon' => $calon,
+                                        ])
                                     </div>
                                 </div>
                             </div>
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="panelsStayOpen-headingFour">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
-                                    Lain -lain
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                                        aria-controls="panelsStayOpen-collapseFour">
+                                        Lain -lain
                                     </button>
                                 </h2>
-                                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                                <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
+                                    aria-labelledby="panelsStayOpen-headingFour">
                                     <div class="accordion-body">
-                                        @include('calon.component.lain', ['calon'=>$calon])
+                                        @include('calon.component.lain', ['calon' => $calon])
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="d-flex">
-                            <button type="submit" class="mx-2 btn btn-success my-3"><i class="fas fa-save"></i> {{ $status==0?'Simpan':'Update' }} data</button>
-                            {{-- @if ($status==1)
+                            <button type="submit" class="mx-2 btn btn-success my-3"><i class="fas fa-save"></i>
+                                {{ $status == 0 ? 'Simpan' : 'Update' }} data</button>
+                            {{-- @if ($status == 1)
                                 <a href="{{ route('calon.pdf') }}" class="mx-2 btn btn-info my-3"><i class="fas fa-save"></i> PDF</a>
                             @endif --}}
                         </div>
@@ -128,23 +151,23 @@
             </div>
         </div>
     </div>
-    @if ($pendidikan==null)
+    @if ($pendidikan == null)
         <script>
             var val = {!! json_encode(old('pendidikan.l_sma')) !!}
-            if (val==null) {
+            if (val == null) {
                 $('#tg-HMKiy').hide();
                 $('#2019').hide();
-            }else{
+            } else {
                 val = parseInt(val);
-                if (val<=2019) {
+                if (val <= 2019) {
                     console.log('sa');
-                    $('input[name="nilai2019[ind]"]').prop('required',true);
+                    $('input[name="nilai2019[ind]"]').prop('required', true);
                     $('#tg-HMKiy').show();
                     $('#2019').show();
-                } else if(val>=2020) {
+                } else if (val >= 2020) {
                     $('#2019').hide();
                     $('#tg-HMKiy').show();
-                }else{
+                } else {
                     $('#tg-HMKiy').hide();
                     $('#2019').hide();
                 }
@@ -154,14 +177,14 @@
         <script>
             var val = {!! json_encode($pendidikan->l_sma) !!}
             val = parseInt(val);
-            if (val<=2019) {
-                $('input[name="nilai2019[ind]"]').prop('required',true);
+            if (val <= 2019) {
+                $('input[name="nilai2019[ind]"]').prop('required', true);
                 $('#tg-HMKiy').show();
                 $('#2019').show();
-            } else if(val>=2020) {
+            } else if (val >= 2020) {
                 $('#2019').hide();
                 $('#tg-HMKiy').show();
-            }else{
+            } else {
                 $('#tg-HMKiy').hide();
                 $('#2019').hide();
             }
@@ -170,14 +193,14 @@
 @endsection
 
 @section('script')
-{{-- cdn flatpickr --}}
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-<script src="{{ asset('js/umur1.js') }}"></script>
+    {{-- cdn flatpickr --}}
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="{{ asset('js/umur1.js') }}"></script>
     <script>
         // flatpickr init
         flatpickr('#lhr', {
             dateFormat: 'Y-m-d',
-            defaultDate: '{{ $calon!=null?$calon->tgl_lahir:old("calon.tgl_lahir") }}',
+            defaultDate: '{{ $calon != null ? $calon->tgl_lahir : old('calon.tgl_lahir') }}',
             maxDate: 'today',
             altFormat: 'd/m/Y',
             // altInput: true,
@@ -191,7 +214,7 @@
                 // console.log(dateStr);
                 // console.log(lhr);
                 var dik = {!! json_encode($setting->dik) !!};
-                var result = ageCalculator(lhr,dik);
+                var result = ageCalculator(lhr, dik);
                 $('#umr').val(result[0]);
                 var date = result[1];
                 var termuda = {!! json_encode($setting->termuda) !!};
@@ -200,9 +223,9 @@
                 const min = new Date(tertua).getTime();
                 const max = new Date(termuda).getTime();
                 // var a = ageValidation(date);
-                if(now>=min && now<=max){
+                if (now >= min && now <= max) {
                     var a = 'Umur memenuhi persyaratan';
-                }else{
+                } else {
                     var a = 'Umur tidak memenuhi persyaratan';
                 }
                 $('#ket-umr').val(a);
@@ -213,28 +236,27 @@
         });
 
         $('input').focusout(function() {
-        // Uppercase-ize contents
+            // Uppercase-ize contents
             this.value = this.value.toLocaleUpperCase();
         });
-        $('#lulus').change(function (e) {
+        $('#lulus').change(function(e) {
             $('#tg-HMKiy').hide();
             $('#2019').hide();
             var val = $(this).val();
             val = parseInt(val);
-            if (val<=2019 && val>0) {
+            if (val <= 2019 && val > 0) {
                 $('#tg-HMKiy').show();
                 $('#2019').show();
-                $('input[name="nilai2019[ind]"]').prop('required',true);
-                $('input[name="nilai2019[ing]"]').prop('required',true);
-                $('input[name="nilai2019[mtk]"]').prop('required',true);
-            } else if(val>=2020) {
+                $('input[name="nilai2019[ind]"]').prop('required', true);
+                $('input[name="nilai2019[ing]"]').prop('required', true);
+                $('input[name="nilai2019[mtk]"]').prop('required', true);
+            } else if (val >= 2020) {
                 $('#2019').hide();
                 $('#tg-HMKiy').show();
-                $('input[name="nilai2019[ind]"]').prop('required',false);
-                $('input[name="nilai2019[ing]"]').prop('required',false);
-                $('input[name="nilai2019[mtk]"]').prop('required',false);
-            }else{
-                console.log('nil');
+                $('input[name="nilai2019[ind]"]').prop('required', false);
+                $('input[name="nilai2019[ing]"]').prop('required', false);
+                $('input[name="nilai2019[mtk]"]').prop('required', false);
+            } else {
                 $('#tg-HMKiy').hide();
                 $('#2019').hide();
             }
@@ -259,54 +281,54 @@
         $('#jab_wa').hide();
         $('#jab_wi').hide();
 
-        $('input[name=jab_a]').change(function () {
+        $('input[name=jab_a]').change(function() {
             var val = $(this).val();
-            if(val=='true'){
+            if (val == 'true') {
                 $('#jab_a').show();
-            }else{
+            } else {
                 $('#jab_a').hide();
             }
         });
-        $('input[name=jab_wa]').change(function () {
+        $('input[name=jab_wa]').change(function() {
             var val = $(this).val();
-            if(val=='true'){
+            if (val == 'true') {
                 $('#jab_wa').show();
-            }else{
+            } else {
                 $('#jab_wa').hide();
             }
         });
-        $('input[name=jab_i]').change(function () {
+        $('input[name=jab_i]').change(function() {
             var val = $(this).val();
-            if(val=='true'){
+            if (val == 'true') {
                 $('#jab_i').show();
-            }else{
+            } else {
                 $('#jab_i').hide();
             }
         });
-        $('input[name=jab_wi]').change(function () {
+        $('input[name=jab_wi]').change(function() {
             var val = $(this).val();
-            if(val=='true'){
+            if (val == 'true') {
                 $('#jab_wi').show();
-            }else{
+            } else {
                 $('#jab_wi').hide();
             }
         });
 
         // $('#kerja').hide();
-        $(".pernah_kerja").change(function (e) {
+        $(".pernah_kerja").change(function(e) {
             let val = $(".pernah_kerja:checked").val();
-            if(val.toLowerCase()=='ya'){
+            if (val.toLowerCase() == 'ya') {
                 $('#kerja').show();
-            }else{
+            } else {
                 $('#kerja').hide();
             }
         });
 
-        function kerja(){
+        function kerja() {
             let val = $(".pernah_kerja:checked").val();
-            if(val.toLowerCase()=='ya'){
+            if (val.toLowerCase() == 'ya') {
                 $('#kerja').show();
-            }else{
+            } else {
                 $('#kerja').hide();
             }
         }
@@ -315,4 +337,3 @@
     </script>
 
 @endsection
-

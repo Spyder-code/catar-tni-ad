@@ -174,6 +174,11 @@
                 <option {{ old('pendidikan.l_sma') == '2023' ? 'selected' : '' }} value="2023"> 2023</option>
                 <option {{ old('pendidikan.l_sma') == '2024' ? 'selected' : '' }} value="2024"> 2024</option>
                 <option {{ old('pendidikan.l_sma') == '2025' ? 'selected' : '' }} value="2025"> 2025</option>
+                <option {{ old('pendidikan.l_sma') == '2026' ? 'selected' : '' }} value="2026"> 2026</option>
+                <option {{ old('pendidikan.l_sma') == '2027' ? 'selected' : '' }} value="2027"> 2027</option>
+                <option {{ old('pendidikan.l_sma') == '2028' ? 'selected' : '' }} value="2028"> 2028</option>
+                <option {{ old('pendidikan.l_sma') == '2029' ? 'selected' : '' }} value="2029"> 2029</option>
+                <option {{ old('pendidikan.l_sma') == '2030' ? 'selected' : '' }} value="2030"> 2030</option>
             @else
                 <option {{ $pendidikan->l_sma == 2017 ? 'selected' : '' }} value="2017">2017</option>
                 <option {{ $pendidikan->l_sma == 2018 ? 'selected' : '' }} value="2018">2018</option>
@@ -184,6 +189,11 @@
                 <option {{ $pendidikan->l_sma == 2023 ? 'selected' : '' }} value="2023"> 2023</option>
                 <option {{ $pendidikan->l_sma == 2024 ? 'selected' : '' }} value="2024"> 2024</option>
                 <option {{ $pendidikan->l_sma == 2025 ? 'selected' : '' }} value="2025"> 2025</option>
+                <option {{ $pendidikan->l_sma == 2026 ? 'selected' : '' }} value="2026"> 2026</option>
+                <option {{ $pendidikan->l_sma == 2027 ? 'selected' : '' }} value="2027"> 2027</option>
+                <option {{ $pendidikan->l_sma == 2028 ? 'selected' : '' }} value="2028"> 2028</option>
+                <option {{ $pendidikan->l_sma == 2029 ? 'selected' : '' }} value="2029"> 2029</option>
+                <option {{ $pendidikan->l_sma == 2030 ? 'selected' : '' }} value="2030"> 2030</option>
             @endif
         </select>
     </div>
