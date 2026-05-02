@@ -224,236 +224,236 @@
     <tbody>
         @foreach ($data as $item)
             <tr>
-                <td>{{ $item->id }}</td>
-                <td>{{ $item->no_online }}</td>
-                <td>{{ $item->ktp }}</td>
-                <td>{{ $item->nama }}</td>
-                <td>{{ $item->agama }}</td>
-                <td>{{ $item->tem_lahir }}</td>
-                <td>{{ $item->tgl_lahir }}</td>
-                <td>{{ $item->u_hri }}</td>
-                <td>{{ $item->u_bln }}</td>
-                <td>{{ $item->u_thn }}</td>
-                <td>{{ $item->l_hri }}</td>
-                <td>{{ $item->l_bln }}</td>
-                <td>{{ $item->l_thn }}</td>
-                <td>{{ $item->umr }}</td>
-                <td>{{ $item->ket_umr }}</td>
-                <td>{{ $item->dik }}</td>
-                <td>{{ $item->suku }}</td>
-                <td>{{ $item->alamat }}</td>
-                <td>{{ $item->rt }}</td>
-                <td>{{ $item->rw }}</td>
-                <td>{{ $item->no }}</td>
-                <td>{{ $item->dsn }}</td>
-                <td>{{ $item->ds }}</td>
-                <td>{{ $item->kec }}</td>
-                <td>{{ $item->kab }}</td>
-                <td>{{ $item->telp }}</td>
-                <td>{{ $item->daftar_ke }}</td>
-                <td>{{ $item->aspek_tl }}</td>
-                <td>{{ $item->prestasi_provinsi }}</td>
-                <td>{{ $item->prestasi_nasional }}</td>
-                <td>{{ $item->pendidikan->sd }}</td>
-                <td>{{ $item->pendidikan->l_sd }}</td>
-                <td>{{ $item->pendidikan->kab_sd }}</td>
-                <td>{{ $item->pendidikan->smp }}</td>
-                <td>{{ $item->pendidikan->l_smp }}</td>
-                <td>{{ $item->pendidikan->kab_smp }}</td>
-                <td>{{ $item->pendidikan->sma }}</td>
-                <td>{{ $item->pendidikan->l_sma }}</td>
-                <td>{{ $item->pendidikan->kab_sma }}</td>
-                <td>{{ $item->pendidikan->jur }}</td>
-                <td>{{ $item->pendidikan->jumlah_nuan }}</td>
-                <td>{{ $item->pendidikan->rata }}</td>
-                <td>{{ $item->wali->ayah }}</td>
-                <td>{{ $item->wali->a_kerja }}</td>
-                <td>{{ $item->wali->a_pkt }}</td>
-                <td>{{ $item->wali->a_jab }}</td>
-                <td>{{ $item->wali->a_sat }}</td>
-                <td>{{ $item->wali->ibu }}</td>
-                <td>{{ $item->wali->i_kerja }}</td>
-                <td>{{ $item->wali->i_pkt }}</td>
-                <td>{{ $item->wali->i_jab }}</td>
-                <td>{{ $item->wali->i_sat }}</td>
-                <td>{{ $item->wali->o_telp }}</td>
-                <td>{{ $item->wali->o_alamat }}</td>
-                <td>{{ $item->wali->wali_ayah }}</td>
-                <td>{{ $item->wali->wa_kerja }}</td>
-                <td>{{ $item->wali->wa_pkt }}</td>
-                <td>{{ $item->wali->wa_jab }}</td>
-                <td>{{ $item->wali->wa_sat }}</td>
-                <td>{{ $item->wali->wali_ibu }}</td>
-                <td>{{ $item->wali->wi_kerja }}</td>
-                <td>{{ $item->wali->wi_pkt }}</td>
-                <td>{{ $item->wali->wi_jab }}</td>
-                <td>{{ $item->wali->wi_sat }}</td>
-                <td>{{ $item->wali->w_telp }}</td>
-                <td>{{ $item->wali->w_alamat }}</td>
-                <td>{{ $item->wali->status_wali }}</td>
-                <td>{{ $item->wali->hub_calon_wali }}</td>
+                <td>{{ $item->id ?? '-' }}</td>
+                <td>{{ $item->no_online ?? '-' }}</td>
+                <td>{{ $item->ktp ?? '-' }}</td>
+                <td>{{ $item->nama ?? '-' }}</td>
+                <td>{{ $item->agama ?? '-' }}</td>
+                <td>{{ $item->tem_lahir ?? '-' }}</td>
+                <td>{{ $item->tgl_lahir ?? '-' }}</td>
+                <td>{{ $item->u_hri ?? '-' }}</td>
+                <td>{{ $item->u_bln ?? '-' }}</td>
+                <td>{{ $item->u_thn ?? '-' }}</td>
+                <td>{{ $item->l_hri ?? '-' }}</td>
+                <td>{{ $item->l_bln ?? '-' }}</td>
+                <td>{{ $item->l_thn ?? '-' }}</td>
+                <td>{{ $item->umr ?? '-' }}</td>
+                <td>{{ $item->ket_umr ?? '-' }}</td>
+                <td>{{ $item->dik ?? '-' }}</td>
+                <td>{{ $item->suku ?? '-' }}</td>
+                <td>{{ $item->alamat ?? '-' }}</td>
+                <td>{{ $item->rt ?? '-' }}</td>
+                <td>{{ $item->rw ?? '-' }}</td>
+                <td>{{ $item->no ?? '-' }}</td>
+                <td>{{ $item->dsn ?? '-' }}</td>
+                <td>{{ $item->ds ?? '-' }}</td>
+                <td>{{ $item->kec ?? '-' }}</td>
+                <td>{{ $item->kab ?? '-' }}</td>
+                <td>{{ $item->telp ?? '-' }}</td>
+                <td>{{ $item->daftar_ke ?? '-' }}</td>
+                <td>{{ $item->aspek_tl ?? '-' }}</td>
+                <td>{{ $item->prestasi_provinsi ?? '-' }}</td>
+                <td>{{ $item->prestasi_nasional ?? '-' }}</td>
+                <td>{{ $item->pendidikan->sd ?? '-' }}</td>
+                <td>{{ $item->pendidikan->l_sd ?? '-' }}</td>
+                <td>{{ $item->pendidikan->kab_sd ?? '-' }}</td>
+                <td>{{ $item->pendidikan->smp ?? '-' }}</td>
+                <td>{{ $item->pendidikan->l_smp ?? '-' }}</td>
+                <td>{{ $item->pendidikan->kab_smp ?? '-' }}</td>
+                <td>{{ $item->pendidikan->sma ?? '-' }}</td>
+                <td>{{ $item->pendidikan->l_sma ?? '-' }}</td>
+                <td>{{ $item->pendidikan->kab_sma ?? '-' }}</td>
+                <td>{{ $item->pendidikan->jur ?? '-' }}</td>
+                <td>{{ $item->pendidikan->jumlah_nuan ?? '-' }}</td>
+                <td>{{ $item->pendidikan->rata ?? '-' }}</td>
+                <td>{{ $item->wali->ayah ?? '-' }}</td>
+                <td>{{ $item->wali->a_kerja ?? '-' }}</td>
+                <td>{{ $item->wali->a_pkt ?? '-' }}</td>
+                <td>{{ $item->wali->a_jab ?? '-' }}</td>
+                <td>{{ $item->wali->a_sat ?? '-' }}</td>
+                <td>{{ $item->wali->ibu ?? '-' }}</td>
+                <td>{{ $item->wali->i_kerja ?? '-' }}</td>
+                <td>{{ $item->wali->i_pkt ?? '-' }}</td>
+                <td>{{ $item->wali->i_jab ?? '-' }}</td>
+                <td>{{ $item->wali->i_sat ?? '-' }}</td>
+                <td>{{ $item->wali->o_telp ?? '-' }}</td>
+                <td>{{ $item->wali->o_alamat ?? '-' }}</td>
+                <td>{{ $item->wali->wali_ayah ?? '-' }}</td>
+                <td>{{ $item->wali->wa_kerja ?? '-' }}</td>
+                <td>{{ $item->wali->wa_pkt ?? '-' }}</td>
+                <td>{{ $item->wali->wa_jab ?? '-' }}</td>
+                <td>{{ $item->wali->wa_sat ?? '-' }}</td>
+                <td>{{ $item->wali->wali_ibu ?? '-' }}</td>
+                <td>{{ $item->wali->wi_kerja ?? '-' }}</td>
+                <td>{{ $item->wali->wi_pkt ?? '-' }}</td>
+                <td>{{ $item->wali->wi_jab ?? '-' }}</td>
+                <td>{{ $item->wali->wi_sat ?? '-' }}</td>
+                <td>{{ $item->wali->w_telp ?? '-' }}</td>
+                <td>{{ $item->wali->w_alamat ?? '-' }}</td>
+                <td>{{ $item->wali->status_wali ?? '-' }}</td>
+                <td>{{ $item->wali->hub_calon_wali ?? '-' }}</td>
                 @if ($item->t2020 != null)
-                    <td>{{ $item->t2020->bipeng1 }}</td>
-                    <td>{{ $item->t2020->biket1 }}</td>
-                    <td>{{ $item->t2020->bigpeng1 }}</td>
-                    <td>{{ $item->t2020->bigket1 }}</td>
-                    <td>{{ $item->t2020->mtkpeng1 }}</td>
-                    <td>{{ $item->t2020->mtkket1 }}</td>
-                    <td>{{ $item->t2020->fispeng1 }}</td>
-                    <td>{{ $item->t2020->fisket1 }}</td>
-                    <td>{{ $item->t2020->kimpeng1 }}</td>
-                    <td>{{ $item->t2020->kimket1 }}</td>
-                    <td>{{ $item->t2020->biopeng1 }}</td>
-                    <td>{{ $item->t2020->bioket1 }}</td>
-                    <td>{{ $item->t2020->bipeng2 }}</td>
-                    <td>{{ $item->t2020->biket2 }}</td>
-                    <td>{{ $item->t2020->bigpeng2 }}</td>
-                    <td>{{ $item->t2020->bigket2 }}</td>
-                    <td>{{ $item->t2020->mtkpeng2 }}</td>
-                    <td>{{ $item->t2020->mtkket2 }}</td>
-                    <td>{{ $item->t2020->fispeng2 }}</td>
-                    <td>{{ $item->t2020->fisket2 }}</td>
-                    <td>{{ $item->t2020->kimpeng2 }}</td>
-                    <td>{{ $item->t2020->kimket2 }}</td>
-                    <td>{{ $item->t2020->biopeng2 }}</td>
-                    <td>{{ $item->t2020->bioket2 }}</td>
-                    <td>{{ $item->t2020->bipeng3 }}</td>
-                    <td>{{ $item->t2020->biket3 }}</td>
-                    <td>{{ $item->t2020->bigpeng3 }}</td>
-                    <td>{{ $item->t2020->bigket3 }}</td>
-                    <td>{{ $item->t2020->mtkpeng3 }}</td>
-                    <td>{{ $item->t2020->mtkket3 }}</td>
-                    <td>{{ $item->t2020->fispeng3 }}</td>
-                    <td>{{ $item->t2020->fisket3 }}</td>
-                    <td>{{ $item->t2020->kimpeng3 }}</td>
-                    <td>{{ $item->t2020->kimket3 }}</td>
-                    <td>{{ $item->t2020->biopeng3 }}</td>
-                    <td>{{ $item->t2020->bioket3 }}</td>
-                    <td>{{ $item->t2020->bipeng4 }}</td>
-                    <td>{{ $item->t2020->biket4 }}</td>
-                    <td>{{ $item->t2020->bigpeng4 }}</td>
-                    <td>{{ $item->t2020->bigket4 }}</td>
-                    <td>{{ $item->t2020->mtkpeng4 }}</td>
-                    <td>{{ $item->t2020->mtkket4 }}</td>
-                    <td>{{ $item->t2020->fispeng4 }}</td>
-                    <td>{{ $item->t2020->fisket4 }}</td>
-                    <td>{{ $item->t2020->kimpeng4 }}</td>
-                    <td>{{ $item->t2020->kimket4 }}</td>
-                    <td>{{ $item->t2020->biopeng4 }}</td>
-                    <td>{{ $item->t2020->bioket4 }}</td>
-                    <td>{{ $item->t2020->bipeng5 }}</td>
-                    <td>{{ $item->t2020->biket5 }}</td>
-                    <td>{{ $item->t2020->bigpeng5 }}</td>
-                    <td>{{ $item->t2020->bigket5 }}</td>
-                    <td>{{ $item->t2020->mtkpeng5 }}</td>
-                    <td>{{ $item->t2020->mtkket5 }}</td>
-                    <td>{{ $item->t2020->fispeng5 }}</td>
-                    <td>{{ $item->t2020->fisket5 }}</td>
-                    <td>{{ $item->t2020->kimpeng5 }}</td>
-                    <td>{{ $item->t2020->kimket5 }}</td>
-                    <td>{{ $item->t2020->biopeng5 }}</td>
-                    <td>{{ $item->t2020->bioket5 }}</td>
-                    <td>{{ $item->t2020->bipeng6 }}</td>
-                    <td>{{ $item->t2020->biket6 }}</td>
-                    <td>{{ $item->t2020->bigpeng6 }}</td>
-                    <td>{{ $item->t2020->bigket6 }}</td>
-                    <td>{{ $item->t2020->mtkpeng6 }}</td>
-                    <td>{{ $item->t2020->mtkket6 }}</td>
-                    <td>{{ $item->t2020->fispeng6 }}</td>
-                    <td>{{ $item->t2020->fisket6 }}</td>
-                    <td>{{ $item->t2020->kimpeng6 }}</td>
-                    <td>{{ $item->t2020->kimket6 }}</td>
-                    <td>{{ $item->t2020->biopeng6 }}</td>
-                    <td>{{ $item->t2020->bioket6 }}</td>
-                    <td>{{ $item->t2020->jumlah1 }}</td>
-                    <td>{{ $item->t2020->jumlah_ket1 }}</td>
-                    <td>{{ $item->t2020->jumlah2 }}</td>
-                    <td>{{ $item->t2020->jumlah_ket2 }}</td>
-                    <td>{{ $item->t2020->jumlah3 }}</td>
-                    <td>{{ $item->t2020->jumlah_ket3 }}</td>
-                    <td>{{ $item->t2020->jumlah4 }}</td>
-                    <td>{{ $item->t2020->jumlah_ket4 }}</td>
-                    <td>{{ $item->t2020->jumlah5 }}</td>
-                    <td>{{ $item->t2020->jumlah_ket5 }}</td>
-                    <td>{{ $item->t2020->jumlah6 }}</td>
-                    <td>{{ $item->t2020->jumlah_ket6 }}</td>
-                    <td>{{ $item->t2020->rata1 }}</td>
-                    <td>{{ $item->t2020->rata_ket1 }}</td>
-                    <td>{{ $item->t2020->rata2 }}</td>
-                    <td>{{ $item->t2020->rata_ket2 }}</td>
-                    <td>{{ $item->t2020->rata3 }}</td>
-                    <td>{{ $item->t2020->rata_ket3 }}</td>
-                    <td>{{ $item->t2020->rata4 }}</td>
-                    <td>{{ $item->t2020->rata_ket4 }}</td>
-                    <td>{{ $item->t2020->rata5 }}</td>
-                    <td>{{ $item->t2020->rata_ket5 }}</td>
-                    <td>{{ $item->t2020->rata6 }}</td>
-                    <td>{{ $item->t2020->rata_ket6 }}</td>
-                    <td>{{ $item->t2020->rata_smt1 }}</td>
-                    <td>{{ $item->t2020->rata_smt2 }}</td>
-                    <td>{{ $item->t2020->rata_smt3 }}</td>
-                    <td>{{ $item->t2020->rata_smt4 }}</td>
-                    <td>{{ $item->t2020->rata_smt5 }}</td>
-                    <td>{{ $item->t2020->rata_smt6 }}</td>
-                    <td>{{ $item->t2020->rata_kls1 }}</td>
-                    <td>{{ $item->t2020->rata_kls2 }}</td>
-                    <td>{{ $item->t2020->rata_kls3 }}</td>
-                    <td>{{ $item->t2020->rata_akhir }}</td>
+                    <td>{{ $item->t2020->bipeng1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->biket1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bigpeng1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bigket1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->mtkpeng1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->mtkket1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->fispeng1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->fisket1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->kimpeng1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->kimket1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->biopeng1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bioket1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bipeng2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->biket2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bigpeng2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bigket2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->mtkpeng2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->mtkket2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->fispeng2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->fisket2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->kimpeng2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->kimket2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->biopeng2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bioket2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bipeng3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->biket3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bigpeng3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bigket3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->mtkpeng3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->mtkket3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->fispeng3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->fisket3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->kimpeng3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->kimket3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->biopeng3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bioket3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bipeng4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->biket4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bigpeng4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bigket4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->mtkpeng4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->mtkket4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->fispeng4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->fisket4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->kimpeng4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->kimket4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->biopeng4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bioket4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bipeng5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->biket5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bigpeng5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bigket5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->mtkpeng5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->mtkket5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->fispeng5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->fisket5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->kimpeng5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->kimket5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->biopeng5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bioket5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bipeng6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->biket6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bigpeng6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bigket6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->mtkpeng6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->mtkket6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->fispeng6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->fisket6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->kimpeng6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->kimket6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->biopeng6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->bioket6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->jumlah1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->jumlah_ket1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->jumlah2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->jumlah_ket2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->jumlah3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->jumlah_ket3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->jumlah4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->jumlah_ket4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->jumlah5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->jumlah_ket5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->jumlah6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->jumlah_ket6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_ket1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_ket2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_ket3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_ket4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_ket5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_ket6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_smt1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_smt2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_smt3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_smt4 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_smt5 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_smt6 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_kls1 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_kls2 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_kls3 ?? '-' }}</td>
+                    <td>{{ $item->t2020->rata_akhir ?? '-' }}</td>
                 @else
                     @for ($i = 0; $i < 106; $i++)
                         <td></td>
                     @endfor
                 @endif
                 @if ($item->t2019 != null)
-                    <td>{{ $item->t2019->ind }}</td>
-                    <td>{{ $item->t2019->ing }}</td>
-                    <td>{{ $item->t2019->mtk }}</td>
-                    <td>{{ $item->t2019->fis }}</td>
-                    <td>{{ $item->t2019->kim }}</td>
-                    <td>{{ $item->t2019->bio }}</td>
-                    <td>{{ $item->t2019->sos }}</td>
-                    <td>{{ $item->t2019->geo }}</td>
-                    <td>{{ $item->t2019->eko }}</td>
-                    <td>{{ $item->t2019->kom }}</td>
-                    <td>{{ $item->t2019->lain }}</td>
-                    <td>{{ $item->t2019->rata }}</td>
+                    <td>{{ $item->t2019->ind ?? '-' }}</td>
+                    <td>{{ $item->t2019->ing ?? '-' }}</td>
+                    <td>{{ $item->t2019->mtk ?? '-' }}</td>
+                    <td>{{ $item->t2019->fis ?? '-' }}</td>
+                    <td>{{ $item->t2019->kim ?? '-' }}</td>
+                    <td>{{ $item->t2019->bio ?? '-' }}</td>
+                    <td>{{ $item->t2019->sos ?? '-' }}</td>
+                    <td>{{ $item->t2019->geo ?? '-' }}</td>
+                    <td>{{ $item->t2019->eko ?? '-' }}</td>
+                    <td>{{ $item->t2019->kom ?? '-' }}</td>
+                    <td>{{ $item->t2019->lain ?? '-' }}</td>
+                    <td>{{ $item->t2019->rata ?? '-' }}</td>
                 @else
                     @for ($i = 0; $i < 12; $i++)
                         <td></td>
                     @endfor
                 @endif
-                <td>{{ $item->keahlian }}</td>
-                <td>{{ $item->no_kk }}</td>
-                <td>{{ $item->wali->a_kakek }}</td>
-                <td>{{ $item->wali->a_nenek }}</td>
-                <td>{{ $item->wali->i_kakek }}</td>
-                <td>{{ $item->wali->i_nenek }}</td>
-                <td>{{ $item->wali->a_kakek_almt_skr }} </td>
-                <td>{{ $item->wali->a_kakek_almt_sblm }} </td>
-                <td>{{ $item->wali->a_nenek_almt_skr }} </td>
-                <td>{{ $item->wali->a_nenek_almt_sblm }} </td>
-                <td>{{ $item->wali->i_kakek_almt_skr }} </td>
-                <td>{{ $item->wali->i_kakek_almt_sblm }} </td>
-                <td>{{ $item->wali->i_nenek_almt_skr }} </td>
-                <td>{{ $item->wali->i_nenek_almt_sblm }} </td>
-                <td>{{ $item->pendidikan->almt_sma }} </td>
-                <td>{{ $item->email }} </td>
-                <td>{{ $item->hobi }} </td>
-                <td>{{ $item->motifasi }} </td>
-                <td>{{ $item->pernah_kerja }} </td>
-                <td>{{ $item->tempat_kerja }} </td>
-                <td>{{ $item->lama_kerja }} </td>
-                <td>{{ $item->pendidikan->ponpes }} </td>
-                <td>{{ $item->pendidikan->alamat_ponpes }} </td>
-                <td>{{ $item->pendidikan->kabupaten_ponpes }} </td>
-                <td>{{ $item->pendidikan->nisnsd }} </td>
-                <td>{{ $item->pendidikan->nisnsmp }} </td>
-                <td>{{ $item->pendidikan->nisnsma }} </td>
-                <td>{{ $item->bpjs }} </td>
-                <td>{{ $item->inst }} </td>
-                <td>{{ $item->face }} </td>
-                <td>{{ $item->tiktok }} </td>
-                <td>{{ $item->twiter }} </td>
+                <td>{{ $item->keahlian ?? '-' }}</td>
+                <td>{{ $item->no_kk ?? '-' }}</td>
+                <td>{{ $item->wali->a_kakek ?? '-' }}</td>
+                <td>{{ $item->wali->a_nenek ?? '-' }}</td>
+                <td>{{ $item->wali->i_kakek ?? '-' }}</td>
+                <td>{{ $item->wali->i_nenek ?? '-' }}</td>
+                <td>{{ $item->wali->a_kakek_almt_skr ?? '-' }} </td>
+                <td>{{ $item->wali->a_kakek_almt_sblm ?? '-' }} </td>
+                <td>{{ $item->wali->a_nenek_almt_skr ?? '-' }} </td>
+                <td>{{ $item->wali->a_nenek_almt_sblm ?? '-' }} </td>
+                <td>{{ $item->wali->i_kakek_almt_skr ?? '-' }} </td>
+                <td>{{ $item->wali->i_kakek_almt_sblm ?? '-' }} </td>
+                <td>{{ $item->wali->i_nenek_almt_skr ?? '-' }} </td>
+                <td>{{ $item->wali->i_nenek_almt_sblm ?? '-' }} </td>
+                <td>{{ $item->pendidikan->almt_sma ?? '-' }} </td>
+                <td>{{ $item->email ?? '-' }} </td>
+                <td>{{ $item->hobi ?? '-' }} </td>
+                <td>{{ $item->motifasi ?? '-' }} </td>
+                <td>{{ $item->pernah_kerja ?? '-' }} </td>
+                <td>{{ $item->tempat_kerja ?? '-' }} </td>
+                <td>{{ $item->lama_kerja ?? '-' }} </td>
+                <td>{{ $item->pendidikan->ponpes ?? '-' }} </td>
+                <td>{{ $item->pendidikan->alamat_ponpes ?? '-' }} </td>
+                <td>{{ $item->pendidikan->kabupaten_ponpes ?? '-' }} </td>
+                <td>{{ $item->pendidikan->nisnsd ?? '-' }} </td>
+                <td>{{ $item->pendidikan->nisnsmp ?? '-' }} </td>
+                <td>{{ $item->pendidikan->nisnsma ?? '-' }} </td>
+                <td>{{ $item->bpjs ?? '-' }} </td>
+                <td>{{ $item->inst ?? '-' }} </td>
+                <td>{{ $item->face ?? '-' }} </td>
+                <td>{{ $item->tiktok ?? '-' }} </td>
+                <td>{{ $item->twiter ?? '-' }} </td>
             </tr>
         @endforeach
     </tbody>
