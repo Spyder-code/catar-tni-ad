@@ -27,20 +27,20 @@ class CalonController extends Controller
         $pokok = Auth::guard('calon')->user();
         $calon = Calon::find($pokok->id);
         $setting = Setting::find(1);
-        if($calon!=null){
-            $pendidikan = Pendidikan::where('calon_id',$calon->id)->first();
-            $wali = Wali::where('calon_id',$calon->id)->first();
-            $nilai = T2020::where('calon_id',$calon->id)->first();
-            $nilai2019 = T2019::where('calon_id',$calon->id)->first();
+        if ($calon != null) {
+            $pendidikan = Pendidikan::where('calon_id', $calon->id)->first();
+            $wali = Wali::where('calon_id', $calon->id)->first();
+            $nilai = T2020::where('calon_id', $calon->id)->first();
+            $nilai2019 = T2019::where('calon_id', $calon->id)->first();
             $status = 1;
-            return view('calon.formulir',compact('calon','setting','pendidikan','wali','status','nilai','nilai2019'));
-        }else{
+            return view('calon.formulir', compact('calon', 'setting', 'pendidikan', 'wali', 'status', 'nilai', 'nilai2019'));
+        } else {
             $pendidikan = null;
             $wali = null;
             $nilai = null;
             $nilai2019 = null;
             $status = 0;
-            return view('calon.formulir',compact('calon','setting','pendidikan','wali','status','nilai','nilai2019'));
+            return view('calon.formulir', compact('calon', 'setting', 'pendidikan', 'wali', 'status', 'nilai', 'nilai2019'));
         }
     }
 
@@ -51,122 +51,130 @@ class CalonController extends Controller
         //     return redirect()->back()->with('error','Silahkan refresh halaman ini');
         // }
 
-            $day = date('d', strtotime($request->calon['tgl_lahir']));
-            $month = date('m', strtotime($request->calon['tgl_lahir']));
-            $year = date('Y', strtotime($request->calon['tgl_lahir']));
-            $c = array_merge($request->calon,[
-                'l_hri'=>$day,
-                'l_bln'=>$month,
-                'l_thn'=>$year,
-            ]);
-            $c['id'] = Auth::guard('calon')->user()->id;
-            if($check==null){
-                $calon = Calon::create($c);
-            }else{
-                $check->update($c);
-                $calon = $check;
-            }
-            $pendidikan = array_merge($request->pendidikan,['calon_id'=>$calon->id]);
-            $wali = array_merge($request->wali,['calon_id'=>$calon->id]);
-            $nilai = array_merge($request->nilai,['calon_id'=>$calon->id]);
-            $nilai2019 = array_merge($request->nilai2019,['calon_id'=>$calon->id]);
-            if($check==null){
-                $pen = Pendidikan::create($pendidikan);
-                $a = Wali::create($wali);
-            }else{
-                $pen = Pendidikan::where('calon_id',$calon->id)->first();
-                $pen->update($pendidikan);
-                $a = Wali::where('calon_id',$calon->id)->first();
-                $a->update($wali);
-            }
+        $day = date('d', strtotime($request->calon['tgl_lahir']));
+        $month = date('m', strtotime($request->calon['tgl_lahir']));
+        $year = date('Y', strtotime($request->calon['tgl_lahir']));
+        $c = array_merge($request->calon, [
+            'l_hri' => $day,
+            'l_bln' => $month,
+            'l_thn' => $year,
+        ]);
+        $c['id'] = Auth::guard('calon')->user()->id;
+        if ($check == null) {
+            $calon = Calon::create($c);
+        } else {
+            $check->update($c);
+            $calon = $check;
+        }
+        $pendidikan = array_merge($request->pendidikan, ['calon_id' => $calon->id]);
+        $wali = array_merge($request->wali, ['calon_id' => $calon->id]);
+        $nilai = array_merge($request->nilai, ['calon_id' => $calon->id]);
+        $nilai2019 = array_merge($request->nilai2019, ['calon_id' => $calon->id]);
+        if ($check == null) {
+            $pen = Pendidikan::create($pendidikan);
+            $a = Wali::create($wali);
+        } else {
+            $pen = Pendidikan::where('calon_id', $calon->id)->first();
+            $pen->update($pendidikan);
+            $a = Wali::where('calon_id', $calon->id)->first();
+            $a->update($wali);
+        }
 
-            $thnLulus = (int)$pen->l_sma;
-            if ($thnLulus<=2019) {
-                if($check==null){
-                    T2019::create($nilai2019);
-                    T2020::create($nilai);
-                }else{
-                    $data_nilai19 = T2019::where('calon_id',$calon->id)->first();
-                    $data_nilai19->update($nilai2019);
-                    $data_nilai20 = T2020::where('calon_id',$calon->id)->first();
-                    $data_nilai20->update($nilai);
-                }
+        $thnLulus = (int)$pen->l_sma;
+        if ($thnLulus <= 2019) {
+
+            // Handle T2019
+            $data_nilai19 = T2019::where('calon_id', $calon->id)->first();
+            if ($data_nilai19) {
+                $data_nilai19->update($nilai2019);
             } else {
-                if($check==null){
-                    T2020::create($nilai);
-                }else{
-                    $data_nilai20 = T2020::where('calon_id',$calon->id)->first();
-                    $data_nilai20->update($nilai);
-                }
+                T2019::create($nilai2019);
             }
 
-            if ($a->status_wali==1) {
-                $status = 'Wali';
-            } else if($a->status_wali==2) {
-                $status = 'Tiri';
-            } else if($a->status_wali==3) {
-                $status = 'Perwalian';
-            } else if($a->status_wali==4) {
-                $status = 'Numpang alamat';
-            }else{
-                $status = '';
+            // Handle T2020
+            $data_nilai20 = T2020::where('calon_id', $calon->id)->first();
+            if ($data_nilai20) {
+                $data_nilai20->update($nilai);
+            } else {
+                T2020::create($nilai);
             }
-            $namaCalon = addslashes($calon->nama);
-            $namaAyah = addslashes($a->ayah);
-            $namaIbu = addslashes($a->ibu);
-            $waliAyah = addslashes($a->wali_ayah);
-            $waliIbu = addslashes($a->wali_ibu);
-            $a_kakek = addslashes($a->a_kakek);
-            $i_kakek = addslashes($a->i_kakek);
-            $a_nenek = addslashes($a->a_nenek);
-            $i_nenek = addslashes($a->i_nenek);
-            Wali::find($a->id)->update([
-                'hub_calon_wali'=>$status,
-                'ayah' => $namaAyah,
-                'ibu' => $namaIbu,
-                'wali_ayah' => $waliAyah,
-                'wali_ibu' => $waliIbu,
-                'a_kakek' => $a_kakek,
-                'i_kakek' => $i_kakek,
-                'a_nenek' => $a_nenek,
-                'i_nenek' => $i_nenek,
-            ]);
-            Calon::find($calon->id)->update(['nama'=>$namaCalon]);
+        } else {
 
-        return back()->with('success','Data berhasil disimpan');
+            // Handle T2020 saja
+            $data_nilai20 = T2020::where('calon_id', $calon->id)->first();
+            if ($data_nilai20) {
+                $data_nilai20->update($nilai);
+            } else {
+                T2020::create($nilai);
+            }
+        }
+
+        if ($a->status_wali == 1) {
+            $status = 'Wali';
+        } else if ($a->status_wali == 2) {
+            $status = 'Tiri';
+        } else if ($a->status_wali == 3) {
+            $status = 'Perwalian';
+        } else if ($a->status_wali == 4) {
+            $status = 'Numpang alamat';
+        } else {
+            $status = '';
+        }
+        $namaCalon = addslashes($calon->nama);
+        $namaAyah = addslashes($a->ayah);
+        $namaIbu = addslashes($a->ibu);
+        $waliAyah = addslashes($a->wali_ayah);
+        $waliIbu = addslashes($a->wali_ibu);
+        $a_kakek = addslashes($a->a_kakek);
+        $i_kakek = addslashes($a->i_kakek);
+        $a_nenek = addslashes($a->a_nenek);
+        $i_nenek = addslashes($a->i_nenek);
+        Wali::find($a->id)->update([
+            'hub_calon_wali' => $status,
+            'ayah' => $namaAyah,
+            'ibu' => $namaIbu,
+            'wali_ayah' => $waliAyah,
+            'wali_ibu' => $waliIbu,
+            'a_kakek' => $a_kakek,
+            'i_kakek' => $i_kakek,
+            'a_nenek' => $a_nenek,
+            'i_nenek' => $i_nenek,
+        ]);
+        Calon::find($calon->id)->update(['nama' => $namaCalon]);
+
+        return back()->with('success', 'Data berhasil disimpan');
     }
 
     public function pdf()
     {
         $no = Auth::guard('calon')->user()->no_online;
-        $calon = Calon::where('no_online',$no)->first();
-        if ($calon==null) {
-            return redirect()->route('calon.form')->with('danger','Harap Lengkapi data terlebih dahulu!');
+        $calon = Calon::where('no_online', $no)->first();
+        if ($calon == null) {
+            return redirect()->route('calon.form')->with('danger', 'Harap Lengkapi data terlebih dahulu!');
         } else {
-            $pendidikan = Pendidikan::where('calon_id',$calon->id)->first();
-            $wali = Wali::where('calon_id',$calon->id)->first();
-            $nilai = T2020::where('calon_id',$calon->id)->first();
-            $data = ['Wali','Tiri','Perwalian','Numpang alamat'];
+            $pendidikan = Pendidikan::where('calon_id', $calon->id)->first();
+            $wali = Wali::where('calon_id', $calon->id)->first();
+            $nilai = T2020::where('calon_id', $calon->id)->first();
+            $data = ['Wali', 'Tiri', 'Perwalian', 'Numpang alamat'];
             $setting = Setting::find(1);
-            return view('calon.pdf',compact('pendidikan','setting','wali','nilai','calon','data'));
+            return view('calon.pdf', compact('pendidikan', 'setting', 'wali', 'nilai', 'calon', 'data'));
         }
-
     }
 
     public function nilai()
     {
         $no = Auth::guard('calon')->user()->no_online;
-        $calon = Calon::where('no_online',$no)->first();
-        if ($calon==null) {
-            return redirect()->route('calon.form')->with('danger','Harap Lengkapi data terlebih dahulu!');
+        $calon = Calon::where('no_online', $no)->first();
+        if ($calon == null) {
+            return redirect()->route('calon.form')->with('danger', 'Harap Lengkapi data terlebih dahulu!');
         } else {
-            $pendidikan = Pendidikan::where('calon_id',$calon->id)->first();
-            $nilai = T2020::where('calon_id',$calon->id)->first();
+            $pendidikan = Pendidikan::where('calon_id', $calon->id)->first();
+            $nilai = T2020::where('calon_id', $calon->id)->first();
             $setting = Setting::find(1);
             // if ($nilai==null) {
             //     return redirect()->route('calon.form')->with('danger','Menu nilai PDF khusus untuk!');
             // }
-            return view('calon.nilaipdf',compact('nilai','calon','pendidikan','setting'));
+            return view('calon.nilaipdf', compact('nilai', 'calon', 'pendidikan', 'setting'));
         }
     }
 
