@@ -15,5 +15,14 @@ class LandingPage extends Model
         'heading_2',
         'content',
         'dik',
+        'tertua',
+        'termuda',
+        'lp_heading',
+        'lp_title_santri',
+        'lp_title_reguler',
+        'lihat_umur',
+        'label_ponpes',
+        'label_alamat_ponpes',
+        'label_kabupaten_ponpes',
     ];
 }

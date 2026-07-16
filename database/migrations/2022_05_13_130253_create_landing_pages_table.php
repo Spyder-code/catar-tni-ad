@@ -15,11 +15,20 @@ class CreateLandingPagesTable extends Migration
     {
         Schema::create('landing_pages', function (Blueprint $table) {
             $table->id();
-            $table->string('pendaftaran');
-            $table->string('heading_1');
-            $table->string('heading_2');
-            $table->string('content');
-            $table->date('dik');
+            $table->string('pendaftaran')->nullable();
+            $table->string('heading_1')->nullable();
+            $table->string('heading_2')->nullable();
+            $table->text('content')->nullable();
+            $table->date('dik')->nullable();
+            $table->date('tertua')->nullable();
+            $table->date('termuda')->nullable();
+            $table->string('lp_heading')->nullable();
+            $table->string('lp_title_santri')->nullable();
+            $table->string('lp_title_reguler')->nullable();
+            $table->integer('lihat_umur')->nullable();
+            $table->string('label_ponpes')->nullable();
+            $table->string('label_alamat_ponpes')->nullable();
+            $table->string('label_kabupaten_ponpes')->nullable();
             $table->timestamps();
         });
     }

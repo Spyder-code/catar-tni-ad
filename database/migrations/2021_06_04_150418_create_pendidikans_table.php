@@ -29,6 +29,13 @@ class CreatePendidikansTable extends Migration
             $table->string('jur')->nullable();
             $table->string('jumlah_nuan')->nullable();
             $table->string('rata')->nullable();
+            $table->string('almt_sma')->nullable();
+            $table->string('ponpes')->nullable();
+            $table->string('alamat_ponpes')->nullable();
+            $table->string('kabupaten_ponpes')->nullable();
+            $table->string('nisnsd')->nullable();
+            $table->string('nisnsmp')->nullable();
+            $table->string('nisnsma')->nullable();
             $table->timestamps();
         });
     }
@@ -40,6 +47,6 @@ class CreatePendidikansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pendidikans');
+        Schema::dropIfExists('pendidikan');
     }
 }

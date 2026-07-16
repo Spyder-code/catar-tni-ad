@@ -48,6 +48,19 @@ class CreateCalonsTable extends Migration
             $table->string('bb')->nullable();
             $table->string('tindik')->nullable();
             $table->string('tatto')->nullable();
+            $table->string('no_kk')->nullable();
+            $table->string('keahlian')->nullable();
+            $table->string('motifasi')->nullable();
+            $table->string('hobi')->nullable();
+            $table->string('email')->nullable();
+            $table->string('pernah_kerja')->nullable();
+            $table->string('tempat_kerja')->nullable();
+            $table->string('lama_kerja')->nullable();
+            $table->string('bpjs')->nullable();
+            $table->string('inst')->nullable();
+            $table->string('face')->nullable();
+            $table->string('tiktok')->nullable();
+            $table->string('twiter')->nullable();
             $table->timestamps();
         });
     }
@@ -59,6 +72,6 @@ class CreateCalonsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('calons');
+        Schema::dropIfExists('calon');
     }
 }

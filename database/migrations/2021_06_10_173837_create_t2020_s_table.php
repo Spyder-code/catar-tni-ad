@@ -133,6 +133,6 @@ class CreateT2020STable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t2020_s');
+        Schema::dropIfExists('tlulus2020');
     }
 }

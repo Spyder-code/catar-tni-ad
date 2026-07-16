@@ -28,7 +28,7 @@ class CreatePokoksTable extends Migration
             $table->string('wali1');
             $table->text('alamat_c');
             $table->text('alamat_o');
-            $table->string('jenis sekolah');
+            $table->string('jenis_sekolah');
             $table->string('nama_sekolah');
             $table->string('jur');
             $table->string('th_lulus');
@@ -44,6 +44,6 @@ class CreatePokoksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pokoks');
+        Schema::dropIfExists('pokok');
     }
 }

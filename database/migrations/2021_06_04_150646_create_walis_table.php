@@ -42,6 +42,10 @@ class CreateWalisTable extends Migration
             $table->string('w_alamat')->nullable();
             $table->integer('status_wali')->nullable();
             $table->string('hub_calon_wali')->nullable();
+            $table->string('a_kakek')->nullable();
+            $table->string('i_kakek')->nullable();
+            $table->string('a_nenek')->nullable();
+            $table->string('i_nenek')->nullable();
             $table->timestamps();
         });
     }
@@ -53,6 +57,6 @@ class CreateWalisTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('walis');
+        Schema::dropIfExists('wali');
     }
 }

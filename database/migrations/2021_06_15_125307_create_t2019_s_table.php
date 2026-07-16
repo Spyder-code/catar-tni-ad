@@ -39,6 +39,6 @@ class CreateT2019STable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('t2019_s');
+        Schema::dropIfExists('tlulus2019');
     }
 }
