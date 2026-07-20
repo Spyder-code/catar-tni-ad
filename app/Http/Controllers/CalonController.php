@@ -77,7 +77,11 @@ class CalonController extends Controller
             $pen = Pendidikan::where('calon_id', $calon->id)->first();
             $pen->update($pendidikan);
             $a = Wali::where('calon_id', $calon->id)->first();
-            $a->update($wali);
+            if($a == null){
+                $a = Wali::create($wali);
+            }else{
+                $a->update($wali);
+            }
         }
 
         $thnLulus = (int)$pen->l_sma;
