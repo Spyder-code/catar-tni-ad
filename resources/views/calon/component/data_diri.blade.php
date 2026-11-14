@@ -70,6 +70,13 @@
         <input @error('calon.tgl_lahir') autofocus @enderror type="date" id="lhr" name="calon[tgl_lahir]"
             min="{{ $setting->tertua }}" max="{{ $setting->termuda }}" class="form-control"
             value="{{ $calon != null ? $calon->tgl_lahir : old('calon.tgl_lahir') }}">
+        @if ($setting->tertua && $setting->termuda)
+            <small class="text-muted">
+                Tanggal lahir yang diterima:
+                {{ date('d/m/Y', strtotime($setting->tertua)) }} s/d
+                {{ date('d/m/Y', strtotime($setting->termuda)) }}
+            </small>
+        @endif
     </div>
     <div class="col-sm">
         <label>DIK</label>

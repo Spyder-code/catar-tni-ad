@@ -23,7 +23,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="white-box">
-                    <form action="{{ route('landing-page.update', $landingPage) }}" method="POST">
+                    <form id="settingForm" action="{{ route('landing-page.update', $landingPage) }}" method="POST">
                         @csrf
                         @method('PUT')
                         <table style="width: 100%">
@@ -57,12 +57,20 @@
                                     <td><textarea name="content" id="example" rows="20">{{ $landingPage->content }}</textarea></td>
                                 </tr>
                                 <tr>
-                                    <td>TGL TERMUDA</td>
-                                    <td><input type="date" name="termuda" value="{{ $landingPage->termuda }}" class="form-control"></td>
+                                    <td>
+                                        Tgl Lahir TERTUA
+                                        <br><small class="text-muted">Batas paling AWAL / minimum &mdash; tanggal lahir kandidat tertua</small>
+                                    </td>
+                                    <td><input type="date" id="tertua" name="tertua" value="{{ $landingPage->tertua }}"
+                                            class="form-control"></td>
                                 </tr>
                                 <tr>
-                                    <td>TGL TERTUA</td>
-                                    <td><input type="date" name="tertua" value="{{ $landingPage->tertua }}" class="form-control"></td>
+                                    <td>
+                                        Tgl Lahir TERMUDA
+                                        <br><small class="text-muted">Batas paling AKHIR / maksimum &mdash; tanggal lahir kandidat termuda</small>
+                                    </td>
+                                    <td><input type="date" id="termuda" name="termuda" value="{{ $landingPage->termuda }}"
+                                            class="form-control"></td>
                                 </tr>
                                 <tr>
                                     <td>DIK</td>
@@ -108,5 +116,15 @@
         plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
         toolbar_mode: 'floating',
     });
+
+        // Cegah tersimpan kalau batas TERTUA (min) lebih besar dari TERMUDA (max)
+        document.getElementById('settingForm').addEventListener('submit', function(e) {
+            var tertua = document.getElementById('tertua');
+            var termuda = document.getElementById('termuda');
+            if (tertua.value && termuda.value && tertua.value > termuda.value) {
+                e.preventDefault();
+                alert('Tidak dapat disimpan!\n\nTgl Lahir TERTUA (batas AWAL/minimum) harus lebih awal daripada Tgl Lahir TERMUDA (batas AKHIR/maksimum).');
+            }
+        });
     </script>
 @endsection

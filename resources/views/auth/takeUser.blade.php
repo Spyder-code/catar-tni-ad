@@ -87,10 +87,17 @@
                                                                         <div class="modal-body">
                                                                             <div class="form-group row">
                                                                                 <div class="col-md-6">
-                                                                                    <input id="tgl_lahir" type="date"
-                                                                                        class="form-control @error('tgl_lahir') is-invalid @enderror"
-                                                                                        name="tgl_lahir" min="{{ $setting->tertua }}"
-                                                                                        max="{{ $setting->termuda }}" required
+                                                                                    <label
+                                                                                        for="tgl_lahir-{{ $item->id }}">Tanggal
+                                                                                        Lahir</label>
+                                                                                    <input
+                                                                                        id="tgl_lahir-{{ $item->id }}"
+                                                                                        type="date"
+                                                                                        class="form-control tgl_lahir @error('tgl_lahir') is-invalid @enderror"
+                                                                                        name="tgl_lahir"
+                                                                                        @if ($setting->tertua) min="{{ $setting->tertua }}" @endif
+                                                                                        @if ($setting->termuda) max="{{ $setting->termuda }}" @endif
+                                                                                        required
                                                                                         autocomplete="current-tgl_lahir">
 
                                                                                     @error('tgl_lahir')
@@ -131,15 +138,15 @@
 @section('script')
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-        var tertua = '{{ $setting->tertua }}';
-        var termuda = '{{ $setting->termuda }}';
-        flatpickr('#tgl_lahir', {
+        // Batas tanggal lahir: TERTUA = batas paling awal (min), TERMUDA = batas paling akhir (max)
+        var tertua = {!! json_encode($setting->tertua) !!};
+        var termuda = {!! json_encode($setting->termuda) !!};
+        flatpickr('.tgl_lahir', {
             dateFormat: 'Y-m-d',
-            maxDate: 'today',
             altFormat: 'd/m/Y',
             altInput: true,
-            maxDate: termuda,
-            minDate: tertua,
+            minDate: tertua || null,
+            maxDate: termuda || null,
         });
 
         $('#no_online').keyup(function(e) {

@@ -1,31 +1,42 @@
-services:
-    app:
-        build:
-            context: .
-            dockerfile: Dockerfile
-        container_name: catar-tni
-        restart: unless-stopped
-        ports:
-            - "8003:80"
-        env_file:
-            - .env
-        environment:
-            APP_ENV: production
-            APP_DEBUG: "false"
-            DB_HOST: 10.10.10.3
-            DB_PORT: 3306
-        volumes:
-            - storage_data:/var/www/html/storage
-        entrypoint: >
-            /bin/sh -c "
-              mkdir -p /var/www/html/storage/framework/views
-              mkdir -p /var/www/html/storage/framework/cache/data
-              mkdir -p /var/www/html/storage/framework/sessions
-              mkdir -p /var/www/html/storage/logs
-              chown -R www-data:www-data /var/www/html/storage
-              chmod -R 775 /var/www/html/storage
-              apache2-foreground
-            "
+networks:
+  server_net:
+    external: true
 
 volumes:
-    storage_data:
+  storage_data:
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: catar-tni
+    restart: unless-stopped
+    networks:
+      - server_net
+    env_file:
+      - .env
+    environment:
+      APP_ENV: production
+      APP_DEBUG: "false"
+      DB_HOST: mysql
+      DB_PORT: 3306
+    volumes:
+      - storage_data:/var/www/html/storage
+    entrypoint: >
+      /bin/sh -c "
+        mkdir -p /var/www/html/storage/framework/views
+        mkdir -p /var/www/html/storage/framework/cache/data
+        mkdir -p /var/www/html/storage/framework/sessions
+        mkdir -p /var/www/html/storage/logs
+        chown -R www-data:www-data /var/www/html/storage
+        chmod -R 775 /var/www/html/storage
+        php artisan config:clear
+        php artisan cache:clear
+        php artisan view:clear
+        php artisan route:clear
+        php artisan config:cache
+        php artisan route:cache
+        php artisan view:cache
+        apache2-foreground
+      "

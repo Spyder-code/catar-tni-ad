@@ -26,7 +26,8 @@ class SetTenantDatabase
 
         // mapping database
         $databaseMap = [
-            'daftar1' => 'catar',
+            'daftar' => 'catar',
+            'daftar1' => 'catar_agama',
             'daftar2' => 'catar_agama',
         ];
 
