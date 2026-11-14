@@ -147,6 +147,13 @@
                                     <span class="hide-menu">Data calon</span>
                                 </a>
                             </li>
+                            @if (Auth::user()->isSuperadmin())
+                            <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin-management.index') }}" aria-expanded="false">
+                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                    <span class="hide-menu">Manajemen Admin</span>
+                                </a>
+                            </li>
                             <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('landing-page.edit',1) }}"
                                     aria-expanded="false">
@@ -154,6 +161,7 @@
                                     <span class="hide-menu">Setting</span>
                                 </a>
                             </li>
+                            @endif
                             <li class="text-center p-20 upgrade-btn">
                                 <form action="{{ route('logout') }}" method="post">
                                     @csrf
@@ -202,21 +210,6 @@
     <script src="{{ asset('dashboard') }}/js/custom.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
     @yield('script')
-    <script>
-        $('.validate-symbol').keypress(function (e) {
-            // valid input with regex alphabet and nummeric
-            var regex = /^[a-zA-Z0-9 .,-/()]+$/;
-            var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
-            if (regex.test(str)) {
-                return true;
-            }else{
-                e.preventDefault();
-                return false;
-            }
-
-
-        });
-    </script>
 </body>
 
 </html>

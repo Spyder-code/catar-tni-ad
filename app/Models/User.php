@@ -22,6 +22,10 @@ class User extends Authenticatable
         'password',
         'username',
         'avatar',
+        'role',
+        'kodim',
+        'nrp',
+        'penanggung_jawab_kodim',
     ];
 
     /**
@@ -42,4 +46,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isSuperadmin(): bool
+    {
+        return $this->role === 'superadmin';
+    }
+
+    public function isPenanggungJawab(): bool
+    {
+        return $this->role === 'admin' && $this->kodim !== null
+            && $this->penanggung_jawab_kodim === $this->kodim;
+    }
 }

@@ -63,23 +63,38 @@ class LoginController extends Controller
 
     public function loginCalon(Request $request)
     {
-        $tgl = date('d-m-Y', strtotime($request->tgl_lahir));
-        $user = Pokok::where('id',$request->id)->where('tgl_lahir',$tgl)->first();
-        if ($user==null) {
+        $credentials = $request->validate([
+            'no_animo' => 'required|string|max:255',
+            'tgl_lahir' => 'required|date_format:Y-m-d',
+        ]);
+
+        $tgl = date('d-m-Y', strtotime($credentials['tgl_lahir']));
+        $user = Pokok::where('no_animo', trim($credentials['no_animo']))
+            ->where('tgl_lahir', $tgl)->first();
+        if ($user === null) {
             return redirect()->route('login')
-            ->with('danger','No online dan tanggal lahir tidak ada dalam data kami. Silahkan menghubungi admin!');
-        } else {
-            Auth::guard('calon')->login($user);
-            return redirect()->route('calon.form');
+                ->with('danger', 'No Animo dan tanggal lahir tidak cocok dengan data kami. Silakan menghubungi admin!');
         }
 
+        Auth::guard('calon')->login($user);
+
+        return redirect()->route('calon.form');
     }
 
     public function takeUser(Request $request)
     {
-        $data = Pokok::where('no_online', $request->no_online)->get();
+        $credentials = $request->validate([
+            'no_animo' => 'required|string|max:255',
+        ]);
+
+        $data = Pokok::where('no_animo', trim($credentials['no_animo']))->get();
+        if ($data->isEmpty()) {
+            return back()->withInput()->with('danger', 'No Animo tidak ditemukan dalam data kami.');
+        }
+
         $setting = Setting::first();
-        return view('auth.takeUser', compact('data','setting'));
+
+        return view('auth.takeUser', compact('data', 'setting'));
     }
 
 }

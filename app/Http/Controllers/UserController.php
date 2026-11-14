@@ -17,7 +17,8 @@ class UserController extends Controller
             'username' => 'required',
         ]);
 
-        User::find($id)->update($request->all());
+        abort_unless((int) $id === Auth::id(), 403);
+        Auth::user()->update($request->only(['name', 'username']));
         return back()->with('success', 'Profil berhasil diupdate');
     }
 
@@ -28,8 +29,9 @@ class UserController extends Controller
             'current_password' => ['required'],
         ]);
 
+        abort_unless((int) $id === Auth::id(), 403);
         if(Hash::check($request->current_password, Auth::user()->password)){
-            User::find($id)->update(['password'=>Hash::make($request->password)]);
+            Auth::user()->update(['password'=>Hash::make($request->password)]);
             return back()->with('success','Password berhasil diubah');
         }else{
             return back()->with('danger','Password lama salah');;
@@ -38,6 +40,7 @@ class UserController extends Controller
 
     public function updateImage(Request $request, $id)
     {
+        abort_unless((int) $id === Auth::id(), 403);
         $request->validate([
             'avatar' => 'image|mimes:jpeg,png,jpg,svg|max:2048',
         ]);
@@ -47,7 +50,7 @@ class UserController extends Controller
             $path = $files->storeAs('public/user', $profileImage);
             $url = Storage::url($path);
             $imgUrl = url($url);
-            User::find($id)->update(['avatar'=>$imgUrl]);
+            Auth::user()->update(['avatar'=>$imgUrl]);
             return back()->with('success','Avatar berhasil diubah');
         }
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\CalonExport;
+use App\Exports\PokokExport;
 use App\Imports\PokokImport;
 use App\Models\Calon;
 use App\Models\Pendidikan;
@@ -73,10 +74,47 @@ class HomeController extends Controller
         return back()->with('success', 'Data berhasil dihapus!');
     }
 
-    public function pokok()
+    public function pokok(Request $request)
     {
-        $data = Pokok::all()->sortByDesc('no_online');
-        return view('admin.pokok', compact('data'));
+        $filters = $this->pokokFilters($request);
+        $kodim = $request->user()->isSuperadmin() ? null : $request->user()->kodim;
+        $query = Pokok::query();
+        if ($kodim !== null) {
+            $query->where('kodim', $kodim);
+        } elseif (!$request->user()->isSuperadmin()) {
+            $query->whereRaw('1 = 0');
+        }
+        $data = $query->filtered($filters)->orderByDesc('id')->paginate(50)->withQueryString();
+        $options = [];
+        foreach (['jalur_pendaftaran', 'kdpanda', 'kodim'] as $column) {
+            $optionQuery = Pokok::query()->whereNotNull($column)->where($column, '!=', '');
+            if ($kodim !== null) {
+                $optionQuery->where('kodim', $kodim);
+            } elseif (!$request->user()->isSuperadmin()) {
+                $optionQuery->whereRaw('1 = 0');
+            }
+            $options[$column] = $optionQuery->distinct()->orderBy($column)->pluck($column);
+        }
+
+        return view('admin.pokok', compact('data', 'filters', 'options'));
+    }
+
+    public function exportPokok(Request $request)
+    {
+        $filters = $this->pokokFilters($request);
+
+        return Excel::download(new PokokExport($filters), 'data-pokok.xlsx');
+    }
+
+    private function pokokFilters(Request $request): array
+    {
+        return $request->validate([
+            'q' => 'nullable|string|max:100',
+            'jenis' => 'nullable|in:CABA,CATA',
+            'jalur_pendaftaran' => 'nullable|string|max:255',
+            'kdpanda' => 'nullable|string|max:255',
+            'kodim' => 'nullable|string|max:255',
+        ]);
     }
 
     public function createPokok()

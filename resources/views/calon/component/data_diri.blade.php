@@ -1,9 +1,9 @@
 <div class="form-group row">
     <div class="col-12 col-md-6">
-        <label>No online</label>
+        <label>No Validasi</label>
         @error('calon.no_online')
             <div>
-                <strong class="text-danger small">Nomor Online tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Nomor Validasi tidak boleh kosong</strong>
             </div>
         @enderror
         <input @error('calon.no_online') autofocus @enderror type="text" style="text-transform: uppercase"
@@ -15,7 +15,7 @@
         <label>Nama</label>
         @error('calon.nama')
             <div>
-                <strong class="text-danger small">Nama tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Nama tidak boleh kosong</strong>
             </div>
         @enderror
         <input @error('calon.nama') autofocus @enderror type="text" style="text-transform: uppercase"
@@ -26,8 +26,7 @@
         <label>No. Kartu Keluarga</label>
         @error('calon.no_kk')
             <div>
-                <strong class="text-danger small">No.Kartu Keluarga tidak boleh kosong dan mengandung tanda
-                    petik(')</strong>
+                <strong class="text-danger small">No.Kartu Keluarga tidak boleh kosong</strong>
             </div>
         @enderror
         <input @error('calon.no_kk') autofocus @enderror type="text" style="text-transform: uppercase"
@@ -53,7 +52,7 @@
         <label>Tempat lahir</label>
         @error('calon.tem_lahir')
             <div>
-                <strong class="text-danger small">Tempat lahir tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Tempat lahir tidak boleh kosong</strong>
             </div>
         @enderror
         <input @error('calon.tem_lahir') autofocus @enderror type="text" style="text-transform: uppercase"
@@ -64,7 +63,7 @@
         <label>Tanggal lahir <small>(YYYY-MM-DD)</small></label>
         @error('calon.tgl_lahir')
             <div>
-                <strong class="text-danger small">Tanggal lahir tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Tanggal lahir tidak boleh kosong</strong>
             </div>
         @enderror
         <input @error('calon.tgl_lahir') autofocus @enderror type="date" id="lhr" name="calon[tgl_lahir]"
@@ -141,7 +140,7 @@
         <label>Suku</label>
         @error('calon.suku')
             <div>
-                <strong class="text-danger small">Suku tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Suku tidak boleh kosong</strong>
             </div>
         @enderror
         <input @error('calon.suku') autofocus @enderror type="text" style="text-transform: uppercase"
@@ -152,7 +151,7 @@
         <label>Agama</label>
         @error('calon.agama')
             <div>
-                <strong class="text-danger small">Agama tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Agama tidak boleh kosong</strong>
             </div>
         @enderror
         <input @error('calon.agama') autofocus @enderror type="text" style="text-transform: uppercase"
@@ -165,18 +164,18 @@
         <label>Jalan</label>
         @error('calon.alamat')
             <div>
-                <strong class="text-danger small">Jalan tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Jalan tidak boleh kosong</strong>
             </div>
         @enderror
         <input @error('calon.alamat') autofocus @enderror type="text" style="text-transform: uppercase"
             name="calon[alamat]" class="form-control validate-symbol"
-            value="{{ $calon != null ? stripcslashes($calon->alamat) : old('calon.alamat') }}">
+            value="{{ $calon != null ? $calon->alamat : old('calon.alamat') }}">
     </div>
     <div class="col">
         <label>RT</label>
         @error('calon.rt')
             <div>
-                <strong class="text-danger small">RT tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">RT tidak boleh kosong</strong>
             </div>
         @enderror
         <input type="number" onkeypress="return this.value.length < 3;"
@@ -187,7 +186,7 @@
         <label>RW</label>
         @error('calon.rw')
             <div>
-                <strong class="text-danger small">RW tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">RW tidak boleh kosong</strong>
             </div>
         @enderror
         <input type="number" onkeypress="return this.value.length < 3;"
@@ -198,7 +197,7 @@
         <label>No rumah</label>
         @error('calon.no')
             <div>
-                <strong class="text-danger small">No rumah tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">No rumah tidak boleh kosong</strong>
             </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="calon[no]" class="form-control"
@@ -210,40 +209,40 @@
         <label>Dusun</label>
         @error('calon.dsn')
             <div>
-                <strong class="text-danger small">Dusun tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Dusun tidak boleh kosong</strong>
             </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="calon[dsn]"
             class="form-control validate-symbol"
-            value="{{ $calon != null ? stripcslashes($calon->dsn) : old('calon.dsn') }}">
+            value="{{ $calon != null ? $calon->dsn : old('calon.dsn') }}">
     </div>
     <div class="col-sm">
         <label>Desa</label>
         @error('calon.ds')
             <div>
-                <strong class="text-danger small">Desa tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Desa tidak boleh kosong</strong>
             </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="calon[ds]"
             class="form-control validate-symbol"
-            value="{{ $calon != null ? stripcslashes($calon->ds) : old('calon.ds') }}">
+            value="{{ $calon != null ? $calon->ds : old('calon.ds') }}">
     </div>
     <div class="col">
         <label>Kecamatan</label>
         @error('calon.kec')
             <div>
-                <strong class="text-danger small">Kecamatan tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Kecamatan tidak boleh kosong</strong>
             </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="calon[kec]"
             class="form-control validate-symbol"
-            value="{{ $calon != null ? stripcslashes($calon->kec) : old('calon.kec') }}">
+            value="{{ $calon != null ? $calon->kec : old('calon.kec') }}">
     </div>
     <div class="col">
         <label>Kabupaten/Kota</label>
         @error('calon.kab')
             <div>
-                <strong class="text-danger small">Kabupaten/Kota tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Kabupaten/Kota tidak boleh kosong</strong>
             </div>
         @enderror
         @if ($calon == null)
@@ -276,7 +275,7 @@
         <label>No telphone</label>
         @error('calon.telp')
             <div>
-                <strong class="text-danger small">No telephone tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">No telephone tidak boleh kosong</strong>
             </div>
         @enderror
         <input type="number" onkeypress="return this.value.length < 15;"
@@ -287,7 +286,7 @@
         <label>Daftar ke</label>
         @error('calon.daftar_ke')
             <div>
-                <strong class="text-danger small">Daftar Ke- tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Daftar Ke- tidak boleh kosong</strong>
             </div>
         @enderror
         <input type="number" name="calon[daftar_ke]" class="form-control"
@@ -297,24 +296,23 @@
         <label>Aspek tidak lulus</label>
         @error('calon.aspek_tl')
             <div>
-                <strong class="text-danger small">Aspek tidak lulus tidak boleh kosong dan mengandung tanda
-                    petik(')</strong>
+                <strong class="text-danger small">Aspek tidak lulus tidak boleh kosong</strong>
             </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="calon[aspek_tl]"
             class="form-control validate-symbol"
-            value="{{ $calon != null ? stripcslashes($calon->aspek_tl) : old('calon.aspek_tl') }}">
+            value="{{ $calon != null ? $calon->aspek_tl : old('calon.aspek_tl') }}">
     </div>
     <div class="col-sm">
         <label>Keahlian</label>
         @error('calon.keahlian')
             <div>
-                <strong class="text-danger small">Keahlian tidak boleh kosong dan mengandung tanda petik(')</strong>
+                <strong class="text-danger small">Keahlian tidak boleh kosong</strong>
             </div>
         @enderror
         <input type="text" style="text-transform: uppercase" name="calon[keahlian]"
             class="form-control validate-symbol"
-            value="{{ $calon != null ? stripcslashes($calon->keahlian) : old('calon.keahlian') }}">
+            value="{{ $calon != null ? $calon->keahlian : old('calon.keahlian') }}">
     </div>
 </div>
 <div class="form-group row">

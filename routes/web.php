@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\AdminManagementController;
 use App\Http\Controllers\LandingPageController;
 use App\Models\Calon;
 use App\Models\LandingPage;
@@ -32,7 +33,7 @@ Route::get('sync/date', function () {
         ]);
     }
     return response('success');
-});
+})->middleware(['auth', 'superadmin']);
 Route::get('/home', function () {
     $data = Setting::find(1);
     return view('layouts.user', compact('data'));
@@ -42,7 +43,7 @@ Route::get('coba', function () {
     $data = Calon::find(4);
     dd($data->t2019);
     return view('export.calon',compact('data'));
-});
+})->middleware(['auth', 'superadmin']);
 
 Route::get('/admin', function () {
     return view('auth.loginAdmin');
@@ -57,11 +58,19 @@ Route::get('/calon/data-diri', [App\Http\Controllers\CalonController::class, 'pd
 Route::get('/calon/nilai', [App\Http\Controllers\CalonController::class, 'nilai'])->name('calon.nilai');
 Route::get('/main', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/pokok', [App\Http\Controllers\HomeController::class, 'pokok'])->name('pokok');
-Route::get('/pokok-create', [App\Http\Controllers\HomeController::class, 'createPokok'])->name('pokok.create');
-Route::get('/pokok-edit/{pokok}', [App\Http\Controllers\HomeController::class, 'editPokok'])->name('pokok.edit');
-Route::put('/pokok-edit/{pokok}', [App\Http\Controllers\HomeController::class, 'updatePokok'])->name('pokok.update');
-Route::delete('/pokok-delete/{pokok}', [App\Http\Controllers\HomeController::class, 'deletePokok'])->name('pokok.delete');
-Route::post('/pokok-create', [App\Http\Controllers\HomeController::class, 'storePokok'])->name('pokok.store');
+Route::middleware(['auth', 'superadmin'])->group(function () {
+    Route::get('/pokok/export', [App\Http\Controllers\HomeController::class, 'exportPokok'])->name('pokok.export');
+    Route::get('/pokok-create', [App\Http\Controllers\HomeController::class, 'createPokok'])->name('pokok.create');
+    Route::get('/pokok-edit/{pokok}', [App\Http\Controllers\HomeController::class, 'editPokok'])->name('pokok.edit');
+    Route::put('/pokok-edit/{pokok}', [App\Http\Controllers\HomeController::class, 'updatePokok'])->name('pokok.update');
+    Route::delete('/pokok-delete/{pokok}', [App\Http\Controllers\HomeController::class, 'deletePokok'])->name('pokok.delete');
+    Route::post('/pokok-create', [App\Http\Controllers\HomeController::class, 'storePokok'])->name('pokok.store');
+    Route::post('/pokok', [App\Http\Controllers\HomeController::class, 'importExcelPokok'])->name('pokok.import');
+    Route::post('/pokok/destroy', [App\Http\Controllers\HomeController::class, 'pokokDestroy'])->name('pokok.destroy');
+    Route::resource('admin-management', AdminManagementController::class)->only(['index', 'store', 'update', 'destroy'])
+        ->parameters(['admin-management' => 'admin']);
+    Route::resource('landing-page', LandingPageController::class)->only(['edit', 'update']);
+});
 Route::get('/calon', [App\Http\Controllers\HomeController::class, 'calon'])->name('calon');
 Route::post('/calon/destroyAll', [App\Http\Controllers\HomeController::class, 'calonDestroyAll'])->name('calon.deleteAll');
 Route::delete('/calon/destroy', [App\Http\Controllers\HomeController::class, 'calonDestroy'])->name('calon.destroy');
@@ -71,10 +80,9 @@ Route::post('/calon/data/export', [App\Http\Controllers\HomeController::class, '
 Route::post('/calon/exportAll', [App\Http\Controllers\HomeController::class, 'exportDataAll'])->name('calon.data.exportAll');
 Route::post('/login-calon', [App\Http\Controllers\Auth\LoginController::class, 'loginCalon'])->name('login.calon');
 Route::post('/calon/logout', [App\Http\Controllers\CalonController::class, 'logout'])->name('logout.calon');
-Route::post('/pokok', [App\Http\Controllers\HomeController::class, 'importExcelPokok'])->name('pokok.import');
-Route::post('/pokok/destroy', [App\Http\Controllers\HomeController::class, 'pokokDestroy'])->name('pokok.destroy');
-Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
-Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('profile.update');
-Route::put('/profile/password/{id}', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('profile.update.password');
-Route::put('/profile/image/{id}', [App\Http\Controllers\UserController::class, 'updateImage'])->name('profile.update.image');
-Route::resource('landing-page', LandingPageController::class)->only(['edit', 'update']);
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile');
+    Route::put('/profile/{id}', [App\Http\Controllers\UserController::class, 'updateProfile'])->name('profile.update');
+    Route::put('/profile/password/{id}', [App\Http\Controllers\UserController::class, 'updatePassword'])->name('profile.update.password');
+    Route::put('/profile/image/{id}', [App\Http\Controllers\UserController::class, 'updateImage'])->name('profile.update.image');
+});

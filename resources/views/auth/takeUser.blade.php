@@ -46,7 +46,7 @@
                                             <thead>
                                                 <tr>
                                                     <th scope="col">#</th>
-                                                    <th scope="col">No Online</th>
+                                                    <th scope="col">No Animo</th>
                                                     <th scope="col">Nama</th>
                                                     <th scope="col">Aksi</th>
                                                 </tr>
@@ -55,7 +55,7 @@
                                                 @foreach ($data as $item)
                                                     <tr>
                                                         <td>{{ $loop->iteration }}</td>
-                                                        <td>{{ $item->no_online }}</td>
+                                                        <td>{{ $item->no_animo }}</td>
                                                         <td>{{ $item->nama }}</td>
                                                         <td>
                                                             <!-- Button trigger modal -->
@@ -73,8 +73,8 @@
                                                                 <form action="{{ route('login.calon') }}" method="POST"
                                                                     class="modal-dialog">
                                                                     @csrf
-                                                                    <input type="hidden" name="id"
-                                                                        value="{{ $item->id }}">
+                                                                    <input type="hidden" name="no_animo"
+                                                                        value="{{ $item->no_animo }}">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h5 class="modal-title"
@@ -95,8 +95,8 @@
                                                                                         type="date"
                                                                                         class="form-control tgl_lahir @error('tgl_lahir') is-invalid @enderror"
                                                                                         name="tgl_lahir"
-                                                                                        @if ($setting->tertua) min="{{ $setting->tertua }}" @endif
-                                                                                        @if ($setting->termuda) max="{{ $setting->termuda }}" @endif
+                                                                                        @if (optional($setting)->tertua) min="{{ $setting->tertua }}" @endif
+                                                                                        @if (optional($setting)->termuda) max="{{ $setting->termuda }}" @endif
                                                                                         required
                                                                                         autocomplete="current-tgl_lahir">
 
@@ -139,22 +139,14 @@
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
         // Batas tanggal lahir: TERTUA = batas paling awal (min), TERMUDA = batas paling akhir (max)
-        var tertua = {!! json_encode($setting->tertua) !!};
-        var termuda = {!! json_encode($setting->termuda) !!};
+        var tertua = @json(optional($setting)->tertua);
+        var termuda = @json(optional($setting)->termuda);
         flatpickr('.tgl_lahir', {
             dateFormat: 'Y-m-d',
             altFormat: 'd/m/Y',
             altInput: true,
             minDate: tertua || null,
             maxDate: termuda || null,
-        });
-
-        $('#no_online').keyup(function(e) {
-            var val = $(this).val();
-            var len = val.length;
-            if (len > 9) {
-                $(this).val(val.substr(0, 9));
-            }
         });
     </script>
 @endsection
