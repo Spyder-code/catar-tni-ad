@@ -6,7 +6,7 @@ use App\Models\Calon;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class CalonExport implements FromView
+class DataExport implements FromView
 {
     private $data;
 

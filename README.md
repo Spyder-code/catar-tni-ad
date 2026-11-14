@@ -1,3 +1,11 @@
+## Menjalankan aplikasi
+
+Aplikasi ini menggunakan Laravel 13 dan mendukung PHP 8.5. Untuk menjalankan secara lokal, siapkan PHP 8.5 beserta ekstensi yang diminta Composer, salin `.env.example` ke `.env`, lalu jalankan `composer install`, `php artisan key:generate`, dan `php artisan serve`. Atur koneksi MySQL di `.env` sebelum membuka halaman yang membaca data.
+
+Untuk deployment Docker, jalankan `docker compose build` lalu `docker compose up -d` pada host yang sudah memiliki network `server_net` dan layanan MySQL sesuai `docker-compose.yml`. Image aplikasi menggunakan PHP 8.5.12.
+
+Verifikasi cepat: `php artisan route:list` dan `vendor/bin/phpunit`.
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">

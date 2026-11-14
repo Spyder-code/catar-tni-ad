@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Pokok as ModelsPokok;
+use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 
@@ -13,7 +14,7 @@ class PokokImport implements ToModel, WithStartRow
     *
     * @return \Illuminate\Database\Eloquent\Model|null
     */
-    public function model(array $row)
+    public function model(array $row): Model|array|null
     {
         return new ModelsPokok([
             'id' => $row[0] ?? '',

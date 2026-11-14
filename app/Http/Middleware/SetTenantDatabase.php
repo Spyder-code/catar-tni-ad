@@ -36,9 +36,8 @@ class SetTenantDatabase
         // override config database
         Config::set('database.connections.mysql.database', $database);
 
-        // reconnect agar pakai DB baru
+        // Koneksi berikutnya akan memakai konfigurasi database tenant ini.
         DB::purge('mysql');
-        DB::reconnect('mysql');
 
         return $next($request);
     

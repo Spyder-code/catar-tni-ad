@@ -1,4 +1,4 @@
-FROM php:8.1-cli AS vendor
+FROM php:8.5.12-cli AS vendor
 
 WORKDIR /app
 
@@ -9,9 +9,10 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libpng-dev \
     libzip-dev \
+    libcurl4-openssl-dev \
     libonig-dev \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j1 pdo_mysql mbstring exif bcmath gd zip \
+    && docker-php-ext-install -j1 pdo_mysql mbstring exif bcmath gd zip curl \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -27,7 +28,7 @@ RUN composer install \
     --no-scripts
 
 # ─── Production stage ────────────────────────────────────────────────────────
-FROM php:8.1-apache
+FROM php:8.5.12-apache
 
 WORKDIR /var/www/html
 
@@ -36,10 +37,11 @@ RUN apt-get update && apt-get install -y \
     libjpeg62-turbo-dev \
     libpng-dev \
     libzip-dev \
+    libcurl4-openssl-dev \
     libonig-dev \
     unzip \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j1 pdo_mysql mbstring exif bcmath gd zip \
+    && docker-php-ext-install -j1 pdo_mysql mbstring exif bcmath gd zip curl \
     && rm -rf /var/lib/apt/lists/*
 
 # Enable rewrite + headers module
