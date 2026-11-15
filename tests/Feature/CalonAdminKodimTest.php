@@ -104,6 +104,22 @@ class CalonAdminKodimTest extends TestCase
         $response->assertDontSee('Hapus Semua');
     }
 
+    public function test_search_and_validation_filters_keep_admin_kodim_scope(): void
+    {
+        Pokok::find(1)->update(['no_animo' => 'BA-0814']);
+        Pokok::find(2)->update(['no_animo' => 'TA-0813']);
+        Calon::find(1)->update(['no_online' => '082.00001/BA']);
+        $admin = User::factory()->create(['role' => 'admin', 'kodim' => 'KODIM 0814/JOMBANG']);
+        $this->actingAs($admin);
+
+        $this->get(route('calon', ['q' => '00001', 'jenis' => 'CABA', 'validasi' => 'sudah']))
+            ->assertOk()->assertSee('082.00001/BA')->assertSee('Calon Jombang')->assertDontSee('Calon Bojonegoro');
+        $this->get(route('calon', ['validasi' => 'belum']))
+            ->assertOk()->assertDontSee('Calon Jombang');
+        $response = $this->get(route('calon', ['q' => 'Calon Bojonegoro']))->assertOk();
+        $this->assertSame(0, $response->viewData('data')->total());
+    }
+
     public function test_superadmin_sees_all_calon_and_delete_all_button(): void
     {
         $superadmin = User::factory()->create([

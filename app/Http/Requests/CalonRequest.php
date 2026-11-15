@@ -27,7 +27,7 @@ class CalonRequest extends FormRequest
             return [
                 'pokok_id' => 'required',
                 'calon.nama' => 'required',
-                'calon.no_online' => 'required',
+                'calon.no_online' => 'nullable',
                 'calon.no_kk' => 'required',
                 'calon.ktp' => 'required|min:16',
                 'calon.tem_lahir' => 'required',
@@ -88,7 +88,7 @@ class CalonRequest extends FormRequest
             return [
                 'pokok_id' => 'required',
                 'calon.nama' => 'required',
-                'calon.no_online' => 'required',
+                'calon.no_online' => 'nullable',
                 'calon.no_kk' => 'required',
                 'calon.ktp' => 'required|min:16',
                 'calon.tem_lahir' => 'required',

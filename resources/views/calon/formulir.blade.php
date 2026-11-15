@@ -62,9 +62,10 @@
                             <strong class="text-danger">Silahkan cek data kembali, pastikan data sesuai !</strong>
                         </div>
                     @endif
-                    <form action="{{ route('calon.form.store') }}" method="post">
+                    <form action="{{ ($adminReview ?? false) ? route('calon.verify.update', $calon->id) : route('calon.form.store') }}" method="post" novalidate>
                         @csrf
-                        <input type="hidden" name="pokok_id" value="{{ Auth::guard('calon')->user()->id }}">
+                        @if ($adminReview ?? false) @method('PUT') @endif
+                        <input type="hidden" name="pokok_id" value="{{ $pokok->id }}">
                         <input type="hidden" name="status" value="{{ $status }}">
                         <input type="hidden" name="calon_id" value="{{ $calon != null ? $calon->id : 0 }}">
                         <div class="accordion" id="accordionPanelsStayOpenExample">
@@ -142,8 +143,11 @@
                         <div class="d-flex">
                             <button type="submit" class="mx-2 btn btn-success my-3"><i class="fas fa-save"></i>
                                 {{ $status == 0 ? 'Simpan' : 'Update' }} data</button>
-                            @if ($status == 1)
+                            @if ($status == 1 && !($adminReview ?? false))
                                 <a href="{{ route('calon.pdf') }}" target="_blank" class="mx-2 btn btn-primary my-3"><i class="fas fa-print"></i> Cetak Surat Pendaftaran</a>
+                            @endif
+                            @if ($adminReview ?? false)
+                                <button type="submit" formaction="{{ route('calon.verify.submit', $calon->id) }}" formmethod="post" class="mx-2 btn btn-primary my-3">Validasi dan cetak PDF</button>
                             @endif
                         </div>
                     </form>
@@ -151,45 +155,6 @@
             </div>
         </div>
     </div>
-    @if ($pendidikan == null)
-        <script>
-            var val = {!! json_encode(old('pendidikan.l_sma')) !!}
-            if (val == null) {
-                $('#tg-HMKiy').hide();
-                $('#2019').hide();
-            } else {
-                val = parseInt(val);
-                if (val <= 2019) {
-                    console.log('sa');
-                    $('input[name="nilai2019[ind]"]').prop('required', true);
-                    $('#tg-HMKiy').show();
-                    $('#2019').show();
-                } else if (val >= 2020) {
-                    $('#2019').hide();
-                    $('#tg-HMKiy').show();
-                } else {
-                    $('#tg-HMKiy').hide();
-                    $('#2019').hide();
-                }
-            }
-        </script>
-    @else
-        <script>
-            var val = {!! json_encode($pendidikan->l_sma) !!}
-            val = parseInt(val);
-            if (val <= 2019) {
-                $('input[name="nilai2019[ind]"]').prop('required', true);
-                $('#tg-HMKiy').show();
-                $('#2019').show();
-            } else if (val >= 2020) {
-                $('#2019').hide();
-                $('#tg-HMKiy').show();
-            } else {
-                $('#tg-HMKiy').hide();
-                $('#2019').hide();
-            }
-        </script>
-    @endif
 @endsection
 
 @section('script')
@@ -239,28 +204,45 @@
             // Uppercase-ize contents
             this.value = this.value.toLocaleUpperCase();
         });
-        $('#lulus').change(function(e) {
-            $('#tg-HMKiy').hide();
-            $('#2019').hide();
-            var val = $(this).val();
-            val = parseInt(val);
-            if (val <= 2019 && val > 0) {
-                $('#tg-HMKiy').show();
-                $('#2019').show();
-                $('input[name="nilai2019[ind]"]').prop('required', true);
-                $('input[name="nilai2019[ing]"]').prop('required', true);
-                $('input[name="nilai2019[mtk]"]').prop('required', true);
-            } else if (val >= 2020) {
-                $('#2019').hide();
-                $('#tg-HMKiy').show();
-                $('input[name="nilai2019[ind]"]').prop('required', false);
-                $('input[name="nilai2019[ing]"]').prop('required', false);
-                $('input[name="nilai2019[mtk]"]').prop('required', false);
-            } else {
-                $('#tg-HMKiy').hide();
-                $('#2019').hide();
-            }
-        });
+        function syncNilaiSections() {
+            const year = parseInt($('#lulus').val(), 10);
+            const show2019 = year > 0 && year <= 2019;
+            const show2020 = year >= 2020;
+            $('#2019').toggle(show2019);
+            $('#tg-HMKiy').toggle(show2020);
+            $('#2019 input[name^="nilai2019["]').prop('required', false);
+            $('#2019 input[name="nilai2019[ind]"], #2019 input[name="nilai2019[ing]"], #2019 input[name="nilai2019[mtk]"]').prop('required', show2019);
+            $('#tg-HMKiy input[data-required-if-visible]').prop('required', show2020);
+        }
+        $('#lulus').on('change', syncNilaiSections);
+        syncNilaiSections();
+
+        const calonForm = document.querySelector('form[action*="/calon/"]');
+        if (calonForm) {
+            calonForm.addEventListener('submit', function(event) {
+                event.preventDefault();
+                syncNilaiSections();
+                const invalid = calonForm.querySelector(':invalid');
+                if (invalid) {
+                    const panel = invalid.closest('.accordion-collapse');
+                    if (panel && !panel.classList.contains('show')) {
+                        bootstrap.Collapse.getOrCreateInstance(panel, { toggle: false }).show();
+                    }
+                    setTimeout(function() {
+                        invalid.focus();
+                        invalid.reportValidity();
+                    }, panel ? 250 : 0);
+                    return;
+                }
+                const submitter = event.submitter;
+                if (submitter && submitter.hasAttribute('formaction')) {
+                    calonForm.action = submitter.formAction;
+                    const methodOverride = calonForm.querySelector('input[name="_method"]');
+                    if (methodOverride) methodOverride.value = 'POST';
+                }
+                calonForm.submit();
+            });
+        }
 
         // $('#lhr').change(function (e) {
         //     var lhr = $(this).val();
@@ -317,7 +299,7 @@
         // $('#kerja').hide();
         $(".pernah_kerja").change(function(e) {
             let val = $(".pernah_kerja:checked").val();
-            if (val.toLowerCase() == 'ya') {
+            if ((val || '').toLowerCase() == 'ya') {
                 $('#kerja').show();
             } else {
                 $('#kerja').hide();
@@ -326,7 +308,7 @@
 
         function kerja() {
             let val = $(".pernah_kerja:checked").val();
-            if (val.toLowerCase() == 'ya') {
+            if ((val || '').toLowerCase() == 'ya') {
                 $('#kerja').show();
             } else {
                 $('#kerja').hide();

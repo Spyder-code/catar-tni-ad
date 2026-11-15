@@ -7,7 +7,7 @@
             </div>
         @enderror
         <input @error('calon.no_online') autofocus @enderror type="text" style="text-transform: uppercase"
-            name="calon[no_online]" class="form-control" readonly value="{{ Auth::guard('calon')->user()->no_online }}">
+            name="calon[no_online]" class="form-control" readonly value="{{ $calon?->no_online ?: $pokok->no_online }}">
     </div>
 </div>
 <div class="form-group row">
@@ -19,8 +19,8 @@
             </div>
         @enderror
         <input @error('calon.nama') autofocus @enderror type="text" style="text-transform: uppercase"
-            name="calon[nama]" class="form-control validate-symbol" readonly
-            value="{{ Auth::guard('calon')->user()->nama }}">
+            name="calon[nama]" class="form-control validate-symbol" {{ ($adminReview ?? false) ? '' : 'readonly' }}
+            value="{{ $pokok->nama }}">
     </div>
     <div class="col-sm">
         <label>No. Kartu Keluarga</label>
@@ -56,8 +56,8 @@
             </div>
         @enderror
         <input @error('calon.tem_lahir') autofocus @enderror type="text" style="text-transform: uppercase"
-            name="calon[tem_lahir]" class="form-control validate-symbol" readonly
-            value="{{ Auth::guard('calon')->user()->tem_lahir }}">
+            name="calon[tem_lahir]" class="form-control validate-symbol" {{ ($adminReview ?? false) ? '' : 'readonly' }}
+            value="{{ $pokok->tem_lahir }}">
     </div>
     <div class="col-sm">
         <label>Tanggal lahir <small>(YYYY-MM-DD)</small></label>
@@ -144,8 +144,8 @@
             </div>
         @enderror
         <input @error('calon.suku') autofocus @enderror type="text" style="text-transform: uppercase"
-            name="calon[suku]" class="form-control validate-symbol" readonly
-            value="{{ Auth::guard('calon')->user()->suku }}">
+            name="calon[suku]" class="form-control validate-symbol" {{ ($adminReview ?? false) ? '' : 'readonly' }}
+            value="{{ $pokok->suku }}">
     </div>
     <div class="col-sm">
         <label>Agama</label>
@@ -155,8 +155,8 @@
             </div>
         @enderror
         <input @error('calon.agama') autofocus @enderror type="text" style="text-transform: uppercase"
-            name="calon[agama]" class="form-control validate-symbol" readonly
-            value="{{ Auth::guard('calon')->user()->agama }}">
+            name="calon[agama]" class="form-control validate-symbol" {{ ($adminReview ?? false) ? '' : 'readonly' }}
+            value="{{ $pokok->agama }}">
     </div>
 </div>
 <div class="form-group row">

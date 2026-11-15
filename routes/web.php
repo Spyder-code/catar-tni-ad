@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\AdminManagementController;
+use App\Http\Controllers\AdminActivityLogController;
 use App\Http\Controllers\LandingPageController;
 use App\Models\Calon;
 use App\Models\LandingPage;
@@ -59,6 +60,7 @@ Route::get('/calon/nilai', [App\Http\Controllers\CalonController::class, 'nilai'
 Route::get('/main', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/pokok', [App\Http\Controllers\HomeController::class, 'pokok'])->name('pokok');
 Route::middleware(['auth', 'superadmin'])->group(function () {
+    Route::get('/admin-activity', [AdminActivityLogController::class, 'index'])->name('admin-activity.index');
     Route::get('/pokok/export', [App\Http\Controllers\HomeController::class, 'exportPokok'])->name('pokok.export');
     Route::get('/pokok-create', [App\Http\Controllers\HomeController::class, 'createPokok'])->name('pokok.create');
     Route::get('/pokok-edit/{pokok}', [App\Http\Controllers\HomeController::class, 'editPokok'])->name('pokok.edit');
@@ -70,6 +72,12 @@ Route::middleware(['auth', 'superadmin'])->group(function () {
     Route::resource('admin-management', AdminManagementController::class)->only(['index', 'store', 'update', 'destroy'])
         ->parameters(['admin-management' => 'admin']);
     Route::resource('landing-page', LandingPageController::class)->only(['edit', 'update']);
+});
+Route::middleware('auth')->group(function () {
+    Route::get('/calon/{calon}/verifikasi', [App\Http\Controllers\CalonVerificationController::class, 'show'])->name('calon.verify.show');
+    Route::put('/calon/{calon}/verifikasi', [App\Http\Controllers\CalonVerificationController::class, 'update'])->name('calon.verify.update');
+    Route::post('/calon/{calon}/verifikasi', [App\Http\Controllers\CalonVerificationController::class, 'submit'])->name('calon.verify.submit');
+    Route::post('/calon/{calon}/batalkan-validasi', [App\Http\Controllers\CalonVerificationController::class, 'cancel'])->name('calon.verify.cancel');
 });
 Route::get('/calon', [App\Http\Controllers\HomeController::class, 'calon'])->name('calon');
 Route::get('/calon/{calon}/print', [App\Http\Controllers\HomeController::class, 'printCalon'])->name('calon.print');

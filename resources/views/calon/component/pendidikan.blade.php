@@ -119,7 +119,7 @@
         @enderror
         <input type="text" style="text-transform: uppercase" @error('pendidikan.sma') autofocus @enderror
             name="pendidikan[sma]" class="form-control validate-symbol"
-            value="{{ $pendidikan != null ? $pendidikan->sma : Auth::guard('calon')->user()->nama_sekolah }}">
+            value="{{ $pendidikan != null ? $pendidikan->sma : $pokok->nama_sekolah }}">
     </div>
     <div class="col-sm-12 col-12 mt-2 col-md-6">
         <label>Jurusan</label>
@@ -130,7 +130,7 @@
         @enderror
         <input type="text" style="text-transform: uppercase" name="pendidikan[jur]"
             class="form-control validate-symbol"
-            value="{{ $pendidikan != null ? $pendidikan->jur : Auth::guard('calon')->user()->jur }}">
+            value="{{ $pendidikan != null ? $pendidikan->jur : $pokok->jur }}">
     </div>
     <div class="col-lg-4 col-12 mt-2 col-md-6">
         <label>Kab/Kota Lulus SMA</label>
@@ -206,7 +206,7 @@
             @enderror
             <input type="text" style="text-transform: uppercase" @error('pendidikan.ponpes') autofocus @enderror
                 name="pendidikan[ponpes]" class="form-control validate-symbol"
-                value="{{ $pendidikan != null ? $pendidikan->ponpes : Auth::guard('calon')->user()->ponpes }}">
+                value="{{ $pendidikan != null ? $pendidikan->ponpes : $pokok->ponpes }}">
         </div>
         <div class="col-lg-6 col-12 mt-2 col-md-6">
             <label>{{ $setting->label_kabupaten_ponpes }}</label>

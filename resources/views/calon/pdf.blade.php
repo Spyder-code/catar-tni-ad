@@ -261,7 +261,7 @@
     @endphp
 
     <div class="no-print-bar no-print">
-        <a href="javascript:history.back()" style="color: #64748b; text-decoration: none; font-size: 14px;">&larr; Kembali</a>
+        <a href="{{ Auth::check() ? route('calon') : route('calon.form') }}" style="color: #64748b; text-decoration: none; font-size: 14px;">&larr; Kembali</a>
         <button onclick="window.print()" class="btn-print">&#128438; Cetak Dokumen / Simpan PDF</button>
     </div>
 
@@ -435,5 +435,6 @@
             <div>*) Coret yang tidak perlu</div>
         </div>
     </div>
+@if (session('auto_print'))<script>window.addEventListener('load', function () { window.print(); });</script>@endif
 </body>
 </html>

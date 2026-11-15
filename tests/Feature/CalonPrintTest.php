@@ -172,6 +172,14 @@ class CalonPrintTest extends TestCase
         $response->assertSee('*) Coret yang tidak perlu');
     }
 
+    public function test_admin_can_review_own_calon_form(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin', 'kodim' => 'KODIM 0814/JOMBANG']);
+        $this->actingAs($admin);
+        $this->get(route('calon.verify.show', 1))->assertOk()->assertSee('Validasi dan cetak PDF');
+        $this->get(route('calon.verify.show', 2))->assertForbidden();
+    }
+
     public function test_admin_can_print_calon_matching_own_kodim(): void
     {
         $admin = User::factory()->create([

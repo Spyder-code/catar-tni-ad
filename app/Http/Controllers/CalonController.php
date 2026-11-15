@@ -34,14 +34,14 @@ class CalonController extends Controller
             $nilai = T2020::where('calon_id', $calon->id)->first();
             $nilai2019 = T2019::where('calon_id', $calon->id)->first();
             $status = 1;
-            return view('calon.formulir', compact('calon', 'setting', 'pendidikan', 'wali', 'status', 'nilai', 'nilai2019'));
+            return view('calon.formulir', compact('calon', 'pokok', 'setting', 'pendidikan', 'wali', 'status', 'nilai', 'nilai2019'));
         } else {
             $pendidikan = null;
             $wali = null;
             $nilai = null;
             $nilai2019 = null;
             $status = 0;
-            return view('calon.formulir', compact('calon', 'setting', 'pendidikan', 'wali', 'status', 'nilai', 'nilai2019'));
+            return view('calon.formulir', compact('calon', 'pokok', 'setting', 'pendidikan', 'wali', 'status', 'nilai', 'nilai2019'));
         }
     }
 
@@ -61,6 +61,7 @@ class CalonController extends Controller
             'l_thn' => $year,
         ]);
         $c['id'] = Auth::guard('calon')->user()->id;
+        $c['no_online'] = $check?->no_online ?: (Auth::guard('calon')->user()->no_online ?: '');
         if ($check == null) {
             $calon = Calon::create($c);
         } else {

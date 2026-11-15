@@ -58,11 +58,45 @@ class HomeController extends Controller
             $perPage = 50;
         }
 
-        $allowedSortColumns = ['id', 'no_animo', 'nama', 'tgl_lahir', 'tem_lahir', 'updated_at'];
+        $allowedSortColumns = ['id', 'no_animo', 'no_online', 'nama', 'tgl_lahir', 'tem_lahir', 'updated_at'];
         $sort = $request->input('sort');
         $direction = strtolower($request->input('direction', 'desc')) === 'asc' ? 'asc' : 'desc';
 
         $query = $this->calonQuery($request);
+        $search = trim((string) $request->query('q', ''));
+        if ($search !== '') {
+            $query->where(function ($q) use ($search) {
+                $q->where('calon.nama', 'like', '%' . $search . '%')
+                    ->orWhere('calon.no_online', 'like', '%' . $search . '%')
+                    ->orWhere('calon.ktp', 'like', '%' . $search . '%')
+                    ->orWhereHas('pokok', function ($pokok) use ($search) {
+                        $pokok->where('no_animo', 'like', '%' . $search . '%');
+                    });
+            });
+        }
+        if (in_array($request->query('jenis'), ['CABA', 'CATA'], true)) {
+            $prefix = $request->query('jenis') === 'CABA' ? 'BA' : 'TA';
+            $query->whereHas('pokok', function ($pokok) use ($prefix) {
+                $pokok->where('no_animo', 'like', $prefix . '%');
+            });
+        }
+        if ($request->query('validasi') === 'sudah') {
+            $query->where(function ($q) {
+                $q->where('calon.no_online', 'like', '082.%/BA')->orWhere('calon.no_online', 'like', '082.%/TA');
+            });
+        } elseif ($request->query('validasi') === 'belum') {
+            $query->where(function ($q) {
+                $q->whereNull('calon.no_online')->orWhere(function ($notValidated) {
+                    $notValidated->where('calon.no_online', 'not like', '082.%/BA')
+                        ->where('calon.no_online', 'not like', '082.%/TA');
+                });
+            });
+        }
+        if ($request->filled('kodim')) {
+            $query->whereHas('pokok', function ($pokok) use ($request) {
+                $pokok->where('kodim', $request->query('kodim'));
+            });
+        }
 
         if (in_array($sort, $allowedSortColumns, true)) {
             if ($sort === 'no_animo') {
@@ -85,7 +119,8 @@ class HomeController extends Controller
 
         $data = $query->paginate($perPage)->withQueryString();
 
-        return view('admin.calon', compact('data', 'sort', 'direction', 'perPage'));
+        $kodims = $request->user()->isSuperadmin() ? Pokok::whereNotNull('kodim')->where('kodim', '!=', '')->distinct()->orderBy('kodim')->pluck('kodim') : collect();
+        return view('admin.calon', compact('data', 'sort', 'direction', 'perPage', 'kodims'));
     }
 
     public function printCalon(Request $request, $id)

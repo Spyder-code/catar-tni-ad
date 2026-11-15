@@ -149,6 +149,12 @@
                             </li>
                             @if (Auth::user()->isSuperadmin())
                             <li class="sidebar-item">
+                                <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin-activity.index') }}" aria-expanded="false">
+                                    <i class="fa fa-history" aria-hidden="true"></i>
+                                    <span class="hide-menu">Riwayat Aktivitas</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('admin-management.index') }}" aria-expanded="false">
                                     <i class="fa fa-users" aria-hidden="true"></i>
                                     <span class="hide-menu">Manajemen Admin</span>

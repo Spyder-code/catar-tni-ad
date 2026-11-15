@@ -7,7 +7,7 @@
             <strong class="text-danger small">Nama Ayah tidak boleh kosong</strong>
         </div>
         @enderror
-        <input type="text" style="text-transform: uppercase" name="wali[ayah]" class="form-control validate-symbol" value="{{ $wali!=null?$wali->ayah : Auth::guard('calon')->user()->ortu1 }}">
+        <input type="text" style="text-transform: uppercase" name="wali[ayah]" class="form-control validate-symbol" value="{{ $wali!=null?$wali->ayah : $pokok->ortu1 }}">
     </div>
     <div class="col-lg-6 col-md-6 col-12">
         <label>Nama Kakek dari Ayah</label>
@@ -72,7 +72,7 @@
             <strong class="text-danger small">Kerja Ayah tidak boleh kosong</strong>
         </div>
         @enderror
-        <input type="text" style="text-transform: uppercase" name="wali[a_kerja]" class="form-control validate-symbol" value="{{ $wali!=null?$wali->a_kerja :  Auth::guard('calon')->user()->kerja }}">
+        <input type="text" style="text-transform: uppercase" name="wali[a_kerja]" class="form-control validate-symbol" value="{{ $wali!=null?$wali->a_kerja :  $pokok->kerja }}">
     </div>
     <div class="col-lg-6 col-md-6 col-12">
         <label>Ayah seorang TNI AD</label><br>
@@ -214,7 +214,7 @@
             <strong class="text-danger small">Alamat tidak boleh kosong</strong>
         </div>
         @enderror
-        <input type="text" style="text-transform: uppercase" name="wali[o_alamat]" class="form-control validate-symbol" value="{{ $wali!=null?$wali->o_alamat : Auth::guard('calon')->user()->alamat_o }}">
+        <input type="text" style="text-transform: uppercase" name="wali[o_alamat]" class="form-control validate-symbol" value="{{ $wali!=null?$wali->o_alamat : $pokok->alamat_o }}">
     </div>
 </div>
 <h2>Tiri/wali/Perwalian/Numpang Alamat</h2>
