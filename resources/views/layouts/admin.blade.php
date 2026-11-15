@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex,nofollow">
-    <title>Spydercode Admin Dashboard</title>
+    <title>Pendaftaran TNI - Admin Dashboard</title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/logo-icon.png') }}">
     <link href="{{ asset('dashboard') }}/css/style.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
@@ -28,12 +28,12 @@
             <header class="topbar" data-navbarbg="skin5">
                 <nav class="navbar top-navbar navbar-expand-md navbar-dark">
                     <div class="navbar-header" data-logobg="skin6">
-                        <a class="navbar-brand" style="margin-left:10px" href="{{route('home')}}">
+                        <a class="navbar-brand d-flex align-items-center" style="margin-left:10px" href="{{ (Auth::guard('calon')->check()) ? route('calon.form') : (Auth::user() && !Auth::user()->isSuperadmin() ? route('pokok') : route('home')) }}">
                             <b class="logo-icon">
-                                <img src="{{ asset('/images') }}/logo-icon.png" alt="homepage" />
+                                <img src="{{ asset('images/tni-logo.png') }}" alt="Pendaftaran TNI" style="height: 38px; width: auto;" />
                             </b>
-                            <span class="logo-text">
-                                <img src="{{ asset('/images') }}/logo-text.png" alt="homepage" />
+                            <span class="logo-text fw-bold text-dark ps-2" style="font-size: 15px; letter-spacing: 0.5px;">
+                                Pendaftaran TNI
                             </span>
                         </a>
                         <a class="nav-toggler waves-effect waves-light text-dark d-block d-md-none"
@@ -119,6 +119,7 @@
                                 </form>
                             </li>
                             @else
+                            @if (Auth::user()->isSuperadmin())
                             <li class="sidebar-item pt-2">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('home') }}"
                                     aria-expanded="false">
@@ -126,7 +127,8 @@
                                     <span class="hide-menu">Dashboard</span>
                                 </a>
                             </li>
-                            <li class="sidebar-item">
+                            @endif
+                            <li class="sidebar-item{{ !Auth::user()->isSuperadmin() ? ' pt-2' : '' }}">
                                 <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ route('profile') }}"
                                     aria-expanded="false">
                                     <i class="fa fa-user" aria-hidden="true"></i>
@@ -205,7 +207,7 @@
 
             </div>
 
-            <footer class="footer text-center"> 2021 © Spydercode
+            <footer class="footer text-center"> {{ date('Y') }} © Pendaftaran TNI
             </footer>
         </div>
     </div>

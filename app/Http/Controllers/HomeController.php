@@ -41,6 +41,9 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (Auth::user() && !Auth::user()->isSuperadmin()) {
+            return redirect()->route('pokok');
+        }
         $visitor = Visitor::all();
         $user = User::all();
         return view('admin.main', compact('visitor', 'user'));

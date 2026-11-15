@@ -24,6 +24,8 @@ class AdminManagementTest extends TestCase
         (require database_path('migrations/2026_11_14_000002_add_nrp_to_users.php'))->up();
         require_once database_path('migrations/2021_06_27_170009_create_settings_table.php');
         (new \CreateSettingsTable)->up();
+        require_once database_path('migrations/2021_06_05_022920_create_visitors_table.php');
+        (new \CreateVisitorsTable)->up();
         DB::table('settings')->insert(['id' => 1]);
 
         Pokok::create(['nama' => 'Satu', 'kodim' => 'KODIM 0814']);
@@ -117,6 +119,48 @@ class AdminManagementTest extends TestCase
         ])->assertRedirect();
         $this->assertSame('admin', $admin->fresh()->role);
         $this->assertSame('Updated', $admin->fresh()->name);
+    }
+
+    public function test_admin_sidebar_menu_only_shows_profile_pokok_calon_and_logout(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin', 'kodim' => 'KODIM 0814']);
+        $this->actingAs($admin);
+
+        $response = $this->get(route('pokok'));
+        $response->assertOk();
+
+        // Allowed menus
+        $response->assertSee('<span class="hide-menu">Profile</span>', false);
+        $response->assertSee('<span class="hide-menu">Data pokok</span>', false);
+        $response->assertSee('<span class="hide-menu">Data calon</span>', false);
+        $response->assertSee('Logout');
+
+        // Forbidden menus for admin
+        $response->assertDontSee('<span class="hide-menu">Dashboard</span>', false);
+        $response->assertDontSee('<span class="hide-menu">Riwayat Aktivitas</span>', false);
+        $response->assertDontSee('<span class="hide-menu">Manajemen Admin</span>', false);
+        $response->assertDontSee('<span class="hide-menu">Setting</span>', false);
+
+        // Accessing /main redirects admin to pokok
+        $this->get(route('home'))->assertRedirect(route('pokok'));
+    }
+
+    public function test_superadmin_sidebar_menu_shows_dashboard_and_all_menus(): void
+    {
+        $superadmin = User::factory()->create(['role' => 'superadmin']);
+        $this->actingAs($superadmin);
+
+        $response = $this->get(route('home'));
+        $response->assertOk();
+
+        $response->assertSee('<span class="hide-menu">Dashboard</span>', false);
+        $response->assertSee('<span class="hide-menu">Profile</span>', false);
+        $response->assertSee('<span class="hide-menu">Data pokok</span>', false);
+        $response->assertSee('<span class="hide-menu">Data calon</span>', false);
+        $response->assertSee('<span class="hide-menu">Riwayat Aktivitas</span>', false);
+        $response->assertSee('<span class="hide-menu">Manajemen Admin</span>', false);
+        $response->assertSee('<span class="hide-menu">Setting</span>', false);
+        $response->assertSee('Logout');
     }
 
     private function adminData(string $username, string $signer, string $kodim = 'KODIM 0814'): array

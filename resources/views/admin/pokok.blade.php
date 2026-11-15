@@ -36,8 +36,10 @@
 </style>
 @endsection
 @section('breadcrumb')
-    <li><a href="{{ route('home') }}" class="breadcrumb-item nav-link">Dashboard</a></li>
-    <li class="breadcrumb-item active">/ Data Pokok</li>
+    @if (Auth::user()->isSuperadmin())
+        <li><a href="{{ route('home') }}" class="breadcrumb-item nav-link">Dashboard</a></li>
+    @endif
+    <li class="breadcrumb-item active">{{ Auth::user()->isSuperadmin() ? '/ ' : '' }}Data Pokok</li>
 @endsection
 @section('content')
 <div class="container-fluid">

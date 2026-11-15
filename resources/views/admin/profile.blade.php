@@ -1,9 +1,11 @@
 @extends('layouts.admin')
 @section('page','Profile')
 @section('breadcrumb')
-    <li><a href="{{ route('home') }}" class="breadcrumb-item nav-link">Dashboard </a></li>
-    <li><a href="#" class="breadcrumb-item nav-link disabled">/ </a></li>
-    <li><a href="#" class="breadcrumb-item active nav-link active"> Profile</a></li>
+    @if (Auth::user()->isSuperadmin())
+        <li><a href="{{ route('home') }}" class="breadcrumb-item nav-link">Dashboard </a></li>
+        <li><a href="#" class="breadcrumb-item nav-link disabled">/ </a></li>
+    @endif
+    <li><a href="#" class="breadcrumb-item active nav-link active">Profile</a></li>
 @endsection
 @section('content')
 <div class="container-fluid">

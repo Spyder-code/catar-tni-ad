@@ -1,63 +1,703 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
-body{
-    background: url('../images/bg.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+:root {
+    --tni-dark-bg: #07150c;
+    --tni-dark-surface: #0e2417;
+    --tni-dark-surface-2: #143220;
+    --tni-green: #1b4332;
+    --tni-green-light: #2d6a4f;
+    --tni-green-accent: #40916c;
+    --tni-green-glow: rgba(64, 145, 108, 0.4);
+    --tni-gold: #c59b27;
+    --tni-gold-light: #f3d069;
+    --tni-gold-glow: rgba(229, 193, 88, 0.35);
+    --tni-gold-dark: #977314;
+    --tni-red: #c0392b;
+    --tni-text-main: #f8fafc;
+    --tni-text-muted: #94a3b8;
+    --tni-card-bg: rgba(14, 36, 23, 0.90);
+    --tni-card-border: rgba(197, 155, 39, 0.30);
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+body {
+    background: radial-gradient(circle at 50% 10%, rgba(30, 77, 56, 0.88) 0%, rgba(9, 23, 15, 0.95) 55%, rgba(4, 12, 7, 0.98) 100%),
+                url('../images/bg.jpg') no-repeat center center fixed;
     background-size: cover;
-    font-family: 'Roboto Slab', serif;
-    color: white;
-    font-size: 12pt;
-}
-
-.img-slide{
-    height: 200px;
-    width: 60%;
-}
-
-.swiper {
-    width: 100%;
-    height: 100%;
-  }
-
-  .swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-
-    /* Center slide text vertically */
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
+    font-family: var(--font-sans);
+    color: var(--tni-text-main);
+    min-height: 100vh;
     display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
+    flex-direction: column;
+    margin: 0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    text-decoration: none;
+    transition: all 0.25s ease-in-out;
+}
+
+/* ==========================================================================
+   PORTAL NAVBAR & MOBILE MENU
+   ========================================================================== */
+.portal-navbar {
+    background: rgba(8, 22, 14, 0.94);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 2px solid var(--tni-gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    position: sticky;
+    top: 0;
+    z-index: 1040;
+    padding: 0.65rem 0;
+}
+
+.portal-brand {
+    display: flex;
     align-items: center;
-  }
+    gap: 12px;
+    text-decoration: none;
+}
 
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+.portal-brand-logo {
+    height: 46px;
+    width: auto;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s ease;
+}
 
-@media screen and (min-width: 600px) {
-    .img-slide{
-        height: 300px;
-        width: 80%;
+.portal-brand:hover .portal-brand-logo {
+    transform: scale(1.05);
+}
+
+.portal-brand-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.portal-brand-sub {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--tni-gold-light);
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.portal-brand-main {
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    color: #ffffff;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-top: 1px;
+}
+
+.portal-toggler {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(197, 155, 39, 0.4);
+    border-radius: 10px;
+    padding: 0.45rem 0.75rem;
+    color: var(--tni-gold-light);
+    transition: all 0.25s ease;
+}
+
+.portal-toggler:hover,
+.portal-toggler:focus {
+    background: rgba(197, 155, 39, 0.2);
+    color: #ffffff;
+    box-shadow: 0 0 12px var(--tni-gold-glow);
+}
+
+.portal-nav-link {
+    color: #e2e8f0 !important;
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 0.55rem 0.95rem !important;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.portal-nav-link:hover {
+    color: var(--tni-gold-light) !important;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.portal-nav-link.active {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, rgba(45, 106, 79, 0.7) 0%, rgba(27, 67, 50, 0.9) 100%);
+    border: 1px solid rgba(197, 155, 39, 0.4);
+}
+
+.portal-nav-btn {
+    background: linear-gradient(135deg, var(--tni-gold) 0%, var(--tni-gold-dark) 100%);
+    color: #142717 !important;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 0.5rem 1.1rem !important;
+    border-radius: 20px;
+    box-shadow: 0 4px 14px var(--tni-gold-glow);
+    transition: all 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+}
+
+.portal-nav-btn:hover {
+    background: linear-gradient(135deg, var(--tni-gold-light) 0%, var(--tni-gold) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(229, 193, 88, 0.5);
+    color: #0c1a0e !important;
+}
+
+/* Mobile Navbar Dropdown */
+@media (max-width: 991.98px) {
+    #portalNav {
+        background: rgba(10, 26, 17, 0.98);
+        border: 1px solid rgba(197, 155, 39, 0.28);
+        border-radius: 14px;
+        padding: 1rem;
+        margin-top: 0.85rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
+    }
+    .portal-nav-link {
+        padding: 0.7rem 1rem !important;
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .portal-nav-btn {
+        width: 100%;
+        margin-top: 0.8rem;
+        padding: 0.75rem 1rem !important;
     }
 }
 
-@media screen and (min-width: 800px) {
-    .img-slide{
-        height: 350px;
-        width: 80%;
+/* ==========================================================================
+   PORTAL CARDS & GLASSMORPHISM
+   ========================================================================== */
+.portal-card {
+    background: var(--tni-card-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--tni-card-border);
+    border-radius: 20px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+    transition: all 0.3s ease;
+}
+
+.portal-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.35rem 0.85rem;
+    border-radius: 50px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    background: rgba(197, 155, 39, 0.15);
+    border: 1px solid rgba(197, 155, 39, 0.45);
+    color: var(--tni-gold-light);
+}
+
+.portal-badge-green {
+    background: rgba(64, 145, 108, 0.2);
+    border: 1px solid rgba(64, 145, 108, 0.5);
+    color: #6ee7b7;
+}
+
+.gold-gradient-text {
+    background: linear-gradient(135deg, #ffffff 40%, var(--tni-gold-light) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
+}
+
+/* ==========================================================================
+   LANDING SELECTION CARDS (HOME.BLADE.PHP)
+   ========================================================================== */
+.select-card {
+    background: linear-gradient(145deg, rgba(20, 50, 32, 0.94) 0%, rgba(10, 26, 17, 0.97) 100%);
+    border: 1.5px solid rgba(197, 155, 39, 0.3);
+    border-radius: 22px;
+    padding: 2.2rem 1.8rem;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.select-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--tni-gold), var(--tni-green-accent), var(--tni-gold));
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.select-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.55), 0 0 30px var(--tni-green-glow);
+    border-color: var(--tni-gold);
+}
+
+.select-card:hover::before {
+    opacity: 1;
+}
+
+.select-icon-box {
+    width: 62px;
+    height: 62px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(197, 155, 39, 0.2) 0%, rgba(45, 106, 79, 0.35) 100%);
+    border: 1px solid rgba(197, 155, 39, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--tni-gold-light);
+    font-size: 1.7rem;
+    margin-bottom: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.select-card:hover .select-icon-box {
+    background: linear-gradient(135deg, var(--tni-gold) 0%, var(--tni-green-light) 100%);
+    color: #ffffff;
+    transform: scale(1.06) rotate(3deg);
+}
+
+.select-card-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 0.6rem;
+    letter-spacing: -0.3px;
+}
+
+.select-card-desc {
+    color: var(--tni-text-muted);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    margin-bottom: 1.4rem;
+    flex-grow: 1;
+}
+
+.select-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 1.5rem;
+}
+
+.select-tag {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 0.2rem 0.6rem;
+    font-size: 0.75rem;
+    color: #cbd5e1;
+    font-weight: 500;
+}
+
+.btn-portal-primary {
+    background: linear-gradient(135deg, var(--tni-gold) 0%, var(--tni-gold-dark) 100%);
+    color: #0c1a0e !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.8rem 1.4rem;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 0 4px 15px rgba(197, 155, 39, 0.35);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.25s ease;
+    min-height: 48px;
+    width: 100%;
+}
+
+.btn-portal-primary:hover {
+    background: linear-gradient(135deg, var(--tni-gold-light) 0%, var(--tni-gold) 100%);
+    color: #0c1a0e !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(229, 193, 88, 0.45);
+}
+
+.btn-portal-secondary {
+    background: linear-gradient(135deg, var(--tni-green-light) 0%, var(--tni-green) 100%);
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 0.8rem 1.4rem;
+    border-radius: 12px;
+    border: 1px solid rgba(64, 145, 108, 0.5);
+    box-shadow: 0 4px 15px rgba(27, 67, 50, 0.35);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.25s ease;
+    min-height: 48px;
+    width: 100%;
+}
+
+.btn-portal-secondary:hover {
+    background: linear-gradient(135deg, var(--tni-green-accent) 0%, var(--tni-green-light) 100%);
+    color: #ffffff !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--tni-green-glow);
+}
+
+/* ==========================================================================
+   SWIPER SLIDER (USER.BLADE.PHP)
+   ========================================================================== */
+.swiper-container {
+    width: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 2px solid rgba(197, 155, 39, 0.3);
+    position: relative;
+}
+
+.swiper-slide {
+    text-align: center;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 420px;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+    color: var(--tni-gold-light) !important;
+    background: rgba(8, 22, 14, 0.7);
+    width: 44px !important;
+    height: 44px !important;
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(197, 155, 39, 0.4);
+    transition: all 0.25s ease;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background: var(--tni-gold);
+    color: #0c1a0e !important;
+    transform: scale(1.1);
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+    font-size: 1.1rem !important;
+    font-weight: 900;
+}
+
+.swiper-pagination-bullet {
+    background: #ffffff !important;
+    opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+    background: var(--tni-gold) !important;
+    opacity: 1;
+    width: 22px !important;
+    border-radius: 6px !important;
+}
+
+/* ==========================================================================
+   LOGIN & FORM STYLES (AUTH PAGES)
+   ========================================================================== */
+.auth-hero-crest {
+    max-height: 320px;
+    width: auto;
+    filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.7));
+    animation: floatCrest 6s ease-in-out infinite;
+}
+
+@keyframes floatCrest {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.form-control-portal {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1.5px solid rgba(255, 255, 255, 0.22) !important;
+    color: #ffffff !important;
+    border-radius: 12px !important;
+    padding: 0.85rem 1.1rem !important;
+    font-size: 16px !important; /* 16px prevents iOS Safari automatic zoom */
+    min-height: 48px;
+    transition: all 0.25s ease !important;
+}
+
+.form-control-portal:focus {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: var(--tni-gold) !important;
+    box-shadow: 0 0 0 4px rgba(197, 155, 39, 0.25) !important;
+    color: #ffffff !important;
+}
+
+.form-control-portal::placeholder {
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.portal-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: var(--tni-gold-light);
+    margin-bottom: 0.45rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.3px;
+}
+
+.portal-info-box {
+    background: rgba(45, 106, 79, 0.25);
+    border: 1px solid rgba(64, 145, 108, 0.4);
+    border-radius: 12px;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.82rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   MODAL & FLATPICKR ELEVATION
+   ========================================================================== */
+.modal-content-portal {
+    background: rgba(10, 26, 17, 0.98);
+    border: 1.5px solid var(--tni-gold);
+    border-radius: 20px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8);
+    color: #ffffff;
+    backdrop-filter: blur(16px);
+}
+
+.modal-content-portal .modal-header {
+    border-bottom: 1px solid rgba(197, 155, 39, 0.3);
+    padding: 1.2rem 1.6rem;
+}
+
+.modal-content-portal .modal-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.2rem 1.6rem;
+}
+
+/* Flatpickr Calendar Styling - Elevated above all modals */
+.flatpickr-calendar {
+    background: #0d2215 !important;
+    border: 1.5px solid var(--tni-gold) !important;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7) !important;
+    border-radius: 14px !important;
+    z-index: 999999 !important;
+    font-family: var(--font-sans) !important;
+}
+
+.flatpickr-months {
+    background: #143220 !important;
+    border-radius: 14px 14px 0 0 !important;
+    color: #ffffff !important;
+}
+
+.flatpickr-current-month,
+.flatpickr-current-month .cur-month,
+.flatpickr-current-month input.cur-year {
+    color: var(--tni-gold-light) !important;
+    font-weight: 700 !important;
+}
+
+.flatpickr-months .flatpickr-prev-month,
+.flatpickr-months .flatpickr-next-month {
+    color: var(--tni-gold-light) !important;
+    fill: var(--tni-gold-light) !important;
+}
+
+.flatpickr-weekday {
+    background: #143220 !important;
+    color: #94a3b8 !important;
+    font-weight: 600 !important;
+}
+
+.flatpickr-day {
+    color: #e2e8f0 !important;
+    border-radius: 8px !important;
+    margin: 2px !important;
+}
+
+.flatpickr-day:hover,
+.flatpickr-day:focus {
+    background: rgba(197, 155, 39, 0.25) !important;
+    border-color: var(--tni-gold) !important;
+}
+
+.flatpickr-day.selected,
+.flatpickr-day.startRange,
+.flatpickr-day.endRange {
+    background: var(--tni-gold) !important;
+    border-color: var(--tni-gold) !important;
+    color: #0c1a0e !important;
+    font-weight: 700 !important;
+}
+
+.flatpickr-day.flatpickr-disabled,
+.flatpickr-day.flatpickr-disabled:hover {
+    color: #475569 !important;
+}
+
+/* ==========================================================================
+   PORTAL FOOTER
+   ========================================================================== */
+.portal-footer {
+    background: rgba(6, 17, 10, 0.96);
+    border-top: 1px solid rgba(197, 155, 39, 0.25);
+    padding: 2.2rem 0 1.5rem;
+    margin-top: auto;
+    font-size: 0.85rem;
+    color: var(--tni-text-muted);
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 0.8rem;
+}
+
+.footer-logo {
+    height: 38px;
+    width: auto;
+}
+
+.footer-motto {
+    color: var(--tni-gold-light);
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+}
+
+.anti-fraud-banner {
+    background: rgba(192, 57, 43, 0.18);
+    border: 1px solid rgba(192, 57, 43, 0.4);
+    border-radius: 10px;
+    padding: 0.55rem 1rem;
+    color: #fca5a5;
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+}
+
+/* ==========================================================================
+   MOBILE RESPONSIVENESS OVERRIDES (< 768px and < 576px)
+   ========================================================================== */
+@media (max-width: 767.98px) {
+    .portal-brand-sub {
+        font-size: 0.58rem;
+        letter-spacing: 1px;
+    }
+    .portal-brand-main {
+        font-size: 0.88rem;
+    }
+    .portal-brand-logo {
+        height: 36px;
+    }
+    .auth-hero-crest {
+        max-height: 120px !important;
+        margin-bottom: 0.5rem !important;
+    }
+    .display-6 {
+        font-size: 1.65rem !important;
+    }
+    .swiper-slide {
+        height: 240px !important;
+    }
+    .swiper-button-prev,
+    .swiper-button-next {
+        width: 34px !important;
+        height: 34px !important;
+    }
+    .swiper-button-prev::after,
+    .swiper-button-next::after {
+        font-size: 0.85rem !important;
+    }
+    .select-card {
+        padding: 1.4rem 1.2rem;
+        border-radius: 18px;
+    }
+    .select-icon-box {
+        width: 50px;
+        height: 50px;
+        font-size: 1.4rem;
+        margin-bottom: 0.9rem;
+    }
+    .select-card-title {
+        font-size: 1.2rem;
+    }
+    .portal-card {
+        padding: 1.4rem 1.1rem !important;
+        border-radius: 18px;
+    }
+    .anti-fraud-banner {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .portal-brand-sub {
+        display: none;
+    }
+    .portal-brand-main {
+        font-size: 0.82rem;
+    }
+    .auth-hero-crest {
+        max-height: 100px !important;
+    }
+    .display-6 {
+        font-size: 1.45rem !important;
+    }
+    .portal-card {
+        padding: 1.2rem 0.9rem !important;
+        border-radius: 16px;
     }
 }
