@@ -54,6 +54,11 @@ class Pokok extends Model
         return $query;
     }
 
+    public function calon()
+    {
+        return $this->hasOne(Calon::class, 'id', 'id');
+    }
+
     protected $fillable = [
         'no_animo',
         'no_online',

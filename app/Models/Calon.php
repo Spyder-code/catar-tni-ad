@@ -80,4 +80,32 @@ class Calon extends Model
     {
         return $this->hasOne(T2019::class,'calon_id');
     }
+
+    public function pokok()
+    {
+        return $this->belongsTo(Pokok::class, 'id', 'id');
+    }
+
+    public function getNoAnimoAttribute(): ?string
+    {
+        if ($this->relationLoaded('pokok') && $this->pokok) {
+            return $this->pokok->no_animo;
+        }
+        if ($this->pokok) {
+            return $this->pokok->no_animo;
+        }
+        if (!empty($this->no_online)) {
+            $animo = Pokok::where('no_online', $this->no_online)->value('no_animo');
+            if ($animo) {
+                return $animo;
+            }
+        }
+        if (!empty($this->ktp)) {
+            $animo = Pokok::where('nik', $this->ktp)->value('no_animo');
+            if ($animo) {
+                return $animo;
+            }
+        }
+        return null;
+    }
 }

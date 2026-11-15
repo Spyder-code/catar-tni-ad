@@ -72,6 +72,7 @@ Route::middleware(['auth', 'superadmin'])->group(function () {
     Route::resource('landing-page', LandingPageController::class)->only(['edit', 'update']);
 });
 Route::get('/calon', [App\Http\Controllers\HomeController::class, 'calon'])->name('calon');
+Route::get('/calon/{calon}/print', [App\Http\Controllers\HomeController::class, 'printCalon'])->name('calon.print');
 Route::post('/calon/destroyAll', [App\Http\Controllers\HomeController::class, 'calonDestroyAll'])->name('calon.deleteAll');
 Route::delete('/calon/destroy', [App\Http\Controllers\HomeController::class, 'calonDestroy'])->name('calon.destroy');
 Route::post('/calon/export', [App\Http\Controllers\HomeController::class, 'export'])->name('calon.export');

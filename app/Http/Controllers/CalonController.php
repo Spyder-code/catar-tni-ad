@@ -8,6 +8,7 @@ use App\Models\Pendidikan;
 use App\Models\Setting;
 use App\Models\T2020;
 use App\Models\T2019;
+use App\Models\User;
 use App\Models\Wali;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -133,18 +134,23 @@ class CalonController extends Controller
 
     public function pdf()
     {
-        $no = Auth::guard('calon')->user()->no_online;
-        $calon = Calon::where('no_online', $no)->first();
+        $pokok = Auth::guard('calon')->user();
+        $calon = Calon::find($pokok->id) ?? ($pokok->no_online ? Calon::where('no_online', $pokok->no_online)->first() : null);
         if ($calon == null) {
             return redirect()->route('calon.form')->with('danger', 'Harap Lengkapi data terlebih dahulu!');
-        } else {
-            $pendidikan = Pendidikan::where('calon_id', $calon->id)->first();
-            $wali = Wali::where('calon_id', $calon->id)->first();
-            $nilai = T2020::where('calon_id', $calon->id)->first();
-            $data = ['Wali', 'Tiri', 'Perwalian', 'Numpang alamat'];
-            $setting = Setting::find(1);
-            return view('calon.pdf', compact('pendidikan', 'setting', 'wali', 'nilai', 'calon', 'data'));
         }
+
+        $pendidikan = Pendidikan::where('calon_id', $calon->id)->first();
+        $wali = Wali::where('calon_id', $calon->id)->first();
+        $nilai = T2020::where('calon_id', $calon->id)->first();
+        $setting = Setting::find(1);
+
+        $kodim = $pokok->kodim ?? $calon->pokok?->kodim;
+        $petugas = User::where('penanggung_jawab_kodim', $kodim)->first()
+            ?? User::where('kodim', $kodim)->whereNotNull('nrp')->first()
+            ?? User::whereNotNull('nrp')->first();
+
+        return view('calon.pdf', compact('pendidikan', 'setting', 'wali', 'nilai', 'calon', 'pokok', 'petugas'));
     }
 
     public function nilai()

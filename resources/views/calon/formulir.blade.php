@@ -142,9 +142,9 @@
                         <div class="d-flex">
                             <button type="submit" class="mx-2 btn btn-success my-3"><i class="fas fa-save"></i>
                                 {{ $status == 0 ? 'Simpan' : 'Update' }} data</button>
-                            {{-- @if ($status == 1)
-                                <a href="{{ route('calon.pdf') }}" class="mx-2 btn btn-info my-3"><i class="fas fa-save"></i> PDF</a>
-                            @endif --}}
+                            @if ($status == 1)
+                                <a href="{{ route('calon.pdf') }}" target="_blank" class="mx-2 btn btn-primary my-3"><i class="fas fa-print"></i> Cetak Surat Pendaftaran</a>
+                            @endif
                         </div>
                     </form>
                 </div>

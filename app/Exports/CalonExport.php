@@ -18,7 +18,9 @@ class CalonExport implements FromView, WithCustomCsvSettings
 
     public function view(): View
     {
-        $data = Calon::all()->whereIn('id',$this->data);
+        $data = Calon::with(['pendidikan', 'wali', 't2020', 't2019', 'pokok'])
+            ->whereIn('id', $this->data)
+            ->get();
         return view('export.calon', compact('data'));
     }
 

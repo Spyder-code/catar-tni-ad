@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exports\CalonExport;
+use App\Exports\DataExport;
 use App\Exports\PokokExport;
 use App\Imports\PokokImport;
 use App\Models\Calon;
@@ -50,20 +51,94 @@ class HomeController extends Controller
         return view('admin.profile');
     }
 
-    public function calon()
+    public function calon(Request $request)
     {
-        $data = Calon::all()->sortByDesc('updated_at');
-        return view('admin.calon', compact('data'));
+        $perPage = (int) $request->input('per_page', 50);
+        if (!in_array($perPage, [10, 25, 50, 100], true)) {
+            $perPage = 50;
+        }
+
+        $allowedSortColumns = ['id', 'no_animo', 'nama', 'tgl_lahir', 'tem_lahir', 'updated_at'];
+        $sort = $request->input('sort');
+        $direction = strtolower($request->input('direction', 'desc')) === 'asc' ? 'asc' : 'desc';
+
+        $query = $this->calonQuery($request);
+
+        if (in_array($sort, $allowedSortColumns, true)) {
+            if ($sort === 'no_animo') {
+                $query->orderBy(
+                    Pokok::select('no_animo')->whereColumn('pokok.id', 'calon.id')->limit(1),
+                    $direction
+                );
+                $query->orderByDesc('calon.id');
+            } else {
+                $query->orderBy('calon.' . $sort, $direction);
+                if ($sort !== 'id') {
+                    $query->orderByDesc('calon.id');
+                }
+            }
+        } else {
+            $sort = 'updated_at';
+            $direction = 'desc';
+            $query->orderByDesc('calon.updated_at')->orderByDesc('calon.id');
+        }
+
+        $data = $query->paginate($perPage)->withQueryString();
+
+        return view('admin.calon', compact('data', 'sort', 'direction', 'perPage'));
+    }
+
+    public function printCalon(Request $request, $id)
+    {
+        $user = $request->user();
+        $calon = Calon::with(['pendidikan', 'wali', 't2020', 'pokok'])->findOrFail($id);
+
+        if ($user && !$user->isSuperadmin()) {
+            $isOwnKodim = $this->calonQuery($request)->where('calon.id', $id)->exists();
+            if (!$isOwnKodim) {
+                abort(403);
+            }
+        }
+
+        $pokok = $calon->pokok ?? Pokok::find($calon->id);
+        $pendidikan = $calon->pendidikan ?? Pendidikan::where('calon_id', $calon->id)->first();
+        $wali = $calon->wali ?? Wali::where('calon_id', $calon->id)->first();
+        $nilai = $calon->t2020 ?? T2020::where('calon_id', $calon->id)->first();
+        $setting = Setting::find(1);
+
+        $kodim = $pokok?->kodim;
+        $petugas = User::where('penanggung_jawab_kodim', $kodim)->first()
+            ?? User::where('kodim', $kodim)->whereNotNull('nrp')->first()
+            ?? User::whereNotNull('nrp')->first();
+
+        return view('calon.pdf', compact('pendidikan', 'setting', 'wali', 'nilai', 'calon', 'pokok', 'petugas'));
     }
 
     public function calonDestroy(Request $request)
     {
+        $user = $request->user();
+        $calon = Calon::find($request->id);
+        if (!$calon) {
+            return back()->with('danger', 'Calon tidak ditemukan');
+        }
+
+        if ($user && !$user->isSuperadmin()) {
+            $isOwnKodim = $this->calonQuery($request)->where('calon.id', $request->id)->exists();
+            if (!$isOwnKodim) {
+                abort(403);
+            }
+        }
+
         Calon::destroy($request->id);
-        return back()->with('success', 'Calon dengan ID ' . $request->id) . ' berhasil dihapus!';
+        return back()->with('success', 'Calon dengan ID ' . $request->id . ' berhasil dihapus!');
     }
 
-    public function calonDestroyAll()
+    public function calonDestroyAll(Request $request)
     {
+        if (!$request->user()->isSuperadmin()) {
+            abort(403);
+        }
+
         Schema::disableForeignKeyConstraints();
         Calon::truncate();
         Wali::truncate();
@@ -72,6 +147,29 @@ class HomeController extends Controller
         T2020::truncate();
         Schema::enableForeignKeyConstraints();
         return back()->with('success', 'Data berhasil dihapus!');
+    }
+
+    private function calonQuery(Request $request)
+    {
+        $user = $request->user();
+        $kodim = ($user && $user->isSuperadmin()) ? null : $user?->kodim;
+        $query = Calon::query()->with('pokok');
+
+        if ($kodim !== null) {
+            $query->where(function ($q) use ($kodim) {
+                $q->whereHas('pokok', function ($sub) use ($kodim) {
+                    $sub->where('kodim', $kodim);
+                })->orWhereIn('no_online', function ($sub) use ($kodim) {
+                    $sub->select('no_online')->from('pokok')->where('kodim', $kodim)->whereNotNull('no_online')->where('no_online', '!=', '');
+                })->orWhereIn('ktp', function ($sub) use ($kodim) {
+                    $sub->select('nik')->from('pokok')->where('kodim', $kodim)->whereNotNull('nik')->where('nik', '!=', '');
+                });
+            });
+        } elseif ($user && !$user->isSuperadmin()) {
+            $query->whereRaw('1 = 0');
+        }
+
+        return $query;
     }
 
     public function pokok(Request $request)
@@ -84,7 +182,27 @@ class HomeController extends Controller
         } elseif (!$request->user()->isSuperadmin()) {
             $query->whereRaw('1 = 0');
         }
-        $data = $query->filtered($filters)->orderByDesc('id')->paginate(50)->withQueryString();
+        $perPage = (int) $request->input('per_page', 50);
+        if (!in_array($perPage, [10, 25, 50, 100], true)) {
+            $perPage = 50;
+        }
+
+        $allowedSortColumns = array_merge(['id'], array_keys(Pokok::EXCEL_COLUMNS));
+        $sort = $request->input('sort');
+        $direction = strtolower($request->input('direction', 'desc')) === 'asc' ? 'asc' : 'desc';
+
+        if (in_array($sort, $allowedSortColumns, true)) {
+            $query->orderBy($sort, $direction);
+            if ($sort !== 'id') {
+                $query->orderByDesc('id');
+            }
+        } else {
+            $sort = 'id';
+            $direction = 'desc';
+            $query->orderByDesc('id');
+        }
+
+        $data = $query->filtered($filters)->paginate($perPage)->withQueryString();
         $options = [];
         foreach (['jalur_pendaftaran', 'kdpanda', 'kodim'] as $column) {
             $optionQuery = Pokok::query()->whereNotNull($column)->where($column, '!=', '');
@@ -96,7 +214,7 @@ class HomeController extends Controller
             $options[$column] = $optionQuery->distinct()->orderBy($column)->pluck($column);
         }
 
-        return view('admin.pokok', compact('data', 'filters', 'options'));
+        return view('admin.pokok', compact('data', 'filters', 'options', 'sort', 'direction', 'perPage'));
     }
 
     public function exportPokok(Request $request)
@@ -170,63 +288,39 @@ class HomeController extends Controller
 
     public function export(Request $request)
     {
-        if ($request->calon == null) {
-            return back()->with('danger', 'Harap pilih data terlebih dahulu');
-        } else {
-            if (env('PONPES')) {
-                $name = 'santri.csv';
-            } else {
-                $name = 'calon.csv';
-            }
-
-            return Excel::download(new CalonExport($request->calon), $name);
-        }
+        return $this->exportDataSelect($request);
     }
 
-    public function exportAll()
+    public function exportAll(Request $request)
     {
-        $data = Calon::all();
-        $calon = array();
-        foreach ($data as $item) {
-            array_push($calon, $item->id);
-        };
-
-        if (env('PONPES')) {
-            $name = 'santri.csv';
-        } else {
-            $name = 'calon.csv';
-        }
-        return Excel::download(new CalonExport($calon), $name);
+        return $this->exportDataAll($request);
     }
 
-    public function exportDataAll()
+    public function exportDataAll(Request $request)
     {
-        $data = Calon::all();
-        $calon = array();
-        foreach ($data as $item) {
-            array_push($calon, $item->id);
-        };
+        $calon = $this->calonQuery($request)->pluck('id')->all();
 
-        if (env('PONPES')) {
-            $name = 'santri.csv';
-        } else {
-            $name = 'calon.csv';
-        }
-        return Excel::download(new CalonExport($calon), $name);
+        $name = env('PONPES') ? 'santri.xlsx' : 'calon.xlsx';
+        return Excel::download(new DataExport($calon), $name);
     }
 
     public function exportDataSelect(Request $request)
     {
-        if ($request->calon == null) {
+        if (empty($request->calon)) {
             return back()->with('danger', 'Harap pilih data terlebih dahulu');
-        } else {
-            if (env('PONPES')) {
-                $name = 'santri.csv';
-            } else {
-                $name = 'calon.csv';
-            }
-            return Excel::download(new CalonExport($request->calon), $name);
         }
+
+        $calon = $this->calonQuery($request)
+            ->whereIn('id', (array) $request->calon)
+            ->pluck('id')
+            ->all();
+
+        if (empty($calon)) {
+            return back()->with('danger', 'Harap pilih data terlebih dahulu');
+        }
+
+        $name = env('PONPES') ? 'santri.xlsx' : 'calon.xlsx';
+        return Excel::download(new DataExport($calon), $name);
     }
 
     public function setting()

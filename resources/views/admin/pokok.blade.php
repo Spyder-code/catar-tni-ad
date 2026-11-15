@@ -23,12 +23,15 @@
     .pokok-table .pokok-row-actions { display: flex; gap: .4rem; }
     .pokok-table .pokok-row-actions form { margin: 0; }
     .pokok-table-note { color: #66788a; font-size: .8rem; margin: .45rem 0 0; }
-    .pokok-table tbody .pokok-no-a`nimo,
+    .pokok-table tbody .pokok-no-animo,
     .pokok-table tbody .pokok-no-online,
     .pokok-table tbody .pokok-nama { overflow: hidden; text-overflow: ellipsis; }
     .pokok-table .pokok-aksi { position: sticky; right: 0; z-index: 1; width: 155px; min-width: 155px; background: #fff; box-shadow: -3px 0 5px #dce4ec; }
     .pokok-table thead .pokok-aksi { z-index: 3; background: #edf3f8; }
-    @media (max-width: `900px) { .pokok-filters { grid-template-columns: repeat(2, minmax(140px, 1fr)); } }
+    .pokok-table thead th a { color: inherit; text-decoration: none; display: flex; align-items: center; justify-content: space-between; gap: .35rem; }
+    .pokok-table thead th a:hover { color: #0284c7; }
+    .pokok-table thead th a .sort-icon { font-size: .75rem; }
+    @media (max-width: 900px) { .pokok-filters { grid-template-columns: repeat(2, minmax(140px, 1fr)); } }
     @media (max-width: 500px) { .pokok-filters { grid-template-columns: 1fr; } }
 </style>
 @endsection
@@ -97,16 +100,43 @@
                 <button type="submit" class="btn btn-primary">Terapkan Filter</button>
                 <a href="{{ route('pokok') }}" class="btn btn-outline-secondary">Reset</a>
             </div>
+            @if (!empty($sort))
+                <input type="hidden" name="sort" value="{{ $sort }}">
+                <input type="hidden" name="direction" value="{{ $direction }}">
+            @endif
+            @if (!empty($perPage))
+                <input type="hidden" name="per_page" value="{{ $perPage }}">
+            @endif
         </form>
 
-        <p class="mb-2 text-muted">Menampilkan {{ $data->firstItem() ?? 0 }}–{{ $data->lastItem() ?? 0 }} dari {{ $data->total() }} data.@if (Auth::user()->isSuperadmin()) Export mengikuti pencarian dan filter aktif.@endif</p>
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-2 gap-2">
+            <p class="mb-0 text-muted">Menampilkan {{ $data->firstItem() ?? 0 }}–{{ $data->lastItem() ?? 0 }} dari {{ $data->total() }} data.@if (Auth::user()->isSuperadmin()) Export mengikuti pencarian dan filter aktif.@endif</p>
+            <div class="d-flex align-items-center gap-2">
+                <label for="filter-per-page" class="mb-0 text-muted" style="font-size: .82rem; font-weight: 600; white-space: nowrap;">Tampilkan:</label>
+                <select id="filter-per-page" class="form-control form-control-sm" style="width: auto; min-width: 95px;" onchange="window.location.href=this.value">
+                    @foreach ([10, 25, 50, 100] as $limit)
+                        <option value="{{ request()->fullUrlWithQuery(['per_page' => $limit, 'page' => 1]) }}" @selected($perPage == $limit)>{{ $limit }} baris</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
         <div class="pokok-table-shell" role="region" aria-label="Tabel data pokok, geser untuk melihat kolom lain" tabindex="0">
             <table class="pokok-table">
                 <thead>
                     <tr>
-                        <th class="pokok-id">ID</th>
+                        <th class="pokok-id">
+                            <a href="{{ request()->fullUrlWithQuery(['sort' => 'id', 'direction' => ($sort === 'id' && $direction === 'asc') ? 'desc' : 'asc', 'page' => 1]) }}" title="Urutkan ID">
+                                <span>ID</span>
+                                <span class="sort-icon text-muted">@if ($sort === 'id'){!! $direction === 'asc' ? '▲' : '▼' !!}@else<span style="opacity:.35;">⇅</span>@endif</span>
+                            </a>
+                        </th>
                         @foreach (\App\Models\Pokok::EXCEL_COLUMNS as $column => $label)
-                            <th class="{{ in_array($column, ['no_animo', 'no_online', 'nama']) ? 'pokok-' . str_replace('_', '-', $column) : '' }}">{{ $label }}</th>
+                            <th class="{{ in_array($column, ['no_animo', 'no_online', 'nama']) ? 'pokok-' . str_replace('_', '-', $column) : '' }}">
+                                <a href="{{ request()->fullUrlWithQuery(['sort' => $column, 'direction' => ($sort === $column && $direction === 'asc') ? 'desc' : 'asc', 'page' => 1]) }}" title="Urutkan {{ $label }}">
+                                    <span>{{ $label }}</span>
+                                    <span class="sort-icon text-muted">@if ($sort === $column){!! $direction === 'asc' ? '▲' : '▼' !!}@else<span style="opacity:.35;">⇅</span>@endif</span>
+                                </a>
+                            </th>
                         @endforeach
                         @if (Auth::user()->isSuperadmin())<th class="pokok-aksi">Aksi</th>@endif
                     </tr>
